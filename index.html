@@ -1,57 +1,66 @@
 ﻿<!DOCTYPE html>
 <html lang="pl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SyrTech - Paweł Syrowy</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SyrTech - Paweł Syrowy</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Nawigacja -->
-  <header>
-    <nav class="navbar">
-      <div class="logo">SyrTech</div>
-      <button class="menu-toggle" aria-label="Menu">☰</button>
-      <ul class="nav-links">
-        <li><a href="#welcome">Start</a></li>
-        <li><a href="#portfolio">Portfolio</a></li>
-        <li><a href="#contact">Kontakt</a></li>
-        <li><a href="https://github.com/" target="_blank">GitHub</a></li>
-        <li><a href="https://www.linkedin.com/" target="_blank">LinkedIn</a></li>
-        <li><a href="https://www.youtube.com/" target="_blank">YouTube</a></li>
-      </ul>
-    </nav>
-  </header>
 
-  <!-- Sekcja powitalna -->
-  <section id="welcome" class="welcome">
-    <h1>SyrTech</h1>
-    <p>Witaj! Nazywam się <strong>Paweł Syrowy</strong>.</p>
-    <p>Zajmuję się realizacją projektów IT, a tutaj znajdziesz moje portfolio.</p>
-  </section>
+    <!-- Nawigacja -->
+    <header>
+        <div class="container nav-container">
+            <h1 class="logo">SyrTech</h1>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#contact">Kontakt</a></li>
+                    <li><a href="https://youtube.com" target="_blank">YouTube</a></li>
+                    <li><a href="https://github.com" target="_blank">GitHub</a></li>
+                    <li><a href="https://linkedin.com" target="_blank">LinkedIn</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
 
-  <!-- Portfolio -->
-  <section id="portfolio" class="portfolio">
-    <h2>Moje Projekty</h2>
-    <div class="projects">
-      <div class="project-card">Projekt 1</div>
-      <div class="project-card">Projekt 2</div>
-      <div class="project-card">Projekt 3</div>
-      <!-- Możesz tu dodawać kolejne -->
-    </div>
-  </section>
+    <!-- Sekcja powitalna -->
+    <section id="home" class="section home">
+        <div class="container home-content">
+            <h2>Witaj na stronie SyrTech</h2>
+            <p>Paweł Syrowy</p>
+            <p>Email: <a href="mailto:SyrTech@gmail.com">SyrTech@gmail.com</a></p>
+        </div>
+    </section>
 
-  <!-- Kontakt -->
-  <section id="contact" class="contact">
-    <h2>Kontakt</h2>
-    <p>Paweł Syrowy</p>
-    <p>Email: <a href="mailto:SyrTech@gmail.com">pawsyrtech@gmail.com</a></p>
-  </section>
+    <!-- Sekcja portfolio -->
+    <section id="portfolio" class="section portfolio">
+        <div class="container">
+            <h2>Moje Projekty</h2>
+            <div class="projects">
+                <div class="project reveal">Projekt 1</div>
+                <div class="project reveal">Projekt 2</div>
+                <div class="project reveal">Projekt 3</div>
+                <div class="project reveal">Projekt 4</div>
+            </div>
+        </div>
+    </section>
 
-  <footer>
-    <p>&copy; 2025 SyrTech - Paweł Syrowy</p>
-  </footer>
+    <!-- Sekcja kontakt -->
+    <section id="contact" class="section contact">
+        <div class="container contact-content">
+            <h2>Kontakt</h2>
+            <p>Paweł Syrowy</p>
+            <p>Email: <a href="mailto:SyrTech@gmail.com">SyrTech@gmail.com</a></p>
+        </div>
+    </section>
 
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
