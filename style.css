@@ -1,93 +1,89 @@
-﻿/* Zmienne kolorów */
+﻿/* style.css */
 :root {
     --primary-color: #f5f5dc; /* beż */
-    --secondary-color: #888888; /* szary */
+    --secondary-color: #808080; /* szary */
     --accent-color: #333333;
-    --text-color: #222;
+    --text-color: #222222;
+    --bg-color: #ffffff;
 }
 
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    font-family: 'Arial', sans-serif;
 }
 
 body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
+    background-color: var(--bg-color);
     color: var(--text-color);
-    background-color: var(--primary-color);
-    scroll-behavior: smooth;
+    line-height: 1.6;
 }
 
-/* Nawigacja */
+a {
+    text-decoration: none;
+    color: var(--accent-color);
+}
+
 header {
-    position: fixed;
-    width: 100%;
-    background-color: var(--accent-color);
-    color: white;
+    background-color: var(--primary-color);
+    padding: 1rem 2rem;
+    position: sticky;
     top: 0;
-    z-index: 1000;
+    z-index: 100;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-.nav-container {
+.navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 2rem;
 }
 
-.logo {
-    font-size: 1.8rem;
-}
+    .navbar .logo {
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
 
-nav ul {
+.nav-links {
     list-style: none;
     display: flex;
     gap: 1rem;
 }
 
-    nav ul li a {
-        color: white;
-        text-decoration: none;
-        transition: color 0.3s;
+    .nav-links li {
+        transition: 0.3s;
     }
 
-        nav ul li a:hover {
-            color: var(--primary-color);
+        .nav-links li a {
+            padding: 0.5rem;
         }
 
-/* Hamburger menu */
-.hamburger {
+.menu-toggle {
     display: none;
-    flex-direction: column;
+    font-size: 1.5rem;
+    background: none;
+    border: none;
     cursor: pointer;
-    gap: 5px;
 }
-
-    .hamburger span {
-        height: 3px;
-        width: 25px;
-        background: white;
-    }
 
 /* Sekcje */
-.section {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.welcome {
     padding: 4rem 2rem;
+    text-align: center;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
 }
 
-.home {
-    background-color: var(--primary-color);
-    color: var(--accent-color);
-    text-align: center;
-}
+    .welcome h1 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+    }
 
 .portfolio {
-    background-color: #e0e0d1;
+    padding: 4rem 2rem;
+    background-color: var(--bg-color);
+    text-align: center;
 }
 
 .projects {
@@ -97,48 +93,49 @@ nav ul {
     margin-top: 2rem;
 }
 
-.project {
-    background-color: var(--secondary-color);
-    color: white;
-    padding: 2rem;
-    text-align: center;
-    border-radius: 8px;
-    opacity: 0;
-    transform: translateY(50px);
-    transition: 0.6s ease-out;
+.project-card {
+    background-color: var(--primary-color);
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
 }
 
-    /* Reveal Animation */
-    .project.reveal.active {
-        opacity: 1;
-        transform: translateY(0);
+    .project-card:hover {
+        transform: scale(1.05);
     }
 
 .contact {
-    background-color: var(--primary-color);
+    padding: 4rem 2rem;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    text-align: center;
+}
+
+footer {
+    padding: 1rem 2rem;
+    background-color: var(--accent-color);
+    color: var(--primary-color);
     text-align: center;
 }
 
 /* Responsywność */
 @media (max-width: 768px) {
-    nav ul {
-        position: absolute;
-        top: 70px;
-        left: 0;
-        right: 0;
-        background-color: var(--accent-color);
+    .nav-links {
         flex-direction: column;
-        align-items: center;
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.3s ease-in;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background-color: var(--primary-color);
+        width: 200px;
+        display: none;
     }
 
-        nav ul.active {
-            max-height: 300px;
+        .nav-links.active {
+            display: flex;
         }
 
-    .hamburger {
-        display: flex;
+    .menu-toggle {
+        display: block;
     }
 }
