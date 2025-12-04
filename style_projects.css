@@ -1,0 +1,12 @@
+﻿.project-btn {
+    display: inline-block;
+    margin-top: 0.5rem;
+    padding: 0.4rem 1rem;
+    border-radius: 6px;
+    transition: 0.3s;
+    border: 1px solid var(--accent-color);
+}
+.project-btn:hover { 
+    background: var(--accent-color); 
+    color: var(--primary-color); 
+}
