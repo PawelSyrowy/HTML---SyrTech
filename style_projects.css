@@ -1,4 +1,22 @@
-﻿.project-btn {
+﻿.projects {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin: 2rem 2rem;
+}
+
+.project-card {
+    padding: 1.5rem;
+    border-radius: 10px;
+    transition: transform 0.3s;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    background-color: var(--primary-color);
+}
+.project-card:hover {
+    transform: scale(1.05);
+}
+
+.project-btn {
     display: inline-block;
     margin-top: 0.5rem;
     padding: 0.4rem 1rem;
