@@ -50,6 +50,10 @@ header {
     margin-bottom: 1rem;
 }
 
+.welcome p { 
+    font-size: 1rem; 
+}
+
 .portfolio {
     padding: 4rem 2rem;
     text-align: center;
