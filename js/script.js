@@ -10,3 +10,12 @@
         });
     }
 }
+
+const elems = document.querySelectorAll('.fade-in');
+window.addEventListener('scroll', () => {
+    elems.forEach(e => {
+        if (e.getBoundingClientRect().top < window.innerHeight - 100) {
+            e.classList.add('show');
+        }
+    });
+});
