@@ -1,5 +1,4 @@
-﻿/* style.css */
-:root {
+﻿:root {
     --primary-color: #f5f5dc; /* beż */
     --secondary-color: #808080; /* szary */
     --accent-color: #333333;
@@ -15,9 +14,9 @@
 }
 
 body {
+    line-height: 1.6;
     background-color: var(--bg-color);
     color: var(--text-color);
-    line-height: 1.6;
 }
 
 a {
@@ -26,12 +25,12 @@ a {
 }
 
 header {
-    background-color: var(--primary-color);
     padding: 1rem 2rem;
     position: sticky;
     top: 0;
     z-index: 100;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    background-color: var(--primary-color);
 }
 
 /* Sekcje */
@@ -49,8 +48,8 @@ header {
 
 .portfolio {
     padding: 4rem 2rem;
-    background-color: var(--bg-color);
     text-align: center;
+    background-color: var(--bg-color);
 }
 
 .projects {
@@ -61,11 +60,11 @@ header {
 }
 
 .project-card {
-    background-color: var(--primary-color);
     padding: 1.5rem;
     border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     transition: transform 0.3s;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    background-color: var(--primary-color);
 }
 
     .project-card:hover {
@@ -74,35 +73,14 @@ header {
 
 .contact {
     padding: 4rem 2rem;
+    text-align: center;
     background-color: var(--secondary-color);
     color: var(--primary-color);
-    text-align: center;
 }
 
 footer {
     padding: 1rem 2rem;
+    text-align: center;
     background-color: var(--accent-color);
     color: var(--primary-color);
-    text-align: center;
-}
-
-/* Responsywność */
-@media (max-width: 768px) {
-    .nav-links {
-        flex-direction: column;
-        position: absolute;
-        top: 100%;
-        right: 0;
-        background-color: var(--primary-color);
-        width: 200px;
-        display: none;
-    }
-
-        .nav-links.active {
-            display: flex;
-        }
-
-    .menu-toggle {
-        display: block;
-    }
 }
