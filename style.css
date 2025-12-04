@@ -73,13 +73,3 @@ footer {
     background-color: var(--accent-color);
     color: var(--primary-color);
 }
-
-/* Teksty */
-.typewriter {
-    overflow: hidden;
-    border-right: 3px solid;
-    white-space: nowrap;
-    animation: typing 2s steps(20), blink .7s infinite;
-}
-@keyframes typing { from { width: 0 } to { width: 100% } }
-@keyframes blink { 50% { border-color: transparent; } }
