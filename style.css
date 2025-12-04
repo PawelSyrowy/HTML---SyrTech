@@ -29,7 +29,7 @@ header {
     position: sticky;
     top: 0;
     z-index: 100;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     background-color: var(--primary-color);
 }
 
@@ -41,10 +41,10 @@ header {
     color: var(--primary-color);
 }
 
-    .welcome h1 {
-        font-size: 3rem;
-        margin-bottom: 1rem;
-    }
+.welcome h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
 
 .portfolio {
     padding: 4rem 2rem;
@@ -63,13 +63,13 @@ header {
     padding: 1.5rem;
     border-radius: 10px;
     transition: transform 0.3s;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     background-color: var(--primary-color);
 }
 
-    .project-card:hover {
-        transform: scale(1.05);
-    }
+.project-card:hover {
+    transform: scale(1.05);
+}
 
 .contact {
     padding: 4rem 2rem;
