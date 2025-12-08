@@ -1,0 +1,69 @@
+﻿<div class="project-card-x">
+    <div class="project-preview-x">
+        <img src="/img/nomadsearchpage.jpg" alt="Nomad Search preview">
+    </div>
+    <a class="project-btn-x" href="https://www.nomadsearch.syrtech.pl" target="_blank">Nomad Search</a>
+    <p>Wyszukiwarka noclegów dla cyfrowych nomadów</p>
+</div>
+
+<style>
+    /* Projekty */
+    .project-card-x {
+        position: relative;
+        padding: 1rem;
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        background-color: var(--primary-color);
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        min-height: 250px;
+        color: var(--accent-color);
+        overflow: hidden;
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .project-card-x:hover {
+        transform: scale(1.05);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+
+    .project-title-x {
+        display: block;
+        text-align: center;
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: var(--accent-color);
+        margin-bottom: 0.5rem;
+        text-decoration: none;
+        background: rgba(255,255,255,0.6);
+        padding: 0.2rem 0.5rem;
+        border-radius: 5px;
+    }
+
+    .project-card-x p {
+        margin: 0;
+        padding-top: 0.5rem;
+    }
+
+    .project-btn-x {
+        display: inline-block;
+        margin-top: 0.5rem;
+        padding: 0.4rem 1rem;
+        border-radius: 6px;
+        transition: 0.3s;
+        border: 1px solid var(--accent-color);
+    }
+    .project-btn-x:hover {
+        background: var(--accent-color);
+        color: var(--primary-color);
+    }
+
+    .project-preview-x img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 8px;
+    }
+</style>
