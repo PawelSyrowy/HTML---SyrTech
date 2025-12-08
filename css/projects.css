@@ -9,15 +9,9 @@
 .project-card {
     padding: 1.5rem;
     border-radius: 10px;
+    transition: transform 0.3s;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     background-color: var(--primary-color);
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
-}
-.project-card.show {
-    opacity: 1;
-    transform: translateY(0);
 }
 .project-card:hover {
     transform: scale(1.05);

@@ -22,15 +22,7 @@ function loadPortfolio() {
 
     projects.forEach(file => {
         loadComponent(null, file, (html) => {
-            const wrapper = document.createElement('div');
-            wrapper.innerHTML = html;
-            const card = wrapper.firstElementChild;
-
-            container.appendChild(card);
-
-            requestAnimationFrame(() => {
-                card.classList.add('show');
-            });
+            container.insertAdjacentHTML("beforeend", html);
         });
     });
 }
