@@ -40,12 +40,14 @@
         top: 100%;
         right: 0;
         width: 200px;
-        display: none;
         background-color: var(--primary-color);
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
     }
-
+    
     .nav-links.active {
-        display: flex;
+        max-height: 500px;
     }
 
     .menu-toggle {
