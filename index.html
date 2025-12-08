@@ -1,57 +1,64 @@
 ﻿<!DOCTYPE html>
 <html lang="pl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SyrTech - Paweł Syrowy</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SyrTech - Paweł Syrowy</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/projects.css">
+    <link rel="stylesheet" href="css/texts.css">
 </head>
 <body>
-  <!-- Nawigacja -->
-  <header>
-    <nav class="navbar">
-      <div class="logo">SyrTech</div>
-      <button class="menu-toggle" aria-label="Menu">☰</button>
-      <ul class="nav-links">
-        <li><a href="#welcome">Start</a></li>
-        <li><a href="#portfolio">Portfolio</a></li>
-        <li><a href="#contact">Kontakt</a></li>
-        <li><a href="https://github.com/" target="_blank">GitHub</a></li>
-        <li><a href="https://www.linkedin.com/" target="_blank">LinkedIn</a></li>
-        <li><a href="https://www.youtube.com/" target="_blank">YouTube</a></li>
-      </ul>
-    </nav>
-  </header>
 
-  <!-- Sekcja powitalna -->
-  <section id="welcome" class="welcome">
+<header id="site-header"></header>
+
+<!-- Sekcja powitalna -->
+<section id="welcome" class="welcome">
     <h1>SyrTech</h1>
     <p>Witaj! Nazywam się <strong>Paweł Syrowy</strong>.</p>
     <p>Zajmuję się realizacją projektów IT, a tutaj znajdziesz moje portfolio.</p>
-  </section>
+</section>
 
-  <!-- Portfolio -->
-  <section id="portfolio" class="portfolio">
+<!-- Portfolio -->
+<section id="portfolio" class="portfolio">
     <h2>Moje Projekty</h2>
     <div class="projects">
-      <div class="project-card">Projekt 1</div>
-      <div class="project-card">Projekt 2</div>
-      <div class="project-card">Projekt 3</div>
-      <!-- Możesz tu dodawać kolejne -->
+        <div class="project-card">
+            <h3>Nomad Search</h3>
+            <a class="project-btn" href="https://www.nomadsearch.syrtech.pl/" target="_blank">Zobacz</a>
+            <p>Wyszukiwarka noclegów dedykowanych dla cyfrowych nomadów</p>
+        </div>
+        <div class="project-card">
+            <h3>Czat</h3>
+            <a class="project-btn" href="https://www.czat.syrtech.pl/" target="_blank">Zobacz</a>
+            <p>Komunikator przeglądarkowy</p>
+        </div>
+        <div class="project-card">
+            <h3>Star Wars Universe</h3>
+            <a class="project-btn" href="https://www.starwars.syrtech.pl/" target="_blank">Zobacz</a>
+            <p>Baza danych o filmach i postaciach z gwiezdnych wojen</p>
+        </div>
     </div>
-  </section>
+</section>
 
-  <!-- Kontakt -->
-  <section id="contact" class="contact">
+<!-- Kontakt -->
+<section id="contact" class="contact">
     <h2>Kontakt</h2>
     <p>Paweł Syrowy</p>
     <p>Email: <a href="mailto:SyrTech@gmail.com">pawsyrtech@gmail.com</a></p>
-  </section>
+</section>
 
-  <footer>
-    <p>&copy; 2026 SyrTech - Paweł Syrowy</p>
-  </footer>
+<footer>
+    <div style="width: fit-content; margin: auto;">
+        <p class="typewriter">&copy; 2026 SyrTech - Paweł Syrowy</p>
+    </div>
+</footer>
 
-  <script src="script.js"></script>
+<script src="js/script.js"></script>
+<script src="js/components.js"></script>
+<script>
+    loadComponent("site-header", "components/header.html", initMenuToggle);
+</script>
 </body>
 </html>

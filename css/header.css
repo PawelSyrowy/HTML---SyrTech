@@ -1,0 +1,56 @@
+﻿/* Nawigacja */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+}
+
+.nav-links li {
+    transition: 0.3s;
+}
+
+.nav-links li a {
+    padding: 0.5rem;
+}
+
+.menu-toggle {
+    display: none;
+    font-size: 1.5rem;
+    border: none;
+    cursor: pointer;
+    background: none;
+}
+
+/* Responsywność */
+@media (max-width: 768px) {
+    .nav-links {
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        width: 200px;
+        background-color: var(--primary-color);
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+    }
+    
+    .nav-links.active {
+        max-height: 500px;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+}
