@@ -14,7 +14,7 @@
 function loadPortfolio() {
     const projects = [
         "components/projects/nomad.html",
-        "components/projects/chat.html",
+        "components/projects/czat.html",
         "components/projects/starwars.html"
     ];
 
