@@ -23,23 +23,7 @@
 <!-- Portfolio -->
 <section id="portfolio" class="portfolio">
     <h2>Moje Projekty</h2>
-    <div class="projects">
-        <div class="project-card">
-            <h3>Nomad Search</h3>
-            <a class="project-btn" href="https://www.nomadsearch.syrtech.pl/" target="_blank">Zobacz</a>
-            <p>Wyszukiwarka noclegów dla cyfrowych nomadów</p>
-        </div>
-        <div class="project-card">
-            <h3>Czat</h3>
-            <a class="project-btn" href="https://www.czat.syrtech.pl/" target="_blank">Zobacz</a>
-            <p>Komunikator przeglądarkowy</p>
-        </div>
-        <div class="project-card">
-            <h3>Star Wars Universe</h3>
-            <a class="project-btn" href="https://www.starwars.syrtech.pl/" target="_blank">Zobacz</a>
-            <p>Baza danych o filmach i postaciach z gwiezdnych wojen</p>
-        </div>
-    </div>
+    <div class="projects" id="projects-container"></div>
 </section>
 
 <!-- Kontakt -->
@@ -59,6 +43,7 @@
 <script src="js/components.js"></script>
 <script>
     loadComponent("site-header", "components/header.html", initMenuToggle);
+    loadPortfolio();
 </script>
 </body>
 </html>
