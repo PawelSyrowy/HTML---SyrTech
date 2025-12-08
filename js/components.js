@@ -5,5 +5,4 @@
             document.getElementById(id).innerHTML = data;
             if (callback) callback();
         })
-        .catch(console.error);
-}
+        .catch(err => console.error(`Nie udało się załadować: ${file}`, err));}
