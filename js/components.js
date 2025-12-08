@@ -1,9 +1,9 @@
-﻿function loadComponent(id, file) {
+﻿function loadComponent(id, file, callback) {
     fetch(file)
         .then(res => res.text())
         .then(data => {
             document.getElementById(id).innerHTML = data;
-            initMenuToggle();
+            if (callback) callback();
         })
-        .catch(err => console.error(err));
+        .catch(console.error);
 }
