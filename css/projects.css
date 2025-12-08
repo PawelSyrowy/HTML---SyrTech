@@ -1,4 +1,5 @@
 ﻿/* Projekty */
+
 .projects {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -22,8 +23,9 @@
     overflow: hidden;
     transition: transform 0.3s, box-shadow 0.3s;
 }
+
 .project-card:hover {
-    transform: scale(1.05);
+    /*transform: scale(1.05);*/
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
@@ -40,12 +42,26 @@
     border-radius: 8px;
 }
 
+.preview-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(128, 128, 128, 0.6);
+    z-index: 1;
+}
+
 .project-preview img {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    filter: blur(5px); /* blurred by default */
-    transition: filter 0.5s ease, transform 0.3s ease;
+    opacity: 0.1;
+    transition: opacity 1s ease, transform 0.3s ease;
+    z-index: 2;
 }
 
 .project-title {
@@ -53,25 +69,31 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 1.8rem; /* bigger */
+    transition: opacity 0.5s ease;
+    font-size: 1.8rem;
     font-weight: bold;
-    color: #ffffff;   /* bright */
-    text-shadow: 0 0 8px rgba(0,0,0,0.7);
-    background: rgba(0,0,0,0.3); /* subtle overlay */
-    padding: 0.3rem 0.6rem;
-    border-radius: 6px;
-    transition: all 0.5s ease;
+    color: var(--primary-color);
+    text-align: center;
+    z-index: 3;
     pointer-events: none;
 }
 
 .project-preview:hover img {
-    filter: blur(0);  /* reveal sharp image */
-    transform: scale(1.05); /* optional zoom */
+    opacity: 0.9;
 }
 
 .project-preview:hover .project-title {
-    opacity: 0; /* hide title */
-    transform: translate(-50%, -50%) scale(0.9); /* optional shrink */
+    opacity: 0;
+}
+
+.project-preview-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+.project-preview-link .project-preview {
+    cursor: pointer;
 }
 
 .project-btn {
