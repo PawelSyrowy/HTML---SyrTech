@@ -11,21 +11,7 @@
 </head>
 <body>
 
-<!-- Nawigacja -->
-<header>
-    <nav class="navbar">
-        <div class="logo">SyrTech</div>
-        <button class="menu-toggle" aria-label="Menu">☰</button>
-        <ul class="nav-links">
-            <li><a href="#welcome">Start</a></li>
-            <li><a href="#portfolio">Portfolio</a></li>
-            <li><a href="#contact">Kontakt</a></li>
-            <li><a href="https://github.com/PawSyrTech" target="_blank">GitHub</a></li>
-            <li><a href="https://www.linkedin.com/in/pawe%C5%82-syrowy-718b01205/" target="_blank">LinkedIn</a></li>
-            <li><a href="https://www.youtube.com/@PawelSyrowyGames" target="_blank">YouTube</a></li>
-        </ul>
-    </nav>
-</header>
+<header id="site-header"></header>
 
 <!-- Sekcja powitalna -->
 <section id="welcome" class="welcome">
@@ -70,5 +56,9 @@
 </footer>
 
 <script src="js/script.js"></script>
+<script src="js/components.js"></script>
+<script>
+    loadComponent("site-header", "components/header.html");
+</script>
 </body>
 </html>
