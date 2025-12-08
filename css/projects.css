@@ -7,14 +7,42 @@
 }
 
 .project-card {
-    padding: 1.5rem;
+    position: relative;
+    padding: 1rem;
     border-radius: 10px;
-    transition: transform 0.3s;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     background-color: var(--primary-color);
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    min-height: 250px;
+    color: var(--accent-color);
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 .project-card:hover {
     transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.project-title {
+    display: block;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--accent-color);
+    margin-bottom: 0.5rem;
+    text-decoration: none;
+    background: rgba(255,255,255,0.6);
+    padding: 0.2rem 0.5rem;
+    border-radius: 5px;
+}
+
+.project-card p {
+    margin: 0;
+    padding-top: 0.5rem;
 }
 
 .project-btn {
