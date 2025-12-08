@@ -1,12 +1,10 @@
-﻿function initMenuToggle() {
-    const menuToggle = document.querySelector('.menu-toggle');
-    const navLinks = document.querySelector('.nav-links');
-
-    if (menuToggle && navLinks) {
-        menuToggle.addEventListener('click', () => {
-            const expanded = menuToggle.getAttribute('aria-expanded') === 'true';
-            menuToggle.setAttribute('aria-expanded', !expanded);
-            navLinks.classList.toggle('active');
-        });
+﻿loadComponent("site-header", "components/header.html", () => {
+    if (!document.querySelector('script[src="components/header.js"]')) {
+        const script = document.createElement("script");
+        script.src = "components/header.js";
+        script.onload = initHeader;
+        document.body.appendChild(script);
+    } else {
+        initHeader();
     }
-}
+});
