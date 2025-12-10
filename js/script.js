@@ -10,19 +10,3 @@
         });
     }
 }
-
-function loadPortfolio() {
-    const projects = [
-        "components/projects/nomad.html",
-        "components/projects/czat.html",
-        "components/projects/starwars.html"
-    ];
-
-    const container = document.getElementById("projects-container");
-
-    projects.forEach(file => {
-        loadComponent(null, file, (html) => {
-            container.insertAdjacentHTML("beforeend", html);
-        });
-    });
-}
