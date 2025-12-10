@@ -14,7 +14,10 @@ function loadPortfolio(id) {
     const projects = [
         "components/projects/nomad.html",
         "components/projects/czat.html",
-        "components/projects/starwars.html"
+        "components/projects/starwars.html",
+        "components/projects/habitator.html",
+        "components/projects/happydroplet.html",
+        "components/projects/cleantisy.html"
     ];
 
     const container = document.getElementById(id);
