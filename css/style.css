@@ -1,6 +1,6 @@
 ﻿:root {
-    --primary-color: #f5f5dc; /* beż */
-    --secondary-color: #808080; /* szary */
+    --primary-color: #f5f5dc;
+    --secondary-color: #808080;
     --accent-color: #333333;
     --text-color: #222222;
     --bg-color: #ffffff;
@@ -35,6 +35,10 @@ header {
     z-index: 100;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     background-color: var(--primary-color);
+}
+
+section {
+    scroll-margin-top: 70.5px;
 }
 
 /* Sekcje */
