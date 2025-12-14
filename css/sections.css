@@ -12,18 +12,25 @@
     margin-bottom: 1rem;
 }
 
-.welcome p {
-    font-size: 1rem;
-}
-
 .portfolio {
     padding: 4rem 2rem;
     text-align: center;
     background-color: var(--bg-color);
 }
 
-.contact {
+.services {
     padding: 4rem 2rem;
+    text-align: center;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+}
+
+.services h1 {
+    margin-bottom: 1rem;
+}
+
+.contact {
+    padding: 2rem 2rem;
     text-align: center;
     background-color: var(--secondary-color);
     color: var(--primary-color);
@@ -34,4 +41,9 @@ footer {
     text-align: center;
     background-color: var(--accent-color);
     color: var(--primary-color);
+}
+
+footer p
+{
+    font-size: 0.85rem;
 }
