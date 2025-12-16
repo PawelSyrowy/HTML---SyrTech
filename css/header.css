@@ -33,6 +33,13 @@
     background: none;
 }
 
+.nav-links .divider {
+    width: 1px;
+    height: 24px;
+    background-color: #ccc;
+    margin: 0 0.5rem;
+}
+
 /* Responsywność */
 
 @media (max-width: 768px) {
@@ -54,5 +61,12 @@
 
     .menu-toggle {
         display: block;
+    }
+
+    .nav-links .divider {
+        width: 80%;
+        height: 1px;
+        margin: 0.5rem auto;
+        background-color: #ccc;
     }
 }
