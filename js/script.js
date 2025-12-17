@@ -11,15 +11,15 @@
     }
 }
 
-const showEmailBtn = document.getElementById('show-email-btn');
-const emailEl = document.getElementById('email');
+const emailButton = document.getElementById('email-btn');
+const email = document.getElementById('email');
 
-if (showEmailBtn && emailEl) {
+if (emailButton && email) {
     let emailClicks = 0;
 
-    showEmailBtn.addEventListener('click', () => {
-        emailEl.classList.add('show');
-        showEmailBtn.style.display = 'none';
+    emailButton.addEventListener('click', () => {
+        email.classList.add('show');
+        emailButton.classList.add('hide');
 
         emailClicks++;
         console.log('Email clicks:', emailClicks);

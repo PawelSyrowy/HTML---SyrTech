@@ -34,24 +34,24 @@
 }
 
 .nav-links .divider {
+    margin: 0 0.5rem;
     width: 1px;
     height: 24px;
     background-color: #ccc;
-    margin: 0 0.5rem;
 }
 
 /* Responsywność */
 
 @media (max-width: 768px) {
     .nav-links {
-        flex-direction: column;
         position: absolute;
+        flex-direction: column;
         top: 100%;
         right: 0;
         width: 200px;
-        background-color: var(--primary-color);
         max-height: 0;
         overflow: hidden;
+        background-color: var(--primary-color);
         transition: max-height 0.3s ease;
     }
     
@@ -64,9 +64,9 @@
     }
 
     .nav-links .divider {
+        margin: 0.5rem auto;
         width: 80%;
         height: 1px;
-        margin: 0.5rem auto;
         background-color: #ccc;
     }
 }

@@ -1,28 +1,28 @@
 ﻿/* Sekcje */
 
 .welcome {
-    padding: 4rem 2rem;
     text-align: center;
-    background-color: var(--secondary-color);
+    padding: 4rem 2rem;
     color: var(--primary-color);
+    background-color: var(--secondary-color);
 }
 
 .welcome h1 {
-    font-size: 3rem;
     margin-bottom: 1rem;
+    font-size: 3rem;
 }
 
 .portfolio {
-    padding: 4rem 2rem;
     text-align: center;
+    padding: 4rem 2rem;
     background-color: var(--bg-color);
 }
 
 .services {
-    padding: 4rem 2rem;
     text-align: center;
-    background-color: var(--primary-color);
+    padding: 4rem 2rem;
     color: var(--secondary-color);
+    background-color: var(--primary-color);
 }
 
 .services h1 {
@@ -30,17 +30,17 @@
 }
 
 .contact {
-    padding: 2rem 2rem;
     text-align: center;
-    background-color: var(--secondary-color);
+    padding: 2rem 2rem;
     color: var(--primary-color);
+    background-color: var(--secondary-color);
 }
 
 footer {
-    padding: 1rem 2rem;
     text-align: center;
-    background-color: var(--accent-color);
+    padding: 1rem 2rem;
     color: var(--primary-color);
+    background-color: var(--accent-color);
 }
 
 footer p

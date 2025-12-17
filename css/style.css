@@ -19,8 +19,8 @@ html {
 
 body {
     line-height: 1.6;
-    background-color: var(--bg-color);
     color: var(--text-color);
+    background-color: var(--bg-color);
 }
 
 a {
@@ -29,8 +29,8 @@ a {
 }
 
 header {
-    padding: 1rem 2rem;
     position: sticky;
+    padding: 1rem 2rem;
     top: 0;
     z-index: 100;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
