@@ -1,0 +1,25 @@
+﻿/* Kontakt */
+
+.email-btn {
+    padding: 0.5rem 1rem;
+    border: 1px solid #ccc;
+    background: transparent;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: 0.3s;
+}
+
+.email-btn:hover {
+    background: #eee;
+}
+
+.email-hidden {
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    display: none;
+}
+
+.email-hidden.show {
+    display: block;
+    opacity: 1;
+}

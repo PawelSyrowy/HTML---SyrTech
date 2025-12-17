@@ -10,3 +10,18 @@
         });
     }
 }
+
+const showEmailBtn = document.getElementById('show-email-btn');
+const emailEl = document.getElementById('email');
+
+if (showEmailBtn && emailEl) {
+    let emailClicks = 0;
+
+    showEmailBtn.addEventListener('click', () => {
+        emailEl.classList.add('show');
+        showEmailBtn.style.display = 'none';
+
+        emailClicks++;
+        console.log('Email clicks:', emailClicks);
+    });
+}
