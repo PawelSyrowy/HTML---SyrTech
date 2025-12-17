@@ -1,25 +1,32 @@
 ﻿/* Kontakt */
 
+.contact-container {
+    display: flex; 
+    flex-direction: row; 
+    justify-content: center; 
+    align-items: center;
+}
+
 .email-btn {
     padding: 0.5rem 1rem;
     border: 1px solid #ccc;
     background: transparent;
     cursor: pointer;
-    border-radius: 6px;
-    transition: 0.3s;
+    border-radius: 24px;
+    transition: 0.5s;
 }
 
 .email-btn:hover {
-    background: #eee;
+    background: #f5f5dc;
 }
 
 .email-hidden {
     opacity: 0;
-    transition: opacity 0.4s ease;
-    display: none;
+    visibility: hidden;
+    transition: opacity 1s ease;
 }
 
 .email-hidden.show {
-    display: block;
     opacity: 1;
+    visibility: visible;
 }
