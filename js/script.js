@@ -15,13 +15,15 @@ const emailButton = document.getElementById('email-btn');
 const email = document.getElementById('email');
 
 if (emailButton && email) {
-    let emailClicks = 0;
-
     emailButton.addEventListener('click', () => {
         email.classList.add('show');
         emailButton.classList.add('hide');
 
-        emailClicks++;
-        console.log('Email clicks:', emailClicks);
+        if (typeof gtag === 'function') {
+            gtag('event', 'show_email_click', {
+                event_category: 'contact',
+                event_label: 'email_button'
+            });
+        }
     });
 }
