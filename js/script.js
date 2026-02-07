@@ -49,7 +49,7 @@ function getTableCSS(className){
   border-collapse:collapse;
   font-family:Arial,sans-serif;
   font-size:${tableConfig.fontSize};
-  border:1px solid ${tableConfig.borderColor};
+  border:1px solid ${tableConfig.rawBorderColor};
   border-radius:${tableConfig.radius};
   box-shadow:${tableConfig.shadow};
 }
@@ -107,14 +107,6 @@ document.getElementById("download")
 
         downloadCSS(name + ".css", css);
     });
-
-
-
-function getTableHTML(className){
-    return `<table class="${className}">
-    <!-- your table -->
-</table>`;
-}
 
 function getFullExport(className){
 
