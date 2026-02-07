@@ -5,37 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8331003c-2c53-4927-9e35-1a722536c14a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.nojekyll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-ads.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/header.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/projects/cleantisy.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/projects/czat.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/projects/habitator.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/projects/happydroplet.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/projects/nomad.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/projects/starwars.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/contact.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/header.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/projects.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/sections.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/texts.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/cleantisy.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/cleantisy2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/czat.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/czat2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/habitator.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/happydroplet.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/logo1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/logo2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/nomadsearchpage.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/nomadsearchpage2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/nomadsearchpage3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/starwars.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/components.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/js/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/script.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sitemap.xml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,21 +40,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "side-features/table-editor",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;side-features/table-editor&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -107,6 +80,7 @@
       <workItem from="1766006242580" duration="7107000" />
       <workItem from="1766089700463" duration="518000" />
       <workItem from="1770463683967" duration="266000" />
+      <workItem from="1770464031866" duration="3006000" />
     </task>
     <servers />
   </component>

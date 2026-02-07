@@ -3,11 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SyrTech - Edytor tabel</title>
+    <title>Edytor tabel</title>
     <link rel="preload" href="css/style.css" as="style">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
+<div class="editor">
+    <label>Header color</label>
+    <input type="color" id="headerColor" value="#4CAF50">
+
+    <label>Font size</label>
+    <input type="range" id="fontSize" min="12" max="24" value="16">
+</div>
+
+<table data-editable-table>
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>City</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>John</td>
+        <td>25</td>
+        <td>New York</td>
+    </tr>
+    <tr>
+        <td>Anna</td>
+        <td>30</td>
+        <td>London</td>
+    </tr>
+    </tbody>
+</table>
+
 <script src="js/script.js"></script>
 </body>
 </html>

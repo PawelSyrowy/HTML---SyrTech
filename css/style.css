@@ -13,3 +13,55 @@ body {
 
 a {
 }
+
+.editable-table {
+
+    /* COLORS */
+    --et-header-bg: #4CAF50;
+    --et-header-color: #fff;
+    --et-border-color: #ddd;
+    --et-row-border-color: #eee;
+    --et-stripe-color: #f3f3f3;
+    --et-hover-color: #e6f2ff;
+
+    /* TYPOGRAPHY */
+    --et-font-size: 16px;
+
+    /* SPACING */
+    --et-cell-padding: 12px;
+
+    /* SHAPE */
+    --et-radius: 8px;
+
+    /* EFFECTS */
+    --et-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+
+
+    width: 100%;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+    font-size: var(--et-font-size);
+    border: 1px solid var(--et-border-color);
+    border-radius: var(--et-radius);
+    overflow: hidden;
+    box-shadow: var(--et-shadow);
+}
+
+.editable-table thead {
+    background: var(--et-header-bg);
+    color: var(--et-header-color);
+}
+
+.editable-table th,
+.editable-table td {
+    padding: var(--et-cell-padding);
+    border-bottom: 1px solid var(--et-row-border-color);
+}
+
+.editable-table tbody tr:nth-child(even) {
+    background: var(--et-stripe-color);
+}
+
+.editable-table tbody tr:hover {
+    background: var(--et-hover-color);
+}
