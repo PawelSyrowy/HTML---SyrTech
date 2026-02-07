@@ -5,11 +5,11 @@ const headerColor = document.getElementById("headerColor");
 const fontSize = document.getElementById("fontSize");
 
 headerColor.addEventListener("input", e => {
-    table.style.setProperty("--header-bg", e.target.value);
+    table.style.setProperty("--et-header-bg", e.target.value);
 });
 
 fontSize.addEventListener("input", e => {
-    table.style.setProperty("--font-size", e.target.value + "px");
+    table.style.setProperty("--et-font-size", e.target.value + "px");
 });
 
 function getTableCSS(className){
@@ -17,16 +17,16 @@ function getTableCSS(className){
     const styles = getComputedStyle(table);
 
     const vars = [
-        "--header-bg",
-        "--header-color",
-        "--font-size",
-        "--cell-padding",
-        "--border-color",
-        "--row-border-color",
-        "--stripe-color",
-        "--hover-color",
-        "--radius",
-        "--shadow"
+        "--et-header-bg",
+        "--et-header-color",
+        "--et-font-size",
+        "--et-cell-padding",
+        "--et-border-color",
+        "--et-row-border-color",
+        "--et-stripe-color",
+        "--et-hover-color",
+        "--et-radius",
+        "--et-shadow"
     ];
 
     let css = `.${className} {\n`;
@@ -59,4 +59,13 @@ document.getElementById("generate")
 
         document.getElementById("output").value =
             getTableCSS(name);
+    });
+
+document.getElementById("copy")
+    .addEventListener("click", () => {
+
+        const textarea = document.getElementById("output");
+
+        textarea.select();
+        document.execCommand("copy");
     });
