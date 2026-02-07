@@ -197,3 +197,13 @@ function initEditor(){
         editor.appendChild(input);
     });
 }
+
+function getTableHTML(className){
+
+    const clone = editableTable.cloneNode(true);
+
+    clone.classList.remove("et-preview");
+    clone.className = className;
+
+    return clone.outerHTML;
+}
