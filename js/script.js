@@ -162,35 +162,40 @@ const controls = [
 
 const editor = document.querySelector(".editor");
 
-controls.forEach(ctrl => {
+initEditor();
 
-    const label = document.createElement("label");
-    label.textContent = ctrl.label;
+function initEditor(){
 
-    const input = document.createElement("input");
-    input.type = ctrl.type;
+    controls.forEach(ctrl => {
 
-    if(ctrl.type === "range"){
-        input.min = ctrl.min;
-        input.max = ctrl.max;
-    }
+        const label = document.createElement("label");
+        label.textContent = ctrl.label;
 
-    input.value = ctrl.default;
-
-    tableConfig[ctrl.variable] = ctrl.default;
-
-    input.addEventListener("input", e => {
-
-        let val = e.target.value;
+        const input = document.createElement("input");
+        input.type = ctrl.type;
 
         if(ctrl.type === "range"){
-            val += "px";
+            input.min = ctrl.min;
+            input.max = ctrl.max;
         }
 
-        tableConfig[ctrl.variable] = val;
-        editableTable.style.setProperty(ctrl.cssVar, val);
-    });
+        input.value = ctrl.default;
 
-    editor.appendChild(label);
-    editor.appendChild(input);
-});
+        editableTable.style.setProperty(ctrl.cssVar, ctrl.default);
+
+        input.addEventListener("input", e => {
+
+            let val = e.target.value;
+
+            if(ctrl.type === "range"){
+                val += "px";
+            }
+
+            tableConfig[ctrl.variable] = val;
+            editableTable.style.setProperty(ctrl.cssVar, val);
+        });
+
+        editor.appendChild(label);
+        editor.appendChild(input);
+    });
+}
