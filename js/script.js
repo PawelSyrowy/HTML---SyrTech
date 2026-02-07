@@ -1,44 +1,16 @@
-﻿const table = document.querySelector("[data-editable-table]");
-table.classList.add("editable-table");
+﻿const editableTable  = document.querySelector("[data-editable-table]");
+editableTable .classList.add("editable-table");
 
 const headerColor = document.getElementById("headerColor");
 const fontSize = document.getElementById("fontSize");
 
 headerColor.addEventListener("input", e => {
-    table.style.setProperty("--et-header-bg", e.target.value);
+    editableTable .style.setProperty("--et-header-bg", e.target.value);
 });
 
 fontSize.addEventListener("input", e => {
-    table.style.setProperty("--et-font-size", e.target.value + "px");
+    editableTable .style.setProperty("--et-font-size", e.target.value + "px");
 });
-
-function getTableCSS(className){
-
-    const styles = getComputedStyle(table);
-
-    const vars = [
-        "--et-header-bg",
-        "--et-header-color",
-        "--et-font-size",
-        "--et-cell-padding",
-        "--et-border-color",
-        "--et-row-border-color",
-        "--et-stripe-color",
-        "--et-hover-color",
-        "--et-radius",
-        "--et-shadow"
-    ];
-
-    let css = `.${className} {\n`;
-
-    vars.forEach(v => {
-        css += `  ${v}: ${styles.getPropertyValue(v)};\n`;
-    });
-
-    css += "}\n";
-
-    return css;
-}
 
 const forbidden = ["editable-table", "editor", "table"];
 
@@ -67,5 +39,77 @@ document.getElementById("copy")
         const textarea = document.getElementById("output");
 
         textarea.select();
-        document.execCommand("copy");
+        navigator.clipboard.writeText(textarea.value);
+    });
+
+
+function getTableCSS(className) {
+
+    const tableStyles = getComputedStyle(editableTable);
+    const theadStyles = getComputedStyle(editableTable.querySelector("thead"));
+    const thStyles = getComputedStyle(editableTable.querySelector("th"));
+    const tdStyles = getComputedStyle(editableTable.querySelector("td"));
+
+    let css = `
+.${className}{
+  width:${tableStyles.width};
+  border-collapse:${tableStyles.borderCollapse};
+  font-family:${tableStyles.fontFamily};
+  font-size:${tableStyles.fontSize};
+  border:${tableStyles.border};
+  border-radius:${tableStyles.borderRadius};
+  overflow:hidden;
+  box-shadow:${tableStyles.boxShadow};
+}
+
+.${className} thead{
+  background:${theadStyles.backgroundColor};
+  color:${theadStyles.color};
+}
+
+.${className} th,
+.${className} td{
+  padding:${tdStyles.padding};
+  border-bottom:${tdStyles.borderBottom};
+}
+
+.${className} tbody tr:nth-child(even){
+  background:${getComputedStyle(
+        editableTable.querySelector("tbody tr:nth-child(even)")
+    ).backgroundColor};
+}
+
+.${className} tbody tr:hover{
+  background:${getComputedStyle(
+        editableTable.querySelector("tbody tr")
+    ).getPropertyValue("--et-hover-color")};
+}
+`;
+
+    return css;
+}
+
+function downloadCSS(filename, text){
+    const blob = new Blob([text], {type:"text/css"});
+    const a = document.createElement("a");
+
+    a.href = URL.createObjectURL(blob);
+    a.download = filename;
+
+    a.click();
+}
+
+document.getElementById("download")
+    .addEventListener("click", () => {
+
+        const name = document.getElementById("className").value;
+
+        if(!isValidClass(name)){
+            alert("Invalid class name");
+            return;
+        }
+
+        const css = getTableCSS(name);
+
+        downloadCSS(name + ".css", css);
     });
