@@ -14,7 +14,7 @@ body {
 a {
 }
 
-.editable-table {
+.et-preview {
 
     /* COLORS */
     --et-header-bg: #4CAF50;
@@ -46,13 +46,13 @@ a {
     box-shadow: var(--et-shadow);
 }
 
-.editable-table thead {
+.et-preview thead {
     background: var(--et-header-bg);
     color: var(--et-header-color);
 }
 
-.editable-table th,
-.editable-table td {
+.et-preview th,
+.et-preview td {
     padding: var(--et-cell-padding);
     border-bottom: 1px solid var(--et-row-border-color);
     border-left: none;
@@ -60,18 +60,18 @@ a {
     border-top: none;
 }
 
-.editable-table tbody tr:nth-child(even) {
+.et-preview tbody tr:nth-child(even) {
     background: var(--et-stripe-color);
 }
 
-.editable-table tbody tr:hover {
+.et-preview tbody tr:hover {
     background: var(--et-hover-color);
 }
 
-.editable-table thead tr:first-child th:first-child{
+.et-preview thead tr:first-child th:first-child{
     border-top-left-radius: var(--et-radius);
 }
 
-.editable-table thead tr:first-child th:last-child{
+.et-preview thead tr:first-child th:last-child{
     border-top-right-radius: var(--et-radius);
 }

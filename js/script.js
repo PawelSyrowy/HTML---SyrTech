@@ -10,12 +10,10 @@
     shadow: "0 4px 12px rgba(0,0,0,0.08)"
 };
 
-const editableTable  = document.querySelector("[data-editable-table]");
-
-const forbidden = ["editable-table", "editor", "table"];
+const editableTable  = document.querySelector("[data-et-preview]");
 
 function isValidClass(name){
-    if(forbidden.includes(name)) return false;
+    if(name.startsWith("et-")) return false;
     return /^[a-zA-Z][a-zA-Z0-9-_]*$/.test(name);
 }
 
