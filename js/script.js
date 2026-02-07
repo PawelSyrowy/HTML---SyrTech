@@ -1,16 +1,16 @@
-﻿const editableTable  = document.querySelector("[data-editable-table]");
-editableTable .classList.add("editable-table");
+﻿const tableConfig = {
+    headerBg: "#4CAF50",
+    headerColor: "#fff",
+    fontSize: "16px",
+    cellPadding: "12px",
+    rawBorderColor:"#eee",
+    radius: "8px",
+    stripeColor: "#f3f3f3",
+    hoverColor: "#e6f2ff",
+    shadow: "0 4px 12px rgba(0,0,0,0.08)"
+};
 
-const headerColor = document.getElementById("headerColor");
-const fontSize = document.getElementById("fontSize");
-
-headerColor.addEventListener("input", e => {
-    editableTable .style.setProperty("--et-header-bg", e.target.value);
-});
-
-fontSize.addEventListener("input", e => {
-    editableTable .style.setProperty("--et-font-size", e.target.value + "px");
-});
+const editableTable  = document.querySelector("[data-editable-table]");
 
 const forbidden = ["editable-table", "editor", "table"];
 
@@ -43,50 +43,46 @@ document.getElementById("copy")
     });
 
 
-function getTableCSS(className) {
+function getTableCSS(className){
 
-    const tableStyles = getComputedStyle(editableTable);
-    const theadStyles = getComputedStyle(editableTable.querySelector("thead"));
-    const thStyles = getComputedStyle(editableTable.querySelector("th"));
-    const tdStyles = getComputedStyle(editableTable.querySelector("td"));
-
-    let css = `
+    return `
 .${className}{
-  width:${tableStyles.width};
-  border-collapse:${tableStyles.borderCollapse};
-  font-family:${tableStyles.fontFamily};
-  font-size:${tableStyles.fontSize};
-  border:${tableStyles.border};
-  border-radius:${tableStyles.borderRadius};
-  overflow:hidden;
-  box-shadow:${tableStyles.boxShadow};
+  width:100%;
+  border-collapse:collapse;
+  font-family:Arial,sans-serif;
+  font-size:${tableConfig.fontSize};
+  border:1px solid ${tableConfig.borderColor};
+  border-radius:${tableConfig.radius};
+  box-shadow:${tableConfig.shadow};
 }
 
 .${className} thead{
-  background:${theadStyles.backgroundColor};
-  color:${theadStyles.color};
+  background:${tableConfig.headerBg};
+  color:${tableConfig.headerColor};
 }
 
 .${className} th,
 .${className} td{
-  padding:${tdStyles.padding};
-  border-bottom:${tdStyles.borderBottom};
+  padding:${tableConfig.cellPadding};
+  border-bottom:1px solid ${tableConfig.rawBorderColor};
 }
 
 .${className} tbody tr:nth-child(even){
-  background:${getComputedStyle(
-        editableTable.querySelector("tbody tr:nth-child(even)")
-    ).backgroundColor};
+  background:${tableConfig.stripeColor};
 }
 
 .${className} tbody tr:hover{
-  background:${getComputedStyle(
-        editableTable.querySelector("tbody tr")
-    ).getPropertyValue("--et-hover-color")};
+  background:${tableConfig.hoverColor};
+}
+
+.${className} thead tr:first-child th:first-child{
+  border-top-left-radius:${tableConfig.radius};
+}
+
+.${className} thead tr:first-child th:last-child{
+  border-top-right-radius:${tableConfig.radius};
 }
 `;
-
-    return css;
 }
 
 function downloadCSS(filename, text){
@@ -113,3 +109,88 @@ document.getElementById("download")
 
         downloadCSS(name + ".css", css);
     });
+
+
+
+function getTableHTML(className){
+    return `<table class="${className}">
+    <!-- your table -->
+</table>`;
+}
+
+function getFullExport(className){
+
+    const css = getTableCSS(className);
+    const html = getTableHTML(className);
+
+    return `/* ===== CSS ===== */
+
+${css}
+
+/* ===== HTML ===== */
+
+${html}`;
+}
+
+const controls = [
+    {
+        label:"Header color",
+        type:"color",
+        variable:"headerBg",
+        cssVar:"--et-header-bg",
+        default:"#4CAF50"
+    },
+    {
+        label:"Font size",
+        type:"range",
+        variable:"fontSize",
+        cssVar:"--et-font-size",
+        default:"16px",
+        min:12,
+        max:24
+    },
+    {
+        label:"Radius",
+        type:"range",
+        variable:"radius",
+        cssVar:"--et-radius",
+        default:"8px",
+        min:0,
+        max:30
+    }
+];
+
+const editor = document.querySelector(".editor");
+
+controls.forEach(ctrl => {
+
+    const label = document.createElement("label");
+    label.textContent = ctrl.label;
+
+    const input = document.createElement("input");
+    input.type = ctrl.type;
+
+    if(ctrl.type === "range"){
+        input.min = ctrl.min;
+        input.max = ctrl.max;
+    }
+
+    input.value = ctrl.default;
+
+    tableConfig[ctrl.variable] = ctrl.default;
+
+    input.addEventListener("input", e => {
+
+        let val = e.target.value;
+
+        if(ctrl.type === "range"){
+            val += "px";
+        }
+
+        tableConfig[ctrl.variable] = val;
+        editableTable.style.setProperty(ctrl.cssVar, val);
+    });
+
+    editor.appendChild(label);
+    editor.appendChild(input);
+});
