@@ -72,8 +72,8 @@ document.getElementById("copy")
 
         const textarea = document.getElementById("output");
 
-        textarea.select();
-        navigator.clipboard.writeText(textarea.value);
+        navigator.clipboard.writeText(textarea.value)
+            .catch(() => alert("Copy failed"));
     });
 
 function downloadCSS(filename, text){
