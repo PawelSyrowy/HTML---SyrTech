@@ -139,6 +139,8 @@ function initEditor(){
 
     controls.forEach(ctrl => {
 
+        const wrapper = document.createElement("div");
+
         const label = document.createElement("label");
         label.textContent = ctrl.label;
 
@@ -148,11 +150,16 @@ function initEditor(){
         if(ctrl.type === "range"){
             input.min = ctrl.min;
             input.max = ctrl.max;
+
+            // jeśli default ma px → usuń px do inputa
+            input.value = parseInt(ctrl.default);
+        }
+        else{
+            input.value = ctrl.default;
         }
 
-        input.value = ctrl.default;
-
-        editableTable.style.setProperty(ctrl.cssVar, ctrl.default);
+        // ustaw startową variable
+        editableTable.style.setProperty(ctrl.var, ctrl.default);
 
         input.addEventListener("input", e => {
 
@@ -162,11 +169,13 @@ function initEditor(){
                 val += "px";
             }
 
-            editableTable.style.setProperty(ctrl.cssVar, val);
+            editableTable.style.setProperty(ctrl.var, val);
         });
 
-        editor.appendChild(label);
-        editor.appendChild(input);
+        wrapper.appendChild(label);
+        wrapper.appendChild(input);
+
+        editor.appendChild(wrapper);
     });
 }
 
