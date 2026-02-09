@@ -128,7 +128,9 @@ const controls = [
 
     { label:"Cell padding Y", var:"--et-cell-padding-y", type:"range", min:0, max:40, default:"0px" },
 
-    { label:"Radius", var:"--et-radius", type:"range", min:0, max:30, default:"0px" }
+    { label:"Radius", var:"--et-radius", type:"range", min:0, max:30, default:"0px" },
+
+    { label:"Hover color", var:"--et-hover-color", type:"color", default:"transparent" }
 ];
 
 const editor = document.querySelector(".editor");
