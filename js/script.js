@@ -1,49 +1,69 @@
 ﻿function getTableCSS(className){
 
-    const styles = getComputedStyle(editableTable);
+    return `
+.${className}{
+  width:${tableConfig["--et-width"]};
+  margin:${tableConfig["--et-margin"]};
+  border-collapse:${tableConfig["--et-border-collapse"]};
 
-    const cssVars = [
-        "--et-width",
-        "--et-margin",
-        "--et-border-collapse",
+  font-family:${tableConfig["--et-font-family"]};
+  font-size:${tableConfig["--et-font-size"]};
+  line-height:${tableConfig["--et-line-height"]};
 
-        "--et-font-family",
-        "--et-font-size",
-        "--et-line-height",
-        "--et-text-align",
+  background:${tableConfig["--et-body-bg"]};
+  color:${tableConfig["--et-body-color"]};
 
-        "--et-header-bg",
-        "--et-header-color",
-
-        "--et-body-bg",
-        "--et-body-color",
-
-        "--et-row-bg",
-        "--et-stripe-color",
-        "--et-hover-color",
-
-        "--et-table-border",
-        "--et-cell-border",
-        "--et-row-border",
-
-        "--et-cell-padding",
-        "--et-cell-padding-x",
-        "--et-cell-padding-y",
-
-        "--et-radius",
-        "--et-shadow"
-    ];
-
-    let css = `.${className}{\n`;
-
-    cssVars.forEach(v => {
-        css += `  ${v}: ${styles.getPropertyValue(v)};\n`;
-    });
-
-    css += "}\n";
-
-    return css;
+  border:${tableConfig["--et-table-border"]};
+  border-radius:${tableConfig["--et-radius"]};
+  box-shadow:${tableConfig["--et-shadow"]};
 }
+
+.${className} thead{
+  background:${tableConfig["--et-header-bg"]};
+  color:${tableConfig["--et-header-color"]};
+}
+
+.${className} th{
+  text-align:${tableConfig["--et-text-align"]};
+  font-weight:${tableConfig["--et-font-weight-header"]};
+  border:${tableConfig["--et-cell-border"]};
+}
+
+.${className} td{
+  text-align:${tableConfig["--et-text-align"]};
+  font-weight:${tableConfig["--et-font-weight-body"]};
+  border:${tableConfig["--et-cell-border"]};
+}
+
+.${className} th,
+.${className} td{
+  padding:${tableConfig["--et-cell-padding-y"]} ${tableConfig["--et-cell-padding-x"]};
+}
+
+.${className} tr{
+  background:${tableConfig["--et-row-bg"]};
+  border-bottom:${tableConfig["--et-row-border"]};
+}
+
+.${className} tbody tr:nth-child(even){
+  background:${tableConfig["--et-stripe-color"]};
+}
+
+.${className} tbody tr:hover{
+  background:${tableConfig["--et-hover-color"]};
+}
+
+.${className} thead tr:first-child th:first-child{
+  border-top-left-radius:${tableConfig["--et-radius"]};
+}
+
+.${className} thead tr:first-child th:last-child{
+  border-top-right-radius:${tableConfig["--et-radius"]};
+}
+`;
+}
+
+const tableConfig = {};
 
 const editableTable  = document.querySelector("[data-et-preview]");
 editableTable.classList.add("et-preview");
@@ -162,6 +182,8 @@ function initEditor(){
 
         // ustaw startową variable
         editableTable.style.setProperty(ctrl.var, ctrl.default);
+        tableConfig[ctrl.var] = ctrl.default;
+
 
         input.addEventListener("input", e => {
 
@@ -172,6 +194,7 @@ function initEditor(){
             }
 
             editableTable.style.setProperty(ctrl.var, val);
+            tableConfig[ctrl.var] = val;
         });
 
         wrapper.appendChild(label);
