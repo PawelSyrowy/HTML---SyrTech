@@ -46,6 +46,7 @@
 }
 
 const editableTable  = document.querySelector("[data-et-preview]");
+editableTable.classList.add("et-preview");
 
 function isValidClass(name){
     if(name.startsWith("et-")) return false;
@@ -115,28 +116,19 @@ ${html}`;
 }
 
 const controls = [
-    {
-        label:"Header color",
-        type:"color",
-        cssVar:"--et-header-bg",
-        default:"transparent"
-    },
-    {
-        label:"Font size",
-        type:"range",
-        cssVar:"--et-font-size",
-        default:"16px",
-        min:10,
-        max:40
-    },
-    {
-        label:"Radius",
-        type:"range",
-        cssVar:"--et-radius",
-        default:"0px",
-        min:0,
-        max:30
-    }
+    { label:"Width", var:"--et-width", type:"text", default:"100%" },
+
+    { label:"Font size", var:"--et-font-size", type:"range", min:10, max:40, default:"16px" },
+
+    { label:"Header BG", var:"--et-header-bg", type:"color", default:"transparent" },
+
+    { label:"Header color", var:"--et-header-color", type:"color", default:"#000000" },
+
+    { label:"Cell padding X", var:"--et-cell-padding-x", type:"range", min:0, max:40, default:"0px" },
+
+    { label:"Cell padding Y", var:"--et-cell-padding-y", type:"range", min:0, max:40, default:"0px" },
+
+    { label:"Radius", var:"--et-radius", type:"range", min:0, max:30, default:"0px" }
 ];
 
 const editor = document.querySelector(".editor");
