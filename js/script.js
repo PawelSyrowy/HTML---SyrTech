@@ -1,14 +1,49 @@
-﻿const tableConfig = {
-    headerBg: "#4CAF50",
-    headerColor: "#fff",
-    fontSize: "16px",
-    cellPadding: "12px",
-    rawBorderColor:"#eee",
-    radius: "8px",
-    stripeColor: "#f3f3f3",
-    hoverColor: "#e6f2ff",
-    shadow: "0 4px 12px rgba(0,0,0,0.08)"
-};
+﻿function getTableCSS(className){
+
+    const styles = getComputedStyle(editableTable);
+
+    const cssVars = [
+        "--et-width",
+        "--et-margin",
+        "--et-border-collapse",
+
+        "--et-font-family",
+        "--et-font-size",
+        "--et-line-height",
+        "--et-text-align",
+
+        "--et-header-bg",
+        "--et-header-color",
+
+        "--et-body-bg",
+        "--et-body-color",
+
+        "--et-row-bg",
+        "--et-stripe-color",
+        "--et-hover-color",
+
+        "--et-table-border",
+        "--et-cell-border",
+        "--et-row-border",
+
+        "--et-cell-padding",
+        "--et-cell-padding-x",
+        "--et-cell-padding-y",
+
+        "--et-radius",
+        "--et-shadow"
+    ];
+
+    let css = `.${className}{\n`;
+
+    cssVars.forEach(v => {
+        css += `  ${v}: ${styles.getPropertyValue(v)};\n`;
+    });
+
+    css += "}\n";
+
+    return css;
+}
 
 const editableTable  = document.querySelector("[data-et-preview]");
 
@@ -39,49 +74,6 @@ document.getElementById("copy")
         textarea.select();
         navigator.clipboard.writeText(textarea.value);
     });
-
-
-function getTableCSS(className){
-
-    return `
-.${className}{
-  width:100%;
-  border-collapse:collapse;
-  font-family:Arial,sans-serif;
-  font-size:${tableConfig.fontSize};
-  border:1px solid ${tableConfig.rawBorderColor};
-  border-radius:${tableConfig.radius};
-  box-shadow:${tableConfig.shadow};
-}
-
-.${className} thead{
-  background:${tableConfig.headerBg};
-  color:${tableConfig.headerColor};
-}
-
-.${className} th,
-.${className} td{
-  padding:${tableConfig.cellPadding};
-  border-bottom:1px solid ${tableConfig.rawBorderColor};
-}
-
-.${className} tbody tr:nth-child(even){
-  background:${tableConfig.stripeColor};
-}
-
-.${className} tbody tr:hover{
-  background:${tableConfig.hoverColor};
-}
-
-.${className} thead tr:first-child th:first-child{
-  border-top-left-radius:${tableConfig.radius};
-}
-
-.${className} thead tr:first-child th:last-child{
-  border-top-right-radius:${tableConfig.radius};
-}
-`;
-}
 
 function downloadCSS(filename, text){
     const blob = new Blob([text], {type:"text/css"});
@@ -126,25 +118,22 @@ const controls = [
     {
         label:"Header color",
         type:"color",
-        variable:"headerBg",
         cssVar:"--et-header-bg",
-        default:"#4CAF50"
+        default:"transparent"
     },
     {
         label:"Font size",
         type:"range",
-        variable:"fontSize",
         cssVar:"--et-font-size",
         default:"16px",
-        min:12,
-        max:24
+        min:10,
+        max:40
     },
     {
         label:"Radius",
         type:"range",
-        variable:"radius",
         cssVar:"--et-radius",
-        default:"8px",
+        default:"0px",
         min:0,
         max:30
     }
@@ -181,7 +170,6 @@ function initEditor(){
                 val += "px";
             }
 
-            tableConfig[ctrl.variable] = val;
             editableTable.style.setProperty(ctrl.cssVar, val);
         });
 
