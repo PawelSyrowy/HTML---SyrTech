@@ -17,7 +17,8 @@ function loadPortfolio(id) {
         "components/projects/starwars.html",
         "components/projects/habitator.html",
         "components/projects/happydroplet.html",
-        "components/projects/cleantisy.html"
+        "components/projects/cleantisy.html",
+        "components/projects/table-editor.html"
     ];
 
     const container = document.getElementById(id);
