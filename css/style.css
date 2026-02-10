@@ -48,7 +48,6 @@ a {
     --et-row-border: none;
     
     /* SPACING */
-    --et-cell-padding: 0;
     --et-cell-padding-x: 0;
     --et-cell-padding-y: 0;
     
@@ -100,20 +99,6 @@ a {
     border: var(--et-cell-border);
 }
 
-.et-preview th,
-.et-preview td,
-.et-export th,
-.et-export td {
-
-    padding:
-            var(--et-cell-padding-y)
-            var(--et-cell-padding-x);
-
-    /* fallback jeśli ktoś ustawi tylko jedną */
-    padding: var(--et-cell-padding);
-
-}
-
 .et-preview tr,
 .et-export tr {
     background: var(--et-row-bg);
@@ -128,19 +113,6 @@ a {
 .et-preview tbody tr:hover,
 .et-export tbody tr:hover {
     background: var(--et-hover-color);
-}
-
-.et-preview th:first-child,
-.et-preview td:first-child,
-.et-export th:first-child,
-.et-export td:first-child {
-    /* np padding-left variable kiedyś */
-}
-
-.et-preview th:last-child,
-.et-preview td:last-child,
-.et-export th:last-child,
-.et-export td:last-child {
 }
 
 .et-preview thead tr:first-child th:first-child,

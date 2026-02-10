@@ -83,7 +83,8 @@ const computed = getComputedStyle(editableTable);
     "--et-font-weight-body",
     "--et-row-bg",
     "--et-row-border",
-    "--et-stripe-color"
+    "--et-stripe-color",
+    "--et-cell-border",
 ].forEach(v=>{
     tableConfig[v] = computed.getPropertyValue(v).trim();
 });
