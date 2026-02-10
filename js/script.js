@@ -1,4 +1,10 @@
-﻿function getTableCSS(className){
+﻿const tableConfig = {};
+
+const editableTable = document.querySelector("[data-et-preview]");
+editableTable.classList.add("et-preview");
+
+
+function getTableCSS(className){
 
     return `
 .${className}{
@@ -10,10 +16,10 @@
   font-size:${tableConfig["--et-font-size"]};
   line-height:${tableConfig["--et-line-height"]};
 
-  background:${tableConfig["--et-body-bg"]};
-  color:${tableConfig["--et-body-color"]};
+  background:${tableConfig["--et-bg"]};
+  color:${tableConfig["--et-color"]};
 
-  border:${tableConfig["--et-table-border"]};
+  border:${tableConfig["--et-border"]};
   border-radius:${tableConfig["--et-radius"]};
   box-shadow:${tableConfig["--et-shadow"]};
 }
@@ -21,17 +27,25 @@
 .${className} thead{
   background:${tableConfig["--et-header-bg"]};
   color:${tableConfig["--et-header-color"]};
+  font-size:${tableConfig["--et-header-font-size"]};
+  border:${tableConfig["--et-header-border"]};
 }
 
 .${className} th{
-  text-align:${tableConfig["--et-text-align"]};
-  font-weight:${tableConfig["--et-font-weight-header"]};
+  text-align:${tableConfig["--et-th-align"]};
+  font-weight:${tableConfig["--et-th-weight"]};
   border:${tableConfig["--et-cell-border"]};
 }
 
+.${className} tbody{
+  background:${tableConfig["--et-body-bg"]};
+  color:${tableConfig["--et-body-color"]};
+  font-size:${tableConfig["--et-body-font-size"]};
+}
+
 .${className} td{
-  text-align:${tableConfig["--et-text-align"]};
-  font-weight:${tableConfig["--et-font-weight-body"]};
+  text-align:${tableConfig["--et-td-align"]};
+  font-weight:${tableConfig["--et-td-weight"]};
   border:${tableConfig["--et-cell-border"]};
 }
 
@@ -46,154 +60,74 @@
 }
 
 .${className} tbody tr:nth-child(even){
-  background:${tableConfig["--et-stripe-color"]};
+  background:${tableConfig["--et-stripe-bg"]};
 }
 
 .${className} tbody tr:hover{
-  background:${tableConfig["--et-hover-color"]};
-}
-
-.${className} thead tr:first-child th:first-child{
-  border-top-left-radius:${tableConfig["--et-radius"]};
-}
-
-.${className} thead tr:first-child th:last-child{
-  border-top-right-radius:${tableConfig["--et-radius"]};
+  background:${tableConfig["--et-hover-bg"]};
 }
 `;
 }
 
-const tableConfig = {};
-
-const editableTable  = document.querySelector("[data-et-preview]");
-editableTable.classList.add("et-preview");
-const computed = getComputedStyle(editableTable);
-
-[
-    "--et-margin",
-    "--et-border-collapse",
-    "--et-font-family",
-    "--et-line-height",
-    "--et-body-bg",
-    "--et-body-color",
-    "--et-table-border",
-    "--et-shadow",
-    "--et-text-align",
-    "--et-font-weight-header",
-    "--et-font-weight-body",
-    "--et-row-bg",
-    "--et-row-border",
-    "--et-stripe-color",
-    "--et-cell-border",
-].forEach(v=>{
-    tableConfig[v] = computed.getPropertyValue(v).trim();
-});
-
 
 function isValidClass(name){
+    if(!name) return false;
     if(name.startsWith("et-")) return false;
     return /^[a-zA-Z][a-zA-Z0-9-_]*$/.test(name);
 }
 
-document.getElementById("generate")
-    .addEventListener("click", () => {
 
-        const name = document.getElementById("className").value;
-
-        if(!isValidClass(name)){
-            alert("Invalid class name");
-            return;
-        }
-
-        document.getElementById("output").value =
-            getTableCSS(name);
-    });
-
-document.getElementById("copy")
-    .addEventListener("click", () => {
-
-        const textarea = document.getElementById("output");
-
-        navigator.clipboard.writeText(textarea.value)
-            .catch(() => alert("Copy failed"));
-    });
-
-function downloadCSS(filename, text){
-    const blob = new Blob([text], {type:"text/css"});
-    const a = document.createElement("a");
-
-    a.href = URL.createObjectURL(blob);
-    a.download = filename;
-
-    a.click();
-}
-
-document.getElementById("download")
-    .addEventListener("click", () => {
-
-        const name = document.getElementById("className").value;
-
-        if(!isValidClass(name)){
-            alert("Invalid class name");
-            return;
-        }
-
-        const css = getTableCSS(name);
-
-        downloadCSS(name + ".css", css);
-    });
-
-function getFullExport(className){
-
-    const css = getTableCSS(className);
-    const html = getTableHTML(className);
-
-    return `/* ===== CSS ===== */
-
-${css}
-
-/* ===== HTML ===== */
-
-${html}`;
-}
+/* CONTROLS */
 
 const controls = [
-    { label:"Width", var:"--et-width", type:"text", default:"100%" },
 
-    { label:"Font size", var:"--et-font-size", type:"range", min:10, max:40, default:"16px" },
+    {label:"Width", var:"--et-width", type:"text", default:"100%"},
+    {label:"Margin", var:"--et-margin", type:"text", default:"0"},
+    {label:"Border collapse", var:"--et-border-collapse", type:"text", default:"collapse"},
 
-    { label:"Header BG", var:"--et-header-bg", type:"color", default:"transparent" },
+    {label:"Font family", var:"--et-font-family", type:"text", default:"sans-serif"},
+    {label:"Font size", var:"--et-font-size", type:"range", min:10, max:40, default:"16px"},
+    {label:"Line height", var:"--et-line-height", type:"text", default:"1.4"},
 
-    { label:"Header color", var:"--et-header-color", type:"color", default:"#000000" },
+    {label:"Table BG", var:"--et-bg", type:"color", default:"#ffffff"},
+    {label:"Table color", var:"--et-color", type:"color", default:"#000000"},
 
-    { label:"Cell padding X", var:"--et-cell-padding-x", type:"range", min:0, max:40, default:"0px" },
+    {label:"Table border", var:"--et-border", type:"text", default:"none"},
+    {label:"Radius", var:"--et-radius", type:"range", min:0, max:30, default:"0px"},
+    {label:"Shadow", var:"--et-shadow", type:"text", default:"none"},
 
-    { label:"Cell padding Y", var:"--et-cell-padding-y", type:"range", min:0, max:40, default:"0px" },
+    {label:"Header BG", var:"--et-header-bg", type:"color", default:"#ffffff"},
+    {label:"Header color", var:"--et-header-color", type:"color", default:"#000000"},
+    {label:"Header font size", var:"--et-header-font-size", type:"range", min:10, max:40, default:"16px"},
+    {label:"Header border", var:"--et-header-border", type:"text", default:"none"},
 
-    { label:"Radius", var:"--et-radius", type:"range", min:0, max:30, default:"0px" },
+    {label:"TH align", var:"--et-th-align", type:"text", default:"left"},
+    {label:"TH weight", var:"--et-th-weight", type:"text", default:"normal"},
 
-    { label:"Hover color", var:"--et-hover-color", type:"color", default:"transparent" }
+    {label:"Tbody BG", var:"--et-body-bg", type:"color", default:"#ffffff"},
+    {label:"Tbody color", var:"--et-body-color", type:"color", default:"#000000"},
+    {label:"Tbody font size", var:"--et-body-font-size", type:"range", min:10, max:40, default:"16px"},
+
+    {label:"TD align", var:"--et-td-align", type:"text", default:"left"},
+    {label:"TD weight", var:"--et-td-weight", type:"text", default:"normal"},
+
+    {label:"Cell border", var:"--et-cell-border", type:"text", default:"none"},
+    {label:"Padding X", var:"--et-cell-padding-x", type:"range", min:0, max:40, default:"8px"},
+    {label:"Padding Y", var:"--et-cell-padding-y", type:"range", min:0, max:40, default:"6px"},
+
+    {label:"Row BG", var:"--et-row-bg", type:"color", default:"#ffffff"},
+    {label:"Row border", var:"--et-row-border", type:"text", default:"none"},
+    {label:"Stripe BG", var:"--et-stripe-bg", type:"color", default:"#f5f5f5"},
+    {label:"Hover BG", var:"--et-hover-bg", type:"color", default:"#eeeeee"}
+
 ];
+
 
 const editor = document.querySelector(".editor");
 
-function initEditor(){
-    controls.forEach(ctrl => {
-        editor.appendChild(createControl(ctrl));
-    });
-}
-
-function getTableHTML(className){
-
-    const clone = editableTable.cloneNode(true);
-
-    clone.classList.remove("et-preview");
-    clone.classList.add(className);
-
-    return clone.outerHTML;
-}
 
 function createControl(ctrl){
+
     const wrapper = document.createElement("div");
 
     const label = document.createElement("label");
@@ -231,4 +165,55 @@ function createControl(ctrl){
     return wrapper;
 }
 
-initEditor();
+
+controls.forEach(ctrl=>{
+    editor.appendChild(createControl(ctrl));
+});
+
+
+/* GENERATOR */
+
+document.getElementById("generate")
+    .addEventListener("click", () => {
+
+        const name = document.getElementById("className").value;
+
+        if(!isValidClass(name)){
+            alert("Invalid class name");
+            return;
+        }
+
+        document.getElementById("output").value =
+            getTableCSS(name);
+    });
+
+
+document.getElementById("copy")
+    .addEventListener("click", () => {
+
+        navigator.clipboard.writeText(
+            document.getElementById("output").value
+        );
+    });
+
+
+document.getElementById("download")
+    .addEventListener("click", () => {
+
+        const name = document.getElementById("className").value;
+
+        if(!isValidClass(name)){
+            alert("Invalid class name");
+            return;
+        }
+
+        const blob = new Blob(
+            [getTableCSS(name)],
+            {type:"text/css"}
+        );
+
+        const a = document.createElement("a");
+        a.href = URL.createObjectURL(blob);
+        a.download = name + ".css";
+        a.click();
+    });

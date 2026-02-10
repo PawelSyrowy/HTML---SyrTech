@@ -14,49 +14,51 @@ body {
 a {
 }
 
-.et-preview,
-.et-export {
+.et-preview{
 
-    /* LAYOUT */
+    /* TABLE */
     --et-width: 100%;
     --et-margin: 0;
     --et-border-collapse: collapse;
 
-    /* TYPOGRAPHY */
     --et-font-family: sans-serif;
     --et-font-size: 16px;
     --et-line-height: 1.4;
-    --et-text-align: left;
-    --et-font-weight-header: normal;
-    --et-font-weight-body: normal;
 
-    /* COLORS */
+    --et-bg: transparent;
+    --et-color: #000;
 
-    --et-header-bg: transparent;
-    --et-header-color: #000;
-
-    --et-body-bg: transparent;
-    --et-body-color: #000;
-
-    --et-row-bg: transparent;
-    --et-stripe-color: transparent;
-    --et-hover-color: transparent;
-    
-    /* BORDERS */
-    --et-table-border: none;
-    --et-cell-border: none;
-    --et-row-border: none;
-    
-    /* SPACING */
-    --et-cell-padding-x: 0;
-    --et-cell-padding-y: 0;
-    
-    /* SHAPE */
+    --et-border: none;
     --et-radius: 0;
-
-    /* EFFECTS */
     --et-shadow: none;
 
+    /* HEADER */
+    --et-header-bg: transparent;
+    --et-header-color: #000;
+    --et-header-font-size: 16px;
+    --et-header-border: none;
+
+    --et-th-align: left;
+    --et-th-weight: normal;
+
+    /* BODY */
+    --et-body-bg: transparent;
+    --et-body-color: #000;
+    --et-body-font-size: 16px;
+
+    --et-td-align: left;
+    --et-td-weight: normal;
+
+    /* CELLS */
+    --et-cell-border: none;
+    --et-cell-padding-x: 8px;
+    --et-cell-padding-y: 6px;
+
+    /* ROWS */
+    --et-row-bg: transparent;
+    --et-row-border: none;
+    --et-stripe-bg: transparent;
+    --et-hover-bg: transparent;
 
     width: var(--et-width);
     margin: var(--et-margin);
@@ -66,61 +68,61 @@ a {
     font-size: var(--et-font-size);
     line-height: var(--et-line-height);
 
-    background: var(--et-body-bg);
-    color: var(--et-body-color);
+    background: var(--et-bg);
+    color: var(--et-color);
 
-    border: var(--et-table-border);
+    border: var(--et-border);
     border-radius: var(--et-radius);
     box-shadow: var(--et-shadow);
 }
 
-.et-preview thead,
-.et-export thead {
+/* HEADER */
+
+.et-preview thead{
     background: var(--et-header-bg);
     color: var(--et-header-color);
+    font-size: var(--et-header-font-size);
+    border: var(--et-header-border);
 }
+
+.et-preview th{
+    text-align: var(--et-th-align);
+    font-weight: var(--et-th-weight);
+    border: var(--et-cell-border);
+}
+
+/* BODY */
+
+.et-preview tbody{
+    background: var(--et-body-bg);
+    color: var(--et-body-color);
+    font-size: var(--et-body-font-size);
+}
+
+.et-preview td{
+    text-align: var(--et-td-align);
+    font-weight: var(--et-td-weight);
+    border: var(--et-cell-border);
+}
+
+/* CELLS */
 
 .et-preview th,
-.et-export th {
-    text-align: var(--et-text-align);
-    font-weight: var(--et-font-weight-header);
-    border: var(--et-cell-border);
+.et-preview td{
+    padding: var(--et-cell-padding-y) var(--et-cell-padding-x);
 }
 
-.et-preview tbody,
-.et-export tbody{
-    background: var(--et-body-bg);
-}
+/* ROWS */
 
-.et-preview td,
-.et-export td{
-    text-align: var(--et-text-align);
-    font-weight: var(--et-font-weight-body);
-    border: var(--et-cell-border);
-}
-
-.et-preview tr,
-.et-export tr {
+.et-preview tr{
     background: var(--et-row-bg);
     border-bottom: var(--et-row-border);
 }
 
-.et-preview tbody tr:nth-child(even),
-.et-export tbody tr:nth-child(even) {
-    background: var(--et-stripe-color);
+.et-preview tbody tr:nth-child(even){
+    background: var(--et-stripe-bg);
 }
 
-.et-preview tbody tr:hover,
-.et-export tbody tr:hover {
-    background: var(--et-hover-color);
-}
-
-.et-preview thead tr:first-child th:first-child,
-.et-export thead tr:first-child th:first-child {
-    border-top-left-radius: var(--et-radius);
-}
-
-.et-preview thead tr:first-child th:last-child,
-.et-export thead tr:first-child th:last-child {
-    border-top-right-radius: var(--et-radius);
+.et-preview tbody tr:hover{
+    background: var(--et-hover-bg);
 }
