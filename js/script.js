@@ -78,49 +78,69 @@ function isValidClass(name){
 
 
 /* CONTROLS */
+const sections = [
 
-const controls = [
+    {
+        title:"Table",
+        controls:[
+            {label:"Width", var:"--et-width", type:"text", default:"100%"},
+            {label:"Margin", var:"--et-margin", type:"text", default:"0"},
+            {label:"Border collapse", var:"--et-border-collapse", type:"text", default:"collapse"},
+            {label:"Font family", var:"--et-font-family", type:"text", default:"sans-serif"},
+            {label:"Font size", var:"--et-font-size", type:"range", min:10, max:40, default:"16px"},
+            {label:"Line height", var:"--et-line-height", type:"text", default:"1.4"},
+            {label:"Table BG", var:"--et-bg", type:"color", default:"#ffffff"},
+            {label:"Table color", var:"--et-color", type:"color", default:"#000000"},
+            {label:"Table border", var:"--et-border", type:"text", default:"none"},
+            {label:"Radius", var:"--et-radius", type:"range", min:0, max:30, default:"0px"},
+            {label:"Shadow", var:"--et-shadow", type:"text", default:"none"},
+        ]
+    },
 
-    {label:"Width", var:"--et-width", type:"text", default:"100%"},
-    {label:"Margin", var:"--et-margin", type:"text", default:"0"},
-    {label:"Border collapse", var:"--et-border-collapse", type:"text", default:"collapse"},
+    {
+        title:"Header",
+        controls:[
+            {label:"Header BG", var:"--et-header-bg", type:"color", default:"#ffffff"},
+            {label:"Header color", var:"--et-header-color", type:"color", default:"#000000"},
+            {label:"Header font size", var:"--et-header-font-size", type:"range", min:10, max:40, default:"16px"},
+            {label:"Header border", var:"--et-header-border", type:"text", default:"none"},
+            {label:"TH align", var:"--et-th-align", type:"text", default:"left"},
+            {label:"TH weight", var:"--et-th-weight", type:"text", default:"normal"},
+        ]
+    },
 
-    {label:"Font family", var:"--et-font-family", type:"text", default:"sans-serif"},
-    {label:"Font size", var:"--et-font-size", type:"range", min:10, max:40, default:"16px"},
-    {label:"Line height", var:"--et-line-height", type:"text", default:"1.4"},
+    {
+        title:"Body",
+        controls:[
+            {label:"Tbody BG", var:"--et-body-bg", type:"color", default:"#ffffff"},
+            {label:"Tbody color", var:"--et-body-color", type:"color", default:"#000000"},
+            {label:"Tbody font size", var:"--et-body-font-size", type:"range", min:10, max:40, default:"16px"},
+            {label:"TD align", var:"--et-td-align", type:"text", default:"left"},
+            {label:"TD weight", var:"--et-td-weight", type:"text", default:"normal"},
+        ]
+    },
 
-    {label:"Table BG", var:"--et-bg", type:"color", default:"#ffffff"},
-    {label:"Table color", var:"--et-color", type:"color", default:"#000000"},
+    {
+        title:"Cells",
+        controls:[
+            {label:"Cell border", var:"--et-cell-border", type:"text", default:"none"},
+            {label:"Padding X", var:"--et-cell-padding-x", type:"range", min:0, max:40, default:"8px"},
+            {label:"Padding Y", var:"--et-cell-padding-y", type:"range", min:0, max:40, default:"6px"},
+        ]
+    },
 
-    {label:"Table border", var:"--et-border", type:"text", default:"none"},
-    {label:"Radius", var:"--et-radius", type:"range", min:0, max:30, default:"0px"},
-    {label:"Shadow", var:"--et-shadow", type:"text", default:"none"},
-
-    {label:"Header BG", var:"--et-header-bg", type:"color", default:"#ffffff"},
-    {label:"Header color", var:"--et-header-color", type:"color", default:"#000000"},
-    {label:"Header font size", var:"--et-header-font-size", type:"range", min:10, max:40, default:"16px"},
-    {label:"Header border", var:"--et-header-border", type:"text", default:"none"},
-
-    {label:"TH align", var:"--et-th-align", type:"text", default:"left"},
-    {label:"TH weight", var:"--et-th-weight", type:"text", default:"normal"},
-
-    {label:"Tbody BG", var:"--et-body-bg", type:"color", default:"#ffffff"},
-    {label:"Tbody color", var:"--et-body-color", type:"color", default:"#000000"},
-    {label:"Tbody font size", var:"--et-body-font-size", type:"range", min:10, max:40, default:"16px"},
-
-    {label:"TD align", var:"--et-td-align", type:"text", default:"left"},
-    {label:"TD weight", var:"--et-td-weight", type:"text", default:"normal"},
-
-    {label:"Cell border", var:"--et-cell-border", type:"text", default:"none"},
-    {label:"Padding X", var:"--et-cell-padding-x", type:"range", min:0, max:40, default:"8px"},
-    {label:"Padding Y", var:"--et-cell-padding-y", type:"range", min:0, max:40, default:"6px"},
-
-    {label:"Row BG", var:"--et-row-bg", type:"color", default:"#ffffff"},
-    {label:"Row border", var:"--et-row-border", type:"text", default:"none"},
-    {label:"Stripe BG", var:"--et-stripe-bg", type:"color", default:"#f5f5f5"},
-    {label:"Hover BG", var:"--et-hover-bg", type:"color", default:"#eeeeee"}
+    {
+        title:"Rows",
+        controls:[
+            {label:"Row BG", var:"--et-row-bg", type:"color", default:"#ffffff"},
+            {label:"Row border", var:"--et-row-border", type:"text", default:"none"},
+            {label:"Stripe BG", var:"--et-stripe-bg", type:"color", default:"#f5f5f5"},
+            {label:"Hover BG", var:"--et-hover-bg", type:"color", default:"#eeeeee"}
+        ]
+    }
 
 ];
+
 
 
 const editor = document.querySelector(".editor");
@@ -144,8 +164,10 @@ function createControl(ctrl){
         input.value = ctrl.default;
     }
 
-    editableTable.style.setProperty(ctrl.var, ctrl.default);
-    tableConfig[ctrl.var] = ctrl.default;
+    if(ctrl.default !== ""){
+        editableTable.style.setProperty(ctrl.var, ctrl.default);
+        tableConfig[ctrl.var] = ctrl.default;
+    }
 
     input.addEventListener("input", e => {
 
@@ -165,14 +187,32 @@ function createControl(ctrl){
     return wrapper;
 }
 
+function createSection(section){
 
-controls.forEach(ctrl=>{
-    editor.appendChild(createControl(ctrl));
+    const box = document.createElement("div");
+    box.className = "et-section";
+
+    const title = document.createElement("div");
+    title.className = "et-section-title";
+    title.textContent = section.title;
+
+    box.appendChild(title);
+
+    section.controls.forEach(ctrl=>{
+        const control = createControl(ctrl);
+        control.classList.add("et-control");
+        box.appendChild(control);
+    });
+
+    return box;
+}
+
+sections.forEach(sec=>{
+    editor.appendChild(createSection(sec));
 });
 
 
 /* GENERATOR */
-
 document.getElementById("generate")
     .addEventListener("click", () => {
 
@@ -185,35 +225,4 @@ document.getElementById("generate")
 
         document.getElementById("output").value =
             getTableCSS(name);
-    });
-
-
-document.getElementById("copy")
-    .addEventListener("click", () => {
-
-        navigator.clipboard.writeText(
-            document.getElementById("output").value
-        );
-    });
-
-
-document.getElementById("download")
-    .addEventListener("click", () => {
-
-        const name = document.getElementById("className").value;
-
-        if(!isValidClass(name)){
-            alert("Invalid class name");
-            return;
-        }
-
-        const blob = new Blob(
-            [getTableCSS(name)],
-            {type:"text/css"}
-        );
-
-        const a = document.createElement("a");
-        a.href = URL.createObjectURL(blob);
-        a.download = name + ".css";
-        a.click();
     });

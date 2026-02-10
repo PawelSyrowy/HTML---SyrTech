@@ -126,3 +126,45 @@ a {
 .et-preview tbody tr:hover{
     background: var(--et-hover-bg);
 }
+
+
+.editor{
+    display:grid;
+    grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
+    gap:20px;
+    margin-bottom:40px;
+}
+
+/* sekcja */
+
+.et-section{
+    border:1px solid #e5e7eb;
+    border-radius:10px;
+    padding:16px;
+    background:#fafafa;
+}
+
+.et-section-title{
+    font-weight:700;
+    margin-bottom:12px;
+    font-size:14px;
+    text-transform:uppercase;
+    letter-spacing:.04em;
+}
+
+/* control */
+
+.et-control{
+    display:flex;
+    flex-direction:column;
+    margin-bottom:2px;
+}
+
+.et-control label{
+    font-size:13px;
+    margin-bottom:1px;
+}
+
+.et-control input{
+    padding:6px;
+}
