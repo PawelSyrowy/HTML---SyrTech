@@ -3,10 +3,9 @@
 const editableTable = document.querySelector("[data-et-preview]");
 editableTable.classList.add("et-preview");
 
-
 // generator tylko dla ustawionych wartości
 function css(prop, val){
-    if(!val) return "";
+    if(val === undefined || val === "") return "";
     return `  ${prop}:${val};\n`;
 }
 
@@ -44,7 +43,11 @@ ${css("color",tableConfig["--et-body-color"])}
 .${className} th,
 .${className} td{
 ${css("border",tableConfig["--et-cell-border"])}
-${css("padding", tableConfig["--et-cell-padding-y"] + " " + tableConfig["--et-cell-padding-x"])}
+${
+        (tableConfig["--et-cell-padding-y"] && tableConfig["--et-cell-padding-x"])
+            ? `  padding:${tableConfig["--et-cell-padding-y"]} ${tableConfig["--et-cell-padding-x"]};`
+            : ""
+    }
 }
 
 .${className} tr{
@@ -76,10 +79,19 @@ const sections = [
         title:"Table",
         controls:[
             {label:"Width", var:"--et-width", type:"text", default:"100%"},
+            {label:"Margin", var:"--et-margin", type:"text", default:""},
+            {label:"Border collapse", var:"--et-border-collapse", type:"text", default:"collapse"},
+
+            {label:"Font family", var:"--et-font-family", type:"text", default:"sans-serif"},
             {label:"Font size", var:"--et-font-size", type:"range", min:10, max:40, default:"16px"},
+            {label:"Line height", var:"--et-line-height", type:"text", default:""},
+
             {label:"Table BG", var:"--et-bg", type:"color", default:""},
             {label:"Table color", var:"--et-color", type:"color", default:""},
+
+            {label:"Border", var:"--et-border", type:"text", default:""},
             {label:"Radius", var:"--et-radius", type:"range", min:0, max:30, default:"0px"},
+            {label:"Shadow", var:"--et-shadow", type:"text", default:""},
         ]
     },
 
@@ -88,6 +100,8 @@ const sections = [
         controls:[
             {label:"Header BG", var:"--et-header-bg", type:"color", default:""},
             {label:"Header color", var:"--et-header-color", type:"color", default:""},
+            {label:"Header font size", var:"--et-header-font-size", type:"range", min:10, max:40, default:""},
+            {label:"Header border", var:"--et-header-border", type:"text", default:""},
         ]
     },
 
@@ -96,12 +110,30 @@ const sections = [
         controls:[
             {label:"Body BG", var:"--et-body-bg", type:"color", default:""},
             {label:"Body color", var:"--et-body-color", type:"color", default:""},
+            {label:"Body font size", var:"--et-body-font-size", type:"range", min:10, max:40, default:""},
+        ]
+    },
+
+    {
+        title:"Cells",
+        controls:[
+            {label:"Cell border", var:"--et-cell-border", type:"text", default:""},
+            {label:"Padding X", var:"--et-cell-padding-x", type:"range", min:0, max:40, default:"8px"},
+            {label:"Padding Y", var:"--et-cell-padding-y", type:"range", min:0, max:40, default:"6px"},
+        ]
+    },
+
+    {
+        title:"Rows",
+        controls:[
+            {label:"Row BG", var:"--et-row-bg", type:"color", default:""},
+            {label:"Row border", var:"--et-row-border", type:"text", default:""},
+            {label:"Stripe BG", var:"--et-stripe-bg", type:"color", default:""},
+            {label:"Hover BG", var:"--et-hover-bg", type:"color", default:""}
         ]
     }
 
 ];
-
-
 
 const editor = document.querySelector(".editor");
 
