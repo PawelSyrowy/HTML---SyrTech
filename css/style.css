@@ -26,7 +26,7 @@ a {
     --et-line-height: 1.4;
 
     --et-bg: transparent;
-    --et-color: #000;
+    --et-color: inherit;
 
     --et-border: none;
     --et-radius: 0;
@@ -34,20 +34,14 @@ a {
 
     /* HEADER */
     --et-header-bg: transparent;
-    --et-header-color: #000;
-    --et-header-font-size: 16px;
+    --et-header-color: inherit;
+    --et-header-font-size: inherit;
     --et-header-border: none;
-
-    --et-th-align: left;
-    --et-th-weight: normal;
 
     /* BODY */
     --et-body-bg: transparent;
-    --et-body-color: #000;
-    --et-body-font-size: 16px;
-
-    --et-td-align: left;
-    --et-td-weight: normal;
+    --et-body-color: inherit;
+    --et-body-font-size: inherit;
 
     /* CELLS */
     --et-cell-border: none;
@@ -85,12 +79,6 @@ a {
     border: var(--et-header-border);
 }
 
-.et-preview th{
-    text-align: var(--et-th-align);
-    font-weight: var(--et-th-weight);
-    border: var(--et-cell-border);
-}
-
 /* BODY */
 
 .et-preview tbody{
@@ -99,16 +87,11 @@ a {
     font-size: var(--et-body-font-size);
 }
 
-.et-preview td{
-    text-align: var(--et-td-align);
-    font-weight: var(--et-td-weight);
-    border: var(--et-cell-border);
-}
-
 /* CELLS */
 
 .et-preview th,
 .et-preview td{
+    border: var(--et-cell-border);
     padding: var(--et-cell-padding-y) var(--et-cell-padding-x);
 }
 
