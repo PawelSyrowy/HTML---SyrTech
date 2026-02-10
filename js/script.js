@@ -1,67 +1,18 @@
 ﻿function getTableCSS(className){
 
+    let vars = "";
+
+    for(const key in tableConfig){
+        vars += `  ${key}: ${tableConfig[key]};\n`;
+    }
+
     return `
 .${className}{
-  width:${tableConfig["--et-width"]};
-  margin:${tableConfig["--et-margin"]};
-  border-collapse:${tableConfig["--et-border-collapse"]};
-
-  font-family:${tableConfig["--et-font-family"]};
-  font-size:${tableConfig["--et-font-size"]};
-  line-height:${tableConfig["--et-line-height"]};
-
-  background:${tableConfig["--et-body-bg"]};
-  color:${tableConfig["--et-body-color"]};
-
-  border:${tableConfig["--et-table-border"]};
-  border-radius:${tableConfig["--et-radius"]};
-  box-shadow:${tableConfig["--et-shadow"]};
-}
-
-.${className} thead{
-  background:${tableConfig["--et-header-bg"]};
-  color:${tableConfig["--et-header-color"]};
-}
-
-.${className} th{
-  text-align:${tableConfig["--et-text-align"]};
-  font-weight:${tableConfig["--et-font-weight-header"]};
-  border:${tableConfig["--et-cell-border"]};
-}
-
-.${className} td{
-  text-align:${tableConfig["--et-text-align"]};
-  font-weight:${tableConfig["--et-font-weight-body"]};
-  border:${tableConfig["--et-cell-border"]};
-}
-
-.${className} th,
-.${className} td{
-  padding:${tableConfig["--et-cell-padding-y"]} ${tableConfig["--et-cell-padding-x"]};
-}
-
-.${className} tr{
-  background:${tableConfig["--et-row-bg"]};
-  border-bottom:${tableConfig["--et-row-border"]};
-}
-
-.${className} tbody tr:nth-child(even){
-  background:${tableConfig["--et-stripe-color"]};
-}
-
-.${className} tbody tr:hover{
-  background:${tableConfig["--et-hover-color"]};
-}
-
-.${className} thead tr:first-child th:first-child{
-  border-top-left-radius:${tableConfig["--et-radius"]};
-}
-
-.${className} thead tr:first-child th:last-child{
-  border-top-right-radius:${tableConfig["--et-radius"]};
+${vars}
 }
 `;
 }
+
 
 const tableConfig = {};
 
@@ -158,49 +109,8 @@ const editor = document.querySelector(".editor");
 initEditor();
 
 function initEditor(){
-
     controls.forEach(ctrl => {
-
-        const wrapper = document.createElement("div");
-
-        const label = document.createElement("label");
-        label.textContent = ctrl.label;
-
-        const input = document.createElement("input");
-        input.type = ctrl.type;
-
-        if(ctrl.type === "range"){
-            input.min = ctrl.min;
-            input.max = ctrl.max;
-
-            // jeśli default ma px → usuń px do inputa
-            input.value = parseInt(ctrl.default);
-        }
-        else{
-            input.value = ctrl.default;
-        }
-
-        // ustaw startową variable
-        editableTable.style.setProperty(ctrl.var, ctrl.default);
-        tableConfig[ctrl.var] = ctrl.default;
-
-
-        input.addEventListener("input", e => {
-
-            let val = e.target.value;
-
-            if(ctrl.type === "range"){
-                val += "px";
-            }
-
-            editableTable.style.setProperty(ctrl.var, val);
-            tableConfig[ctrl.var] = val;
-        });
-
-        wrapper.appendChild(label);
-        wrapper.appendChild(input);
-
-        editor.appendChild(wrapper);
+        editor.appendChild(createControl(ctrl));
     });
 }
 
@@ -209,7 +119,46 @@ function getTableHTML(className){
     const clone = editableTable.cloneNode(true);
 
     clone.classList.remove("et-preview");
-    clone.className = className;
+    clone.classList.add("et-export");
+    clone.classList.add(className);
 
     return clone.outerHTML;
+}
+
+function createControl(ctrl){
+    const wrapper = document.createElement("div");
+
+    const label = document.createElement("label");
+    label.textContent = ctrl.label;
+
+    const input = document.createElement("input");
+    input.type = ctrl.type;
+
+    if(ctrl.type === "range"){
+        input.min = ctrl.min;
+        input.max = ctrl.max;
+        input.value = parseInt(ctrl.default);
+    }else{
+        input.value = ctrl.default;
+    }
+
+    editableTable.style.setProperty(ctrl.var, ctrl.default);
+    tableConfig[ctrl.var] = ctrl.default;
+
+    input.addEventListener("input", e => {
+
+        let val = e.target.value;
+
+        if(ctrl.type === "range"){
+            val += "px";
+        }
+
+        editableTable.style.setProperty(ctrl.var, val);
+        tableConfig[ctrl.var] = val;
+    });
+
+    wrapper.appendChild(label);
+    wrapper.appendChild(input);
+
+    return wrapper;
 }

@@ -14,7 +14,8 @@ body {
 a {
 }
 
-.et-preview {
+.et-preview,
+.et-export {
 
     /* LAYOUT */
     --et-width: 100%;
@@ -74,29 +75,35 @@ a {
     box-shadow: var(--et-shadow);
 }
 
-.et-preview thead {
+.et-preview thead,
+.et-export thead {
     background: var(--et-header-bg);
     color: var(--et-header-color);
 }
 
-.et-preview th {
+.et-preview th,
+.et-export th {
     text-align: var(--et-text-align);
     font-weight: var(--et-font-weight-header);
     border: var(--et-cell-border);
 }
 
-.et-preview tbody {
+.et-preview tbody,
+.et-export tbody{
     background: var(--et-body-bg);
 }
 
-.et-preview td {
+.et-preview td,
+.et-export td{
     text-align: var(--et-text-align);
     font-weight: var(--et-font-weight-body);
     border: var(--et-cell-border);
 }
 
 .et-preview th,
-.et-preview td {
+.et-preview td,
+.et-export th,
+.et-export td {
 
     padding:
             var(--et-cell-padding-y)
@@ -107,32 +114,41 @@ a {
 
 }
 
-.et-preview tr {
+.et-preview tr,
+.et-export tr {
     background: var(--et-row-bg);
     border-bottom: var(--et-row-border);
 }
 
-.et-preview tbody tr:nth-child(even) {
+.et-preview tbody tr:nth-child(even),
+.et-export tbody tr:nth-child(even) {
     background: var(--et-stripe-color);
 }
 
-.et-preview tbody tr:hover {
+.et-preview tbody tr:hover,
+.et-export tbody tr:hover {
     background: var(--et-hover-color);
 }
 
 .et-preview th:first-child,
-.et-preview td:first-child {
+.et-preview td:first-child,
+.et-export th:first-child,
+.et-export td:first-child {
     /* np padding-left variable kiedyś */
 }
 
 .et-preview th:last-child,
-.et-preview td:last-child {
+.et-preview td:last-child,
+.et-export th:last-child,
+.et-export td:last-child {
 }
 
-.et-preview thead tr:first-child th:first-child {
+.et-preview thead tr:first-child th:first-child,
+.et-export thead tr:first-child th:first-child {
     border-top-left-radius: var(--et-radius);
 }
 
-.et-preview thead tr:first-child th:last-child {
+.et-preview thead tr:first-child th:last-child,
+.et-export thead tr:first-child th:last-child {
     border-top-right-radius: var(--et-radius);
 }
