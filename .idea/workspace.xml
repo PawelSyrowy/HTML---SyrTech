@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="8331003c-2c53-4927-9e35-1a722536c14a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/components/projects/table-editor.html" beforeDir="false" afterPath="$PROJECT_DIR$/components/projects/table-editor.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/components.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/components.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,7 +43,7 @@
     "DefaultHtmlFileTemplate": "HTML File",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "develop",
+    "git-widget-placeholder": "feature/dating-app",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -77,6 +78,7 @@
       <workItem from="1766006242580" duration="7107000" />
       <workItem from="1766089700463" duration="518000" />
       <workItem from="1770750864203" duration="772000" />
+      <workItem from="1770846501464" duration="176000" />
     </task>
     <servers />
   </component>
