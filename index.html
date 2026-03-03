@@ -1,47 +1,53 @@
-﻿<!DOCTYPE html>
+﻿<!doctype html>
 <html lang="pl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Edytor tabel</title>
-    <link rel="preload" href="css/style.css" as="style" onload="this.rel='stylesheet'">
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
+    <link
+      rel="preload"
+      href="css/style.css"
+      as="style"
+      onload="this.rel = 'stylesheet'"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="editor"></div>
 
-<div class="editor"></div>
+    <hr />
 
-<hr>
+    <table data-et-preview>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Age</th>
+          <th>City</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>John</td>
+          <td>25</td>
+          <td>New York</td>
+        </tr>
+        <tr>
+          <td>Anna</td>
+          <td>30</td>
+          <td>London</td>
+        </tr>
+      </tbody>
+    </table>
 
-<table data-et-preview>
-    <thead>
-    <tr>
-        <th>Name</th>
-        <th>Age</th>
-        <th>City</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-        <td>John</td>
-        <td>25</td>
-        <td>New York</td>
-    </tr>
-    <tr>
-        <td>Anna</td>
-        <td>30</td>
-        <td>London</td>
-    </tr>
-    </tbody>
-</table>
+    <hr />
 
-<hr>
+    <label>CSS class name</label>
+    <input id="className" placeholder="my-table" />
+    <button id="generate">Generate CSS</button>
+    <textarea id="output" rows="10"></textarea>
 
-<label>CSS class name</label>
-<input id="className" placeholder="my-table">
-<button id="generate">Generate CSS</button>
-<textarea id="output" rows="10"></textarea>
+    <button id="load">Load CSS</button>
 
-<script src="js/script.js"></script>
-</body>
+    <script src="js/script.js"></script>
+  </body>
 </html>
