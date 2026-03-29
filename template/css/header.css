@@ -1,0 +1,216 @@
+/* ============================================================
+   HEADER.CSS — Nagłówek i Nawigacja
+   ============================================================
+   Zawiera styles dla:
+    - Górnego paska informacyjnego (.header-top-bar)
+    - Głównego paska nawigacji (.navbar)
+    - Logo (.navbar__logo)
+    - Listy linków nawigacyjnych (.navbar__links)
+    - Przycisku hamburger na mobile (.navbar__hamburger)
+    - Aktywnego linku / podkreślenia (.navbar__links a.active)
+    - Przełącznika języka (.lang-switch)
+   ============================================================ */
+
+/* ============================================================
+   WRAPPER CAŁEGO NAGŁÓWKA
+   Przyklejony na górze strony. Kolor tła i cień.
+   ============================================================ */
+#site-header {
+  position: sticky; /* Nagłówek pozostaje na górze przy scrollowaniu */
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: var(--z-header); /* Nad wszystkimi innymi elementami */
+  background-color: var(--color-bg);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ============================================================
+   GÓRNY PASEK INFORMACYJNY (.header-top-bar)
+   Opcjonalny pasek nad nawigacją — godziny, telefon, język.
+   Usuń ten element z HTML jeśli nie jest potrzebny.
+   ============================================================ */
+.header-top-bar {
+  background-color: var(--color-primary);
+  color: var(--color-heading-light);
+  padding: 0 var(--container-padding);
+  height: var(--header-top-height); /* 40px */
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; /* Treść wyrównana do prawej */
+  gap: var(--spacing-xl);
+}
+
+/* Pojedynczy element informacyjny w górnym pasku */
+.header-top-bar__item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  font-size: var(--font-size-sm);
+  color: var(--color-heading-light);
+  opacity: 0.85;
+}
+
+/* Ikona w górnym pasku (np. SVG lub emoji) */
+.header-top-bar__icon {
+  font-size: var(--font-size-base);
+}
+
+/* Przycisk przełączenia języka w górnym pasku */
+.lang-switch {
+  background-color: transparent;
+  border: var(--border-width) solid rgba(255, 255, 255, 0.5);
+  color: var(--color-heading-light);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--border-radius-sm);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    background-color var(--transition-fast),
+    border-color var(--transition-fast);
+}
+
+.lang-switch:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.9);
+}
+
+/* ============================================================
+   GŁÓWNY PASEK NAWIGACJI (.navbar)
+   Flex container: logo po lewej, menu po prawej.
+   ============================================================ */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: var(--max-width-content);
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+  height: var(--header-height); /* 70px */
+}
+
+/* ============================================================
+   LOGO NAWIGACJI (.navbar__logo)
+   ============================================================ */
+.navbar__logo {
+  flex-shrink: 0; /* Logo nie kurczy się przy małym ekranie */
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  letter-spacing: -0.02em;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.navbar__logo:hover {
+  color: var(--color-accent);
+}
+
+/* Logo jako obrazek */
+.navbar__logo img {
+  height: 44px; /* Wysokość logo — dostosuj do projektu */
+  width: auto;
+  display: block;
+  /* Oczekiwany rozmiar logo: szerokość auto x wysokość 44px (max 200x44px) */
+}
+
+/* ============================================================
+   LISTA LINKÓW NAWIGACYJNYCH (.navbar__links)
+   Desktop: poziomy rząd
+   Mobile: rozwijana lista z hamburgerem
+   ============================================================ */
+.navbar__links {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xl);
+  list-style: none;
+}
+
+/* Pojedynczy link nawigacyjny */
+.navbar__links a {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-nav-link);
+  text-decoration: none;
+  padding-bottom: 2px;
+  border-bottom: var(--border-width-thick) solid transparent;
+  transition:
+    color var(--transition-fast),
+    border-bottom-color var(--transition-fast);
+  white-space: nowrap;
+}
+
+.navbar__links a:hover {
+  color: var(--color-accent);
+  border-bottom-color: var(--color-accent);
+}
+
+/* Aktywny link (bieżąca strona) — ustawiany przez JS setActiveNavigation() */
+.navbar__links a.active {
+  color: var(--color-accent);
+  border-bottom-color: var(--color-accent);
+}
+
+/* Separator wizualny między linkami (opcjonalny) */
+.navbar__links .navbar__divider {
+  width: 1px;
+  height: 20px;
+  background-color: var(--color-border);
+  align-self: center;
+}
+
+/* Linki zewnętrzne w naviacji (np. social media) */
+.navbar__links .navbar__link--external {
+  opacity: 0.7;
+}
+
+.navbar__links .navbar__link--external:hover {
+  opacity: 1;
+}
+
+/* ============================================================
+   PRZYCISK HAMBURGER (.navbar__hamburger)
+   Wyświetlany tylko na mobile (≤768px).
+   Na desktopie: ukryty przez style768px.css (display:none tam).
+   Tu ustawiamy jego wygląd.
+   ============================================================ */
+.navbar__hamburger {
+  display: none; /* Domyślnie ukryty (desktop) */
+  flex-direction: column;
+  justify-content: space-between;
+  width: 28px;
+  height: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: var(--z-header);
+  flex-shrink: 0;
+}
+
+/* Trzy kreski hamburgera */
+.navbar__hamburger-bar {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-primary);
+  border-radius: var(--border-radius-full);
+  transition:
+    transform var(--transition-base),
+    opacity var(--transition-base);
+}
+
+/* Animacja hamburgera → X gdy menu aktywne */
+.navbar__hamburger[aria-expanded="true"] .navbar__hamburger-bar:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+}
+.navbar__hamburger[aria-expanded="true"] .navbar__hamburger-bar:nth-child(2) {
+  opacity: 0;
+}
+.navbar__hamburger[aria-expanded="true"] .navbar__hamburger-bar:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
+}

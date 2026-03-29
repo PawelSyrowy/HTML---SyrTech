@@ -1,0 +1,79 @@
+<!-- ============================================================
+     EN/COMPONENTS/HEADER.HTML — Header (English version)
+     ============================================================
+     English version of the header component.
+     Loaded dynamically by loadComponent() from script.js.
+
+     NOTE: All asset paths (images) must go up one level: ../images/
+     CSS and JS are shared with the PL version (../css/, ../js/).
+     ============================================================ -->
+
+<!-- ============================================================
+     TOP INFO BAR
+     Optional — remove this section if not needed.
+     ============================================================ -->
+<div class="header-top-bar">
+  <!-- Opening hours -->
+  <div class="header-top-bar__item">
+    <span class="header-top-bar__icon">🕐</span>
+    <span>[Opening hours, e.g. Mon–Fri: 8:00 AM–6:00 PM]</span>
+  </div>
+
+  <!-- Phone number -->
+  <div class="header-top-bar__item">
+    <span class="header-top-bar__icon">📞</span>
+    <a href="tel:+48000000000" style="color: inherit; text-decoration: none">
+      [+48 000 000 000]
+    </a>
+  </div>
+
+  <!-- Language switch — link back to Polish version -->
+  <a href="../index.html" class="lang-switch" title="Zmień na język polski"
+    >PL</a
+  >
+</div>
+
+<!-- ============================================================
+     MAIN NAVIGATION (.navbar)
+     Logo on the left, hamburger and links on the right.
+     ============================================================ -->
+<nav class="navbar" role="navigation" aria-label="Main navigation">
+  <!-- Logo — link to English home page -->
+  <a href="index.html" class="navbar__logo" aria-label="Home — [Company Name]">
+    <!-- OPTION 1: Text logo -->
+    [LOGO / NAME]
+    <!-- OPTION 2: Image logo (uncomment and remove text above)
+        <img src="../images/logo.png"
+             alt="[Company Name] — logo"
+             class="navbar__logo-img">
+             Expected logo size: max 200x44px (auto x 44px height)
+        -->
+  </a>
+
+  <!-- Hamburger button — visible only on mobile (≤768px) -->
+  <button
+    class="navbar__hamburger"
+    id="nav-hamburger"
+    aria-expanded="false"
+    aria-controls="nav-links"
+    aria-label="Open navigation menu"
+  >
+    <span class="navbar__hamburger-bar"></span>
+    <span class="navbar__hamburger-bar"></span>
+    <span class="navbar__hamburger-bar"></span>
+  </button>
+
+  <!-- Navigation links list -->
+  <ul class="navbar__links" id="nav-links" role="list">
+    <!-- ======================================================
+             NAVIGATION LINKS (English)
+             .active class is added by setActiveNavigation() in JS.
+             ====================================================== -->
+
+    <li><a href="index.html">Home</a></li>
+    <li><a href="subpage.html">[Section 1]</a></li>
+    <li><a href="subpage.html">[Section 2]</a></li>
+    <li><a href="subpage.html">[Section 3]</a></li>
+    <li><a href="subpage.html">Contact</a></li>
+  </ul>
+</nav>

@@ -1,0 +1,744 @@
+/* ============================================================
+   COMPONENTS.CSS — Komponenty UI
+   ============================================================
+   Reusable, niezależne od kontekstu komponenty interfejsu.
+   Każdy komponent jest samodzielny — można go użyć w dowolnym
+   miejscu strony lub podstrony.
+
+   SPIS KOMPONENTÓW:
+   ─────────────────────────────────────────────────────────────
+   1. PRZYCISKI (.btn)
+   2. KARTY (.card)
+   3. BADGE / TAG (.badge)
+   4. AKORDEONY (.accordion)
+   5. FORMULARZE (.form)
+   6. ETYKIETY SEKCJI (.section-label)
+   7. CAROUSEL / SLIDER (.carousel)
+   8. PAGINACJA (.pagination)
+   ============================================================ */
+
+/* ============================================================
+   1. PRZYCISKI (.btn)
+   ============================================================
+   Użycie:
+     <a href="#" class="btn btn--primary">Kliknij</a>
+     <button class="btn btn--secondary btn--small">Mały</button>
+     <a href="#" class="btn btn--outline">Kontur</a>
+     <a href="#" class="btn btn--outline btn--outline-light">Jasny kontur (na ciemnym tle)</a>
+   ============================================================ */
+
+/* Baza przycisku — wspólne właściwości dla wszystkich wariantów */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  padding: 0.75rem 1.75rem; /* Pionowe 12px, poziome 28px */
+  font-family: var(--font-main);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1;
+  border-radius: var(--border-radius);
+  border: var(--border-width-thick) solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  transition:
+    background-color var(--transition-base),
+    color var(--transition-base),
+    border-color var(--transition-base),
+    box-shadow var(--transition-base),
+    transform var(--transition-fast);
+  white-space: nowrap;
+  user-select: none;
+}
+
+.btn:hover {
+  transform: translateY(-1px); /* Delikatne uniesienie przy hover */
+  box-shadow: var(--shadow-md);
+}
+
+.btn:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* --- WARIANT: Przycisk główny (pomarańczowy CTA) --- */
+.btn--primary {
+  background-color: var(--color-btn-primary);
+  color: var(--color-btn-primary-text);
+  border-color: var(--color-btn-primary);
+}
+
+.btn--primary:hover {
+  background-color: var(--color-btn-primary-hover);
+  border-color: var(--color-btn-primary-hover);
+  color: var(--color-btn-primary-text);
+}
+
+/* --- WARIANT: Przycisk drugorzędny (granatowy) --- */
+.btn--secondary {
+  background-color: var(--color-btn-secondary);
+  color: var(--color-btn-secondary-text);
+  border-color: var(--color-btn-secondary);
+}
+
+.btn--secondary:hover {
+  background-color: var(--color-btn-secondary-hover);
+  border-color: var(--color-btn-secondary-hover);
+  color: var(--color-btn-secondary-text);
+}
+
+/* --- WARIANT: Przycisk z konturem (ciemny kontur na jasnym tle) --- */
+.btn--outline {
+  background-color: transparent;
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.btn--outline:hover {
+  background-color: var(--color-primary);
+  color: var(--color-heading-light);
+}
+
+/* --- WARIANT: Przycisk z jasnym konturem (na ciemnym tle) --- */
+.btn--outline-light {
+  background-color: transparent;
+  color: var(--color-heading-light);
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+.btn--outline-light:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: var(--color-heading-light);
+  color: var(--color-heading-light);
+}
+
+/* --- WARIANT: Przycisk akcentowy z konturem --- */
+.btn--outline-accent {
+  background-color: transparent;
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+.btn--outline-accent:hover {
+  background-color: var(--color-accent);
+  color: var(--color-heading-light);
+}
+
+/* --- ROZMIARY PRZYCISKÓW --- */
+
+/* Mały przycisk */
+.btn--small {
+  padding: 0.5rem 1.25rem;
+  font-size: var(--font-size-sm);
+}
+
+/* Duży przycisk */
+.btn--large {
+  padding: 1rem 2.5rem;
+  font-size: var(--font-size-md);
+}
+
+/* Przycisk pełnej szerokości */
+.btn--full {
+  width: 100%;
+}
+
+/* Grup przycisków (obok siebie) */
+.btn-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+  align-items: center;
+}
+
+/* ============================================================
+   2. KARTY (.card)
+   ============================================================
+   Użycie:
+     <article class="card">
+         <img src="..." alt="..." class="card__image">
+         <div class="card__body">
+             <h3 class="card__title">Tytuł</h3>
+             <p class="card__text">Opis...</p>
+             <a href="#" class="btn btn--outline btn--small">Czytaj więcej</a>
+         </div>
+     </article>
+   ============================================================ */
+
+/* Baza karty */
+.card {
+  background-color: var(--color-bg);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition:
+    box-shadow var(--transition-base),
+    transform var(--transition-base);
+}
+
+/* Karta z efektem hover (unoszenie) */
+.card--hover:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-4px);
+}
+
+/* Karta pozioma — obrazek po lewej, treść po prawej */
+.card--horizontal {
+  flex-direction: row;
+  align-items: stretch;
+}
+
+.card--horizontal .card__image {
+  width: 200px;
+  flex-shrink: 0;
+  object-fit: cover;
+  border-radius: 0;
+}
+
+/* Obrazek karty */
+.card__image {
+  width: 100%;
+  height: 220px; /* Stała wysokość obrazka karty */
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  /* Oczekiwany rozmiar: 400x220px (ratio ~16:9 lub 2:1) */
+}
+
+/* Ciało karty — treść */
+.card__body {
+  padding: var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  flex: 1; /* Wypełnia dostępną przestrzeń */
+}
+
+/* Tytuł karty */
+.card__title {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-heading);
+  line-height: var(--line-height-heading);
+  margin-bottom: var(--spacing-xs);
+}
+
+/* Tag / kategoria karty (małe nad tytułem) */
+.card__category {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* Tekst / opis karty */
+.card__text {
+  font-size: var(--font-size-base);
+  color: var(--color-text-light);
+  line-height: var(--line-height-base);
+  flex: 1;
+  margin-bottom: 0;
+}
+
+/* Stopka karty (przyciski, linki) */
+.card__footer {
+  margin-top: var(--spacing-md);
+  padding-top: var(--spacing-md);
+  border-top: var(--border-width) solid var(--color-border);
+}
+
+/* Karta z akcentowym paskiem na górze */
+.card--accent-top {
+  border-top: 3px solid var(--color-accent);
+}
+
+/* Karta na ciemnym tle */
+.card--dark {
+  background-color: var(--color-bg-dark);
+}
+
+.card--dark .card__title {
+  color: var(--color-heading-light);
+}
+
+.card--dark .card__text {
+  color: var(--color-footer-link);
+}
+
+/* ============================================================
+   3. BADGE / TAG (.badge)
+   ============================================================
+   Małe etykiety statusu, kategorii, itp.
+
+   Użycie:
+     <span class="badge badge--primary">Nowość</span>
+     <span class="badge badge--accent">Promocja</span>
+   ============================================================ */
+.badge {
+  display: inline-block;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border-radius: var(--border-radius-sm);
+  line-height: 1;
+}
+
+.badge--primary {
+  background-color: var(--color-primary);
+  color: var(--color-heading-light);
+}
+
+.badge--secondary {
+  background-color: var(--color-secondary);
+  color: var(--color-heading-light);
+}
+
+.badge--accent {
+  background-color: var(--color-accent);
+  color: var(--color-heading-light);
+}
+
+.badge--outline {
+  background-color: transparent;
+  border: var(--border-width) solid var(--color-border-dark);
+  color: var(--color-secondary);
+}
+
+.badge--light {
+  background-color: var(--color-bg-section);
+  color: var(--color-text);
+}
+
+/* ============================================================
+   4. AKORDEONY (.accordion)
+   ============================================================
+   Składane sekcje treści (FAQ, regulaminy, itp.)
+   JavaScript toggle dodaje klasę .accordion-item--open.
+
+   Użycie:
+     <div class="accordion">
+         <div class="accordion-item">
+             <button class="accordion-item__header" onclick="toggleAccordion(this)">
+                 Pytanie?
+                 <span class="accordion-item__arrow">↓</span>
+             </button>
+             <div class="accordion-item__content">
+                 <p>Odpowiedź...</p>
+             </div>
+         </div>
+     </div>
+   ============================================================ */
+.accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+}
+
+/* Pojedynczy element akordeonu */
+.accordion-item {
+  border-bottom: var(--border-width) solid var(--color-border);
+}
+
+.accordion-item:last-child {
+  border-bottom: none;
+}
+
+/* Nagłówek (klikalny) */
+.accordion-item__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: var(--spacing-lg) var(--spacing-xl);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-heading);
+  background-color: var(--color-bg);
+  cursor: pointer;
+  text-align: left;
+  transition:
+    background-color var(--transition-fast),
+    color var(--transition-fast);
+}
+
+.accordion-item__header:hover {
+  background-color: var(--color-bg-light);
+  color: var(--color-accent);
+}
+
+/* Strzałka obracająca się przy otwieraniu */
+.accordion-item__arrow {
+  font-size: var(--font-size-lg);
+  transition: transform var(--transition-base);
+  flex-shrink: 0;
+  margin-left: var(--spacing-md);
+}
+
+/* Treść akordeonu (ukryta domyślnie) */
+.accordion-item__content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height var(--transition-slow);
+  background-color: var(--color-bg-light);
+}
+
+.accordion-item__content-inner {
+  padding: var(--spacing-lg) var(--spacing-xl);
+  color: var(--color-text-light);
+  line-height: var(--line-height-base);
+}
+
+/* Stan otwarty — JavaScript dodaje tę klasę do .accordion-item */
+.accordion-item--open .accordion-item__content {
+  max-height: 1000px; /* Wystarczająco duże — treść się zmieści */
+}
+
+.accordion-item--open .accordion-item__arrow {
+  transform: rotate(180deg);
+}
+
+.accordion-item--open .accordion-item__header {
+  color: var(--color-accent);
+  background-color: var(--color-bg-light);
+}
+
+/* ============================================================
+   5. FORMULARZE (.form)
+   ============================================================
+   Użycie:
+     <form class="form">
+         <div class="form__group">
+             <label class="form__label" for="name">Imię</label>
+             <input class="form__input" type="text" id="name" placeholder="Twoje imię">
+         </div>
+         <div class="form__group">
+             <label class="form__label" for="msg">Wiadomość</label>
+             <textarea class="form__input form__textarea" id="msg"></textarea>
+         </div>
+         <button class="btn btn--primary" type="submit">Wyślij</button>
+     </form>
+   ============================================================ */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+/* Grupa pole + etykieta */
+.form__group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+/* Etykieta */
+.form__label {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-heading);
+}
+
+/* Pole tekstowe i select */
+.form__input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: var(--font-size-base);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--border-radius);
+  transition:
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+  appearance: none;
+}
+
+.form__input:focus {
+  outline: none;
+  border-color: var(--color-secondary);
+  box-shadow: 0 0 0 3px rgba(45, 74, 107, 0.15);
+}
+
+.form__input::placeholder {
+  color: var(--color-text-muted);
+}
+
+/* Textarea */
+.form__textarea {
+  min-height: 140px;
+  resize: vertical;
+  line-height: var(--line-height-base);
+}
+
+/* Wiersz z dwoma polami */
+.form__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-lg);
+}
+
+/* Tekst pomocniczy pod polem */
+.form__help {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+}
+
+/* Komunikat błędu */
+.form__error {
+  font-size: var(--font-size-xs);
+  color: #dc2626; /* Czerwony — błąd walidacji */
+  display: none;
+}
+
+.form__input--error {
+  border-color: #dc2626;
+}
+
+.form__input--error + .form__error {
+  display: block;
+}
+
+/* ============================================================
+   6. ETYKIETY I NAGŁÓWKI SEKCJI
+   ============================================================
+   Spójny styl dla nagłówków sekcji w całym projekcie.
+
+   Użycie:
+     <div class="section-header">
+         <span class="section-label">[ Etykieta ]</span>
+         <h2 class="section-heading">Tytuł sekcji</h2>
+         <p class="section-subheading">Opcjonalny podtytuł...</p>
+     </div>
+   ============================================================ */
+
+/* Wrapper nagłówka sekcji */
+.section-header {
+  margin-bottom: var(--spacing-xxl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+/* Wyrównanie do środka */
+.section-header--centered {
+  text-align: center;
+  align-items: center;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: var(--spacing-xxl);
+}
+
+/* Mała etykieta nad tytułem (np. "NASZA OFERTA") */
+.section-label {
+  display: inline-block;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-accent);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* Nagłówek sekcji (h2) */
+.section-heading {
+  font-size: var(--font-size-xxl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-heading);
+  line-height: var(--line-height-heading);
+}
+
+/* Nagłówek sekcji na ciemnym tle */
+.section-heading--light {
+  color: var(--color-heading-light);
+}
+
+/* Podtytuł sekcji */
+.section-subheading {
+  font-size: var(--font-size-md);
+  color: var(--color-text-light);
+  line-height: var(--line-height-base);
+  max-width: 600px;
+  margin-bottom: 0;
+}
+
+/* Podtytuł na ciemnym tle */
+.section-subheading--light {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+/* Dekoracyjna linia pod nagłówkiem */
+.section-heading-underline {
+  width: 60px;
+  height: 3px;
+  background-color: var(--color-accent);
+  border-radius: var(--border-radius-full);
+  margin-top: var(--spacing-sm);
+}
+
+/* Wyśrodkowana linia */
+.section-header--centered .section-heading-underline {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ============================================================
+   7. CAROUSEL / SLIDER GŁÓWNY (.carousel)
+   ============================================================
+   Pełnoekranowy slider (np. baner główny lub galeria).
+   JavaScript steruje przesuwaniem przez currentIndex.
+
+   Użycie:
+     <div class="carousel" id="main-carousel">
+         <div class="carousel__track">
+             <div class="carousel__slide">...</div>
+             <div class="carousel__slide">...</div>
+         </div>
+         <button class="carousel__arrow carousel__arrow--prev" data-carousel="main-carousel">&#8249;</button>
+         <button class="carousel__arrow carousel__arrow--next" data-carousel="main-carousel">&#8250;</button>
+         <div class="carousel__indicators">
+             <span class="carousel__dot carousel__dot--active"></span>
+             <span class="carousel__dot"></span>
+         </div>
+     </div>
+   ============================================================ */
+.carousel {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+/* Ścieżka slajdów — flex poziomy */
+.carousel__track {
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  scroll-snap-type: x mandatory;
+}
+
+/* Pojedynczy slajd */
+.carousel__slide {
+  flex: 0 0 100%; /* Jeden slajd na raz (100% szerokości) */
+  scroll-snap-align: start;
+  position: relative;
+}
+
+/* Obraz slajdu — oczekiwany rozmiar: 1920x700px (ratio ~16:6) */
+.carousel__slide img {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  display: block;
+}
+
+/* Przyciski strzałek */
+.carousel__arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(255, 255, 255, 0.85);
+  border: none;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--border-radius-full);
+  font-size: var(--font-size-xl);
+  color: var(--color-primary);
+  cursor: pointer;
+  z-index: var(--z-content);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    background-color var(--transition-fast),
+    color var(--transition-fast);
+  box-shadow: var(--shadow-md);
+}
+
+.carousel__arrow:hover {
+  background-color: var(--color-accent);
+  color: var(--color-heading-light);
+}
+
+.carousel__arrow--prev {
+  left: var(--spacing-lg);
+}
+.carousel__arrow--next {
+  right: var(--spacing-lg);
+}
+
+/* Wskaźniki (kropki) */
+.carousel__indicators {
+  position: absolute;
+  bottom: var(--spacing-lg);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: var(--spacing-sm);
+  z-index: var(--z-content);
+}
+
+.carousel__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--border-radius-full);
+  background-color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition:
+    background-color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.carousel__dot--active {
+  background-color: var(--color-heading-light);
+  transform: scale(1.3);
+}
+
+/* ============================================================
+   8. PAGINACJA (.pagination)
+   ============================================================ */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-xxl);
+}
+
+.pagination__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--border-radius);
+  border: var(--border-width) solid var(--color-border);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  text-decoration: none;
+  transition:
+    background-color var(--transition-fast),
+    border-color var(--transition-fast),
+    color var(--transition-fast);
+}
+
+.pagination__btn:hover {
+  background-color: var(--color-bg-section);
+  border-color: var(--color-secondary);
+  color: var(--color-secondary);
+}
+
+.pagination__btn--active {
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-heading-light);
+}

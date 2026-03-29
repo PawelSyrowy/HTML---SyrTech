@@ -1,0 +1,93 @@
+<!-- ============================================================
+     COMPONENTS/HEADER.HTML — Nagłówek (Język PL)
+     ============================================================
+     Komponent ładowany dynamicznie przez loadComponent() z script.js.
+     Zawiera:
+       - Górny pasek informacyjny (.header-top-bar)
+       - Główną nawigację (.navbar)
+       - Logo, hamburger, lista linków
+       - Przycisk przełączenia języka EN
+
+     Ścieżki do zasobów (CSS, JS, obrazki) — RELATYWNE DO GŁÓWNEGO
+     katalogu projektu (nie do folderu components/).
+     ============================================================ -->
+
+<!-- ============================================================
+     GÓRNY PASEK INFORMACYJNY
+     Opcjonalny — usuń tę sekcję jeśli nie potrzebujesz.
+     Wyświetla godziny otwarcia, telefon i przełącznik języka.
+     ============================================================ -->
+<div class="header-top-bar">
+  <!-- Godziny otwarcia -->
+  <div class="header-top-bar__item">
+    <span class="header-top-bar__icon">🕐</span>
+    <span>[Godziny otwarcia, np. Pon–Pt: 8:00–18:00]</span>
+  </div>
+
+  <!-- Telefon kontaktowy -->
+  <div class="header-top-bar__item">
+    <span class="header-top-bar__icon">📞</span>
+    <a href="tel:+48000000000" style="color: inherit; text-decoration: none">
+      [+48 000 000 000]
+    </a>
+  </div>
+
+  <!-- Przełącznik języka — link do wersji angielskiej -->
+  <a href="en/index.html" class="lang-switch" title="Switch to English">EN</a>
+</div>
+
+<!-- ============================================================
+     GŁÓWNA NAWIGACJA (.navbar)
+     Logo po lewej, hamburger i linki po prawej.
+     ============================================================ -->
+<nav class="navbar" role="navigation" aria-label="Nawigacja główna">
+  <!-- Logo — zmień href na "#hero" dla single-page lub "index.html" dla multi-page -->
+  <a
+    href="index.html"
+    class="navbar__logo"
+    aria-label="Strona główna [NAZWA FIRMY]"
+  >
+    <!-- OPCJA 1: Logo tekstowe -->
+    [LOGO / NAZWA]
+    <!-- OPCJA 2: Logo jako obrazek (odkomentuj i usuń tekst powyżej)
+        <img src="images/logo.png"
+             alt="[NAZWA FIRMY] - logo"
+             class="navbar__logo-img">
+             Oczekiwany rozmiar logo: max 200x44px (auto x 44px wysokości)
+        -->
+  </a>
+
+  <!-- Przycisk hamburger — widoczny tylko na mobile (≤768px) -->
+  <button
+    class="navbar__hamburger"
+    id="nav-hamburger"
+    aria-expanded="false"
+    aria-controls="nav-links"
+    aria-label="Otwórz menu nawigacji"
+  >
+    <span class="navbar__hamburger-bar"></span>
+    <span class="navbar__hamburger-bar"></span>
+    <span class="navbar__hamburger-bar"></span>
+  </button>
+
+  <!-- Lista linków nawigacyjnych -->
+  <ul class="navbar__links" id="nav-links" role="list">
+    <!-- ======================================================
+             LINKI NAWIGACYJNE
+             Dodaj / usuń <li> według potrzeb projektu.
+             Klasa .active jest dodawana przez setActiveNavigation() w JS.
+             ====================================================== -->
+
+    <li><a href="index.html">Strona główna</a></li>
+    <li><a href="podstrona.html">[Dział 1]</a></li>
+    <li><a href="podstrona.html">[Dział 2]</a></li>
+    <li><a href="podstrona.html">[Dział 3]</a></li>
+    <li><a href="podstrona.html">Kontakt</a></li>
+
+    <!-- Separator wizualny (opcjonalny) -->
+    <!-- <li class="navbar__divider" aria-hidden="true"></li> -->
+
+    <!-- Linki zewnętrzne (np. social media — opcjonalne) -->
+    <!-- <li><a href="https://..." class="navbar__link--external" target="_blank" rel="noopener noreferrer" aria-label="Facebook">FB</a></li> -->
+  </ul>
+</nav>

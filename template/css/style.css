@@ -1,0 +1,431 @@
+/* ============================================================
+   STYLE.CSS — Zmienne CSS, Reset i Globalna Typografia
+   ============================================================
+   Ten plik jest FUNDAMENTEM całego projektu.
+   Definiuje zmienne CSS, reset przeglądarki i globalną typografię.
+
+   KOLEJNOŚĆ ŁADOWANIA CSS (zachowaj tę kolejność w HTML):
+     1. style.css          — ten plik (zmienne + reset + typografia)
+     2. layout.css         — wzorce układu strony (grid, flex)
+     3. header.css         — nagłówek i nawigacja
+     4. footer.css         — stopka
+     5. components.css     — komponenty UI (przyciski, karty, formularze)
+     6. pages.css          — style specyficzne dla sekcji/podstron
+     7. style1024px.css    — responsywność dla ekranów ≤ 1024px
+     8. style768px.css     — responsywność dla ekranów ≤ 768px
+     9. style480px.css     — responsywność dla ekranów ≤ 480px
+   ============================================================ */
+
+/* ============================================================
+   ZMIENNE CSS — Custom Properties
+   Zmieniaj tutaj, aby zaktualizować cały projekt naraz.
+   ============================================================ */
+:root {
+  /* ----------------------------------------------------------
+       KOLORY GŁÓWNE MARKI
+    ---------------------------------------------------------- */
+  --color-primary: #1a2332; /* Głęboki granat — główny kolor marki, nagłówki, tła */
+  --color-secondary: #2d4a6b; /* Niebieski — akcenty, hover, linki secundarne */
+  --color-accent: #e8702a; /* Pomarańczowy — wyróżnienia, przyciski CTA, aktywne elementy */
+
+  /* ----------------------------------------------------------
+       KOLORY TEKSTU
+    ---------------------------------------------------------- */
+  --color-text: #333333; /* Ciemny szary — główny tekst akapitów */
+  --color-text-light: #666666; /* Szary — pomocniczy tekst, opisy, podtytuły */
+  --color-text-muted: #999999; /* Jasny szary — drobne opisy, etykiety, copyright */
+  --color-heading: #1a2332; /* Granat — kolor nagłówków (h1–h6) na jasnym tle */
+  --color-heading-light: #ffffff; /* Biały — nagłówki na ciemnym tle */
+
+  /* ----------------------------------------------------------
+       KOLORY TŁA SEKCJI
+    ---------------------------------------------------------- */
+  --color-bg: #ffffff; /* Biały — główne tło strony i białe sekcje */
+  --color-bg-light: #f5f7fa; /* Bardzo jasny szary — co-druga sekcja, zebranie wzroku */
+  --color-bg-section: #e8ecf0; /* Jasny szaro-niebieski — wyróżnione sekcje */
+  --color-bg-dark: #1a2332; /* Granat — ciemne sekcje z jasnym tekstem */
+  --color-bg-footer: #111520; /* Prawie czarny — tło stopki */
+
+  /* ----------------------------------------------------------
+       KOLORY PRZYCISKÓW
+    ---------------------------------------------------------- */
+  --color-btn-primary: #e8702a; /* Pomarańczowy — tło przycisku "primary" */
+  --color-btn-primary-text: #ffffff; /* Biały — tekst przycisku "primary" */
+  --color-btn-primary-hover: #c55a1a; /* Ciemny pomarańcz — hover przycisku "primary" */
+  --color-btn-secondary: #1a2332; /* Granat — tło przycisku "secondary" */
+  --color-btn-secondary-text: #ffffff; /* Biały — tekst przycisku "secondary" */
+  --color-btn-secondary-hover: #2d4a6b; /* Niebieski — hover przycisku "secondary" */
+
+  /* ----------------------------------------------------------
+       KOLORY RAMEK I KRAWĘDZI
+    ---------------------------------------------------------- */
+  --color-border: #d0d7e0; /* Jasny szaro-niebieski — ramki, linie, separatory */
+  --color-border-dark: #2d4a6b; /* Ciemny niebieski — ramki na jasnym tle (outline) */
+  --color-border-footer: #2a3142; /* Ciemnoszary — linia w stopce */
+
+  /* ----------------------------------------------------------
+       KOLORY LINKÓW
+    ---------------------------------------------------------- */
+  --color-link: #2d4a6b; /* Niebieski — kolor standardowych hiperłączy */
+  --color-link-hover: #e8702a; /* Pomarańczowy — hover hiperłączy */
+  --color-nav-link: #1a2332; /* Granat — linki w nawigacji */
+  --color-nav-link-active: #e8702a; /* Pomarańczowy — aktywny/bieżący link w nawigacji */
+  --color-footer-link: #aaaaaa; /* Jasny szary — linki w stopce */
+  --color-footer-link-hover: #ffffff; /* Biały — hover linków stopki */
+
+  /* ----------------------------------------------------------
+       NAKŁADKI NA OBRAZKI TŁA (OVERLAY)
+    ---------------------------------------------------------- */
+  --color-overlay: rgba(
+    26,
+    35,
+    50,
+    0.55
+  ); /* Półprzezroczysty granat — standardowa nakładka */
+  --color-overlay-dark: rgba(
+    26,
+    35,
+    50,
+    0.8
+  ); /* Ciemna nakładka — dla wyraźnego kontrastu tekstu */
+
+  /* ============================================================
+       TYPOGRAFIA
+    ============================================================ */
+
+  /* Czcionki */
+  --font-main:
+    "Montserrat", Arial, sans-serif; /* Główna czcionka — importowana z Google Fonts */
+
+  /* Rozmiary czcionek */
+  --font-size-xs: 0.75rem; /*  12px — bardzo drobny tekst, badge */
+  --font-size-sm: 0.875rem; /*  14px — mały tekst, podpisy pod obrazkami */
+  --font-size-base: 1rem; /*  16px — standardowy tekst akapitów */
+  --font-size-md: 1.125rem; /*  18px — nieco powiększony tekst, lead */
+  --font-size-lg: 1.25rem; /*  20px — duży tekst, cytaty */
+  --font-size-xl: 1.5rem; /*  24px — h4, małe nagłówki sekcji */
+  --font-size-xxl: 2rem; /*  32px — h2, nagłówki sekcji */
+  --font-size-hero: 3rem; /*  48px — h1, tytuł hero */
+  --font-size-display: 4rem; /*  64px — bardzo wielkie wyświetlacze */
+
+  /* Grubości czcionek */
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Interlinea */
+  --line-height-base: 1.6; /* Dla akapitów i treści */
+  --line-height-heading: 1.2; /* Dla nagłówków */
+  --line-height-tight: 1.1; /* Dla bardzo dużych nagłówków hero */
+
+  /* ============================================================
+       ODSTĘPY (SPACING)
+    ============================================================ */
+  --spacing-xs: 0.25rem; /*  4px */
+  --spacing-sm: 0.5rem; /*  8px */
+  --spacing-md: 1rem; /* 16px */
+  --spacing-lg: 1.5rem; /* 24px */
+  --spacing-xl: 2rem; /* 32px */
+  --spacing-xxl: 3rem; /* 48px */
+  --spacing-xxxl: 5rem; /* 80px */
+
+  /* Pionowe paddingi sekcji */
+  --section-padding: 5rem; /* 80px — standardowy padding góra/dół sekcji */
+  --section-padding-sm: 3rem; /* 48px — mniejszy padding (wewnętrzne sekcje) */
+
+  /* ============================================================
+       LAYOUT
+    ============================================================ */
+  --max-width-content: 1200px; /* Maksymalna szerokość kontenera treści */
+  --max-width-narrow: 800px; /* Wąski kontener — formularze, tekst artykułów */
+  --container-padding: 2rem; /* Poziome wypełnienie kontenera (lewy/prawy margines) */
+
+  /* Wysokości nagłówka (używane do scroll-margin-top w sekcjach) */
+  --header-height: 70px; /* Wysokość paska nawigacji */
+  --header-top-height: 40px; /* Wysokość górnego paska info (opcjonalny) */
+  --header-total-height: 110px; /* Łączna wysokość nagłówka (top + nav) */
+
+  /* Odstępy między elementami układu */
+  --gap-columns: 2rem; /* Odstęp między kolumnami */
+  --gap-cards: 1.5rem; /* Odstęp między kartami w gridzie */
+
+  /* ============================================================
+       OBRAMOWANIA I ZAOKRĄGLENIA
+    ============================================================ */
+  --border-radius-sm: 4px; /* Małe — tagi, badge, wejścia formularzy */
+  --border-radius: 8px; /* Standardowe — przyciski, karty */
+  --border-radius-lg: 16px; /* Duże — panele, modale */
+  --border-radius-full: 9999px; /* Pełne zaokrąglenie — kształty "pill" */
+  --border-width: 1px;
+  --border-width-thick: 2px;
+
+  /* ============================================================
+       CIENIE (BOX-SHADOW)
+    ============================================================ */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08); /* Subtelny cień — karty */
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.12); /* Średni cień — karty hover */
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.16); /* Duży cień — modale, dropdowny */
+  --shadow-hover: 0 12px 32px rgba(0, 0, 0, 0.2); /* Hover cień — efekt unoszenia */
+
+  /* ============================================================
+       PRZEJŚCIA (TRANSITIONS / ANIMACJE)
+    ============================================================ */
+  --transition-fast: 0.15s ease; /* Szybkie — hover linków, ikon */
+  --transition-base: 0.3s ease; /* Standardowe — przyciski, karty */
+  --transition-slow: 0.5s ease; /* Wolne — rozwijane menu, nakładki */
+
+  /* ============================================================
+       INDEKSY WARSTW (Z-INDEX)
+       Hierarchia warstw od najniższej do najwyższej.
+    ============================================================ */
+  --z-base: 1; /* Treść na normalnym poziomie */
+  --z-content: 10; /* Treść wyróżniona */
+  --z-dropdown: 100; /* Rozwijane menu, tooltips */
+  --z-header: 200; /* Przyklejony nagłówek */
+  --z-overlay: 300; /* Nakładki, tła modali */
+  --z-modal: 400; /* Okna modalne */
+}
+
+/* ============================================================
+   RESET PRZEGLĄDARKI
+   Ujednolicenie domyślnych stylów między przeglądarkami.
+   ============================================================ */
+
+/* Box-sizing: border-box dla WSZYSTKICH elementów */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Podstawowe style html i body */
+html {
+  font-size: 16px; /* Bazowy rozmiar — 1rem = 16px */
+  scroll-behavior: smooth; /* Płynne przewijanie przy anchor linkach */
+  -webkit-text-size-adjust: 100%; /* Zapobiega auto-powiększaniu tekstu na iOS */
+}
+
+body {
+  font-family: var(--font-main);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-base);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  overflow-x: hidden; /* Zapobiega poziomemu scroll na mobile */
+}
+
+/* Obrazki — domyślnie elastyczne i bez dodatkowego odstępu */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block; /* Usuwa dolny odstęp (inline baseline) */
+}
+
+/* Linki — podstawowe style, bez underline */
+a {
+  color: var(--color-link);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--color-link-hover);
+}
+
+/* Przyciski — reset stylów domyślnych przeglądarki */
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+/* Listy — usuń domyślne punktory i padding */
+ul,
+ol {
+  list-style: none;
+}
+
+/* Pola formularzy — ujednolicona czcionka */
+input,
+textarea,
+select,
+button {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+/* Sekcje — margines dla scroll z przyklejonym nagłówkiem */
+section {
+  scroll-margin-top: var(--header-total-height);
+}
+
+/* Tabele — opcjonalny reset */
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+/* Figury — bez domyślnych marginesów */
+figure {
+  margin: 0;
+}
+
+/* ============================================================
+   GLOBALNA TYPOGRAFIA — Style nagłówków
+   ============================================================ */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--color-heading);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-heading);
+}
+
+h1 {
+  font-size: var(--font-size-hero);
+  line-height: var(--line-height-tight);
+}
+h2 {
+  font-size: var(--font-size-xxl);
+}
+h3 {
+  font-size: var(--font-size-xl);
+}
+h4 {
+  font-size: var(--font-size-lg);
+}
+h5 {
+  font-size: var(--font-size-md);
+}
+h6 {
+  font-size: var(--font-size-base);
+}
+
+p {
+  margin-bottom: var(--spacing-md);
+}
+p:last-child {
+  margin-bottom: 0;
+}
+
+/* ============================================================
+   KLASY POMOCNICZE (UTILITY CLASSES)
+   Małe, jednostkowe klasy do szybkiego użycia w HTML.
+   Zasada: nie nadużywaj — dla złożonych layoutów użyj layout.css.
+   ============================================================ */
+
+/* --- Wyrównanie tekstu --- */
+.text-left {
+  text-align: left;
+}
+.text-center {
+  text-align: center;
+}
+.text-right {
+  text-align: right;
+}
+
+/* --- Kolory tekstu --- */
+.text-primary {
+  color: var(--color-primary);
+}
+.text-secondary {
+  color: var(--color-secondary);
+}
+.text-accent {
+  color: var(--color-accent);
+}
+.text-muted {
+  color: var(--color-text-muted);
+}
+.text-light {
+  color: var(--color-heading-light);
+}
+
+/* --- Rozmiary tekstu --- */
+.text-sm {
+  font-size: var(--font-size-sm);
+}
+.text-lg {
+  font-size: var(--font-size-lg);
+}
+
+/* --- Grubości czcionki --- */
+.font-light {
+  font-weight: var(--font-weight-light);
+}
+.font-normal {
+  font-weight: var(--font-weight-normal);
+}
+.font-semibold {
+  font-weight: var(--font-weight-semibold);
+}
+.font-bold {
+  font-weight: var(--font-weight-bold);
+}
+
+/* --- Tła sekcji — klasy pomocnicze --- */
+.section-bg-white {
+  background-color: var(--color-bg);
+}
+.section-bg-light {
+  background-color: var(--color-bg-light);
+}
+.section-bg-section {
+  background-color: var(--color-bg-section);
+}
+.section-bg-dark {
+  background-color: var(--color-bg-dark);
+}
+.section-bg-footer {
+  background-color: var(--color-bg-footer);
+}
+
+/* --- Widoczność --- */
+.visually-hidden {
+  /* Ukryty wizualnie, ale dostępny dla czytników ekranu (a11y) */
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Link dostępności — widoczny tylko przy focus z klawiatury */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  background: var(--color-accent);
+  color: #fff;
+  padding: var(--spacing-sm) var(--spacing-md);
+  z-index: var(--z-modal);
+  transition: top var(--transition-fast);
+  font-weight: var(--font-weight-semibold);
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* --- Separator poziomy --- */
+.divider {
+  width: 100%;
+  height: var(--border-width);
+  background-color: var(--color-border);
+  margin: var(--spacing-xl) 0;
+}

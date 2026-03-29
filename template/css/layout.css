@@ -1,0 +1,519 @@
+/* ============================================================
+   LAYOUT.CSS — Wzorce Układu Strony (Reusable Layout Patterns)
+   ============================================================
+   Ten plik zawiera REUSABLE klasy układu — nie ma tu kolorów ani
+   stylów wizualnych. Tylko struktura przestrzenna.
+
+   SPIS KLAS LAYOUTU:
+   ─────────────────────────────────────────────────────────────
+   KONTENERY:
+     .layout-container              — wyśrodkowany kontener z max-width
+     .layout-container--narrow      — węższy kontener (formularze, artykuły)
+     .layout-section                — standardowy padding sekcji (góra/dół)
+     .layout-section--small         — mniejszy padding sekcji
+
+   KOLUMNY FLEX:
+     .layout-one-column             — jedna kolumna wyśrodkowana
+     .layout-two-columns            — dwie równe kolumny (50/50)
+     .layout-two-columns--70-30     — kolumny 70% / 30%
+     .layout-two-columns--30-70     — kolumny 30% / 70%
+     .layout-three-columns          — trzy równe kolumny (33/33/33)
+     .layout-four-columns           — cztery równe kolumny (25/25/25/25)
+
+   DZIECKO KOLUMN:
+     .layout-col-text               — kolumna tekstowa
+     .layout-col-image              — kolumna obrazkowa
+
+   UKŁADY OBRAZEK + TEKST:
+     .layout-image-left             — obrazek po lewej, tekst po prawej
+     .layout-image-right            — obrazek po prawej, tekst po lewej
+
+   RZĘDY (ROWS):
+     .layout-two-rows               — dwa rzędy
+     .layout-two-rows__first        — pierwszy rząd (pełna szerokość)
+     .layout-two-rows__second       — drugi rząd (pełna szerokość)
+     .layout-two-rows__second--split — drugi rząd podzielony na 2 kolumny
+
+   GRID:
+     .layout-card-grid              — siatka kart (auto-fit, minmax 280px)
+     .layout-card-grid--narrow      — węższa siatka kart (minmax 200px)
+     .layout-gallery-grid           — siatka galerii (niestandardowe rozmiary)
+
+   WYŚRODKOWANIE:
+     .layout-centered               — wyśrodkowanie poziome i pionowe (flex)
+     .layout-centered-text          — wyśrodkowanie tekstu w bloku
+
+   TŁO Z OBRAZKEM:
+     .layout-bg-image               — sekcja z obrazem tła (background-image)
+     .layout-bg-image__overlay      — ciemna nakładka na tło
+     .layout-bg-image__content      — treść nad nakładką
+   ============================================================ */
+
+/* ============================================================
+   KONTENERY
+   Ograniczają maksymalną szerokość treści i centrują ją.
+   ============================================================ */
+
+/* Standardowy kontener treści — używaj w każdej sekcji */
+.layout-container {
+  max-width: var(--max-width-content); /* 1200px */
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--container-padding);
+  padding-right: var(--container-padding);
+}
+
+/* Węższy kontener — artykuły, formularze, wąskie bloki tekstowe */
+.layout-container--narrow {
+  max-width: var(--max-width-narrow); /* 800px */
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--container-padding);
+  padding-right: var(--container-padding);
+}
+
+/* Standardowe pionowe wypełnienie sekcji */
+.layout-section {
+  padding-top: var(--section-padding);
+  padding-bottom: var(--section-padding);
+}
+
+/* Mniejsze pionowe wypełnienie sekcji */
+.layout-section--small {
+  padding-top: var(--section-padding-sm);
+  padding-bottom: var(--section-padding-sm);
+}
+
+/* ============================================================
+   JEDNA KOLUMNA (wyśrodkowana)
+   Przydatna dla intro sekcji, tekstów centrowanych.
+   ============================================================ */
+.layout-one-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: var(--max-width-narrow);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ============================================================
+   DWIE KOLUMNY — 50/50 (domyślny układ dwu-kolumnowy)
+   ============================================================
+   Użycie w HTML:
+   <div class="layout-two-columns">
+       <div class="layout-col-text">...</div>
+       <div class="layout-col-image">...</div>
+   </div>
+   ============================================================ */
+.layout-two-columns {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--gap-columns);
+}
+
+/* Każde dziecko zajmuje równo 50% */
+.layout-two-columns > * {
+  flex: 1 1 0;
+  min-width: 0; /* Zapobiega overflow w flexbox z obrazkami */
+}
+
+/* Wariant 70/30 — szersza lewa kolumna */
+.layout-two-columns--70-30 > *:first-child {
+  flex: 7 1 0;
+}
+.layout-two-columns--70-30 > *:last-child {
+  flex: 3 1 0;
+}
+
+/* Wariant 30/70 — węższa lewa kolumna */
+.layout-two-columns--30-70 > *:first-child {
+  flex: 3 1 0;
+}
+.layout-two-columns--30-70 > *:last-child {
+  flex: 7 1 0;
+}
+
+/* Kolumna tekstowa — zakrywa cały dostępny obszar */
+.layout-col-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--spacing-lg);
+}
+
+/* Kolumna obrazkowa — obrazek wypełnia kontener */
+.layout-col-image {
+  position: relative;
+  overflow: hidden;
+}
+
+/* ============================================================
+   UKŁADY Z OBRAZKIEM (IMAGE + TEKST)
+   Warianty dwu-kolumnowe z wyraźnym rozróżnieniem roli kolumn.
+   ============================================================ */
+
+/* Obrazek po LEWEJ, tekst po PRAWEJ */
+.layout-image-left {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--gap-columns);
+}
+
+.layout-image-left .layout-col-image {
+  order: 1;
+  flex: 1 1 0;
+}
+.layout-image-left .layout-col-text {
+  order: 2;
+  flex: 1 1 0;
+}
+
+/* Obrazek po PRAWEJ, tekst po LEWEJ */
+.layout-image-right {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--gap-columns);
+}
+
+.layout-image-right .layout-col-text {
+  order: 1;
+  flex: 1 1 0;
+}
+.layout-image-right .layout-col-image {
+  order: 2;
+  flex: 1 1 0;
+}
+
+/* Alternacja — obraz po lewej, potem po prawej, itd. */
+/* Użycie: <div class="layout-alternating-rows">
+               <div class="layout-image-left">...</div>
+               <div class="layout-image-right">...</div>
+           </div> */
+.layout-alternating-rows {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xxxl);
+}
+
+/* ============================================================
+   TRZY KOLUMNY — 33/33/33
+   ============================================================ */
+.layout-three-columns {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: var(--gap-columns);
+}
+
+.layout-three-columns > * {
+  flex: 1 1 calc(33.333% - var(--gap-columns));
+  min-width: 260px;
+}
+
+/* ============================================================
+   CZTERY KOLUMNY — 25/25/25/25
+   ============================================================ */
+.layout-four-columns {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: var(--gap-columns);
+}
+
+.layout-four-columns > * {
+  flex: 1 1 calc(25% - var(--gap-columns));
+  min-width: 200px;
+}
+
+/* ============================================================
+   DWA RZĘDY (layout dwu-wierszowy)
+   Rząd 1: pełna szerokość
+   Rząd 2: pełna szerokość LUB podzielony na 2 kolumny
+   ============================================================
+   Użycie w HTML:
+   <div class="layout-two-rows">
+       <div class="layout-two-rows__first">...</div>
+       <div class="layout-two-rows__second">...</div>
+   </div>
+
+   Aby drugi rząd miał dwie kolumny:
+   <div class="layout-two-rows__second layout-two-rows__second--split">
+       <div>...</div>
+       <div>...</div>
+   </div>
+   ============================================================ */
+.layout-two-rows {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-columns);
+}
+
+.layout-two-rows__first {
+  width: 100%; /* Pełna szerokość */
+}
+
+.layout-two-rows__second {
+  width: 100%; /* Pełna szerokość (domyślnie) */
+}
+
+/* Drugi rząd podzielony na 2 równe kolumny */
+.layout-two-rows__second--split {
+  display: flex;
+  flex-direction: row;
+  gap: var(--gap-columns);
+}
+
+.layout-two-rows__second--split > * {
+  flex: 1 1 0;
+}
+
+/* ============================================================
+   SIATKA KART (CARD GRID)
+   Auto-fit — karty zajmują dostępną przestrzeń.
+   ============================================================ */
+
+/* Standardowa siatka kart — karty min. 280px szerokości */
+.layout-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--gap-cards);
+}
+
+/* Wąska siatka kart — więcej kart w rzędzie, min. 200px */
+.layout-card-grid--narrow {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--gap-cards);
+}
+
+/* Siatka dokładnie 2-kolumnowa */
+.layout-card-grid--2col {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--gap-cards);
+}
+
+/* Siatka dokładnie 3-kolumnowa */
+.layout-card-grid--3col {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--gap-cards);
+}
+
+/* Siatka dokładnie 4-kolumnowa */
+.layout-card-grid--4col {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--gap-cards);
+}
+
+/* ============================================================
+   SIATKA GALERII
+   Pierwsza komórka zajmuje 2 kolumny i 2 rzędy.
+   ============================================================ */
+.layout-gallery-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr; /* 3 kolumny: duża, mała, mała */
+  grid-template-rows: auto auto;
+  gap: var(--spacing-sm);
+}
+
+/* Wyróżniony element galerii — zajmuje 1 kolumnę i 2 rzędy */
+.layout-gallery-grid__featured {
+  grid-row: span 2; /* Zajmuje 2 rzędy */
+}
+
+/* Pełna siatka galerii — 4 równe kolumny */
+.layout-gallery-grid--4col {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--spacing-sm);
+}
+
+/* Siatka galerii masonery — 3 kolumny, różne wysokości */
+.layout-gallery-grid--masonry {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-sm);
+}
+
+/* ============================================================
+   WYŚRODKOWANIE (CENTERED LAYOUT)
+   ============================================================ */
+
+/* Wyśrodkowanie poziome i pionowe (flex) */
+.layout-centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* Blok tekstowy wyśrodkowany — nagłówki sekcji */
+.layout-section-header {
+  text-align: center;
+  margin-bottom: var(--spacing-xxl);
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ============================================================
+   TŁO Z OBRAZKIEM (BACKGROUND IMAGE SECTION)
+   ============================================================
+   Użycie w HTML:
+   <section class="layout-bg-image" style="background-image: url('...');">
+       <div class="layout-bg-image__overlay"></div>
+       <div class="layout-container layout-bg-image__content">
+           ...treść...
+       </div>
+   </section>
+
+   LUB z inline img (bez background-image):
+   <section class="layout-bg-image">
+       <img src="..." class="layout-bg-image__img" alt="...">
+       <div class="layout-bg-image__overlay"></div>
+       <div class="layout-container layout-bg-image__content">
+           ...treść...
+       </div>
+   </section>
+   ============================================================ */
+
+/* Wrapper sekcji z tłem */
+.layout-bg-image {
+  position: relative;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* Efekt parallax — usuń jeśli niepotrzebny */
+}
+
+/* Opcja z tagiem <img> jako tło (zamiast CSS background-image) */
+.layout-bg-image__img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 0;
+}
+
+/* Ciemna nakładka na tło — standardowa (55% opacity) */
+.layout-bg-image__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-overlay);
+  z-index: var(--z-base);
+}
+
+/* Ciemniejsza nakładka — dla lepszego kontrastu tekstu */
+.layout-bg-image__overlay--dark {
+  background-color: var(--color-overlay-dark);
+}
+
+/* Treść nad nakładką */
+.layout-bg-image__content {
+  position: relative;
+  z-index: var(--z-content);
+}
+
+/* ============================================================
+   KLASY OBRAZKÓW (IMAGE UTILITY CLASSES)
+   Style dla tagów <img> — niezależne od layoutu.
+   ============================================================ */
+
+/* Obrazek pokrywający kontener (kadrowanie, nie deformacja) */
+.image-cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Obrazek mieszczący się w kontenerze (bez kadrowania) */
+.image-contain {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+/* Obrazek z ograniczeniem maksymalnej szerokości */
+.image-max-width {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Obrazek z ograniczeniem maksymalnej wysokości */
+.image-max-height {
+  max-height: 400px;
+  width: auto;
+}
+
+/* Obrazek o stałych proporcjach 4:3 */
+.image-ratio-4-3 {
+  aspect-ratio: 4 / 3;
+  width: 100%;
+  object-fit: cover;
+}
+
+/* Obrazek o stałych proporcjach 16:9 */
+.image-ratio-16-9 {
+  aspect-ratio: 16 / 9;
+  width: 100%;
+  object-fit: cover;
+}
+
+/* Obrazek o stałych proporcjach 1:1 (kwadrat) */
+.image-ratio-1-1 {
+  aspect-ratio: 1 / 1;
+  width: 100%;
+  object-fit: cover;
+}
+
+/* Małe zaokrąglenie */
+.image-rounded {
+  border-radius: var(--border-radius);
+}
+
+/* Duże zaokrąglenie */
+.image-rounded-lg {
+  border-radius: var(--border-radius-lg);
+}
+
+/* Okrąg (awatary) */
+.image-circle {
+  border-radius: var(--border-radius-full);
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+/* Obrazek z cieniem */
+.image-shadow {
+  box-shadow: var(--shadow-md);
+}
+
+/* Obrazek wypełniający rodzica (parent musi mieć position: relative i height) */
+.image-fill-parent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}

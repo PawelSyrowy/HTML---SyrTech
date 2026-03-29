@@ -1,0 +1,148 @@
+<!-- ============================================================
+     COMPONENTS/FOOTER.HTML — Stopka (Język PL)
+     ============================================================
+     Komponent ładowany dynamicznie przez loadComponent() z script.js.
+     Zawiera:
+       - Górną część stopki (.footer-top): logo + kolumny info
+       - Dolną część stopki (.footer-bottom): menu + copyright
+
+     Ścieżki do zasobów — relatywne do głównego katalogu projektu.
+     ============================================================ -->
+
+<!-- ============================================================
+     GÓRNA CZĘŚĆ STOPKI
+     Logo/marka po lewej, kolumny informacyjne po prawej.
+     ============================================================ -->
+<div class="footer-top">
+  <!-- MARKA / LOGO -->
+  <div class="footer-brand">
+    <!-- Logo tekstowe -->
+    <a href="index.html" class="footer-brand__logo">[LOGO / NAZWA]</a>
+
+    <!-- Logo jako obrazek (odkomentuj jeśli używasz)
+        <a href="index.html">
+            <img src="images/logo-white.png"
+                 alt="[NAZWA FIRMY]"
+                 class="footer-brand__logo-img">
+                 Oczekiwany rozmiar: max 160x50px (ciemne lub jasne logo)
+        </a>
+        -->
+
+    <!-- Krótki opis firmy pod logo -->
+    <p class="footer-brand__description">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. [Krótki opis
+      firmy — 1–2 zdania].
+    </p>
+
+    <!-- Ikony social media (opcjonalne — usuń jeśli niepotrzebne) -->
+    <div class="footer-brand__social">
+      <!-- Zastąp href prawdziwymi linkami -->
+      <a
+        href="#"
+        class="footer-brand__social-link"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Facebook"
+      >
+        f
+      </a>
+      <a
+        href="#"
+        class="footer-brand__social-link"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Instagram"
+      >
+        ig
+      </a>
+      <a
+        href="#"
+        class="footer-brand__social-link"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="LinkedIn"
+      >
+        in
+      </a>
+    </div>
+  </div>
+
+  <!-- KOLUMNY INFORMACYJNE -->
+  <div class="footer-info">
+    <!-- Kolumna 1: Adres -->
+    <div class="footer-col">
+      <h4 class="footer-col__heading">Adres</h4>
+      <div class="footer-col__content">
+        <p>[Ulica i numer]</p>
+        <p>[Kod pocztowy] [Miasto]</p>
+        <p>[Kraj]</p>
+      </div>
+    </div>
+
+    <!-- Kolumna 2: Kontakt -->
+    <div class="footer-col">
+      <h4 class="footer-col__heading">Kontakt</h4>
+      <div class="footer-col__content">
+        <p>
+          <a href="tel:+48000000000">[+48 000 000 000]</a>
+        </p>
+        <p>
+          <a href="mailto:kontakt@przyklad.pl">[kontakt@przyklad.pl]</a>
+        </p>
+      </div>
+    </div>
+
+    <!-- Kolumna 3: Godziny otwarcia -->
+    <div class="footer-col">
+      <h4 class="footer-col__heading">Godziny otwarcia</h4>
+      <div class="footer-col__content">
+        <p>Pon – Pt: [8:00 – 18:00]</p>
+        <p>Sobota: [9:00 – 14:00]</p>
+        <p>Niedziela: [Nieczynne]</p>
+      </div>
+    </div>
+
+    <!-- Kolumna 4: Dodatkowe info (opcjonalna) -->
+    <div class="footer-col">
+      <h4 class="footer-col__heading">[Nagłówek kolumny]</h4>
+      <div class="footer-col__content">
+        <p>[Treść kolumny]</p>
+        <p>[Treść kolumny]</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     DOLNA CZĘŚĆ STOPKI
+     Menu nawigacyjne + tekst copyright.
+     ============================================================ -->
+<div class="footer-bottom">
+  <!-- Powtórzone menu nawigacyjne -->
+  <ul class="footer-menu" role="list">
+    <li><a href="index.html">Strona główna</a></li>
+    <li><a href="podstrona.html">[Dział 1]</a></li>
+    <li><a href="podstrona.html">[Dział 2]</a></li>
+    <li><a href="podstrona.html">[Dział 3]</a></li>
+    <li><a href="podstrona.html">Kontakt</a></li>
+  </ul>
+
+  <!-- Copyright -->
+  <p class="footer-copyright">
+    &copy; <span id="copyright-year">2026</span> [Nazwa Firmy] &mdash;
+    Realizacja:
+    <a
+      href="https://syrtech.pl"
+      target="_blank"
+      rel="noopener noreferrer"
+      style="color: inherit"
+      >SyrTech</a
+    >
+  </p>
+</div>
+
+<!-- Dynamiczne ustawianie roku copyright -->
+<script>
+  var yearEl = document.getElementById("copyright-year");
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+</script>

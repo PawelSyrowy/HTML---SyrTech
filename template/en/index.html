@@ -1,0 +1,585 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- ============================================================
+         META — English Home Page
+         ============================================================ -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="[PAGE DESCRIPTION — approx. 150–160 chars. What the company does, where, for whom.]"
+    />
+    <meta name="keywords" content="[keyword1, keyword2, keyword3]" />
+    <meta name="author" content="[Company Name]" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="[PAGE TITLE] — [Company Name]" />
+    <meta property="og:description" content="[DESCRIPTION FOR SOCIAL MEDIA]" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="[https://your-domain.com/en/]" />
+
+    <title>[PAGE TITLE] — [Company Name]</title>
+
+    <!-- ============================================================
+         FONTS — Google Fonts (shared with PL version)
+         ============================================================ -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- ============================================================
+         STYLESHEETS — Same files as PL, one level up (../)
+         ============================================================ -->
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/layout.css" />
+    <link rel="stylesheet" href="../css/header.css" />
+    <link rel="stylesheet" href="../css/footer.css" />
+    <link rel="stylesheet" href="../css/components.css" />
+    <link rel="stylesheet" href="../css/pages.css" />
+    <link rel="stylesheet" href="../css/style1024px.css" />
+    <link rel="stylesheet" href="../css/style768px.css" />
+    <link rel="stylesheet" href="../css/style480px.css" />
+  </head>
+  <body>
+    <a href="#main-content" class="skip-link">Skip to content</a>
+
+    <!-- Header loaded dynamically — EN version from en/components/ -->
+    <header id="site-header" role="banner"></header>
+
+    <main id="main-content" role="main">
+      <!-- ========================================================
+             SECTION 1: HERO
+             Full-screen welcome section with background image.
+             ========================================================
+             Expected background image: 1920x1080px (16:9 ratio, panoramic).
+             Shared image folder: ../images/
+             ======================================================== -->
+      <section
+        class="section-hero layout-bg-image layout-section"
+        id="hero"
+        style="background-image: url(&quot;../images/hero-bg.jpg&quot;)"
+      >
+        <div class="layout-bg-image__overlay"></div>
+
+        <div class="layout-container layout-bg-image__content">
+          <div class="layout-centered">
+            <span class="section-label" style="color: rgba(255, 255, 255, 0.7)">
+              [Subcategory / tagline]
+            </span>
+
+            <h1 class="hero-title">[Main Headline — short, compelling]</h1>
+
+            <p class="hero-subtitle">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. [1–2
+              sentences describing your offer.]
+            </p>
+
+            <div class="hero-actions">
+              <a href="#offer" class="btn btn--primary btn--large">
+                [Primary action]
+              </a>
+              <a href="subpage.html" class="btn btn--outline-light btn--large">
+                [Secondary action]
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================================
+             SECTION 2: ABOUT US / INTRODUCTION
+             Two columns: text on the left, image on the right.
+             ========================================================
+             Expected image: 600x450px (4:3 ratio).
+             ======================================================== -->
+      <section class="section-about section-bg-light layout-section" id="about">
+        <div class="layout-container">
+          <div class="layout-image-right">
+            <div class="layout-col-text">
+              <span class="section-label"
+                >[Section label, e.g. "ABOUT US"]</span
+              >
+              <h2 class="section-heading">[About Us Section Title]</h2>
+              <div class="about__accent-line"></div>
+
+              <p class="about__highlight-text">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore.
+              </p>
+
+              <p>
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+                dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                fugiat nulla pariatur.
+              </p>
+
+              <p>
+                Excepteur sint occaecat cupidatat non proident, sunt in culpa
+                qui officia deserunt mollit anim id est laborum. [Add
+                project-specific content.]
+              </p>
+
+              <ul class="about__feature-list">
+                <li>[Key benefit / feature 1]</li>
+                <li>[Key benefit / feature 2]</li>
+                <li>[Key benefit / feature 3]</li>
+              </ul>
+
+              <div class="btn-group">
+                <a href="subpage.html" class="btn btn--secondary">Learn more</a>
+              </div>
+            </div>
+
+            <div class="layout-col-image">
+              <!--
+                            Expected size: 600x450px (4:3 ratio).
+                            Portrait or slightly landscape.
+                        -->
+              <img
+                src="../images/o-nas.jpg"
+                alt="[Image description: what it shows, approx. 600x450px, 4:3 ratio]"
+                class="image-ratio-4-3 image-rounded image-shadow"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================================
+             SECTION 3: OFFER / SERVICES
+             Three cards in a grid.
+             ========================================================
+             Expected card image: 400x220px (~16:9 ratio).
+             ======================================================== -->
+      <section
+        class="section-services section-bg-white layout-section"
+        id="offer"
+      >
+        <div class="layout-container">
+          <div class="section-header section-header--centered">
+            <span class="section-label">[Label, e.g. "OUR SERVICES"]</span>
+            <h2 class="section-heading">[Services Section Title]</h2>
+            <div class="section-heading-underline"></div>
+            <p class="section-subheading">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. [Brief
+              description of services — 1–2 sentences.]
+            </p>
+          </div>
+
+          <div class="layout-card-grid--3col">
+            <!-- CARD 1 -->
+            <article class="card card--hover card--accent-top">
+              <!--
+                            Expected size: 400x220px (~16:9 ratio).
+                        -->
+              <img
+                src="../images/usluga-1.jpg"
+                alt="[Service 1 description — expected size: 400x220px]"
+                class="card__image"
+              />
+              <div class="card__body">
+                <span class="card__category">[Category]</span>
+                <h3 class="card__title">[Service / Product Title 1]</h3>
+                <p class="card__text">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </p>
+                <div class="card__footer">
+                  <a href="subpage.html" class="btn btn--outline btn--small"
+                    >Details</a
+                  >
+                </div>
+              </div>
+            </article>
+
+            <!-- CARD 2 -->
+            <article class="card card--hover card--accent-top">
+              <!--
+                            Expected size: 400x220px (~16:9 ratio).
+                        -->
+              <img
+                src="../images/usluga-2.jpg"
+                alt="[Service 2 description — expected size: 400x220px]"
+                class="card__image"
+              />
+              <div class="card__body">
+                <span class="card__category">[Category]</span>
+                <h3 class="card__title">[Service / Product Title 2]</h3>
+                <p class="card__text">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </p>
+                <div class="card__footer">
+                  <a href="subpage.html" class="btn btn--outline btn--small"
+                    >Details</a
+                  >
+                </div>
+              </div>
+            </article>
+
+            <!-- CARD 3 -->
+            <article class="card card--hover card--accent-top">
+              <!--
+                            Expected size: 400x220px (~16:9 ratio).
+                        -->
+              <img
+                src="../images/usluga-3.jpg"
+                alt="[Service 3 description — expected size: 400x220px]"
+                class="card__image"
+              />
+              <div class="card__body">
+                <span class="card__category">[Category]</span>
+                <h3 class="card__title">[Service / Product Title 3]</h3>
+                <p class="card__text">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </p>
+                <div class="card__footer">
+                  <a href="subpage.html" class="btn btn--outline btn--small"
+                    >Details</a
+                  >
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================================
+             SECTION 4: HOW WE WORK — Alternating image + text rows.
+             ========================================================
+             Expected images: 560x400px (4:3 ratio).
+             ======================================================== -->
+      <section
+        class="section-about section-bg-section layout-section"
+        id="how-we-work"
+      >
+        <div class="layout-container">
+          <div class="section-header section-header--centered">
+            <span class="section-label">[Label, e.g. "HOW IT WORKS"]</span>
+            <h2 class="section-heading">[Section Title]</h2>
+            <div class="section-heading-underline"></div>
+          </div>
+
+          <div class="layout-alternating-rows">
+            <!-- ROW 1: Image LEFT, text RIGHT -->
+            <div class="layout-image-left">
+              <div class="layout-col-image">
+                <!--
+                                Expected size: 560x400px (4:3 ratio).
+                            -->
+                <img
+                  src="../images/krok-1.jpg"
+                  alt="[Step 1 description — expected size: 560x400px]"
+                  class="image-ratio-4-3 image-rounded"
+                />
+              </div>
+              <div class="layout-col-text">
+                <span class="badge badge--accent">Step 1</span>
+                <h3>[Step / Point 1 Heading]</h3>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation.
+                </p>
+                <ul class="about__feature-list">
+                  <li>[Detail 1]</li>
+                  <li>[Detail 2]</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- ROW 2: Text LEFT, image RIGHT -->
+            <div class="layout-image-right">
+              <div class="layout-col-text">
+                <span class="badge badge--accent">Step 2</span>
+                <h3>[Step / Point 2 Heading]</h3>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation.
+                </p>
+                <ul class="about__feature-list">
+                  <li>[Detail 1]</li>
+                  <li>[Detail 2]</li>
+                </ul>
+              </div>
+              <div class="layout-col-image">
+                <!--
+                                Expected size: 560x400px (4:3 ratio).
+                            -->
+                <img
+                  src="../images/krok-2.jpg"
+                  alt="[Step 2 description — expected size: 560x400px]"
+                  class="image-ratio-4-3 image-rounded"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================================
+             SECTION 5: GALLERY
+             Grid with one featured large item.
+             ========================================================
+             Featured: 800x620px | Small: 400x300px
+             ======================================================== -->
+      <section
+        class="section-gallery section-bg-dark layout-section"
+        id="gallery"
+      >
+        <div class="layout-container">
+          <div class="section-header section-header--centered">
+            <span class="section-label" style="color: var(--color-accent)">
+              [Label, e.g. "GALLERY"]
+            </span>
+            <h2 class="section-heading section-heading--light">
+              [Gallery Section Title]
+            </h2>
+          </div>
+
+          <div class="layout-gallery-grid">
+            <!-- Featured item (large, spans 2 rows) -->
+            <figure
+              class="gallery-item gallery-item--featured layout-gallery-grid__featured"
+            >
+              <!--
+                            Expected size: 800x620px (4:3 ratio, large).
+                        -->
+              <img
+                src="../images/galeria-glowna.jpg"
+                alt="[Main gallery photo description — expected size: 800x620px]"
+                class="image-cover"
+              />
+            </figure>
+
+            <figure class="gallery-item gallery-item--small">
+              <!--
+                            Expected size: 400x300px (4:3 ratio).
+                        -->
+              <img
+                src="../images/galeria-2.jpg"
+                alt="[Gallery photo 2 description — expected size: 400x300px]"
+                class="image-cover"
+              />
+            </figure>
+
+            <figure class="gallery-item gallery-item--small">
+              <!--
+                            Expected size: 400x300px (4:3 ratio).
+                        -->
+              <img
+                src="../images/galeria-3.jpg"
+                alt="[Gallery photo 3 description — expected size: 400x300px]"
+                class="image-cover"
+              />
+            </figure>
+
+            <figure class="gallery-item gallery-item--small">
+              <!--
+                            Expected size: 400x300px (4:3 ratio).
+                        -->
+              <img
+                src="../images/galeria-4.jpg"
+                alt="[Gallery photo 4 description — expected size: 400x300px]"
+                class="image-cover"
+              />
+            </figure>
+
+            <figure class="gallery-item gallery-item--small">
+              <!--
+                            Expected size: 400x300px (4:3 ratio).
+                        -->
+              <img
+                src="../images/galeria-5.jpg"
+                alt="[Gallery photo 5 description — expected size: 400x300px]"
+                class="image-cover"
+              />
+            </figure>
+          </div>
+
+          <div class="gallery-link-more">
+            <a href="subpage.html" class="btn btn--outline-light">
+              View more photos
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================================
+             SECTION 6: STATISTICS (optional)
+             Four columns with numbers / key metrics.
+             ======================================================== -->
+      <section class="layout-section section-bg-white" id="stats">
+        <div class="layout-container">
+          <div class="layout-four-columns">
+            <div style="text-align: center; padding: 2rem">
+              <span
+                style="
+                  font-size: 0.75rem;
+                  font-weight: 700;
+                  color: var(--color-accent);
+                  letter-spacing: 0.1em;
+                  text-transform: uppercase;
+                "
+                >Statistic</span
+              >
+              <p
+                style="
+                  font-size: 3rem;
+                  font-weight: 700;
+                  color: var(--color-primary);
+                  margin: 0.5rem 0 0;
+                "
+              >
+                [99]<span style="font-size: 1.5rem">+</span>
+              </p>
+              <p style="color: var(--color-text-light); margin: 0">
+                [Stat description]
+              </p>
+            </div>
+
+            <div style="text-align: center; padding: 2rem">
+              <span
+                style="
+                  font-size: 0.75rem;
+                  font-weight: 700;
+                  color: var(--color-accent);
+                  letter-spacing: 0.1em;
+                  text-transform: uppercase;
+                "
+                >Statistic</span
+              >
+              <p
+                style="
+                  font-size: 3rem;
+                  font-weight: 700;
+                  color: var(--color-primary);
+                  margin: 0.5rem 0 0;
+                "
+              >
+                [150]<span style="font-size: 1.5rem">k</span>
+              </p>
+              <p style="color: var(--color-text-light); margin: 0">
+                [Stat description]
+              </p>
+            </div>
+
+            <div style="text-align: center; padding: 2rem">
+              <span
+                style="
+                  font-size: 0.75rem;
+                  font-weight: 700;
+                  color: var(--color-accent);
+                  letter-spacing: 0.1em;
+                  text-transform: uppercase;
+                "
+                >Statistic</span
+              >
+              <p
+                style="
+                  font-size: 3rem;
+                  font-weight: 700;
+                  color: var(--color-primary);
+                  margin: 0.5rem 0 0;
+                "
+              >
+                [20]<span style="font-size: 1.5rem">yrs</span>
+              </p>
+              <p style="color: var(--color-text-light); margin: 0">
+                [Stat description]
+              </p>
+            </div>
+
+            <div style="text-align: center; padding: 2rem">
+              <span
+                style="
+                  font-size: 0.75rem;
+                  font-weight: 700;
+                  color: var(--color-accent);
+                  letter-spacing: 0.1em;
+                  text-transform: uppercase;
+                "
+                >Statistic</span
+              >
+              <p
+                style="
+                  font-size: 3rem;
+                  font-weight: 700;
+                  color: var(--color-primary);
+                  margin: 0.5rem 0 0;
+                "
+              >
+                [100]<span style="font-size: 1.5rem">%</span>
+              </p>
+              <p style="color: var(--color-text-light); margin: 0">
+                [Stat description]
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================================
+             SECTION 7: CALL TO ACTION
+             Full-width section with background image overlay.
+             ========================================================
+             Expected background image: 1920x600px (~16:5 ratio, wide banner).
+             ======================================================== -->
+      <section
+        class="section-cta layout-bg-image layout-section"
+        id="contact"
+        style="background-image: url(&quot;../images/cta-bg.jpg&quot;)"
+      >
+        <div
+          class="layout-bg-image__overlay layout-bg-image__overlay--dark"
+        ></div>
+
+        <div class="layout-container layout-bg-image__content">
+          <div class="layout-centered">
+            <h2 class="cta-title">[CTA Headline — call to action]</h2>
+
+            <p class="cta-text">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              [Compelling 1–2 sentences. Why act now?]
+            </p>
+
+            <div class="cta-actions">
+              <a href="subpage.html" class="btn btn--primary btn--large">
+                [Primary CTA action]
+              </a>
+              <a
+                href="tel:+48000000000"
+                class="btn btn--outline-light btn--large"
+              >
+                [+48 000 000 000]
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer loaded dynamically — EN version from en/components/ -->
+    <footer id="site-footer" role="contentinfo"></footer>
+
+    <!-- ============================================================
+         JAVASCRIPT
+         Shared script from parent directory (../js/).
+         Components loaded from EN components directory.
+         ============================================================ -->
+    <script src="../js/script.js"></script>
+    <script>
+      /* Load English header and footer components */
+      loadComponent("site-header", "components/header.html", initMenuToggle);
+      loadComponent("site-footer", "components/footer.html");
+    </script>
+  </body>
+</html>

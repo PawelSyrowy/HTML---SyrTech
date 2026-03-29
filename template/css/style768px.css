@@ -1,0 +1,354 @@
+/* ============================================================
+   STYLE768PX.CSS — Responsywność dla ekranów ≤ 768px
+   ============================================================
+   Tablet pionowy i duże smartfony (≤ 768px).
+   To kluczowy breakpoint — tutaj aktywuje się hamburger menu
+   i większość layoutów przełącza się na wersję mobilną.
+
+   Typowe zmiany na tym breakpoincie:
+    - Hamburger menu aktywny, nav chowa się i rozwija
+    - Wszystkie dwukolumnowe layouty → jedna kolumna
+    - Obrazek-tekst stackuje się pionowo
+    - Hero na pełną szerokość
+    - Stopka: stacking pionowy
+    - Galeria: 2 kolumny
+    - Formularze: jeden wiersz na raz
+   ============================================================ */
+
+@media (max-width: 768px) {
+  /* ----------------------------------------------------------
+       ZMIENNE — Dostosowanie wartości globalnych
+    ---------------------------------------------------------- */
+  :root {
+    --section-padding: 3rem; /* 48px */
+    --section-padding-sm: 2rem; /* 32px */
+    --container-padding: 1.25rem; /* ~20px */
+    --gap-columns: 1.25rem;
+    --gap-cards: 1rem;
+    --font-size-hero: 2rem; /* 32px */
+    --font-size-display: 2.5rem; /* 40px */
+    --font-size-xxl: 1.75rem; /* 28px (nagłówki sekcji h2) */
+    --font-size-xl: 1.375rem; /* 22px (nagłówki kart h3) */
+  }
+
+  /* ----------------------------------------------------------
+       HEADER — Hamburger Menu
+    ---------------------------------------------------------- */
+
+  /* Ukryj górny pasek info na mobile (opcjonalne — usuń jeśli chcesz zachować) */
+  .header-top-bar {
+    display: none;
+  }
+
+  /* Zaktualizuj wysokość nagłówka (tylko nav, bez top bar) */
+  :root {
+    --header-total-height: var(--header-height); /* tylko navbar */
+  }
+
+  /* Pokaż przycisk hamburger */
+  .navbar__hamburger {
+    display: flex;
+  }
+
+  /* Lista nawigacyjna — schowana domyślnie, wysuwana przy .active */
+  .navbar__links {
+    position: absolute;
+    top: var(--header-height); /* Tuż pod nawigacją */
+    left: 0;
+    right: 0;
+    background-color: var(--color-bg);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height var(--transition-slow);
+    box-shadow: var(--shadow-lg);
+    z-index: var(--z-dropdown);
+  }
+
+  /* Rozwinięta lista nawigacyjna */
+  .navbar__links.active {
+    max-height: 600px; /* Wystarczająco duże dla wszystkich linków */
+  }
+
+  /* Linki w rozwiniętym menu mobilnym */
+  .navbar__links li {
+    width: 100%;
+    border-bottom: var(--border-width) solid var(--color-border);
+  }
+
+  .navbar__links a {
+    display: block;
+    width: 100%;
+    padding: var(--spacing-md) var(--container-padding);
+    border-bottom: none; /* Usuń podkreślenie desktopowe */
+    font-size: var(--font-size-md);
+  }
+
+  .navbar__links a:hover,
+  .navbar__links a.active {
+    background-color: var(--color-bg-light);
+    color: var(--color-accent);
+  }
+
+  /* Separator linii w nav mobilnym */
+  .navbar__links .navbar__divider {
+    width: 100%;
+    height: var(--border-width);
+  }
+
+  /* ----------------------------------------------------------
+       NAWIGACJA — Pozycja względna dla absolute nav-links
+    ---------------------------------------------------------- */
+  #site-header {
+    position: sticky;
+  }
+
+  .navbar {
+    position: relative; /* Bazowy kontekst dla .navbar__links */
+  }
+
+  /* ----------------------------------------------------------
+       LAYOUT — WSZYSTKIE MULTI-KOLUMNY → JEDNA KOLUMNA
+    ---------------------------------------------------------- */
+
+  /* Dwie kolumny → jedna */
+  .layout-two-columns,
+  .layout-image-left,
+  .layout-image-right {
+    flex-direction: column;
+  }
+
+  /* Resetuj kolejność (order) kolumn — bez reversu na mobile */
+  .layout-image-left .layout-col-image,
+  .layout-image-left .layout-col-text,
+  .layout-image-right .layout-col-image,
+  .layout-image-right .layout-col-text {
+    order: unset;
+  }
+
+  /* Obrazek zawsze na górze, tekst na dole (intuicyjne na mobile) */
+  .layout-image-left .layout-col-image,
+  .layout-image-right .layout-col-image {
+    order: -1;
+  }
+
+  /* Trzy kolumny → jedna */
+  .layout-three-columns {
+    flex-direction: column;
+  }
+
+  .layout-three-columns > * {
+    flex: 1 1 100%;
+    min-width: unset;
+  }
+
+  /* Cztery kolumny → jedna */
+  .layout-four-columns {
+    flex-direction: column;
+  }
+
+  .layout-four-columns > * {
+    flex: 1 1 100%;
+    min-width: unset;
+  }
+
+  /* Drugi rząd split → jedna kolumna */
+  .layout-two-rows__second--split {
+    flex-direction: column;
+  }
+
+  /* ----------------------------------------------------------
+       LAYOUT — SIATKI KART
+    ---------------------------------------------------------- */
+
+  /* 3 i 4-kolumnowe siatki → 2 kolumny */
+  .layout-card-grid--3col {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .layout-card-grid--4col {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Wąska siatka → 1 kolumna na małych telefonach */
+  .layout-card-grid--narrow {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* ----------------------------------------------------------
+       LAYOUT — GALERIA
+    ---------------------------------------------------------- */
+
+  /* Wyróżniona galeria → 2 kolumny */
+  .layout-gallery-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* Wyróżniony element galerii — nie span przez 2 rzędy */
+  .layout-gallery-grid__featured {
+    grid-row: span 1;
+    grid-column: span 2; /* Zajmuj pełną szerokość */
+  }
+
+  /* Galeria 4-kolumnowa → 2 kolumny */
+  .layout-gallery-grid--4col {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Galeria masonry → 2 kolumny */
+  .layout-gallery-grid--masonry {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* ----------------------------------------------------------
+       SEKCJA HERO
+    ---------------------------------------------------------- */
+
+  .section-hero {
+    min-height: 60vh;
+    padding-top: var(--spacing-xxxl);
+    padding-bottom: var(--spacing-xxxl);
+  }
+
+  .hero-title {
+    font-size: var(--font-size-display); /* 40px */
+  }
+
+  .hero-subtitle {
+    font-size: var(--font-size-base);
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+    max-width: 320px;
+  }
+
+  /* ----------------------------------------------------------
+       SEKCJA CTA
+    ---------------------------------------------------------- */
+
+  .cta-title {
+    font-size: var(--font-size-xxl);
+  }
+
+  .cta-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cta-actions .btn {
+    width: 100%;
+    max-width: 320px;
+  }
+
+  /* ----------------------------------------------------------
+       STOPKA
+    ---------------------------------------------------------- */
+
+  /* Górna część stopki — pionowo */
+  .footer-top {
+    flex-direction: column;
+    gap: var(--spacing-xxl);
+    padding: var(--spacing-xxl) var(--spacing-lg);
+    align-items: flex-start;
+  }
+
+  /* Brand zajmuje pełną szerokość */
+  .footer-brand {
+    max-width: 100%;
+  }
+
+  /* Kolumny info — 2 w rzędzie */
+  .footer-info {
+    width: 100%;
+    gap: var(--spacing-xl) var(--spacing-xxl);
+  }
+
+  /* Dolny pasek stopki — pionowo */
+  .footer-bottom {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-xl) var(--spacing-lg);
+  }
+
+  .footer-menu {
+    justify-content: center;
+  }
+
+  /* ----------------------------------------------------------
+       KARTY
+    ---------------------------------------------------------- */
+
+  /* Karta pozioma → pionowa */
+  .card--horizontal {
+    flex-direction: column;
+  }
+
+  .card--horizontal .card__image {
+    width: 100%;
+    height: 200px;
+  }
+
+  /* ----------------------------------------------------------
+       CAROUSEL
+    ---------------------------------------------------------- */
+
+  .carousel__slide img {
+    height: 300px;
+  }
+
+  .carousel__arrow {
+    width: 40px;
+    height: 40px;
+    font-size: var(--font-size-lg);
+  }
+
+  /* ----------------------------------------------------------
+       FORMULARZE
+    ---------------------------------------------------------- */
+
+  /* Dwa pola w rzędzie → jedno */
+  .form__row {
+    grid-template-columns: 1fr;
+  }
+
+  /* ----------------------------------------------------------
+       KONTAKT — Layout
+    ---------------------------------------------------------- */
+
+  .contact-map-wrapper iframe {
+    height: 280px;
+  }
+
+  /* ----------------------------------------------------------
+       SEKCJA HERO PODSTRONY
+    ---------------------------------------------------------- */
+
+  .section-page-hero {
+    padding-top: var(--spacing-xxl);
+    padding-bottom: var(--spacing-xxl);
+  }
+
+  .page-hero-title {
+    font-size: var(--font-size-xxl);
+  }
+
+  /* ----------------------------------------------------------
+       PRZYCISKI
+    ---------------------------------------------------------- */
+
+  /* Duże przyciski — normalizacja na mobile */
+  .btn--large {
+    padding: 0.875rem 2rem;
+    font-size: var(--font-size-base);
+  }
+}

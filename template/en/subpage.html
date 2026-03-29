@@ -1,0 +1,522 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- ============================================================
+         META — English Subpage
+         ============================================================ -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="[SUBPAGE DESCRIPTION — approx. 150–160 chars.]"
+    />
+    <meta name="author" content="[Company Name]" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="[SUBPAGE TITLE] — [Company Name]" />
+    <meta property="og:description" content="[DESCRIPTION FOR SOCIAL MEDIA]" />
+    <meta property="og:type" content="website" />
+
+    <title>[SUBPAGE TITLE] — [Company Name]</title>
+
+    <!-- Fonts (shared) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Stylesheets (shared, one level up) -->
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/layout.css" />
+    <link rel="stylesheet" href="../css/header.css" />
+    <link rel="stylesheet" href="../css/footer.css" />
+    <link rel="stylesheet" href="../css/components.css" />
+    <link rel="stylesheet" href="../css/pages.css" />
+    <link rel="stylesheet" href="../css/style1024px.css" />
+    <link rel="stylesheet" href="../css/style768px.css" />
+    <link rel="stylesheet" href="../css/style480px.css" />
+  </head>
+  <body>
+    <a href="#main-content" class="skip-link">Skip to content</a>
+
+    <header id="site-header" role="banner"></header>
+
+    <main id="main-content" role="main">
+      <!-- ========================================================
+             SECTION 1: PAGE HERO — Small subpage banner with breadcrumb
+             ========================================================
+             Expected background image: 1920x400px (~16:3 ratio, narrow banner).
+             ======================================================== -->
+      <section
+        class="section-page-hero layout-bg-image"
+        style="background-image: url(&quot;../images/page-hero-bg.jpg&quot;)"
+      >
+        <div class="layout-bg-image__overlay"></div>
+
+        <div class="layout-container layout-bg-image__content">
+          <div class="layout-centered">
+            <h1 class="page-hero-title">[Subpage Title]</h1>
+
+            <!-- Breadcrumb navigation -->
+            <nav class="breadcrumb" aria-label="Breadcrumb navigation">
+              <a href="index.html">Home</a>
+              <span class="breadcrumb__separator" aria-hidden="true">/</span>
+              <span class="breadcrumb__current">[Subpage Title]</span>
+            </nav>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================================
+             SECTION 2: MAIN SUBPAGE CONTENT
+             Layout with optional sidebar.
+             ========================================================
+             LAYOUT: layout-two-columns--70-30 (content 70%, sidebar 30%)
+             If no sidebar needed: use layout-container--narrow instead.
+             ======================================================== -->
+      <section
+        class="section-page-content layout-section section-bg-white"
+        id="content"
+      >
+        <div class="layout-container">
+          <!-- Layout: main content + sidebar -->
+          <div class="layout-two-columns layout-two-columns--70-30">
+            <!-- === MAIN CONTENT (70%) === -->
+            <article class="layout-col-text rich-text">
+              <h2>[Main Content Section Heading]</h2>
+
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                nisi ut aliquip ex ea commodo consequat.
+              </p>
+
+              <!-- Content image -->
+              <!--
+                            Expected size: 760x430px (16:9 ratio).
+                            Full width of the content column.
+                        -->
+              <img
+                src="../images/tresc-glowna.jpg"
+                alt="[Content image description — expected size: 760x430px, 16:9 ratio]"
+                class="image-ratio-16-9 image-rounded image-shadow"
+              />
+
+              <h3>[Subsection 1]</h3>
+
+              <p>
+                Duis aute irure dolor in reprehenderit in voluptate velit esse
+                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                cupidatat non proident, sunt in culpa qui officia deserunt
+                mollit anim id est laborum.
+              </p>
+
+              <p>
+                Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+                accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
+                quae ab illo inventore veritatis et quasi architecto beatae
+                vitae dicta sunt explicabo.
+              </p>
+
+              <!-- Two columns inside content area -->
+              <div class="layout-two-columns" style="margin: 2rem 0">
+                <div>
+                  <h4>[Left Column]</h4>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  </p>
+                </div>
+                <div>
+                  <h4>[Right Column]</h4>
+                  <p>Sed do eiusmod tempor incididunt ut labore et dolore.</p>
+                </div>
+              </div>
+
+              <h3>[Subsection 2]</h3>
+
+              <p>
+                Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit
+                aut fugit, sed quia consequuntur magni dolores eos qui ratione
+                voluptatem sequi nesciunt.
+              </p>
+
+              <!-- Bulleted list -->
+              <ul>
+                <li>[List item 1]</li>
+                <li>[List item 2]</li>
+                <li>[List item 3]</li>
+                <li>[List item 4]</li>
+              </ul>
+
+              <!-- Block quote -->
+              <blockquote>
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+                eiusmod tempor incididunt ut labore."
+                <footer>— [Quote Author]</footer>
+              </blockquote>
+
+              <p>
+                Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
+                consectetur, adipisci velit, sed quia non numquam eius modi
+                tempora incidunt ut labore et dolore magnam aliquam quaerat
+                voluptatem.
+              </p>
+
+              <!-- Two smaller images side by side -->
+              <div class="layout-card-grid--2col" style="margin: 1.5rem 0">
+                <!--
+                                Expected size per image: 360x240px (3:2 ratio).
+                            -->
+                <figure>
+                  <img
+                    src="../images/tresc-detail-1.jpg"
+                    alt="[Detail image 1 — expected size: 360x240px, 3:2 ratio]"
+                    class="image-ratio-4-3 image-rounded"
+                  />
+                </figure>
+                <figure>
+                  <img
+                    src="../images/tresc-detail-2.jpg"
+                    alt="[Detail image 2 — expected size: 360x240px, 3:2 ratio]"
+                    class="image-ratio-4-3 image-rounded"
+                  />
+                </figure>
+              </div>
+            </article>
+
+            <!-- === SIDEBAR (30%) === -->
+            <aside class="page-sidebar">
+              <!-- Widget: Contact -->
+              <div class="sidebar-widget">
+                <h3 class="sidebar-widget__title">Contact</h3>
+                <div class="contact-block">
+                  <span class="contact-block__icon">📞</span>
+                  <div class="contact-block__content">
+                    <span class="contact-block__label">Phone</span>
+                    <span class="contact-block__value">
+                      <a href="tel:+48000000000">[+48 000 000 000]</a>
+                    </span>
+                  </div>
+                </div>
+                <div class="contact-block" style="margin-top: 1rem">
+                  <span class="contact-block__icon">✉️</span>
+                  <div class="contact-block__content">
+                    <span class="contact-block__label">Email</span>
+                    <span class="contact-block__value">
+                      <a href="mailto:contact@example.com"
+                        >[contact@example.com]</a
+                      >
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Widget: Section menu / related links -->
+              <div class="sidebar-widget">
+                <h3 class="sidebar-widget__title">Section Menu</h3>
+                <ul style="display: flex; flex-direction: column; gap: 0.5rem">
+                  <li>
+                    <a
+                      href="subpage.html"
+                      style="color: var(--color-secondary); font-size: 0.9rem"
+                    >
+                      › [Link to subpage 1]
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="subpage.html"
+                      style="color: var(--color-secondary); font-size: 0.9rem"
+                    >
+                      › [Link to subpage 2]
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="subpage.html"
+                      style="color: var(--color-secondary); font-size: 0.9rem"
+                    >
+                      › [Link to subpage 3]
+                    </a>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Sidebar decorative image -->
+              <!--
+                            Expected size: 320x400px (portrait, 4:5 ratio).
+                        -->
+              <img
+                src="../images/sidebar-img.jpg"
+                alt="[Sidebar image description — expected size: 320x400px, portrait]"
+                class="image-max-width image-rounded image-shadow"
+              />
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================================
+             SECTION 3: ACCORDION — FAQ or Regulations
+             ========================================================
+             LAYOUT: layout-container--narrow (narrow container for text)
+             ======================================================== -->
+      <section class="section-faq layout-section section-bg-light" id="faq">
+        <div class="layout-container--narrow">
+          <div class="section-header section-header--centered">
+            <span class="section-label">[Label, e.g. "FAQ"]</span>
+            <h2 class="section-heading">
+              [Frequently Asked Questions / Regulations]
+            </h2>
+            <div class="section-heading-underline"></div>
+          </div>
+
+          <div class="accordion">
+            <!-- Accordion 1 -->
+            <div class="accordion-item">
+              <button class="accordion-item__header">
+                <span class="faq-question">[Question 1?]</span>
+                <span class="accordion-item__arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="accordion-item__content">
+                <div class="accordion-item__content-inner">
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                    do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua. [Full answer to the question.]
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Accordion 2 -->
+            <div class="accordion-item">
+              <button class="accordion-item__header">
+                <span class="faq-question">[Question 2?]</span>
+                <span class="accordion-item__arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="accordion-item__content">
+                <div class="accordion-item__content-inner">
+                  <p>
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                    laboris nisi ut aliquip ex ea commodo consequat. [Full
+                    answer to the question.]
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Accordion 3 -->
+            <div class="accordion-item">
+              <button class="accordion-item__header">
+                <span class="faq-question">[Question 3?]</span>
+                <span class="accordion-item__arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="accordion-item__content">
+                <div class="accordion-item__content-inner">
+                  <p>
+                    Duis aute irure dolor in reprehenderit in voluptate velit
+                    esse cillum dolore eu fugiat nulla pariatur. [Full answer to
+                    the question.]
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Accordion 4 -->
+            <div class="accordion-item">
+              <button class="accordion-item__header">
+                <span class="faq-question">[Question 4?]</span>
+                <span class="accordion-item__arrow" aria-hidden="true">↓</span>
+              </button>
+              <div class="accordion-item__content">
+                <div class="accordion-item__content-inner">
+                  <p>
+                    Excepteur sint occaecat cupidatat non proident, sunt in
+                    culpa qui officia deserunt mollit anim id est laborum. [Full
+                    answer to the question.]
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================================
+             SECTION 4: CONTACT
+             Contact form + info + optional map.
+             ======================================================== -->
+      <section
+        class="section-contact layout-section section-bg-white"
+        id="contact"
+      >
+        <div class="layout-container">
+          <div class="section-header section-header--centered">
+            <span class="section-label">[Label, e.g. "CONTACT"]</span>
+            <h2 class="section-heading">[Get in touch]</h2>
+            <div class="section-heading-underline"></div>
+            <p class="section-subheading">
+              [Invitation to contact — 1 sentence.]
+            </p>
+          </div>
+
+          <div class="layout-two-columns">
+            <!-- Contact info -->
+            <div class="contact-info-card">
+              <div class="contact-block">
+                <span class="contact-block__icon">📍</span>
+                <div class="contact-block__content">
+                  <span class="contact-block__label">Address</span>
+                  <span class="contact-block__value">
+                    [Street and number]<br />
+                    [Postal code] [City]
+                  </span>
+                </div>
+              </div>
+
+              <div class="contact-block">
+                <span class="contact-block__icon">📞</span>
+                <div class="contact-block__content">
+                  <span class="contact-block__label">Phone</span>
+                  <span class="contact-block__value">
+                    <a href="tel:+48000000000">[+48 000 000 000]</a>
+                  </span>
+                </div>
+              </div>
+
+              <div class="contact-block">
+                <span class="contact-block__icon">✉️</span>
+                <div class="contact-block__content">
+                  <span class="contact-block__label">Email</span>
+                  <span class="contact-block__value">
+                    <a href="mailto:contact@example.com"
+                      >[contact@example.com]</a
+                    >
+                  </span>
+                </div>
+              </div>
+
+              <div class="contact-block">
+                <span class="contact-block__icon">🕐</span>
+                <div class="contact-block__content">
+                  <span class="contact-block__label">Opening Hours</span>
+                  <span class="contact-block__value">
+                    Mon–Fri: [8:00 AM–6:00 PM]<br />
+                    Sat: [9:00 AM–2:00 PM]
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Contact form -->
+            <div>
+              <form class="form" id="contact-form" novalidate>
+                <div class="form__row">
+                  <div class="form__group">
+                    <label class="form__label" for="contact-name"
+                      >Full Name *</label
+                    >
+                    <input
+                      class="form__input"
+                      type="text"
+                      id="contact-name"
+                      name="name"
+                      placeholder="John Smith"
+                      required
+                      autocomplete="name"
+                    />
+                  </div>
+                  <div class="form__group">
+                    <label class="form__label" for="contact-email"
+                      >Email *</label
+                    >
+                    <input
+                      class="form__input"
+                      type="email"
+                      id="contact-email"
+                      name="email"
+                      placeholder="john@example.com"
+                      required
+                      autocomplete="email"
+                    />
+                  </div>
+                </div>
+
+                <div class="form__group">
+                  <label class="form__label" for="contact-subject"
+                    >Subject</label
+                  >
+                  <input
+                    class="form__input"
+                    type="text"
+                    id="contact-subject"
+                    name="subject"
+                    placeholder="[Message subject]"
+                  />
+                </div>
+
+                <div class="form__group">
+                  <label class="form__label" for="contact-message"
+                    >Message *</label
+                  >
+                  <textarea
+                    class="form__input form__textarea"
+                    id="contact-message"
+                    name="message"
+                    placeholder="[Your message...]"
+                    required
+                  ></textarea>
+                </div>
+
+                <!-- Privacy / GDPR consent checkbox -->
+                <div
+                  class="form__group"
+                  style="
+                    flex-direction: row;
+                    align-items: flex-start;
+                    gap: 0.75rem;
+                  "
+                >
+                  <input
+                    type="checkbox"
+                    id="contact-privacy"
+                    name="privacy"
+                    required
+                    style="margin-top: 3px; flex-shrink: 0"
+                  />
+                  <label
+                    for="contact-privacy"
+                    class="form__help"
+                    style="font-size: 0.8rem; line-height: 1.5"
+                  >
+                    I agree to the processing of my personal data for the
+                    purpose of responding to my enquiry, in accordance with the
+                    <a href="#">privacy policy</a>. *
+                  </label>
+                </div>
+
+                <div class="btn-group">
+                  <button type="submit" class="btn btn--primary">
+                    Send message
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer id="site-footer" role="contentinfo"></footer>
+
+    <script src="../js/script.js"></script>
+    <script>
+      loadComponent("site-header", "components/header.html", initMenuToggle);
+      loadComponent("site-footer", "components/footer.html");
+    </script>
+  </body>
+</html>

@@ -1,0 +1,117 @@
+/* ============================================================
+   STYLE1024PX.CSS — Responsywność dla ekranów ≤ 1024px
+   ============================================================
+   Tablet poziomy i małe laptopy (768px–1024px).
+   Nakłada się na style bazowe z style.css, layout.css, itp.
+
+   ZASADA: Plik ten TYLKO nadpisuje właściwości, które wymagają
+   zmiany na tym zakresie rozmiaru. Reszta dziedziczy z pliku bazowego.
+
+   Typowe zmiany na tym breakpoincie:
+    - Zmniejszone paddingi i odstępy
+    - Zmniejszone rozmiary czcionek hero
+    - Mniejszy kontener max-width
+    - Siatki 4-kolumnowe → 2-kolumnowe
+    - Footer: mniejsze odstępy
+   ============================================================ */
+
+@media (max-width: 1024px) {
+  /* ----------------------------------------------------------
+       ZMIENNE — Dostosowanie wartości globalnych
+    ---------------------------------------------------------- */
+  :root {
+    --section-padding: 4rem; /* 64px zamiast 80px */
+    --container-padding: 1.5rem; /* Mniejszy padding kontenera */
+    --gap-columns: 1.5rem; /* Mniejsze odstępy kolumn */
+    --font-size-hero: 2.5rem; /* 40px zamiast 48px */
+    --font-size-display: 3rem; /* 48px zamiast 64px */
+  }
+
+  /* ----------------------------------------------------------
+       NAGŁÓWEK
+    ---------------------------------------------------------- */
+
+  /* Zmniejsz odstępy w górnym pasku info */
+  .header-top-bar {
+    gap: var(--spacing-lg);
+    padding: 0 var(--spacing-lg);
+  }
+
+  /* Zmniejsz odstępy między linkami nawigacyjnymi */
+  .navbar__links {
+    gap: var(--spacing-lg);
+  }
+
+  /* ----------------------------------------------------------
+       LAYOUT — KOLUMNY
+    ---------------------------------------------------------- */
+
+  /* Cztery kolumny → dwie kolumny */
+  .layout-four-columns > * {
+    flex-basis: calc(50% - var(--gap-columns));
+  }
+
+  /* ----------------------------------------------------------
+       LAYOUT — GRIDY KART
+    ---------------------------------------------------------- */
+
+  /* Siatka 4-kolumnowa → 2-kolumnowa */
+  .layout-card-grid--4col {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* ----------------------------------------------------------
+       SEKCJA HERO
+    ---------------------------------------------------------- */
+
+  /* Zmniejsz min-height na tabletach */
+  .section-hero {
+    min-height: 70vh;
+  }
+
+  /* Zmniejsz tekst hero */
+  .hero-title {
+    font-size: var(--font-size-display); /* 48px */
+  }
+
+  /* ----------------------------------------------------------
+       STOPKA — Górna część
+    ---------------------------------------------------------- */
+
+  /* Mniejsze odstępy w stopce */
+  .footer-top {
+    gap: var(--spacing-xxl);
+    padding: var(--spacing-xxl) var(--spacing-lg);
+  }
+
+  /* Kolumny info w stopce: 2 w rzędzie zamiast 4 */
+  .footer-info {
+    gap: var(--spacing-xl);
+  }
+
+  /* ----------------------------------------------------------
+       GALERIA — Siatka
+    ---------------------------------------------------------- */
+
+  /* Galeria 4-kolumnowa → 3-kolumnowa */
+  .layout-gallery-grid--4col {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* ----------------------------------------------------------
+       KARTY
+    ---------------------------------------------------------- */
+
+  /* Karta pozioma — mniejszy obrazek */
+  .card--horizontal .card__image {
+    width: 160px;
+  }
+
+  /* ----------------------------------------------------------
+       KONTAKT — Mapa
+    ---------------------------------------------------------- */
+
+  .contact-map-wrapper iframe {
+    height: 320px;
+  }
+}

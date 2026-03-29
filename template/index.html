@@ -1,0 +1,678 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <!-- ============================================================
+         META — Podstawowe informacje o stronie
+         ============================================================ -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="[OPIS STRONY — ok. 150–160 znaków. Co robi firma, gdzie działa, dla kogo.]"
+    />
+    <meta name="keywords" content="[słowo1, słowo2, słowo3]" />
+    <meta name="author" content="[Nazwa Firmy]" />
+
+    <!-- Open Graph — podgląd linku w social mediach -->
+    <meta property="og:title" content="[TYTUŁ STRONY] — [Nazwa Firmy]" />
+    <meta property="og:description" content="[OPIS DLA SOCIAL MEDIÓW]" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="[https://twoja-domena.pl/]" />
+    <!-- <meta property="og:image" content="[https://twoja-domena.pl/images/og-image.jpg]"> -->
+    <!-- Oczekiwany rozmiar OG obrazka: 1200x630px -->
+
+    <title>[TYTUŁ STRONY] — [Nazwa Firmy]</title>
+
+    <!-- ============================================================
+         CZCIONKI — Google Fonts
+         Montserrat: 300 (light), 400 (regular), 600 (semibold), 700 (bold)
+         ============================================================ -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- ============================================================
+         ARKUSZE STYLÓW — Kolejność ładowania ma znaczenie!
+         1. style.css       — zmienne, reset, typografia (FUNDAMENT)
+         2. layout.css      — wzorce layoutu (kolumny, grid, obrazki)
+         3. header.css      — nagłówek i nawigacja
+         4. footer.css      — stopka
+         5. components.css  — reusable komponenty UI
+         6. pages.css       — style sekcji i podstron
+         7. style1024px.css — responsywność ≤ 1024px
+         8. style768px.css  — responsywność ≤ 768px  (hamburger!)
+         9. style480px.css  — responsywność ≤ 480px  (mobile)
+         ============================================================ -->
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/footer.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/pages.css" />
+    <link rel="stylesheet" href="css/style1024px.css" />
+    <link rel="stylesheet" href="css/style768px.css" />
+    <link rel="stylesheet" href="css/style480px.css" />
+
+    <!-- Favicon (opcjonalny) -->
+    <!-- <link rel="icon" type="image/png" href="images/favicon.png"> -->
+  </head>
+  <body>
+    <!-- Link dostępności — pomija nawigację dla czytników ekranu -->
+    <a href="#main-content" class="skip-link">Przejdź do treści</a>
+
+    <!-- ============================================================
+         NAGŁÓWEK — ładowany dynamicznie przez JS
+         Plik: components/header.html
+         ============================================================ -->
+    <header id="site-header" role="banner"></header>
+
+    <!-- ============================================================
+         GŁÓWNA TREŚĆ STRONY
+         ============================================================ -->
+    <main id="main-content" role="main">
+      <!-- ========================================================
+             SEKCJA 1: HERO
+             Pełnoekranowa sekcja powitalna z obrazkiem tła.
+             ========================================================
+
+             LAYOUT: layout-bg-image (obrazek tła + nakładka + treść)
+             TŁO: Ustaw background-image inline lub przez CSS.
+             Oczekiwany obraz tła: 1920x1080px (ratio 16:9, panoramiczny).
+             ======================================================== -->
+      <section
+        class="section-hero layout-bg-image layout-section"
+        id="hero"
+        style="background-image: url(&quot;images/hero-bg.jpg&quot;)"
+      >
+        <!-- Nakładka przyciemniająca obrazek tła -->
+        <div class="layout-bg-image__overlay"></div>
+
+        <!-- Treść hero — nad nakładką -->
+        <div class="layout-container layout-bg-image__content">
+          <div class="layout-centered">
+            <!-- Mała etykieta nad tytułem (opcjonalna) -->
+            <span class="section-label" style="color: rgba(255, 255, 255, 0.7)">
+              [Podkategoria / tagline]
+            </span>
+
+            <!-- Główny tytuł strony -->
+            <h1 class="hero-title">[Główny nagłówek — krótki, chwytliwy]</h1>
+
+            <!-- Podtytuł -->
+            <p class="hero-subtitle">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. [1–2
+              zdania opisujące ofertę.]
+            </p>
+
+            <!-- Przyciski CTA -->
+            <div class="hero-actions">
+              <a href="#oferta" class="btn btn--primary btn--large">
+                [Główna akcja]
+              </a>
+              <a
+                href="podstrona.html"
+                class="btn btn--outline-light btn--large"
+              >
+                [Drugorzędna akcja]
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================================
+             SEKCJA 2: O NAS / WPROWADZENIE
+             Dwie kolumny: tekst po lewej, obrazek po prawej.
+             ========================================================
+
+             LAYOUT: layout-image-right (tekst lewa, obraz prawa)
+             Aby odwrócić kolejność: zamień na layout-image-left
+             ======================================================== -->
+      <section class="section-about section-bg-light layout-section" id="o-nas">
+        <div class="layout-container">
+          <!-- Dwie kolumny: tekst | obrazek -->
+          <div class="layout-image-right">
+            <!-- Kolumna lewa: tekst -->
+            <div class="layout-col-text">
+              <!-- Etykieta sekcji -->
+              <span class="section-label">[Etykieta sekcji, np. "O NAS"]</span>
+
+              <!-- Nagłówek sekcji -->
+              <h2 class="section-heading">[Tytuł sekcji O Nas]</h2>
+
+              <!-- Dekoracyjna linia pod nagłówkiem -->
+              <div class="about__accent-line"></div>
+
+              <!-- Wyróżniony akapit (lead text) -->
+              <p class="about__highlight-text">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore.
+              </p>
+
+              <!-- Zwykłe akapity -->
+              <p>
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+                dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                fugiat nulla pariatur.
+              </p>
+
+              <p>
+                Excepteur sint occaecat cupidatat non proident, sunt in culpa
+                qui officia deserunt mollit anim id est laborum. [Dodaj treść
+                specyficzną dla projektu.]
+              </p>
+
+              <!-- Lista atutów -->
+              <ul class="about__feature-list">
+                <li>[Atut / cecha nr 1]</li>
+                <li>[Atut / cecha nr 2]</li>
+                <li>[Atut / cecha nr 3]</li>
+              </ul>
+
+              <!-- Przycisk CTA -->
+              <div class="btn-group">
+                <a href="podstrona.html" class="btn btn--secondary"
+                  >Dowiedz się więcej</a
+                >
+              </div>
+            </div>
+
+            <!-- Kolumna prawa: obrazek -->
+            <div class="layout-col-image">
+              <!--
+                            Oczekiwany rozmiar: 600x450px (ratio 4:3).
+                            Pionowy lub lekko krajobrazowy.
+                            Obraz pokazuje firmę / miejsce / produkt.
+                        -->
+              <img
+                src="images/o-nas.jpg"
+                alt="[Opis obrazka: co przedstawia, ok. 600x450px, ratio 4:3]"
+                class="image-ratio-4-3 image-rounded image-shadow"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================================
+             SEKCJA 3: OFERTA / USŁUGI
+             Trzy karty w siatce z ikonami lub obrazkami.
+             ========================================================
+
+             LAYOUT: layout-card-grid--3col (3 równe kolumny)
+             Na mobile (≤768px): 2 kolumny → na ≤480px: 1 kolumna
+             ======================================================== -->
+      <section
+        class="section-services section-bg-white layout-section"
+        id="oferta"
+      >
+        <div class="layout-container">
+          <!-- Nagłówek sekcji — wyśrodkowany -->
+          <div class="section-header section-header--centered">
+            <span class="section-label">[Etykieta, np. "NASZA OFERTA"]</span>
+            <h2 class="section-heading">[Tytuł sekcji Usługi]</h2>
+            <div class="section-heading-underline"></div>
+            <p class="section-subheading">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. [Krótki
+              opis oferty — 1–2 zdania.]
+            </p>
+          </div>
+
+          <!-- Siatka kart — 3 kolumny -->
+          <div class="layout-card-grid--3col">
+            <!-- === KARTA 1 === -->
+            <article class="card card--hover card--accent-top">
+              <!--
+                            Oczekiwany rozmiar obrazka karty: 400x220px (ratio ~16:9).
+                            Wszystkie karty powinny mieć obrazki tego samego rozmiaru.
+                        -->
+              <img
+                src="images/usluga-1.jpg"
+                alt="[Opis usługi 1 — przewidywany rozmiar: 400x220px]"
+                class="card__image"
+              />
+              <div class="card__body">
+                <span class="card__category">[Kategoria]</span>
+                <h3 class="card__title">[Tytuł Usługi / Produktu 1]</h3>
+                <p class="card__text">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </p>
+                <div class="card__footer">
+                  <a href="podstrona.html" class="btn btn--outline btn--small"
+                    >Szczegóły</a
+                  >
+                </div>
+              </div>
+            </article>
+
+            <!-- === KARTA 2 === -->
+            <article class="card card--hover card--accent-top">
+              <!--
+                            Oczekiwany rozmiar: 400x220px (ratio ~16:9).
+                        -->
+              <img
+                src="images/usluga-2.jpg"
+                alt="[Opis usługi 2 — przewidywany rozmiar: 400x220px]"
+                class="card__image"
+              />
+              <div class="card__body">
+                <span class="card__category">[Kategoria]</span>
+                <h3 class="card__title">[Tytuł Usługi / Produktu 2]</h3>
+                <p class="card__text">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </p>
+                <div class="card__footer">
+                  <a href="podstrona.html" class="btn btn--outline btn--small"
+                    >Szczegóły</a
+                  >
+                </div>
+              </div>
+            </article>
+
+            <!-- === KARTA 3 === -->
+            <article class="card card--hover card--accent-top">
+              <!--
+                            Oczekiwany rozmiar: 400x220px (ratio ~16:9).
+                        -->
+              <img
+                src="images/usluga-3.jpg"
+                alt="[Opis usługi 3 — przewidywany rozmiar: 400x220px]"
+                class="card__image"
+              />
+              <div class="card__body">
+                <span class="card__category">[Kategoria]</span>
+                <h3 class="card__title">[Tytuł Usługi / Produktu 3]</h3>
+                <p class="card__text">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </p>
+                <div class="card__footer">
+                  <a href="podstrona.html" class="btn btn--outline btn--small"
+                    >Szczegóły</a
+                  >
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================================
+             SEKCJA 4: ALTERNACJA — OBRAZEK + TEKST
+             Demonstracja układu z naprzemiennymi kolumnami.
+             ========================================================
+
+             LAYOUT: layout-alternating-rows
+             Każdy rząd: layout-image-left lub layout-image-right
+             ======================================================== -->
+      <section
+        class="section-about section-bg-section layout-section"
+        id="jak-dzialamy"
+      >
+        <div class="layout-container">
+          <!-- Nagłówek sekcji -->
+          <div class="section-header section-header--centered">
+            <span class="section-label">[Etykieta, np. "JAK DZIAŁAMY"]</span>
+            <h2 class="section-heading">[Tytuł sekcji]</h2>
+            <div class="section-heading-underline"></div>
+          </div>
+
+          <!-- Rzędy naprzemienne: obraz lewej / obraz prawej -->
+          <div class="layout-alternating-rows">
+            <!-- RZĄD 1: Obrazek po LEWEJ, tekst po PRAWEJ -->
+            <div class="layout-image-left">
+              <div class="layout-col-image">
+                <!--
+                                Oczekiwany rozmiar: 560x400px (ratio 4:3 lub 7:5).
+                                Oba obrazki w sekcji powinny mieć ten sam rozmiar.
+                            -->
+                <img
+                  src="images/krok-1.jpg"
+                  alt="[Opis kroku 1 — przewidywany rozmiar: 560x400px]"
+                  class="image-ratio-4-3 image-rounded"
+                />
+              </div>
+              <div class="layout-col-text">
+                <span class="badge badge--accent">Krok 1</span>
+                <h3>[Nagłówek kroku / punktu 1]</h3>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation.
+                </p>
+                <ul class="about__feature-list">
+                  <li>[Szczegół 1]</li>
+                  <li>[Szczegół 2]</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- RZĄD 2: Tekst po LEWEJ, obrazek po PRAWEJ -->
+            <div class="layout-image-right">
+              <div class="layout-col-text">
+                <span class="badge badge--accent">Krok 2</span>
+                <h3>[Nagłówek kroku / punktu 2]</h3>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation.
+                </p>
+                <ul class="about__feature-list">
+                  <li>[Szczegół 1]</li>
+                  <li>[Szczegół 2]</li>
+                </ul>
+              </div>
+              <div class="layout-col-image">
+                <!--
+                                Oczekiwany rozmiar: 560x400px (ratio 4:3 lub 7:5).
+                            -->
+                <img
+                  src="images/krok-2.jpg"
+                  alt="[Opis kroku 2 — przewidywany rozmiar: 560x400px]"
+                  class="image-ratio-4-3 image-rounded"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================================
+             SEKCJA 5: GALERIA
+             Siatka zdjęć z jednym dużym elementem wyróżnionym.
+             ========================================================
+
+             LAYOUT: layout-gallery-grid (3 kolumny, wyróżniony element)
+             ======================================================== -->
+      <section
+        class="section-gallery section-bg-dark layout-section"
+        id="galeria"
+      >
+        <div class="layout-container">
+          <!-- Nagłówek sekcji — jasny (na ciemnym tle) -->
+          <div class="section-header section-header--centered">
+            <span class="section-label" style="color: var(--color-accent)">
+              [Etykieta, np. "GALERIA"]
+            </span>
+            <h2 class="section-heading section-heading--light">
+              [Tytuł sekcji Galeria]
+            </h2>
+          </div>
+
+          <!-- Siatka galerii -->
+          <div class="layout-gallery-grid">
+            <!-- Element wyróżniony (duży, zajmuje 2 rzędy po lewej) -->
+            <figure
+              class="gallery-item gallery-item--featured layout-gallery-grid__featured"
+            >
+              <!--
+                            Oczekiwany rozmiar: 800x620px (ratio ~4:3, duży).
+                            Ten obraz jest najważniejszy — powinien być najlepszej jakości.
+                        -->
+              <img
+                src="images/galeria-glowna.jpg"
+                alt="[Opis głównego zdjęcia galerii — przewidywany rozmiar: 800x620px]"
+                class="image-cover"
+              />
+            </figure>
+
+            <!-- Mniejsze zdjęcia galerii (po prawej stronie) -->
+            <figure class="gallery-item gallery-item--small">
+              <!--
+                            Oczekiwany rozmiar: 400x300px (ratio 4:3).
+                        -->
+              <img
+                src="images/galeria-2.jpg"
+                alt="[Opis zdjęcia 2 galerii — przewidywany rozmiar: 400x300px]"
+                class="image-cover"
+              />
+            </figure>
+
+            <figure class="gallery-item gallery-item--small">
+              <!--
+                            Oczekiwany rozmiar: 400x300px (ratio 4:3).
+                        -->
+              <img
+                src="images/galeria-3.jpg"
+                alt="[Opis zdjęcia 3 galerii — przewidywany rozmiar: 400x300px]"
+                class="image-cover"
+              />
+            </figure>
+
+            <figure class="gallery-item gallery-item--small">
+              <!--
+                            Oczekiwany rozmiar: 400x300px (ratio 4:3).
+                        -->
+              <img
+                src="images/galeria-4.jpg"
+                alt="[Opis zdjęcia 4 galerii — przewidywany rozmiar: 400x300px]"
+                class="image-cover"
+              />
+            </figure>
+
+            <figure class="gallery-item gallery-item--small">
+              <!--
+                            Oczekiwany rozmiar: 400x300px (ratio 4:3).
+                        -->
+              <img
+                src="images/galeria-5.jpg"
+                alt="[Opis zdjęcia 5 galerii — przewidywany rozmiar: 400x300px]"
+                class="image-cover"
+              />
+            </figure>
+          </div>
+
+          <!-- Link do pełnej galerii / podstrony -->
+          <div class="gallery-link-more">
+            <a href="podstrona.html" class="btn btn--outline-light">
+              Zobacz więcej zdjęć
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================================
+             SEKCJA 6: STATYSTYKI / LICZBY (opcjonalna)
+             Cztery kolumny z liczbami / wskaźnikami.
+             ========================================================
+
+             LAYOUT: layout-four-columns (4 równe kolumny)
+             Na mobile: 2 kolumny → 1 kolumna
+             ======================================================== -->
+      <section class="layout-section section-bg-white" id="liczby">
+        <div class="layout-container">
+          <div class="layout-four-columns">
+            <!-- Liczba 1 -->
+            <div
+              class="card--icon-top"
+              style="text-align: center; padding: 2rem"
+            >
+              <span
+                style="
+                  font-size: 0.75rem;
+                  font-weight: 700;
+                  color: var(--color-accent);
+                  letter-spacing: 0.1em;
+                  text-transform: uppercase;
+                "
+                >Statystyka</span
+              >
+              <p
+                style="
+                  font-size: 3rem;
+                  font-weight: 700;
+                  color: var(--color-primary);
+                  margin: 0.5rem 0 0;
+                "
+              >
+                [99]<span style="font-size: 1.5rem">+</span>
+              </p>
+              <p style="color: var(--color-text-light); margin: 0">
+                [Opis liczby]
+              </p>
+            </div>
+
+            <!-- Liczba 2 -->
+            <div
+              class="card--icon-top"
+              style="text-align: center; padding: 2rem"
+            >
+              <span
+                style="
+                  font-size: 0.75rem;
+                  font-weight: 700;
+                  color: var(--color-accent);
+                  letter-spacing: 0.1em;
+                  text-transform: uppercase;
+                "
+                >Statystyka</span
+              >
+              <p
+                style="
+                  font-size: 3rem;
+                  font-weight: 700;
+                  color: var(--color-primary);
+                  margin: 0.5rem 0 0;
+                "
+              >
+                [150]<span style="font-size: 1.5rem">k</span>
+              </p>
+              <p style="color: var(--color-text-light); margin: 0">
+                [Opis liczby]
+              </p>
+            </div>
+
+            <!-- Liczba 3 -->
+            <div
+              class="card--icon-top"
+              style="text-align: center; padding: 2rem"
+            >
+              <span
+                style="
+                  font-size: 0.75rem;
+                  font-weight: 700;
+                  color: var(--color-accent);
+                  letter-spacing: 0.1em;
+                  text-transform: uppercase;
+                "
+                >Statystyka</span
+              >
+              <p
+                style="
+                  font-size: 3rem;
+                  font-weight: 700;
+                  color: var(--color-primary);
+                  margin: 0.5rem 0 0;
+                "
+              >
+                [20]<span style="font-size: 1.5rem">lat</span>
+              </p>
+              <p style="color: var(--color-text-light); margin: 0">
+                [Opis liczby]
+              </p>
+            </div>
+
+            <!-- Liczba 4 -->
+            <div
+              class="card--icon-top"
+              style="text-align: center; padding: 2rem"
+            >
+              <span
+                style="
+                  font-size: 0.75rem;
+                  font-weight: 700;
+                  color: var(--color-accent);
+                  letter-spacing: 0.1em;
+                  text-transform: uppercase;
+                "
+                >Statystyka</span
+              >
+              <p
+                style="
+                  font-size: 3rem;
+                  font-weight: 700;
+                  color: var(--color-primary);
+                  margin: 0.5rem 0 0;
+                "
+              >
+                [100]<span style="font-size: 1.5rem">%</span>
+              </p>
+              <p style="color: var(--color-text-light); margin: 0">
+                [Opis liczby]
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================================
+             SEKCJA 7: CALL TO ACTION (CTA)
+             Wezwanie do działania z obrazem tła.
+
+             LAYOUT: layout-bg-image + layout-centered
+             ========================================================
+
+             Oczekiwany obraz tła: 1920x600px (ratio ~16:5, szeroki baner).
+             Powinien być stonowany / ciemniejszy dla czytelności tekstu.
+             ======================================================== -->
+      <section
+        class="section-cta layout-bg-image layout-section"
+        id="kontakt"
+        style="background-image: url(&quot;images/cta-bg.jpg&quot;)"
+      >
+        <!-- Ciemna nakładka -->
+        <div
+          class="layout-bg-image__overlay layout-bg-image__overlay--dark"
+        ></div>
+
+        <!-- Treść CTA -->
+        <div class="layout-container layout-bg-image__content">
+          <div class="layout-centered">
+            <h2 class="cta-title">[Nagłówek CTA — wezwanie do działania]</h2>
+
+            <p class="cta-text">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              [Przekonujące 1–2 zdania. Dlaczego warto działać teraz?]
+            </p>
+
+            <!-- Przyciski CTA -->
+            <div class="cta-actions">
+              <a href="podstrona.html" class="btn btn--primary btn--large">
+                [Główna akcja CTA]
+              </a>
+              <a
+                href="tel:+48000000000"
+                class="btn btn--outline-light btn--large"
+              >
+                [+48 000 000 000]
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ============================================================
+         STOPKA — ładowana dynamicznie przez JS
+         Plik: components/footer.html
+         ============================================================ -->
+    <footer id="site-footer" role="contentinfo"></footer>
+
+    <!-- ============================================================
+         JAVASCRIPT — Na końcu body dla lepszego performance
+         ============================================================ -->
+    <script src="js/script.js"></script>
+    <script>
+      /* Załaduj komponenty nagłówka i stopki */
+      loadComponent("site-header", "components/header.html", initMenuToggle);
+      loadComponent("site-footer", "components/footer.html");
+    </script>
+  </body>
+</html>

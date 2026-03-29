@@ -1,0 +1,144 @@
+<!-- ============================================================
+     EN/COMPONENTS/FOOTER.HTML — Footer (English version)
+     ============================================================
+     English version of the footer component.
+     Same structure as PL version, translated to English.
+
+     NOTE: Image paths go up one level: ../images/
+     ============================================================ -->
+
+<!-- ============================================================
+     TOP FOOTER SECTION
+     Brand/logo on the left, info columns on the right.
+     ============================================================ -->
+<div class="footer-top">
+  <!-- BRAND / LOGO -->
+  <div class="footer-brand">
+    <!-- Text logo -->
+    <a href="index.html" class="footer-brand__logo">[LOGO / NAME]</a>
+
+    <!-- Image logo (uncomment if using)
+        <a href="index.html">
+            <img src="../images/logo-white.png"
+                 alt="[Company Name]"
+                 class="footer-brand__logo-img">
+                 Expected size: max 160x50px
+        </a>
+        -->
+
+    <!-- Short company description -->
+    <p class="footer-brand__description">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. [Short company
+      description — 1–2 sentences.]
+    </p>
+
+    <!-- Social media icons (optional) -->
+    <div class="footer-brand__social">
+      <a
+        href="#"
+        class="footer-brand__social-link"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Facebook"
+      >
+        f
+      </a>
+      <a
+        href="#"
+        class="footer-brand__social-link"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Instagram"
+      >
+        ig
+      </a>
+      <a
+        href="#"
+        class="footer-brand__social-link"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="LinkedIn"
+      >
+        in
+      </a>
+    </div>
+  </div>
+
+  <!-- INFO COLUMNS -->
+  <div class="footer-info">
+    <!-- Column 1: Address -->
+    <div class="footer-col">
+      <h4 class="footer-col__heading">Address</h4>
+      <div class="footer-col__content">
+        <p>[Street and number]</p>
+        <p>[Postal code] [City]</p>
+        <p>[Country]</p>
+      </div>
+    </div>
+
+    <!-- Column 2: Contact -->
+    <div class="footer-col">
+      <h4 class="footer-col__heading">Contact</h4>
+      <div class="footer-col__content">
+        <p>
+          <a href="tel:+48000000000">[+48 000 000 000]</a>
+        </p>
+        <p>
+          <a href="mailto:contact@example.com">[contact@example.com]</a>
+        </p>
+      </div>
+    </div>
+
+    <!-- Column 3: Opening hours -->
+    <div class="footer-col">
+      <h4 class="footer-col__heading">Opening Hours</h4>
+      <div class="footer-col__content">
+        <p>Mon – Fri: [8:00 AM – 6:00 PM]</p>
+        <p>Saturday: [9:00 AM – 2:00 PM]</p>
+        <p>Sunday: [Closed]</p>
+      </div>
+    </div>
+
+    <!-- Column 4: Additional info (optional) -->
+    <div class="footer-col">
+      <h4 class="footer-col__heading">[Column Heading]</h4>
+      <div class="footer-col__content">
+        <p>[Column content]</p>
+        <p>[Column content]</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     BOTTOM FOOTER SECTION
+     Navigation menu + copyright text.
+     ============================================================ -->
+<div class="footer-bottom">
+  <!-- Repeated navigation menu (English) -->
+  <ul class="footer-menu" role="list">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="subpage.html">[Section 1]</a></li>
+    <li><a href="subpage.html">[Section 2]</a></li>
+    <li><a href="subpage.html">[Section 3]</a></li>
+    <li><a href="subpage.html">Contact</a></li>
+  </ul>
+
+  <!-- Copyright -->
+  <p class="footer-copyright">
+    &copy; <span id="copyright-year">2026</span> [Company Name] &mdash; Built by
+    <a
+      href="https://syrtech.pl"
+      target="_blank"
+      rel="noopener noreferrer"
+      style="color: inherit"
+      >SyrTech</a
+    >
+  </p>
+</div>
+
+<!-- Dynamic copyright year -->
+<script>
+  var yearEl = document.getElementById("copyright-year");
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+</script>

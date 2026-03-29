@@ -1,0 +1,476 @@
+/* ============================================================
+   PAGES.CSS — Style Sekcji Stron
+   ============================================================
+   Style specyficzne dla poszczególnych sekcji strony głównej
+   i podstron. W przeciwieństwie do components.css, te style
+   odnoszą się do konkretnych sekcji, a nie reusable komponentów.
+
+   SPIS SEKCJI:
+   ─────────────────────────────────────────────────────────────
+   STRONA GŁÓWNA (index.html):
+     1. HERO — pełnoekranowa sekcja powitalna
+     2. O NAS — sekcja zapoznawcza
+     3. USŁUGI — siatka kart usług
+     4. GALERIA — siatka zdjęć
+     5. CALL TO ACTION (CTA) — sekcja z wezwaniem do działania
+
+   PODSTRONA (podstrona.html / subpage.html):
+     6. PAGE HERO — mały hero podstrony (breadcrumb)
+     7. TREŚĆ PODSTRONY — układ z tekstem
+     8. SEKCJA Z AKORDEONEM — FAQ / regulaminy
+     9. SEKCJA KONTAKTOWA — informacje kontaktowe
+   ============================================================ */
+
+/* ============================================================
+   1. HERO — Pełnoekranowa sekcja powitalna
+   ============================================================ */
+.section-hero {
+  min-height: 90vh; /* Przynajmniej 90% wysokości okna */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding-top: var(--section-padding);
+  padding-bottom: var(--section-padding);
+  /* Oczekiwany obraz tła: 1920x1080px (ratio 16:9, panoramiczny) */
+  /* Ustaw background-image inline w HTML: style="background-image: url('images/...')" */
+  background-color: var(--color-bg-dark); /* Fallback gdy brak obrazka */
+}
+
+/* Tytuł hero — największy tekst na stronie */
+.hero-title {
+  font-size: var(--font-size-display); /* 64px */
+  font-weight: var(--font-weight-bold);
+  color: var(--color-heading-light);
+  line-height: var(--line-height-tight);
+  margin-bottom: var(--spacing-lg);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Podtytuł hero */
+.hero-subtitle {
+  font-size: var(--font-size-lg); /* 20px */
+  color: rgba(255, 255, 255, 0.85);
+  line-height: var(--line-height-base);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: var(--spacing-xxl);
+}
+
+/* Przyciski CTA w hero */
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+  justify-content: center;
+}
+
+/* Przewijalny wskaźnik "scroll down" */
+.hero-scroll-indicator {
+  position: absolute;
+  bottom: var(--spacing-xxl);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-sm);
+  color: rgba(255, 255, 255, 0.6);
+  font-size: var(--font-size-xs);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  animation: hero-bounce 2s infinite;
+}
+
+.hero-scroll-indicator::after {
+  content: "↓";
+  font-size: var(--font-size-xl);
+}
+
+@keyframes hero-bounce {
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(6px);
+  }
+}
+
+/* ============================================================
+   2. SEKCJA "O NAS"
+   ============================================================ */
+.section-about {
+  padding-top: var(--section-padding);
+  padding-bottom: var(--section-padding);
+}
+
+/* Dekoracyjna linia akcentowa pod tytułem w tej sekcji */
+.about__accent-line {
+  width: 50px;
+  height: 3px;
+  background-color: var(--color-accent);
+  margin-bottom: var(--spacing-md);
+  border-radius: var(--border-radius-full);
+}
+
+/* Duży cytat / wyróżniony tekst w sekcji About */
+.about__highlight-text {
+  font-size: var(--font-size-lg);
+  color: var(--color-secondary);
+  font-weight: var(--font-weight-semibold);
+  border-left: 3px solid var(--color-accent);
+  padding-left: var(--spacing-lg);
+  margin: var(--spacing-lg) 0;
+  line-height: var(--line-height-base);
+}
+
+/* Lista cech / atutów firmy */
+.about__feature-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  list-style: none;
+}
+
+.about__feature-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-sm);
+  color: var(--color-text);
+  font-size: var(--font-size-base);
+}
+
+/* Ikonka przy każdym punkcie listy */
+.about__feature-list li::before {
+  content: "✓";
+  color: var(--color-accent);
+  font-weight: var(--font-weight-bold);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* ============================================================
+   3. SEKCJA USŁUG / CECH
+   ============================================================ */
+.section-services {
+  padding-top: var(--section-padding);
+  padding-bottom: var(--section-padding);
+}
+
+/* Ikona usługi (SVG, emoji lub font ikony) */
+.service-icon {
+  font-size: 2.5rem; /* Rozmiar ikony */
+  margin-bottom: var(--spacing-md);
+  display: block;
+}
+
+/* Karta z ikoną (bez obrazka) */
+.card--icon-top {
+  text-align: center;
+  padding: var(--spacing-xxl) var(--spacing-xl);
+  border: var(--border-width) solid var(--color-border);
+}
+
+.card--icon-top .card__body {
+  align-items: center;
+}
+
+/* ============================================================
+   4. SEKCJA GALERII
+   ============================================================ */
+.section-gallery {
+  padding-top: var(--section-padding);
+  padding-bottom: var(--section-padding);
+}
+
+/* Element galerii */
+.gallery-item {
+  overflow: hidden;
+  border-radius: var(--border-radius-sm);
+  background-color: var(--color-bg-section);
+}
+
+/* Efekt zoom przy hover na zdjęcia galerii */
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+  display: block;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.05); /* Powiększenie o 5% przy hover */
+}
+
+/* Wyróżniony element galerii (duży) */
+.gallery-item--featured {
+  min-height: 400px;
+  /* Oczekiwany obraz: 800x600px (ratio 4:3) */
+}
+
+/* Mniejsze elementy galerii */
+.gallery-item--small {
+  min-height: 190px;
+  /* Oczekiwany obraz: 400x300px (ratio 4:3) */
+}
+
+/* Link do rozszerzenia galerii */
+.gallery-link-more {
+  display: block;
+  text-align: center;
+  margin-top: var(--spacing-xl);
+}
+
+/* ============================================================
+   5. CALL TO ACTION (CTA) — Wezwanie do Działania
+   ============================================================ */
+.section-cta {
+  padding-top: var(--section-padding);
+  padding-bottom: var(--section-padding);
+  /* Oczekiwany obraz tła: 1920x600px (ratio ~16:5, szeroki baner) */
+  /* Ustaw background-image inline w HTML lub przez klasy */
+  background-color: var(--color-bg-dark);
+}
+
+/* Tytuł sekcji CTA */
+.cta-title {
+  font-size: var(--font-size-xxl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-heading-light);
+  margin-bottom: var(--spacing-lg);
+  line-height: var(--line-height-heading);
+}
+
+/* Tekst opisu CTA */
+.cta-text {
+  font-size: var(--font-size-md);
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: var(--spacing-xxl);
+  max-width: 560px;
+  line-height: var(--line-height-base);
+}
+
+/* Przyciski CTA */
+.cta-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+  justify-content: center;
+}
+
+/* ============================================================
+   6. PAGE HERO — Mały nagłówek podstrony (breadcrumb hero)
+   ============================================================ */
+.section-page-hero {
+  padding-top: var(--spacing-xxxl);
+  padding-bottom: var(--spacing-xxxl);
+  background-color: var(--color-bg-dark);
+  /* Oczekiwany obraz tła: 1920x400px (ratio ~16:3, wąski baner) */
+  text-align: center;
+}
+
+/* Tytuł podstrony */
+.page-hero-title {
+  font-size: var(--font-size-xxl);
+  color: var(--color-heading-light);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--spacing-md);
+}
+
+/* Breadcrumb nawigacja */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  font-size: var(--font-size-sm);
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.breadcrumb a {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.breadcrumb a:hover {
+  color: var(--color-accent);
+}
+
+/* Separator w breadcrumb */
+.breadcrumb__separator {
+  opacity: 0.5;
+}
+
+/* Aktywny (bieżący) element breadcrumb */
+.breadcrumb__current {
+  color: var(--color-accent);
+  font-weight: var(--font-weight-semibold);
+}
+
+/* ============================================================
+   7. TREŚĆ PODSTRONY
+   ============================================================ */
+.section-page-content {
+  padding-top: var(--section-padding);
+  padding-bottom: var(--section-padding);
+}
+
+/* Bogaty tekst artykułu (rich text / WYSIWYG output) */
+.rich-text h2 {
+  font-size: var(--font-size-xxl);
+  margin-bottom: var(--spacing-md);
+  margin-top: var(--spacing-xxl);
+}
+.rich-text h3 {
+  font-size: var(--font-size-xl);
+  margin-bottom: var(--spacing-sm);
+  margin-top: var(--spacing-xl);
+}
+.rich-text p {
+  margin-bottom: var(--spacing-md);
+  color: var(--color-text);
+  line-height: var(--line-height-base);
+}
+.rich-text ul,
+.rich-text ol {
+  margin-bottom: var(--spacing-md);
+  padding-left: var(--spacing-xl);
+}
+.rich-text ul {
+  list-style: disc;
+}
+.rich-text ol {
+  list-style: decimal;
+}
+.rich-text li {
+  margin-bottom: var(--spacing-sm);
+  line-height: var(--line-height-base);
+}
+.rich-text img {
+  border-radius: var(--border-radius);
+  margin: var(--spacing-xl) 0;
+}
+.rich-text blockquote {
+  border-left: 3px solid var(--color-accent);
+  padding-left: var(--spacing-lg);
+  margin: var(--spacing-xl) 0;
+  color: var(--color-text-light);
+  font-style: italic;
+  font-size: var(--font-size-md);
+}
+
+/* Boczna kolumna podstrony (sidebar) */
+.page-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+}
+
+/* Wiget w sidebarze */
+.sidebar-widget {
+  background-color: var(--color-bg-light);
+  border-radius: var(--border-radius);
+  padding: var(--spacing-xl);
+}
+
+.sidebar-widget__title {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-heading);
+  margin-bottom: var(--spacing-md);
+  padding-bottom: var(--spacing-sm);
+  border-bottom: var(--border-width) solid var(--color-border);
+}
+
+/* ============================================================
+   8. SEKCJA FAQ / AKORDEONU
+   ============================================================ */
+.section-faq {
+  padding-top: var(--section-padding);
+  padding-bottom: var(--section-padding);
+}
+
+/* Nagłówek pytania FAQ */
+.faq-question {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-heading);
+}
+
+/* ============================================================
+   9. SEKCJA KONTAKTOWA
+   ============================================================ */
+.section-contact {
+  padding-top: var(--section-padding);
+  padding-bottom: var(--section-padding);
+}
+
+/* Karta informacji kontaktowej */
+.contact-info-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+}
+
+/* Pojedynczy blok kontaktowy (adres, telefon, email) */
+.contact-block {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-md);
+}
+
+/* Ikona bloku kontaktowego */
+.contact-block__icon {
+  font-size: var(--font-size-xl);
+  color: var(--color-accent);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* Treść bloku kontaktowego */
+.contact-block__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.contact-block__label {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.contact-block__value {
+  font-size: var(--font-size-base);
+  color: var(--color-text);
+  font-weight: var(--font-weight-semibold);
+}
+
+.contact-block__value a {
+  color: var(--color-secondary);
+}
+
+.contact-block__value a:hover {
+  color: var(--color-accent);
+}
+
+/* Wrapper mapy Google */
+.contact-map-wrapper {
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  /* Oczekiwany rozmiar: pełna szerokość kolumny x 400px wysokość */
+}
+
+.contact-map-wrapper iframe {
+  display: block;
+  width: 100%;
+  height: 400px;
+  border: none;
+}

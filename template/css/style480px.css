@@ -1,0 +1,241 @@
+/* ============================================================
+   STYLE480PX.CSS — Responsywność dla ekranów ≤ 480px
+   ============================================================
+   Małe smartfony (≤ 480px).
+   Ostatni breakpoint — najbardziej agresywne uproszczenia layoutu.
+
+   Typowe zmiany na tym breakpoincie:
+    - Prawie wszystkie siatki → 1 kolumna
+    - Jeszcze mniejsze czcionki
+    - Minimalne paddingi
+    - Galeria 2-kolumnowa → 1 kolumna
+    - Przyciski pełnej szerokości
+    - Carousel ze strzałkami — uproszczony
+   ============================================================ */
+
+@media (max-width: 480px) {
+  /* ----------------------------------------------------------
+       ZMIENNE — Minimalne wartości dla bardzo małych ekranów
+    ---------------------------------------------------------- */
+  :root {
+    --section-padding: 2.5rem; /* 40px */
+    --section-padding-sm: 1.5rem; /* 24px */
+    --container-padding: 1rem; /* 16px */
+    --gap-columns: 1rem;
+    --gap-cards: 0.75rem;
+    --font-size-hero: 1.75rem; /* 28px */
+    --font-size-display: 2.25rem; /* 36px */
+    --font-size-xxl: 1.5rem; /* 24px */
+    --font-size-xl: 1.25rem; /* 20px */
+    --font-size-hero: 1.75rem; /* 28px */
+  }
+
+  /* ----------------------------------------------------------
+       NAWIGACJA — Minimalny rozmiar logo i przycisków
+    ---------------------------------------------------------- */
+
+  .navbar__logo {
+    font-size: var(--font-size-lg);
+  }
+
+  .navbar__logo img {
+    height: 36px;
+  }
+
+  /* ----------------------------------------------------------
+       LAYOUT — SIATKI → 1 KOLUMNA
+    ---------------------------------------------------------- */
+
+  /* Wszystkie auto-fit siatki → 1 kolumna na bardzo małym */
+  .layout-card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .layout-card-grid--narrow {
+    grid-template-columns: 1fr;
+  }
+
+  /* 3-kolumnowa → 1 kolumna */
+  .layout-card-grid--3col {
+    grid-template-columns: 1fr;
+  }
+
+  /* 2-kolumnowa → 1 kolumna */
+  .layout-card-grid--2col {
+    grid-template-columns: 1fr;
+  }
+
+  /* 4-kolumnowa → 1 kolumna */
+  .layout-card-grid--4col {
+    grid-template-columns: 1fr;
+  }
+
+  /* ----------------------------------------------------------
+       LAYOUT — GALERIA → 1 KOLUMNA
+    ---------------------------------------------------------- */
+
+  .layout-gallery-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+
+  .layout-gallery-grid__featured {
+    grid-column: span 1;
+  }
+
+  .layout-gallery-grid--4col {
+    grid-template-columns: 1fr;
+  }
+
+  .layout-gallery-grid--masonry {
+    grid-template-columns: 1fr;
+  }
+
+  /* ----------------------------------------------------------
+       SEKCJA HERO — Minimum na małym ekranie
+    ---------------------------------------------------------- */
+
+  .section-hero {
+    min-height: 50vh;
+  }
+
+  .hero-title {
+    font-size: var(--font-size-display); /* 36px */
+  }
+
+  /* ----------------------------------------------------------
+       GALERIA — Elementy na pełną szerokość
+    ---------------------------------------------------------- */
+
+  .gallery-item--small {
+    min-height: 200px;
+  }
+
+  .gallery-item--featured {
+    min-height: 250px;
+  }
+
+  /* ----------------------------------------------------------
+       KARTY — Obrazek niższy na bardzo małych
+    ---------------------------------------------------------- */
+
+  .card__image {
+    height: 180px;
+  }
+
+  /* ----------------------------------------------------------
+       CAROUSEL — Ukryj strzałki, pokaż tylko dot indicators
+    ---------------------------------------------------------- */
+
+  .carousel__arrow {
+    display: none; /* Strzałki zbyt duże na małym ekranie */
+  }
+
+  .carousel__slide img {
+    height: 220px;
+  }
+
+  /* ----------------------------------------------------------
+       STOPKA — Kolumny info → 1 kolumna
+    ---------------------------------------------------------- */
+
+  .footer-info {
+    flex-direction: column;
+    gap: var(--spacing-lg);
+  }
+
+  .footer-col {
+    min-width: unset;
+  }
+
+  .footer-bottom {
+    padding: var(--spacing-lg) var(--spacing-md);
+  }
+
+  /* ----------------------------------------------------------
+       PRZYCISKI — Pełna szerokość domyślnie na małych ekranach
+    ---------------------------------------------------------- */
+
+  /* Nie wymuszaj full-width globalnie — tylko w kontekstach gdzie to sensowne */
+  .btn-group {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .btn-group .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* ----------------------------------------------------------
+       SEKCJA CTA
+    ---------------------------------------------------------- */
+
+  .cta-title {
+    font-size: var(--font-size-xxl);
+  }
+
+  .cta-text {
+    font-size: var(--font-size-base);
+  }
+
+  /* ----------------------------------------------------------
+       FORMULARZE
+    ---------------------------------------------------------- */
+
+  .form__input {
+    font-size: var(--font-size-base); /* Zapobiega auto-zoom w Safari */
+  }
+
+  /* Textarea mniejsza na małym ekranie */
+  .form__textarea {
+    min-height: 100px;
+  }
+
+  /* ----------------------------------------------------------
+       KONTAKT — Mapa mniejsza
+    ---------------------------------------------------------- */
+
+  .contact-map-wrapper iframe {
+    height: 240px;
+  }
+
+  /* ----------------------------------------------------------
+       ACCORDION — Mniejszy padding
+    ---------------------------------------------------------- */
+
+  .accordion-item__header {
+    padding: var(--spacing-md) var(--spacing-lg);
+    font-size: var(--font-size-sm);
+  }
+
+  .accordion-item__content-inner {
+    padding: var(--spacing-md) var(--spacing-lg);
+  }
+
+  /* ----------------------------------------------------------
+       PAGINACJA — Mniejsze przyciski
+    ---------------------------------------------------------- */
+
+  .pagination__btn {
+    width: 36px;
+    height: 36px;
+    font-size: var(--font-size-xs);
+  }
+
+  /* ----------------------------------------------------------
+       SECTION HEADER — Mniejsze nagłówki sekcji
+    ---------------------------------------------------------- */
+
+  .section-header--centered {
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .section-heading {
+    font-size: var(--font-size-xxl); /* 24px */
+  }
+
+  .section-subheading {
+    font-size: var(--font-size-base);
+  }
+}
