@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Contact - Morski Park Handlowy</title>
+
+    <link rel="icon" type="image/x-icon" href="../images/favicon/favicon.ico" />
+
+    <link rel="preload" href="../css/style.css" as="style" />
+    <link rel="stylesheet" href="../css/style.css" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <header id="site-header"></header>
+
+    <section class="contact-page">
+      <h1>Contact Us</h1>
+
+      <div class="contact-info">
+        <div class="contact-box">
+          <h4>
+            <img
+              src="../images/mini/location.png"
+              alt=""
+              class="contact-icon"
+            />ADDRESS:
+          </h4>
+          <p>
+            Morski Park Handlowy<br />ul. Przywidzka 6,10A<br />80-174 Gdańsk
+          </p>
+        </div>
+
+        <div class="contact-box">
+          <h4>
+            <img
+              src="../images/mini/location.png"
+              alt=""
+              class="contact-icon"
+            />PROPERTY MANAGER:
+          </h4>
+          <p>
+            Savills sp. z o.o.<br />Al. Jana Pawła II 22<br />00-133 Warszawa
+          </p>
+        </div>
+
+        <div class="contact-box">
+          <h4>
+            <img
+              src="../images/mini/clock.png"
+              alt=""
+              class="contact-icon"
+            />OPENING HOURS:
+          </h4>
+          <p>Mon - Sat: 9:00 - 21:00<br />Sun: 9:00 - 20:00</p>
+        </div>
+
+        <div class="contact-box">
+          <h4>
+            <img
+              src="../images/mini/phone.png"
+              alt=""
+              class="contact-icon"
+            />PHONE:
+          </h4>
+          <p>(58) 322 36 70</p>
+        </div>
+      </div>
+
+      <div class="contact-map">
+        <iframe
+          src="https://www.google.com/maps?q=Morski+Park+Handlowy+Gdańsk&output=embed"
+          width="100%"
+          height="350"
+          allowfullscreen=""
+          loading="lazy"
+          title="Map to Morski Park Handlowy"
+        ></iframe>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer" id="site-footer"></footer>
+
+    <!-- Scripts -->
+    <script src="../js/script.js"></script>
+    <script>
+      loadComponent("site-header", "components/header.html", initMenuToggle);
+      loadComponent("site-footer", "components/footer.html");
+    </script>
+  </body>
+</html>

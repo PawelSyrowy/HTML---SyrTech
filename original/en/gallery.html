@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Gallery - Morski Park Handlowy</title>
+
+    <link rel="icon" type="image/x-icon" href="../images/favicon/favicon.ico" />
+
+    <link rel="preload" href="../css/style.css" as="style" />
+    <link rel="stylesheet" href="../css/style.css" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <header id="site-header"></header>
+
+    <!-- Gallery header with statistics -->
+    <section class="gallery-header">
+      <div class="gallery-header-track">
+        <div class="gallery-header-item">
+          <img
+            src="../images/gallery-mini/1.png"
+            alt="42,000m² of floor space"
+          />
+          <p>42,000m² of floor space</p>
+        </div>
+        <div class="gallery-header-item">
+          <img
+            src="../images/gallery-mini/2.png"
+            alt="Location next to the Tri-City Ring Road"
+          />
+          <p>excellent location right next to the Tri-City Ring Road</p>
+        </div>
+        <div class="gallery-header-item">
+          <img src="../images/gallery-mini/3.png" alt="Modern architecture" />
+          <p>modern architecture</p>
+        </div>
+        <div class="gallery-header-item">
+          <img
+            src="../images/gallery-mini/4.png"
+            alt="Parking for 1,500 cars"
+          />
+          <p>spacious parking for 1,500 cars</p>
+        </div>
+        <div class="gallery-header-item">
+          <img src="../images/gallery-mini/5.png" alt="Well-known brands" />
+          <p>well-known and popular brands</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery content -->
+    <section class="gallery-page">
+      <div class="gallery-container">
+        <div class="gallery-row">
+          <div class="gallery-text">
+            <h2>Morski Park Handlowy</h2>
+            <p>
+              The expanded Morski Shopping Centre offers a wide range of food,
+              furniture, home furnishings, and renovation and building
+              materials.
+            </p>
+          </div>
+          <div class="gallery-image">
+            <img
+              src="../images/carousel/karuzela1.jpg"
+              alt="Morski Park Handlowy"
+            />
+          </div>
+        </div>
+
+        <div class="gallery-row reverse">
+          <div class="gallery-text">
+            <p>
+              The hypermarket, service outlets and food and drink establishments
+              provide the opportunity for a comprehensive and enjoyable shopping
+              experience. The centre is situated near the rapidly developing
+              residential estates of Gdańsk Południe.
+            </p>
+            <p>
+              Its proximity to the Tri-City ring road makes it easily accessible
+              to customers from neighbouring towns. The extensive grounds and
+              the large number of free parking spaces make the centre an ideal
+              shopping destination.
+            </p>
+          </div>
+          <div class="gallery-image">
+            <img
+              src="../images/other/bilbord.png"
+              alt="Morski Park Handlowy billboard"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery photo carousel -->
+    <div class="gallery-carousel-wrapper">
+      <div id="gallery-carousel" class="shopping-mall carousel-section">
+        <div class="carousel-container">
+          <div class="carousel-track" id="carouselTrack1">
+            <img
+              src="../images/gallery/galeria1.jpg"
+              alt="Shopping centre — photo 1"
+              class="carousel-slide"
+            />
+            <img
+              src="../images/gallery/galeria2.jpg"
+              alt="Shopping centre — photo 2"
+              class="carousel-slide"
+            />
+            <img
+              src="../images/gallery/galeria3.jpg"
+              alt="Shopping centre — photo 3"
+              class="carousel-slide"
+            />
+            <img
+              src="../images/gallery/galeria4.jpg"
+              alt="Shopping centre — photo 4"
+              class="carousel-slide"
+            />
+          </div>
+          <div class="carousel-nav">
+            <button
+              class="carousel-arrow prev-carousel"
+              data-carousel="carouselTrack1"
+            >
+              &#10094;
+            </button>
+            <div class="carousel-indicators" id="indicators1">
+              <span class="carousel-bar" data-index="0"></span>
+              <span class="carousel-bar" data-index="1"></span>
+              <span class="carousel-bar" data-index="2"></span>
+              <span class="carousel-bar" data-index="3"></span>
+            </div>
+            <button
+              class="carousel-arrow next-carousel"
+              data-carousel="carouselTrack1"
+            >
+              &#10095;
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer" id="site-footer"></footer>
+
+    <!-- Scripts -->
+    <script src="../js/script.js"></script>
+    <script>
+      loadComponent("site-header", "components/header.html", initMenuToggle);
+      loadComponent("site-footer", "components/footer.html");
+    </script>
+  </body>
+</html>

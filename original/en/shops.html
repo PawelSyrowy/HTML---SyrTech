@@ -1,0 +1,757 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Shops - Morski Park Handlowy</title>
+
+    <link rel="icon" type="image/x-icon" href="../images/favicon/favicon.ico" />
+
+    <link rel="preload" href="../css/style.css" as="style" />
+    <link rel="stylesheet" href="../css/style.css" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <header id="site-header"></header>
+
+    <section class="shops-page">
+      <h1>Shops</h1>
+
+      <!-- Category filters -->
+      <div class="shop-filters">
+        <button class="filter active" data-category="all">All</button>
+        <button class="filter" data-category="spozywcze">
+          Food &amp; Groceries
+        </button>
+        <button class="filter" data-category="bielizna">Underwear</button>
+        <button class="filter" data-category="bizuteria">
+          Jewellery &amp; Accessories
+        </button>
+        <button class="filter" data-category="dzieci">For Children</button>
+        <button class="filter" data-category="zwierzeta">For Pets</button>
+        <button class="filter" data-category="dom-ogrod">
+          Home &amp; Garden
+        </button>
+        <button class="filter" data-category="elektronika">Electronics</button>
+        <button class="filter" data-category="ksiazki">
+          Books, Press &amp; Multimedia
+        </button>
+        <button class="filter" data-category="moda">Fashion</button>
+        <button class="filter" data-category="obuwie">
+          Footwear &amp; Leather Goods
+        </button>
+        <button class="filter" data-category="optyk">Optician</button>
+        <button class="filter" data-category="prezenty">Gifts</button>
+        <button class="filter" data-category="sport">Sport</button>
+        <button class="filter" data-category="zdrowie">
+          Health &amp; Beauty
+        </button>
+      </div>
+
+      <!-- Shop list -->
+      <div class="shops-grid">
+        <div class="shops-header">
+          <div>Shop</div>
+          <div>Description</div>
+          <div>Opening hours</div>
+          <div>Phone</div>
+        </div>
+
+        <!-- Agata -->
+        <div class="shop-card" data-category="dom-ogrod">
+          <div class="shop-row">
+            <div class="shop-col logo">
+              <a
+                href="https://www.agatameble.pl/"
+                target="_blank"
+                rel="noopener"
+              >
+                <img src="../images/shops/agata.png" alt="Agata" />
+              </a>
+            </div>
+            <div class="shop-col description">
+              <strong>Agata</strong>
+              <p>Furniture, home furnishings</p>
+            </div>
+            <div class="shop-col hours">
+              <p>Mon–Fri: 10:00–20:00</p>
+              <p>Sat: 10:00–20:00</p>
+              <p>Sun: 10:00–20:00</p>
+            </div>
+            <div class="shop-col phone">
+              <p>58 888 12 00</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Arte -->
+        <div class="shop-card" data-category="dom-ogrod">
+          <div class="shop-row">
+            <div class="shop-col logo">
+              <a href="https://arte.pl/" target="_blank" rel="noopener">
+                <img src="../images/shops/arte.png" alt="Arte" />
+              </a>
+            </div>
+            <div class="shop-col description">
+              <strong>Arte</strong>
+              <p>Carpets, runners, floor coverings</p>
+            </div>
+            <div class="shop-col hours">
+              <p>Mon–Fri: 10:00–21:00</p>
+              <p>Sat: 10:00–21:00</p>
+              <p>Sun: 10:00–20:00</p>
+            </div>
+            <div class="shop-col phone">
+              <p>58 743 25 40</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bel-Pol -->
+        <div class="shop-card" data-category="dom-ogrod">
+          <div class="shop-row">
+            <div class="shop-col logo">
+              <a href="https://bel-pol.pl/" target="_blank" rel="noopener">
+                <img src="../images/shops/belpol.png" alt="Bel-Pol" />
+              </a>
+            </div>
+            <div class="shop-col description">
+              <strong>Bel-Pol</strong>
+              <p>Floors, doors, panels</p>
+            </div>
+            <div class="shop-col hours">
+              <p>Mon–Fri: 09:00–21:00</p>
+              <p>Sat: 09:00–21:00</p>
+              <p>Sun: 09:00–20:00</p>
+            </div>
+            <div class="shop-col phone">
+              <p>58 301 78 39</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Black Red White -->
+        <div class="shop-card" data-category="dom-ogrod">
+          <div class="shop-row">
+            <div class="shop-col logo">
+              <a href="https://www.brw.pl/" target="_blank" rel="noopener">
+                <img src="../images/shops/brw.png" alt="Black Red White" />
+              </a>
+            </div>
+            <div class="shop-col description">
+              <strong>Black Red White</strong>
+              <p>Furniture, home furnishings</p>
+            </div>
+            <div class="shop-col hours">
+              <p>Mon–Fri: 10:00–21:00</p>
+              <p>Sat: 10:00–21:00</p>
+              <p>Sun: 10:00–20:00</p>
+            </div>
+            <div class="shop-col phone">
+              <p>795 572 342</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Carrefour -->
+        <div class="shop-card" data-category="spozywcze">
+          <div class="shop-row">
+            <div class="shop-col logo">
+              <a
+                href="https://www.carrefour.pl/"
+                target="_blank"
+                rel="noopener"
+              >
+                <img src="../images/shops/carrefour.png" alt="Carrefour" />
+              </a>
+            </div>
+            <div class="shop-col description">
+              <strong>Carrefour</strong>
+              <p>Hypermarket</p>
+            </div>
+            <div class="shop-col hours">
+              <p>Mon–Fri: 06:00–22:00</p>
+              <p>Sat: 06:00–22:00</p>
+              <p>Sun: 09:00–21:00</p>
+            </div>
+            <div class="shop-col phone">
+              <p>58 321 27 00</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Centrum Rowerowe -->
+        <div class="shop-card" data-category="sport">
+          <div class="shop-row">
+            <div class="shop-col logo">
+              <a
+                href="https://www.centrumrowerowe.pl/"
+                target="_blank"
+                rel="noopener"
+              >
+                <img
+                  src="../images/shops/centrumrowerowe.png"
+                  alt="Centrum Rowerowe"
+                />
+              </a>
+            </div>
+            <div class="shop-col description">
+              <strong>Centrum Rowerowe</strong>
+              <p>Bikes and sports accessories</p>
+            </div>
+            <div class="shop-col hours">
+              <p>Mon–Fri: 10:00–21:00</p>
+              <p>Sat: 10:00–21:00</p>
+              <p>Sun: 10:00–20:00</p>
+            </div>
+            <div class="shop-col phone">
+              <p>—</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- CTO - Centrum Taniej Odzieży -->
+        <div class="shop-card" data-category="moda">
+          <div class="shop-row">
+            <div class="shop-col logo">
+              <a
+                href="https://centrumtaniejodziezy.pl/"
+                target="_blank"
+                rel="noopener"
+              >
+                <img src="../images/shops/cto.png" alt="CTO" />
+              </a>
+            </div>
+            <div class="shop-col description">
+              <strong>CTO – Centrum Taniej Odzieży</strong>
+              <p>Second-hand clothing</p>
+            </div>
+            <div class="shop-col hours">
+              <p>Mon–Fri: 09:00–21:00</p>
+              <p>Sat: 09:00–21:00</p>
+              <p>Sun: 09:00–20:00</p>
+            </div>
+            <div class="shop-col phone">
+              <p>—</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dla Spania -->
+        <div class="shop-card" data-category="dom-ogrod">
+          <div class="shop-row">
+            <div class="shop-col logo">
+              <a
+                href="https://www.dlaspania.pl/"
+                target="_blank"
+                rel="noopener"
+              >
+                <img src="../images/shops/dlaspania.png" alt="Dla Spania" />
+              </a>
+            </div>
+            <div class="shop-col description">
+              <strong>Dla Spania</strong>
+              <p>Beds, mattresses, bedroom furnishings</p>
+            </div>
+            <div class="shop-col hours">
+              <p>Mon–Fri: 10:00–21:00</p>
+              <p>Sat: 10:00–21:00</p>
+              <p>Sun: 10:00–20:00</p>
+            </div>
+            <div class="shop-col phone">
+              <p>883 907 303</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- InMedio -->
+        <div class="shop-card" data-category="ksiazki">
+          <div class="shop-row">
+            <div class="shop-col logo">
+              <a
+                href="https://www.lagardere-tr.pl/pl/inmedio"
+                target="_blank"
+                rel="noopener"
+              >
+                <img src="../images/shops/inmedio.png" alt="InMedio" />
+              </a>
+            </div>
+            <div class="shop-col description">
+              <strong>InMedio</strong>
+              <p>Press, books, tobacco products</p>
+            </div>
+            <div class="shop-col hours">
+              <p>Mon–Fri: 09:00–21:00</p>
+              <p>Sat: 09:00–21:00</p>
+              <p>Sun: 09:00–20:00</p>
+            </div>
+            <div class="shop-col phone">
+              <p>571 296 777</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Jula -->
+        <div class="shop-card" data-category="dom-ogrod">
+          <div class="shop-row">
+            <div class="shop-col logo">
+              <a href="https://www.jula.pl/" target="_blank" rel="noopener">
+                <img src="../images/shops/jula.png" alt="Jula" />
+              </a>
+            </div>
+            <div class="shop-col description">
+              <strong>Jula</strong>
+              <p>Multi-market</p>
+            </div>
+            <div class="shop-col hours">
+              <p>Mon–Fri: 07:00–21:00</p>
+              <p>Sat: 07:00–21:00</p>
+              <p>Sun: 09:00–20:00</p>
+            </div>
+            <div class="shop-col phone">
+              <p>22 338 88 88</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Jysk -->
+        <div class="shop-card" data-category="dom-ogrod">
+          <div class="shop-row">
+            <div class="shop-col logo">
+              <a href="https://jysk.pl/" target="_blank" rel="noopener">
+                <img src="../images/shops/jysk.png" alt="Jysk" />
+              </a>
+            </div>
+            <div class="shop-col description">
+              <strong>Jysk</strong>
+              <p>Interior furnishings</p>
+            </div>
+            <div class="shop-col hours">
+              <p>Mon–Fri: 10:00–21:00</p>
+              <p>Sat: 10:00–21:00</p>
+              <p>Sun: 10:00–20:00</p>
+            </div>
+            <div class="shop-col phone">
+              <p>502 161 703</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Kantor ETC -->
+        <div class="shop-card" data-category="prezenty">
+          <div class="shop-row">
+            <div class="shop-col logo">
+              <!-- No logo — file images/shops/kantor.png missing -->
+              <img src="../images/shops/kantor.png" alt="Kantor ETC" />
+            </div>
+            <div class="shop-col description">
+              <strong>Kantor ETC</strong>
+              <p>Currency exchange</p>
+            </div>
+            <div class="shop-col hours">
+              <p>Mon–Fri: 09:00–21:00</p>
+              <p>Sat: 09:00–21:00</p>
+              <p>Sun: 09:00–20:00</p>
+            </div>
+            <div class="shop-col phone">
+              <p>58 300 00 88</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Komfort -->
+        <div class="shop-card" data-category="dom-ogrod">
+          <div class="shop-row">
+            <div class="shop-col logo">
+              <a href="https://komfort.pl/" target="_blank" rel="noopener">
+                <img src="../images/shops/komfort.png" alt="Komfort" />
+              </a>
+            </div>
+            <div class="shop-col description">
+              <strong>Komfort</strong>
+              <p>Panels, carpets, kitchen and bathroom fittings, accessories</p>
+            </div>
+            <div class="shop-col hours">
+              <p>Mon–Fri: 10:00–21:00</p>
+              <p>Sat: 10:00–21:00</p>
+              <p>Sun: 10:00–20:00</p>
+            </div>
+            <div class="shop-col phone">
+              <p>885 987 462</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- McDonald's -->
+        <div class="shop-card" data-category="spozywcze">
+          <div class="shop-row">
+            <div class="shop-col logo">
+              <a href="https://mcdonalds.pl/" target="_blank" rel="noopener">
+                <img src="../images/shops/mcdonalds.png" alt="McDonald's" />
+              </a>
+            </div>
+            <div class="shop-col description">
+              <strong>McDonald's</strong>
+              <p>Restaurant</p>
+            </div>
+            <div class="shop-col hours">
+              <p>Mon–Fri: 06:00–24:00</p>
+              <p>Sat: 06:00–24:00</p>
+              <p>Sun: 06:00–24:00</p>
+            </div>
+            <div class="shop-col phone">
+              <p>882 092 572</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Media Expert -->
+        <!-- No logo — file images/shops/mediaexpert.png missing -->
+        <div class="shop-card" data-category="elektronika">
+          <div class="shop-row">
+            <div class="shop-col logo">
+              <a
+                href="https://www.mediaexpert.pl/"
+                target="_blank"
+                rel="noopener"
+              >
+                <img src="../images/shops/mediaexpert.png" alt="Media Expert" />
+              </a>
+            </div>
+            <div class="shop-col description">
+              <strong>Media Expert</strong>
+              <p>Electronics, home appliances</p>
+            </div>
+            <div class="shop-col hours">
+              <p>Mon–Fri: 09:00–21:00</p>
+              <p>Sat: 09:00–21:00</p>
+              <p>Sun: 09:00–20:00</p>
+            </div>
+            <div class="shop-col phone">
+              <p>58 355 01 26</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Nexterio -->
+        <div class="shop-card" data-category="dom-ogrod">
+          <div class="shop-row">
+            <div class="shop-col logo">
+              <a href="https://nexterio.pl/" target="_blank" rel="noopener">
+                <img src="../images/shops/nexterio.png" alt="Nexterio" />
+              </a>
+            </div>
+            <div class="shop-col description">
+              <strong>Nexterio</strong>
+              <p>Wall and floor tiles</p>
+            </div>
+            <div class="shop-col hours">
+              <p>Mon–Fri: 09:00–21:00</p>
+              <p>Sat: 09:00–21:00</p>
+              <p>Sun: 09:00–21:00</p>
+            </div>
+            <div class="shop-col phone">
+              <p>885 985 424</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- OBI -->
+        <div class="shop-card" data-category="dom-ogrod">
+          <div class="shop-row">
+            <div class="shop-col logo">
+              <a href="https://www.obi.pl/" target="_blank" rel="noopener">
+                <img src="../images/shops/obi.png" alt="OBI" />
+              </a>
+            </div>
+            <div class="shop-col description">
+              <strong>OBI</strong>
+              <p>DIY and garden centre</p>
+            </div>
+            <div class="shop-col hours">
+              <p>Mon–Fri: 07:00–21:00</p>
+              <p>Sat: 07:00–21:00</p>
+              <p>Sun: 09:00–20:00</p>
+            </div>
+            <div class="shop-col phone">
+              <p>800 624 624</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Orange -->
+        <div class="shop-card" data-category="elektronika">
+          <div class="shop-row">
+            <div class="shop-col logo">
+              <a href="https://www.orange.pl/" target="_blank" rel="noopener">
+                <img src="../images/shops/orange.png" alt="Orange" />
+              </a>
+            </div>
+            <div class="shop-col description">
+              <strong>Orange</strong>
+              <p>Mobile services, phones, internet, TV</p>
+            </div>
+            <div class="shop-col hours">
+              <p>Mon–Fri: 09:00–21:00</p>
+              <p>Sat: 09:00–21:00</p>
+              <p>Sun: 09:00–20:00</p>
+            </div>
+            <div class="shop-col phone">
+              <p>58 303 28 81</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pan Materac -->
+        <div class="shop-card" data-category="dom-ogrod">
+          <div class="shop-row">
+            <div class="shop-col logo">
+              <a
+                href="https://www.panmaterac.pl/"
+                target="_blank"
+                rel="noopener"
+              >
+                <img src="../images/shops/panmaterac.png" alt="Pan Materac" />
+              </a>
+            </div>
+            <div class="shop-col description">
+              <strong>Pan Materac</strong>
+              <p>Beds, mattresses, bedroom furnishings</p>
+            </div>
+            <div class="shop-col hours">
+              <p>Mon–Fri: 10:00–21:00</p>
+              <p>Sat: 10:00–21:00</p>
+              <p>Sun: 10:00–20:00</p>
+            </div>
+            <div class="shop-col phone">
+              <p>575 088 774</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Piekarnia Cukiernia Raszczyk -->
+        <div class="shop-card" data-category="spozywcze">
+          <div class="shop-row">
+            <div class="shop-col logo">
+              <a href="https://raszczyk.com.pl/" target="_blank" rel="noopener">
+                <img
+                  src="../images/shops/raszczyk.png"
+                  alt="Piekarnia Cukiernia Raszczyk"
+                />
+              </a>
+            </div>
+            <div class="shop-col description">
+              <strong>Piekarnia Cukiernia Raszczyk</strong>
+              <p>Bakery, pastry shop</p>
+            </div>
+            <div class="shop-col hours">
+              <p>Mon–Fri: 08:00–21:00</p>
+              <p>Sat: 08:00–21:00</p>
+              <p>Sun: 10:00–20:00</p>
+            </div>
+            <div class="shop-col phone">
+              <p>602 163 321</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Rossmann -->
+        <div class="shop-card" data-category="zdrowie">
+          <div class="shop-row">
+            <div class="shop-col logo">
+              <a href="https://www.rossmann.pl/" target="_blank" rel="noopener">
+                <img src="../images/shops/rossmann.png" alt="Rossmann" />
+              </a>
+            </div>
+            <div class="shop-col description">
+              <strong>Rossmann</strong>
+              <p>Drugstore</p>
+            </div>
+            <div class="shop-col hours">
+              <p>Mon–Fri: 08:00–21:00</p>
+              <p>Sat: 08:00–21:00</p>
+              <p>Sun: 09:00–20:00</p>
+            </div>
+            <div class="shop-col phone">
+              <p>726 802 517</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- RRmoto -->
+        <div class="shop-card" data-category="sport">
+          <div class="shop-row">
+            <div class="shop-col logo">
+              <a href="https://rrmoto.pl/" target="_blank" rel="noopener">
+                <img src="../images/shops/rrmoto.png" alt="RRmoto" />
+              </a>
+            </div>
+            <div class="shop-col description">
+              <strong>RRmoto</strong>
+              <p>Motorcycle clothing and accessories</p>
+            </div>
+            <div class="shop-col hours">
+              <p>Mon–Fri: 10:00–21:00</p>
+              <p>Sat: 10:00–21:00</p>
+              <p>Sun: 10:00–20:00</p>
+            </div>
+            <div class="shop-col phone">
+              <p>504 504 831</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- RTV EURO AGD -->
+        <div class="shop-card" data-category="elektronika">
+          <div class="shop-row">
+            <div class="shop-col logo">
+              <a href="https://www.euro.com.pl/" target="_blank" rel="noopener">
+                <img src="../images/shops/rtveuroagd.png" alt="RTV EURO AGD" />
+              </a>
+            </div>
+            <div class="shop-col description">
+              <strong>RTV EURO AGD</strong>
+              <p>Electronics, home appliances</p>
+            </div>
+            <div class="shop-col hours">
+              <p>Mon–Fri: 10:00–21:00</p>
+              <p>Sat: 10:00–21:00</p>
+              <p>Sun: 10:00–20:00</p>
+            </div>
+            <div class="shop-col phone">
+              <p>85 585 58 55</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- T-Mobile -->
+        <div class="shop-card" data-category="elektronika">
+          <div class="shop-row">
+            <div class="shop-col logo">
+              <a href="https://www.t-mobile.pl/" target="_blank" rel="noopener">
+                <img src="../images/shops/tmobile.png" alt="T-Mobile" />
+              </a>
+            </div>
+            <div class="shop-col description">
+              <strong>T-Mobile</strong>
+              <p>Mobile services, phones, internet, TV</p>
+            </div>
+            <div class="shop-col hours">
+              <p>Mon–Fri: 10:00–21:00</p>
+              <p>Sat: 10:00–21:00</p>
+              <p>Sun: 10:00–20:00</p>
+            </div>
+            <div class="shop-col phone">
+              <p>728 901 183</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- TUI -->
+        <div class="shop-card" data-category="prezenty">
+          <div class="shop-row">
+            <div class="shop-col logo">
+              <a href="https://www.tui.pl/" target="_blank" rel="noopener">
+                <img src="../images/shops/tui.png" alt="TUI" />
+              </a>
+            </div>
+            <div class="shop-col description">
+              <strong>TUI</strong>
+              <p>Travel agency</p>
+            </div>
+            <div class="shop-col hours">
+              <p>Mon–Fri: 10:00–20:00</p>
+              <p>Sat: 10:00–18:00</p>
+              <p>Sun: 10:00–18:00</p>
+            </div>
+            <div class="shop-col phone">
+              <p>666 648 978</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- VOX Meble -->
+        <div class="shop-card" data-category="dom-ogrod">
+          <div class="shop-row">
+            <div class="shop-col logo">
+              <a href="https://vox.pl/" target="_blank" rel="noopener">
+                <img src="../images/shops/vox.png" alt="VOX Meble" />
+              </a>
+            </div>
+            <div class="shop-col description">
+              <strong>VOX Meble</strong>
+              <p>Furniture, home furnishings</p>
+            </div>
+            <div class="shop-col hours">
+              <p>Mon–Fri: 09:00–21:00</p>
+              <p>Sat: 09:00–21:00</p>
+              <p>Sun: 09:00–20:00</p>
+            </div>
+            <div class="shop-col phone">
+              <p>58 304 15 38</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ZOO Karina -->
+        <div class="shop-card" data-category="zwierzeta">
+          <div class="shop-row">
+            <div class="shop-col logo">
+              <a href="https://zookarina.pl/" target="_blank" rel="noopener">
+                <img src="../images/shops/zookarina.png" alt="ZOO Karina" />
+              </a>
+            </div>
+            <div class="shop-col description">
+              <strong>ZOO Karina</strong>
+              <p>Pet shop</p>
+            </div>
+            <div class="shop-col hours">
+              <p>Mon–Fri: 09:00–21:00</p>
+              <p>Sat: 09:00–21:00</p>
+              <p>Sun: 09:00–20:00</p>
+            </div>
+            <div class="shop-col phone">
+              <p>515 328 702</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer" id="site-footer"></footer>
+
+    <!-- Scripts -->
+    <script src="../js/script.js"></script>
+    <script>
+      /* Load components */
+      loadComponent("site-header", "components/header.html", initMenuToggle);
+      loadComponent("site-footer", "components/footer.html");
+
+      /* Shop filtering */
+      const filterButtons = document.querySelectorAll(".filter");
+      const shopCards = document.querySelectorAll(".shop-card");
+
+      filterButtons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          filterButtons.forEach((b) => b.classList.remove("active"));
+          btn.classList.add("active");
+
+          const category = btn.dataset.category;
+
+          shopCards.forEach((card) => {
+            const shouldShow =
+              category === "all" || card.dataset.category === category;
+            card.style.display = shouldShow ? "block" : "none";
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
