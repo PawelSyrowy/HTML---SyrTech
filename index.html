@@ -1,131 +1,616 @@
-﻿<!DOCTYPE html>
+<!doctype html>
 <html lang="pl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>SyrTech - Paweł Syrowy</title>
-    
-    <meta name="description" content="Paweł Syrowy – .NET Developer z Bydgoszczy. Usługi programistyczne, tworzenie aplikacji, projekty IT, portfolio i kontakt. Freelance i zlecenia IT.">
-    <meta name="keywords" content=".NET Developer Bydgoszcz, programista Bydgoszcz, usługi IT, portfolio programisty, freelancer IT, tworzenie aplikacji">
-    
-    <link rel="preload" href="css/style.css" as="style">
-    
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/sections.css">
-    <link rel="stylesheet" href="css/projects.css">
-    <link rel="stylesheet" href="css/contact.css">
-    <link rel="stylesheet" href="css/texts.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <title>
+      Paweł Syrowy – Tworzenie Stron Internetowych i WordPress | Bydgoszcz
+    </title>
+
+    <meta
+      name="description"
+      content="Profesjonalne strony internetowe i WordPress dla firm z Bydgoszczy i całej Polski. Szybka realizacja, atrakcyjne ceny, wsparcie po wdrożeniu. Zamów bezpłatną wycenę."
+    />
+    <meta
+      name="keywords"
+      content="tworzenie stron internetowych Bydgoszcz, strona WordPress Bydgoszcz, programista Bydgoszcz, sklep WooCommerce, strona firmowa, freelancer web developer, Paweł Syrowy, SyrTech"
+    />
+    <meta name="author" content="Paweł Syrowy" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://syrtech.pl/" />
+    <meta
+      property="og:title"
+      content="Paweł Syrowy – Tworzenie Stron Internetowych i WordPress | Bydgoszcz"
+    />
+    <meta
+      property="og:description"
+      content="Profesjonalne strony internetowe i WordPress dla firm z Bydgoszczy i całej Polski. Bezpłatna wycena, szybka realizacja."
+    />
+    <meta property="og:locale" content="pl_PL" />
+    <meta property="og:site_name" content="SyrTech" />
+
+    <link rel="canonical" href="https://syrtech.pl/" />
+    <link rel="icon" href="/img/logo1.png" type="image/png" />
+
+    <!-- CSS -->
+    <link rel="preload" href="css/style.css" as="style" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/sections.css" />
+    <link rel="stylesheet" href="css/projects.css" />
+    <link rel="stylesheet" href="css/contact.css" />
+
+    <!-- Schema.org — LocalBusiness + Person -->
     <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
             "@type": "Person",
             "name": "Paweł Syrowy",
-            "jobTitle": ".NET Developer",
+            "jobTitle": "Programista / Web Developer",
             "url": "https://syrtech.pl",
             "image": "https://syrtech.pl/img/logo2.png",
             "address": {
-                "@type": "PostalAddress",
-                "addressLocality": "Bydgoszcz",
-                "addressRegion": "Kujawsko-Pomorskie",
-                "addressCountry": "PL"
+              "@type": "PostalAddress",
+              "addressLocality": "Bydgoszcz",
+              "addressRegion": "Kujawsko-Pomorskie",
+              "addressCountry": "PL"
             },
             "sameAs": [
-                "https://play.google.com/store/apps/dev?id=5190791933761990081&hl=pl",
-                "https://github.com/PawSyrTech",
-                "https://www.linkedin.com/in/pawe%C5%82-syrowy-718b01205/",
-                "https://www.youtube.com/@PawelSyrowyGames",
-                "https://useme.com/pl/roles/contractor/pawel-syrowy,492583/"
+              "https://github.com/PawSyrTech",
+              "https://www.linkedin.com/in/pawe%C5%82-syrowy-718b01205/",
+              "https://useme.com/pl/roles/contractor/pawel-syrowy,492583/",
+              "https://play.google.com/store/apps/dev?id=5190791933761990081&hl=pl"
             ]
-        }
+          },
+          {
+            "@type": "LocalBusiness",
+            "name": "SyrTech – Paweł Syrowy",
+            "description": "Profesjonalne tworzenie stron internetowych i WordPress dla firm z Bydgoszczy i całej Polski.",
+            "url": "https://syrtech.pl",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Bydgoszcz",
+              "addressRegion": "Kujawsko-Pomorskie",
+              "addressCountry": "PL"
+            },
+            "areaServed": "PL",
+            "priceRange": "800-5000 PLN",
+            "serviceType": [
+              "Tworzenie stron internetowych",
+              "WordPress",
+              "WooCommerce",
+              "Aplikacje webowe"
+            ]
+          }
+        ]
+      }
     </script>
 
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z8E1ZDE54H"></script>
+    <!-- Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-Z8E1ZDE54H"
+    ></script>
     <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'G-Z8E1ZDE54H');
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-Z8E1ZDE54H");
     </script>
+  </head>
+  <body>
+    <!-- Nawigacja -->
+    <header id="site-header" role="banner"></header>
 
-    <link rel="canonical" href="https://syrtech.pl/" />
-</head>
-<body>
+    <!-- ===================== HERO ===================== -->
+    <section id="hero" class="hero" aria-labelledby="hero-heading">
+      <div class="hero__container container">
+        <div class="hero__badge">Bydgoszcz i zdalnie w całej Polsce</div>
 
-<!-- Nawigacja -->
-<header id="site-header"></header>
+        <h1 class="hero__title" id="hero-heading">
+          Tworzę strony,<br />
+          <span class="hero__title-accent">które sprzedają</span>
+        </h1>
 
-<!-- Powitanie -->
-<section id="welcome" class="welcome">
-    <h1>SyrTech</h1>
-<!--    <p>Witaj! Nazywam się <strong>Paweł Syrowy</strong>.</p>-->
-<!--    <p>Zajmuję się realizacją projektów IT, a tutaj znajdziesz moje portfolio.</p>-->
-    <p>Jestem .NET Developerem i tworzę aplikacje, które naprawdę działają. W wolnym czasie eksperymentuję z własnymi projektami <br>– to moja codzienna dawka kreatywności.</p>
-    <br>
-    <p>Szukam ciekawych wyzwań – może <strong>Twój projekt</strong> będzie jednym z nich?</p>
-</section>
+        <p class="hero__subtitle">
+          Jestem programistą z Bydgoszczy specjalizującym się w tworzeniu stron
+          internetowych i WordPress. Pomagam firmom zaistnieć w internecie i
+          przyciągać klientów online.
+        </p>
 
-<!-- Portfolio -->
-<section id="portfolio" class="portfolio">
-    <h2>Komercyjne Projekty</h2>
-    <div class="projects">
-        <div class="project-card">
-            <a
-                    class="project-preview-link"
-                    href="https://www.morski-park-wordpress.syrtech.pl"
-                    target="_blank">
-                <div class="project-preview">
-                    <div class="preview-bg"></div>
-                                        <img src="/img/morskipark.jpg" alt="Morski Park Handlowy preview">
-                    <span class="project-title">Morski Park Handlowy</span>
-                </div>
-            </a>
-            <p>Główna strona Morskiego Parku Handlowego</p>
+        <div class="hero__cta">
+          <a href="#pricing" class="btn btn-primary">Zamów bezpłatną wycenę</a>
+          <a href="#portfolio" class="btn btn-secondary">Zobacz realizacje</a>
         </div>
-    </div>
-    <div class="projects-separator"></div>
-    <h2>Moje Projekty</h2>
-    <div class="projects" id="projects-container"></div>
-</section>
 
-<!-- Usługi -->
-<section id="services" class="services">
-    <h1>Usługi Programistyczne – Bydgoszcz</h1>
-    <p>Tworzę aplikacje webowe, mobilne i desktopowe oraz realizuję projekty IT dla firm i klientów indywidualnych.</p>
-    <p>Pomagam w tworzeniu nowych rozwiązań, rozwijaniu istniejących systemów i integracjach.</p>
-    <p>Działam lokalnie w <strong>Bydgoszczy</strong> oraz zdalnie w całej Polsce.</p>
-</section>
+        <div class="hero__stats" aria-label="Statystyki">
+          <div class="hero__stat">
+            <span class="hero__stat-number">5+</span>
+            <span class="hero__stat-label">lat doświadczenia</span>
+          </div>
+          <div class="hero__stat">
+            <span class="hero__stat-number">10+</span>
+            <span class="hero__stat-label">ukończonych projektów</span>
+          </div>
+          <div class="hero__stat">
+            <span class="hero__stat-number">14 dni</span>
+            <span class="hero__stat-label">poprawki gratis</span>
+          </div>
+        </div>
+      </div>
 
-<!-- Kontakt -->
-<section id="contact" class="contact">
-    <h2>Kontakt</h2>
-    <div class="contact-container">
-        <p>Email:</p>
-        <div class="contact-wrapper">
-            <button id="email-btn" class="email-btn">Pokaż email</button>
-            <p id="email" class="email">
-                <a href="mailto:pawsyrtech@gmail.com">pawsyrtech@gmail.com</a>
+      <a href="#services" class="hero__scroll" aria-label="Przewiń w dół">
+        <span>przewiń</span>
+        <span class="hero__scroll-arrow" aria-hidden="true"></span>
+      </a>
+    </section>
+
+    <!-- ===================== USŁUGI ===================== -->
+    <section id="services" class="services" aria-labelledby="services-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">Co oferuję</span>
+          <h2 class="section-title" id="services-heading">
+            Usługi dla Twojej firmy
+          </h2>
+          <p class="section-subtitle">
+            Tworzę nowoczesne, szybkie i responsywne strony internetowe dla firm
+            z Bydgoszczy i całej Polski. Każdy projekt traktuję indywidualnie.
+          </p>
+        </div>
+
+        <div class="services__grid">
+          <article class="service-card">
+            <div class="service-card__icon" aria-hidden="true">🌐</div>
+            <h3 class="service-card__title">Strona firmowa</h3>
+            <p class="service-card__desc">
+              Profesjonalna strona wizytówka lub firmowa pisana od podstaw —
+              szybka, bezpieczna i zoptymalizowana pod SEO.
             </p>
+            <ul class="service-card__features">
+              <li>Responsywny design (mobile-first)</li>
+              <li>Optymalizacja prędkości i SEO</li>
+              <li>Formularz kontaktowy</li>
+              <li>Integracja Google Analytics</li>
+            </ul>
+          </article>
+
+          <article class="service-card service-card--featured">
+            <div class="service-card__badge">Najpopularniejsze</div>
+            <div class="service-card__icon" aria-hidden="true">🔷</div>
+            <h3 class="service-card__title">WordPress</h3>
+            <p class="service-card__desc">
+              Strony i sklepy oparte na WordPress / WooCommerce — łatwe w
+              obsłudze, gotowe do samodzielnej edycji po przekazaniu.
+            </p>
+            <ul class="service-card__features">
+              <li>Panel administracyjny WP</li>
+              <li>Sklep WooCommerce (opcjonalnie)</li>
+              <li>Indywidualny motyw lub premium</li>
+              <li>Szkolenie z obsługi w cenie</li>
+            </ul>
+          </article>
+
+          <article class="service-card">
+            <div class="service-card__icon" aria-hidden="true">⚙️</div>
+            <h3 class="service-card__title">Aplikacja webowa</h3>
+            <p class="service-card__desc">
+              Kompleksowe aplikacje internetowe — systemy rezerwacji, aplikacje
+              SaaS, portale z logowaniem i bazą danych.
+            </p>
+            <ul class="service-card__features">
+              <li>Backend i baza danych</li>
+              <li>Panel użytkownika</li>
+              <li>API i integracje zewnętrzne</li>
+              <li>Hosting i wdrożenie</li>
+            </ul>
+          </article>
+
+          <article class="service-card">
+            <div class="service-card__icon" aria-hidden="true">🔧</div>
+            <h3 class="service-card__title">Wsparcie i modyfikacje</h3>
+            <p class="service-card__desc">
+              Masz już stronę? Dokonam poprawek, rozbuduję funkcjonalności lub
+              przeniosę ją na nowy serwer.
+            </p>
+            <ul class="service-card__features">
+              <li>Modyfikacje istniejącej strony</li>
+              <li>Przyspieszenie i optymalizacja</li>
+              <li>Migracja serwera i domeny</li>
+              <li>Bieżące wsparcie techniczne</li>
+            </ul>
+          </article>
         </div>
-    </div>
-</section>
+      </div>
+    </section>
 
-<!-- Stopka -->
-<footer>
-    <div>
-        <p>&copy; 2026 SyrTech - Paweł Syrowy</p>
-    </div>
-</footer>
+    <!-- ===================== O MNIE ===================== -->
+    <section id="about" class="about" aria-labelledby="about-heading">
+      <div class="container">
+        <div class="about__inner">
+          <div class="about__content">
+            <span class="section-label">O mnie</span>
+            <h2 class="section-title" id="about-heading">
+              Paweł Syrowy<br />– programista z Bydgoszczy
+            </h2>
+            <p class="about__text">
+              Tworzę aplikacje i strony internetowe od ponad 5 lat. Specjalizuję
+              się w stronach dla małych i średnich firm — od prostych wizytówek
+              po rozbudowane sklepy internetowe i systemy webowe.
+            </p>
+            <p class="about__text">
+              Stawiam na jakość kodu, szybkość działania i prosty w obsłudze
+              efekt końcowy. Po każdym projekcie przekazuję pełną dokumentację i
+              wsparcie przy uruchomieniu.
+            </p>
 
-<!-- Skrypty -->
-<script src="js/script.js"></script>
-<script src="js/components.js"></script>
-<script>
-    loadComponent("site-header", "components/header.html", initMenuToggle);
-    loadPortfolio("projects-container");
-</script>
-</body>
+            <div class="about__skills" aria-label="Technologie">
+              <span class="skill-tag">HTML / CSS</span>
+              <span class="skill-tag">JavaScript</span>
+              <span class="skill-tag">WordPress</span>
+              <span class="skill-tag">WooCommerce</span>
+              <span class="skill-tag">PHP</span>
+              <span class="skill-tag">.NET / C#</span>
+              <span class="skill-tag">Angular</span>
+              <span class="skill-tag">SQL</span>
+              <span class="skill-tag">Git</span>
+              <span class="skill-tag">SEO</span>
+            </div>
+          </div>
+
+          <div class="about__highlights">
+            <div class="highlight-card">
+              <div class="highlight-card__icon" aria-hidden="true">📍</div>
+              <div>
+                <strong>Lokalizacja</strong>
+                <p>Bydgoszcz i zdalnie w całej Polsce</p>
+              </div>
+            </div>
+            <div class="highlight-card">
+              <div class="highlight-card__icon" aria-hidden="true">⏱️</div>
+              <div>
+                <strong>Czas realizacji</strong>
+                <p>Strony internetowe od 7 do 30 dni roboczych</p>
+              </div>
+            </div>
+            <div class="highlight-card">
+              <div class="highlight-card__icon" aria-hidden="true">📞</div>
+              <div>
+                <strong>Kontakt i komunikacja</strong>
+                <p>Odpowiedź na wiadomości w ciągu 24 godzin</p>
+              </div>
+            </div>
+            <div class="highlight-card">
+              <div class="highlight-card__icon" aria-hidden="true">✅</div>
+              <div>
+                <strong>Gwarancja jakości</strong>
+                <p>
+                  Poprawki bez dodatkowych kosztów przez 14 dni od wdrożenia
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== PORTFOLIO ===================== -->
+    <section
+      id="portfolio"
+      class="portfolio"
+      aria-labelledby="portfolio-heading"
+    >
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">Realizacje</span>
+          <h2 class="section-title" id="portfolio-heading">Moje projekty</h2>
+          <p class="section-subtitle">
+            Projekty komercyjne i własne — strony, aplikacje webowe i mobilne.
+          </p>
+        </div>
+
+        <p class="portfolio__category-title">Komercyjne</p>
+        <div class="projects">
+          <article class="project-card">
+            <a
+              class="project-preview-link"
+              href="https://www.morski-park-wordpress.syrtech.pl"
+              target="_blank"
+              rel="noopener"
+              aria-label="Morski Park Handlowy – otwórz projekt"
+            >
+              <div class="project-preview">
+                <div class="preview-bg" aria-hidden="true"></div>
+                <img
+                  src="img/morskipark.jpg"
+                  alt="Strona Morskiego Parku Handlowego na WordPress"
+                  loading="lazy"
+                />
+                <div class="project-title">Morski Park Handlowy</div>
+              </div>
+            </a>
+            <div class="project-card__body">
+              <p>Strona centrum handlowego wykonana w WordPress</p>
+              <div class="project-tags">
+                <span class="project-tag">WordPress</span>
+                <span class="project-tag">PHP</span>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <hr class="projects-separator" aria-hidden="true" />
+
+        <p class="portfolio__category-title">Projekty własne</p>
+        <div
+          class="projects"
+          id="projects-container"
+          aria-label="Lista własnych projektów"
+        ></div>
+      </div>
+    </section>
+
+    <!-- ===================== JAK DZIAŁAM ===================== -->
+    <section id="process" class="process" aria-labelledby="process-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">Jak działam</span>
+          <h2 class="section-title" id="process-heading">
+            Prosty proces realizacji
+          </h2>
+          <p class="section-subtitle">
+            Od pierwszego kontaktu do gotowej strony — klarowny, przejrzysty
+            proces bez zbędnych komplikacji.
+          </p>
+        </div>
+
+        <ol class="process__steps" aria-label="Kroki realizacji projektu">
+          <li class="process-step">
+            <div class="process-step__number" aria-hidden="true">01</div>
+            <div class="process-step__content">
+              <h3>Bezpłatna konsultacja</h3>
+              <p>
+                Omówimy Twoje potrzeby, cel strony i grupę docelową. Możemy
+                przez telefon, Zoom lub Messenger — jak wolisz.
+              </p>
+            </div>
+          </li>
+          <li class="process-step">
+            <div class="process-step__number" aria-hidden="true">02</div>
+            <div class="process-step__content">
+              <h3>Wycena i umowa</h3>
+              <p>
+                Otrzymasz szczegółową wycenę i harmonogram. Po akceptacji
+                podpisujemy umowę i startujemy z realizacją.
+              </p>
+            </div>
+          </li>
+          <li class="process-step">
+            <div class="process-step__number" aria-hidden="true">03</div>
+            <div class="process-step__content">
+              <h3>Projekt i realizacja</h3>
+              <p>
+                Tworzę projekt graficzny, a po Twojej akceptacji — kodowanie.
+                Jesteś na bieżąco z postępami przez cały czas.
+              </p>
+            </div>
+          </li>
+          <li class="process-step">
+            <div class="process-step__number" aria-hidden="true">04</div>
+            <div class="process-step__content">
+              <h3>Przekazanie i wsparcie</h3>
+              <p>
+                Uruchamiam stronę na Twoim hostingu i domenie. Przez 14 dni
+                poprawki i wsparcie bez dodatkowych kosztów.
+              </p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ===================== CENNIK ===================== -->
+    <section id="pricing" class="pricing" aria-labelledby="pricing-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">Cennik</span>
+          <h2 class="section-title" id="pricing-heading">Przejrzyste ceny</h2>
+          <p class="section-subtitle">
+            Orientacyjne ceny za typowe projekty. Każde zlecenie wyceniam
+            indywidualnie — skontaktuj się, aby uzyskać dokładną ofertę.
+          </p>
+        </div>
+
+        <div class="pricing__grid">
+          <article class="pricing-card">
+            <div class="pricing-card__header">
+              <h3 class="pricing-card__name">Landing Page</h3>
+              <div class="pricing-card__price">
+                <span class="pricing-card__from">od</span>
+                <span class="pricing-card__amount">800 zł</span>
+              </div>
+              <p class="pricing-card__desc">
+                Idealna dla freelancerów i małych firm potrzebujących
+                profesjonalnej obecności w internecie.
+              </p>
+            </div>
+            <ul class="pricing-card__features">
+              <li>✓ Jedna strona (scroll)</li>
+              <li>✓ Responsywny design mobile</li>
+              <li>✓ Formularz kontaktowy</li>
+              <li>✓ Podstawowa optymalizacja SEO</li>
+              <li>✓ Czas realizacji: 3–7 dni</li>
+            </ul>
+            <a href="#contact" class="btn btn-outline pricing-card__cta"
+              >Zamów wycenę</a
+            >
+          </article>
+
+          <article class="pricing-card pricing-card--featured">
+            <div class="pricing-card__badge">Polecane</div>
+            <div class="pricing-card__header">
+              <h3 class="pricing-card__name">Strona firmowa</h3>
+              <div class="pricing-card__price">
+                <span class="pricing-card__from">od</span>
+                <span class="pricing-card__amount">1 800 zł</span>
+              </div>
+              <p class="pricing-card__desc">
+                Pełna strona firmowa z wieloma podstronami, idealna dla małych i
+                średnich przedsiębiorstw.
+              </p>
+            </div>
+            <ul class="pricing-card__features">
+              <li>✓ Do 8 podstron</li>
+              <li>✓ WordPress lub HTML/CSS</li>
+              <li>✓ Blog / aktualności</li>
+              <li>✓ Zaawansowane SEO</li>
+              <li>✓ Google Analytics</li>
+              <li>✓ Czas realizacji: 7–21 dni</li>
+            </ul>
+            <a href="#contact" class="btn btn-primary pricing-card__cta"
+              >Zamów wycenę</a
+            >
+          </article>
+
+          <article class="pricing-card">
+            <div class="pricing-card__header">
+              <h3 class="pricing-card__name">Sklep WooCommerce</h3>
+              <div class="pricing-card__price">
+                <span class="pricing-card__from">od</span>
+                <span class="pricing-card__amount">3 000 zł</span>
+              </div>
+              <p class="pricing-card__desc">
+                Sklep internetowy gotowy do sprzedaży — płatności, zarządzanie
+                produktami, panel admina.
+              </p>
+            </div>
+            <ul class="pricing-card__features">
+              <li>✓ WordPress + WooCommerce</li>
+              <li>✓ Integracja płatności (Przelewy24)</li>
+              <li>✓ Panel zarządzania produktami</li>
+              <li>✓ Pełne SEO i analityka</li>
+              <li>✓ Szkolenie z obsługi w cenie</li>
+              <li>✓ Czas realizacji: 14–30 dni</li>
+            </ul>
+            <a href="#contact" class="btn btn-outline pricing-card__cta"
+              >Zamów wycenę</a
+            >
+          </article>
+        </div>
+
+        <p class="pricing__note">
+          Potrzebujesz aplikacji webowej lub niestandardowego rozwiązania?
+          <a href="#contact">Napisz do mnie</a> — każde zlecenie traktuję
+          indywidualnie.
+        </p>
+      </div>
+    </section>
+
+    <!-- ===================== KONTAKT ===================== -->
+    <section id="contact" class="contact" aria-labelledby="contact-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">Kontakt</span>
+          <h2 class="section-title" id="contact-heading">
+            Porozmawiajmy o&nbsp;Twoim projekcie
+          </h2>
+          <p class="section-subtitle">
+            Napisz do mnie — odpowiem w ciągu 24 godzin i zaproponuję bezpłatną
+            konsultację.
+          </p>
+        </div>
+
+        <div class="contact__inner">
+          <div class="contact__email-row">
+            <span class="contact-label">Email:</span>
+            <button
+              id="email-btn"
+              class="email-btn"
+              aria-label="Pokaż adres email"
+            >
+              Pokaż email
+            </button>
+            <p id="email" class="email">
+              <a href="mailto:pawsyrtech@gmail.com">pawsyrtech@gmail.com</a>
+            </p>
+          </div>
+
+          <div class="contact__social" aria-label="Linki społecznościowe">
+            <a
+              href="https://www.linkedin.com/in/pawe%C5%82-syrowy-718b01205/"
+              target="_blank"
+              rel="noopener"
+              class="contact__social-link"
+              aria-label="LinkedIn – Paweł Syrowy"
+            >
+              💼 LinkedIn
+            </a>
+            <a
+              href="https://github.com/PawSyrTech"
+              target="_blank"
+              rel="noopener"
+              class="contact__social-link"
+              aria-label="GitHub – PawSyrTech"
+            >
+              💻 GitHub
+            </a>
+            <a
+              href="https://useme.com/pl/roles/contractor/pawel-syrowy,492583/"
+              target="_blank"
+              rel="noopener"
+              class="contact__social-link"
+              aria-label="Useme – profil Pawła Syrowego"
+            >
+              🤝 Useme
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== FOOTER ===================== -->
+    <footer class="footer" role="contentinfo">
+      <div class="container">
+        <div class="footer__inner">
+          <div class="footer__brand">
+            <a href="#hero" class="footer__logo">SyrTech</a>
+            <p>
+              Profesjonalne strony internetowe i WordPress dla polskich firm.
+            </p>
+          </div>
+          <nav class="footer__nav" aria-label="Nawigacja w stopce">
+            <a href="#services">Usługi</a>
+            <a href="#about">O mnie</a>
+            <a href="#portfolio">Portfolio</a>
+            <a href="#pricing">Cennik</a>
+            <a href="#contact">Kontakt</a>
+          </nav>
+        </div>
+        <div class="footer__bottom">
+          <p>
+            &copy; <span id="footer-year"></span> SyrTech – Paweł Syrowy.
+            Wszelkie prawa zastrzeżone.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Skrypty -->
+    <script src="js/script.js"></script>
+    <script src="js/components.js"></script>
+    <script>
+      loadComponent("site-header", "components/header.html", initMenuToggle);
+      loadPortfolio("projects-container");
+      document.getElementById("footer-year").textContent =
+        new Date().getFullYear();
+    </script>
+  </body>
 </html>

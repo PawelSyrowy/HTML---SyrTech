@@ -1,52 +1,80 @@
-﻿/* Kontakt */
+/* ============================================================
+   CONTACT.CSS — Sekcja kontaktu: email + social
+   ============================================================ */
 
-.contact-container {
-    display: flex; 
-    flex-direction: row; 
-    justify-content: center; 
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.contact-wrapper {
-    display: flex;
-    flex-direction: row;
-    justify-content: left;
-    align-items: center;
-}
-
+/* Przycisk "Pokaż email" */
 .email-btn {
-    padding: 0.25rem 0.5rem;
-    border: 1px solid var(--primary-color);
-    border-radius: 24px;
-    background: transparent;
-    cursor: pointer;
-    color: var(--primary-color);
-    transition: opacity 0.2s ease, background-color 0.4s ease, color 0.4s ease;
+  padding: 0.5rem 1.25rem;
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
+  border-radius: var(--radius-xl);
+  background: transparent;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: var(--font-sm);
+  font-weight: 500;
+  font-family: var(--font);
+  transition:
+    opacity 0.2s ease,
+    background-color 0.3s ease,
+    border-color 0.3s ease;
 }
 
-.email-btn:hover{
-    color: var(--accent-color);
-    background-color: var(--primary-color);
+.email-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.6);
 }
 
 .email-btn.hide {
-    opacity: 0;
+  opacity: 0;
+  pointer-events: none;
+  width: 0;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  transition:
+    opacity 0.2s ease,
+    width 0.3s ease 0.2s,
+    padding 0.3s ease 0.2s;
 }
 
+/* Email link (ukryty, pojawia się po kliknięciu) */
 .email {
-    position: absolute;
-    opacity: 0;
-    overflow: hidden;
-    pointer-events: none;
-    transition: opacity 0.5s ease;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+  position: static; /* Naprawiono bug z position:absolute */
 }
 
 .email.show {
-    opacity: 1;
-    pointer-events: auto;
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .email a {
-    color: var(--primary-color);
+  color: #fff;
+  font-size: var(--font-lg);
+  font-weight: 600;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+  padding-bottom: 0.1rem;
+  transition: border-color var(--transition);
+}
+
+.email a:hover {
+  border-color: var(--color-orange);
+}
+
+/* Row z emailem */
+.contact__email-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  min-height: 2.5rem;
+}
+
+.contact-label {
+  font-size: var(--font-base);
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 500;
 }
