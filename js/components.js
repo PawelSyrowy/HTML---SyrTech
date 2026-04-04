@@ -26,8 +26,6 @@ function loadPortfolio(id) {
     "components/projects/starwars.html",
     "components/projects/czat.html",
     "components/projects/cleantisy.html",
-    "components/projects/table-editor.html",
-    "components/projects/dating-app.html",
   ];
 
   const container = document.getElementById(id);
