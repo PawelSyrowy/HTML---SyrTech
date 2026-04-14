@@ -1,0 +1,3 @@
+Historyjki służą do dopisywania kolejnych zadań dla agenta AI.
+Przy każdej historyjce powininen być dopisek czy została wykonana, czy czeka na wykonanie lub informacja że należy ją właśnie wykonać.
+Wykonane historyjki należy również dopisywać do dziennika iteracji.

@@ -1,0 +1,3 @@
+Dziennik iteracji służy do szybkich notatek dotyczących iteracji tworzonych przez agenta AI.
+Nie ma to być obszerny raport a szybka informacja co zostało zrobione w danej iteracji oraz ich numeracja.
+Jeśli w danej iteracji zostało wykonane User Story należy o tym wspomnieć.

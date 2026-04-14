@@ -1,0 +1,50 @@
+1. Projekt Edytor Tabel znajduje się wewnątrz folderu HTML---SyrTech. 
+Znajduje się na odrębnej gałęzi dotyczącej projektu pobocznego jakim jest edytor tabel.
+W skrócie jest to generator stylu CSS na podstawie wybranych przycisków i suwaków dostępnych w interfejsie.
+
+2. Projekt Edytor Tabel składa się z html, css i javascript.
+
+3. Zadaniem projektu jest rozpisanie stylów CSS w pliku style.css.
+Te style CSS silnie opierają się na variables.
+Następnie variables są przepisywane do klas CSS, których zadaniem jest opisać jak najwięcej elementów i kombinacji stylizacji tabeli.
+
+4. Użytkownik ma udostępniony interfejs, który odpowiada klasom CSS opisanym w style.css.
+Użytkownik może sterować przyciskami i suwakami interfejsu, aby modyfikować przykładową tabelę.
+
+5. Przykładowa tabela znajduje się w pliku index.html. Przykładowa tabela powinna mieć możliwość włączenie i wyłączenia headera i footera.
+Interfejs pozwalający na stylizowanie przykładowej tabeli powinnien odpowiednio reagowac na wyłączanie i włączanie headera i footera.
+
+6. Funkcje opisane są w pliku script.js.
+Przycisk "Generate CSS" zwraca użytkownikowi klasę CSS (o nazwie zdefiniowanej przez użytkownika), która opisuje obecny stan przykładowej tabeli - WYSIWYG.
+Przycisk "Load CSS" powoduje działanie odwrotne, użytkownik może wczytać klasę CSS i spowodować ustawienie interfejsu do edycji na odpowiednich miejsach.
+
+7. Celem projektu jest aby domyślny wygląd tabeli był czysty, zacząć od całkowicie nieostylowanej tabeli.
+Brak borderów, brak kolorów tła, brak narzuconych odstępów, pogrubienia lub kursywy - chcemy mieć wartości obojętne.
+W przypadku kiedy wartości obojętne nie są możliwe np. font-size, color, text-align itp. to chcemy nadać jak najbardziej neutranle wartości czyli np. kolejno 9px, black, left.
+
+8. Celem generowania CSS jest aby użytkownik otrzymał tabelę którą sam ostylował i mógł skopiować styl CSS do własnego projektu.
+Nie chcemy sytuacji, w której użytkownik kopiuje wygenerowany styl CSS do własnego projektu, a tam zaczynają mieszać mu się style. Naprzykład we własnym projekcie miał określone bordery, a w Edytorze Tabel tych borderów nie określił.
+Właśnie dlatego chcemy wypełniać generowany styl CSS neutralnymi wartościami czyli np. border: none.
+W ten sposób generujemy użytkownikowi rozbudowany styl CSS wypełniony neutralnymi wartościami, które nie pozwolą na przeciążenie w rodzimej aplikacji użytkownika, ale również nie narzucami użytkownikowi niestandardowego wyglądu na start.
+
+9. Chcemy aby użytkownik miał możliwość stylizować:
+- wartości dla całej tabeli
+- wartości dla headera tabeli
+- wartości dla footera tabeli
+- wartości dla body tabeli
+
+10. W pózniejszej wersji projektu chcemy pozwolić użytkownikowi stylizować:
+- dany rząd
+- daną kolumnę
+- daną komórkę
+- niestandardowe wybory np. wszystkie wiersze oprócz pierwszego i wszystkie komórki w pierwszej kolumnie
+
+11. W pózniejszej wersji projektu chcemy pozwolić użytkownikowi na wybór przykładowej tabeli z pośród 10 dostępnych przykładowych tabel.
+
+12. W późniejszej wersji projektu chcemy aby opisywane przez użytkownika elementy, kolumna, rząd, komórka itp. podświetlały się.
+
+13. Częstym niezrozumieniem w poprzedniej pracy nad tym projektem było to co ma zwracać przycisk "Generate CSS".
+Ten przycisk nie ma zwracać variables opisanych w style.css.
+Ten przycisk ma zwracać aktualnie określone style przykładowej tabeli na podstawie definicji ze style.css.
+Tabela wypełniona jest neutralnymi wartościami, jeśli nie wykorzystano interfejsu.
+Neutralne wartości są potrzebne, aby Edytor Tabel WYSIWYG, oddawał użytkownikowi klasę CSS, której style nie zostaną przeciążone przez style określone w jego rodzimej aplikacji.
