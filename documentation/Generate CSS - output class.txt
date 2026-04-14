@@ -1,0 +1,67 @@
+To jest klasa CSS zwracana przez Edytor Tabel po wciśnięciu przycisku "Generate CSS" na dzień 14.04.2026.
+Jest ona częściowo poprawna, ale w ramach rozpisanych assumptions.txt możemy stwierdzić że ma wiele brakujących pól i nie opisuje tak dużego zakresu tabeli jaki jest wymagany.
+Taki sam kod możemy wkleić i użyć przycisku "Load CSS" aby przywrócić interfejsu sterujący wyglądem tabeli do opisanych wartości.
+
+Output:
+
+.some-table-random-name{
+  width:56%;
+
+  margin:2px;
+
+  border-collapse:collapse;
+
+
+  font-family:sans-serif;
+
+  font-size:27px;
+
+  line-height:1rem;
+
+
+  background:#824040;
+
+  color:#be51cd;
+
+
+  border:1px solid green;
+
+  border-radius:7px;
+
+
+}
+
+.some-table-random-name thead{
+  background:#d25656;
+
+  color:#c02121;
+
+  font-size:15px;
+
+}
+
+.some-table-random-name tbody{
+  background:#a43d3d;
+
+
+}
+
+.some-table-random-name th,
+.some-table-random-name td{
+  border:1px solid pink;
+
+  padding:23px 23px;
+}
+
+.some-table-random-name tr{
+
+
+}
+
+.some-table-random-name tbody tr:nth-child(even){
+
+}
+
+.some-table-random-name tbody tr:hover{
+
+}

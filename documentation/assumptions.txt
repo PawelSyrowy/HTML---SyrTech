@@ -55,3 +55,8 @@ Pliki style.css i script.js powinny mieć najwięcej komentarzy, które dokładn
 15. Po każdej wykonanej iteracji Agent AI, powinnien edytować plik user_stories i oznaczyć historyjkę, którą wykonał jako "wykonana" lub "test" jeśli oczekuje na testy manualne.
 Po każdej iteracji Agent AI, powinnien uzupełnić plik iterations_diary aby w skrócie opisać czego dotyczyła iteracja.
 Po każdej iteracji Agent AI, powinnien dopisać kolejny raport z numerem iteracji w folderze Reports, którym obszerniej opisze zakres wprowadzonych zmian i decyzji.
+
+16. Aktualnie wiele właściwości wyglądu tabeli musi zostać ręcznie opisanych.
+W interfejście np. dla borderów musimy sami wpisać np. "1px solid black".
+Jest to bardzo niewygodne dla użytkownika, który nie wie co należy wpisać, dlatego musimy dać mu przyciski.
+W powyższym przypadku byłby to wybór liczby, dropdown z "solid", "dotted" itp. oraz wybór koloru.
