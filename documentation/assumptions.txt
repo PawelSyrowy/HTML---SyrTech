@@ -48,3 +48,10 @@ Ten przycisk nie ma zwracać variables opisanych w style.css.
 Ten przycisk ma zwracać aktualnie określone style przykładowej tabeli na podstawie definicji ze style.css.
 Tabela wypełniona jest neutralnymi wartościami, jeśli nie wykorzystano interfejsu.
 Neutralne wartości są potrzebne, aby Edytor Tabel WYSIWYG, oddawał użytkownikowi klasę CSS, której style nie zostaną przeciążone przez style określone w jego rodzimej aplikacji.
+
+14. Kod powinnien być silnie komentowany w języku polskim, w spójny sposób.
+Pliki style.css i script.js powinny mieć najwięcej komentarzy, które dokładnie opisują przeznaczenie danego fragmentu.
+
+15. Po każdej wykonanej iteracji Agent AI, powinnien edytować plik user_stories i oznaczyć historyjkę, którą wykonał jako "wykonana" lub "test" jeśli oczekuje na testy manualne.
+Po każdej iteracji Agent AI, powinnien uzupełnić plik iterations_diary aby w skrócie opisać czego dotyczyła iteracja.
+Po każdej iteracji Agent AI, powinnien dopisać kolejny raport z numerem iteracji w folderze Reports, którym obszerniej opisze zakres wprowadzonych zmian i decyzji.
