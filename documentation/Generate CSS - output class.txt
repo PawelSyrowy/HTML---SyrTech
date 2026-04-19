@@ -65,3 +65,5 @@ Output:
 .some-table-random-name tbody tr:hover{
 
 }
+
+Aktualizacja po iteracji 1:

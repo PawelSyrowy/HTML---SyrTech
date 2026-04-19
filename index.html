@@ -1,9 +1,16 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="pl">
   <head>
+    <!-- ================================================================
+         EDYTOR TABEL - Strona główna
+         ================================================================ -->
+
+    <!-- Meta tagi -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Edytor tabel</title>
+    <title>Edytor Tabel</title>
+
+    <!-- Preload i link do stylów CSS -->
     <link
       rel="preload"
       href="css/style.css"
@@ -12,12 +19,24 @@
     />
     <link rel="stylesheet" href="css/style.css" />
   </head>
+
   <body>
+    <!-- ================================================================
+         INTERFEJS EDYTORA
+         Kontener na dynamicznie generowane sekcje kontrolek
+         (generowane przez script.js)
+         ================================================================ -->
     <div class="editor"></div>
 
     <hr />
 
+    <!-- ================================================================
+         PRZYKŁADOWA TABELA DO PODGLĄDU
+         Tabela z atrybutem data-et-preview jest stylowana przez edytor.
+         Użytkownik widzi na niej efekty zmian w czasie rzeczywistym.
+         ================================================================ -->
     <table data-et-preview>
+      <!-- Nagłówek tabeli -->
       <thead>
         <tr>
           <th>Name</th>
@@ -25,6 +44,8 @@
           <th>City</th>
         </tr>
       </thead>
+
+      <!-- Ciało tabeli -->
       <tbody>
         <tr>
           <td>John</td>
@@ -36,18 +57,43 @@
           <td>30</td>
           <td>London</td>
         </tr>
+        <tr>
+          <td>Mike</td>
+          <td>28</td>
+          <td>Paris</td>
+        </tr>
       </tbody>
+
+      <!-- Stopka tabeli -->
+      <tfoot>
+        <tr>
+          <td colspan="3">Total: 3 records</td>
+        </tr>
+      </tfoot>
     </table>
 
     <hr />
 
-    <label>CSS class name</label>
-    <input id="className" placeholder="my-table" />
-    <button id="generate">Generate CSS</button>
-    <textarea id="output" rows="10"></textarea>
+    <!-- ================================================================
+         SEKCJA GENEROWANIA I WCZYTYWANIA CSS
+         ================================================================ -->
 
+    <!-- Pole do wpisania nazwy klasy CSS -->
+    <label for="className">Nazwa klasy CSS:</label>
+    <input id="className" placeholder="my-table" />
+
+    <!-- Przycisk generujący kod CSS -->
+    <button id="generate">Generate CSS</button>
+
+    <!-- Pole tekstowe z wygenerowanym kodem CSS -->
+    <textarea id="output" rows="20" placeholder="Tu pojawi się wygenerowany kod CSS..."></textarea>
+
+    <!-- Przycisk wczytujący kod CSS z powrotem do edytora -->
     <button id="load">Load CSS</button>
 
+    <!-- ================================================================
+         SKRYPT JAVASCRIPT
+         ================================================================ -->
     <script src="js/script.js"></script>
   </body>
 </html>

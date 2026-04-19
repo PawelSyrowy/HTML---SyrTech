@@ -1,153 +1,312 @@
-﻿:root {
-}
+/* ====================================================================
+   EDYTOR TABEL - STYLE CSS
+   Plik zawiera style dla edytora tabel oraz system CSS variables
+   wykorzystywany do dynamicznego stylowania przykładowej tabeli
+   ==================================================================== */
 
+/* ====================================================================
+   PODSTAWOWE RESETOWANIE STYLÓW
+   ==================================================================== */
+
+/* Box-sizing dla wszystkich elementów - ułatwia kontrolę wymiarów */
 * {
     box-sizing: border-box;
 }
 
-html {
-}
+/* ====================================================================
+   KLASA .et-preview - GŁÓWNA KLASA DLA PRZYKŁADOWEJ TABELI
 
-body {
-}
+   Ta klasa wykorzystuje CSS variables (zmienne CSS) do dynamicznego
+   sterowania wyglądem tabeli. Variables są modyfikowane przez JavaScript
+   w odpowiedzi na zmiany w interfejsie użytkownika.
 
-a {
-}
+   WAŻNE: Domyślne wartości są NEUTRALNE, aby nie narzucać stylów.
+   Generowany CSS zawiera te wartości, co zapobiega konfliktom stylów
+   gdy użytkownik wklei wygenerowany kod do swojego projektu.
+   ==================================================================== */
 
-.et-preview{
+.et-preview {
 
-    /* TABLE */
+    /* ----------------------------------------------------------------
+       VARIABLES - TABLE (podstawowe właściwości całej tabeli)
+       ---------------------------------------------------------------- */
+
+    /* Szerokość tabeli - domyślnie 100% kontenera */
     --et-width: 100%;
+
+    /* Marginesy wokół tabeli - domyślnie brak */
     --et-margin: 0;
+
+    /* Collapse zapewnia, że borders sąsiednich komórek się łączą */
     --et-border-collapse: collapse;
 
+    /* ----------------------------------------------------------------
+       VARIABLES - TYPOGRAFIA
+       ---------------------------------------------------------------- */
+
+    /* Rodzina czcionki - neutralna sans-serif */
     --et-font-family: sans-serif;
+
+    /* Rozmiar czcionki - standardowy 16px */
     --et-font-size: 16px;
+
+    /* Wysokość linii tekstu - standardowa 1.4 */
     --et-line-height: 1.4;
 
-    --et-bg: transparent;
-    --et-color: inherit;
+    /* ----------------------------------------------------------------
+       VARIABLES - KOLORY TABELI
+       ---------------------------------------------------------------- */
 
+    /* Tło tabeli - transparent = dziedziczone z rodzica */
+    --et-bg: transparent; //todo to powinno być neutralne czyli white
+
+    /* Kolor tekstu - inherit = dziedziczony z rodzica */
+    --et-color: inherit; //todo to powinno być neutralne czyli black
+
+    /* ----------------------------------------------------------------
+       VARIABLES - OBRAMOWANIE I EFEKTY TABELI
+       ---------------------------------------------------------------- */
+
+    /* Obramowanie tabeli - domyślnie brak */
     --et-border: none;
+
+    /* Zaokrąglenie rogów - domyślnie brak */
     --et-radius: 0;
+
+    /* Cień tabeli - domyślnie brak */
     --et-shadow: none;
 
-    /* HEADER */
+    /* ----------------------------------------------------------------
+       VARIABLES - HEADER (nagłówek tabeli - <thead>)
+       ---------------------------------------------------------------- */
+
+    /* Tło nagłówka - transparent = bez tła */
     --et-header-bg: transparent;
+
+    /* Kolor tekstu nagłówka - inherit = dziedziczony */
     --et-header-color: inherit;
+
+    /* Rozmiar czcionki nagłówka - inherit = dziedziczony z tabeli */
     --et-header-font-size: inherit;
+
+    /* Obramowanie nagłówka - domyślnie brak */
     --et-header-border: none;
 
-    /* BODY */
+    /* ----------------------------------------------------------------
+       VARIABLES - FOOTER (stopka tabeli - <tfoot>)
+       ---------------------------------------------------------------- */
+
+    /* Tło stopki - transparent = bez tła */
+    --et-footer-bg: transparent;
+
+    /* Kolor tekstu stopki - inherit = dziedziczony */
+    --et-footer-color: inherit;
+
+    /* Rozmiar czcionki stopki - inherit = dziedziczony z tabeli */
+    --et-footer-font-size: inherit;
+
+    /* Obramowanie stopki - domyślnie brak */
+    --et-footer-border: none;
+
+    /* ----------------------------------------------------------------
+       VARIABLES - BODY (ciało tabeli - <tbody>)
+       ---------------------------------------------------------------- */
+
+    /* Tło ciała tabeli - transparent = bez tła */
     --et-body-bg: transparent;
+
+    /* Kolor tekstu w ciele tabeli - inherit = dziedziczony */
     --et-body-color: inherit;
+
+    /* Rozmiar czcionki w ciele tabeli - inherit = dziedziczony */
     --et-body-font-size: inherit;
 
-    /* CELLS */
+    /* ----------------------------------------------------------------
+       VARIABLES - CELLS (komórki - <th> i <td>)
+       ---------------------------------------------------------------- */
+
+    /* Obramowanie komórek - domyślnie brak */
     --et-cell-border: none;
+
+    /* Padding poziomy (prawo/lewo) wewnątrz komórek */
     --et-cell-padding-x: 8px;
+
+    /* Padding pionowy (góra/dół) wewnątrz komórek */
     --et-cell-padding-y: 6px;
 
-    /* ROWS */
+    /* ----------------------------------------------------------------
+       VARIABLES - ROWS (wiersze - <tr>)
+       ---------------------------------------------------------------- */
+
+    /* Tło wiersza - transparent = bez tła */
     --et-row-bg: transparent;
+
+    /* Obramowanie dolne wiersza - domyślnie brak */
     --et-row-border: none;
+
+    /* Tło dla parzystych wierszy (zebra stripes) - domyślnie brak */
     --et-stripe-bg: transparent;
+
+    /* Tło wiersza po najechaniu myszką - domyślnie brak */
     --et-hover-bg: transparent;
 
+    /* ----------------------------------------------------------------
+       APLIKOWANIE VARIABLES DO WŁAŚCIWOŚCI CSS TABELI
+       Te właściwości są renderowane w przeglądarce
+       ---------------------------------------------------------------- */
+
+    /* Wymiary i odstępy */
     width: var(--et-width);
     margin: var(--et-margin);
     border-collapse: var(--et-border-collapse);
 
+    /* Typografia */
     font-family: var(--et-font-family);
     font-size: var(--et-font-size);
     line-height: var(--et-line-height);
 
+    /* Kolory */
     background: var(--et-bg);
     color: var(--et-color);
 
+    /* Obramowanie i efekty */
     border: var(--et-border);
     border-radius: var(--et-radius);
     box-shadow: var(--et-shadow);
 }
 
-/* HEADER */
+/* ====================================================================
+   STYLOWANIE NAGŁÓWKA TABELI (<thead>)
+   ==================================================================== */
 
-.et-preview thead{
+.et-preview thead {
     background: var(--et-header-bg);
     color: var(--et-header-color);
     font-size: var(--et-header-font-size);
     border: var(--et-header-border);
 }
 
-/* BODY */
+/* ====================================================================
+   STYLOWANIE STOPKI TABELI (<tfoot>)
+   ==================================================================== */
 
-.et-preview tbody{
+.et-preview tfoot {
+    background: var(--et-footer-bg);
+    color: var(--et-footer-color);
+    font-size: var(--et-footer-font-size);
+    border: var(--et-footer-border);
+}
+
+/* ====================================================================
+   STYLOWANIE CIAŁA TABELI (<tbody>)
+   ==================================================================== */
+
+.et-preview tbody {
     background: var(--et-body-bg);
     color: var(--et-body-color);
     font-size: var(--et-body-font-size);
 }
 
-/* CELLS */
+/* ====================================================================
+   STYLOWANIE KOMÓREK (<th> i <td>)
+   ==================================================================== */
 
 .et-preview th,
-.et-preview td{
+.et-preview td {
     border: var(--et-cell-border);
+    /* Padding: pionowy poziomy (top/bottom left/right) */
     padding: var(--et-cell-padding-y) var(--et-cell-padding-x);
 }
 
-/* ROWS */
+/* ====================================================================
+   STYLOWANIE WIERSZY (<tr>)
+   ==================================================================== */
 
-.et-preview tr{
+/* Wszystkie wiersze */
+.et-preview tr {
     background: var(--et-row-bg);
     border-bottom: var(--et-row-border);
 }
 
-.et-preview tbody tr:nth-child(even){
+/* Parzyste wiersze w tbody (efekt zebra stripes) */
+.et-preview tbody tr:nth-child(even) {
     background: var(--et-stripe-bg);
 }
 
-.et-preview tbody tr:hover{
+/* Wiersze po najechaniu myszką (efekt hover) */
+.et-preview tbody tr:hover {
     background: var(--et-hover-bg);
 }
 
+/* ====================================================================
+   STYLOWANIE INTERFEJSU EDYTORA
+   Style poniżej dotyczą tylko interfejsu kontrolek edytora,
+   NIE są częścią generowanego CSS dla użytkownika
+   ==================================================================== */
 
-.editor{
-    display:grid;
-    grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
-    gap:20px;
-    margin-bottom:40px;
+/* Kontener główny edytora - grid responsywny */
+.editor {
+    /* Grid z automatycznym dopasowaniem kolumn */
+    display: grid;
+    /* Minimalna szerokość kolumny 260px, maksymalna 1fr (równe części) */
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    /* Odstęp między sekcjami */
+    gap: 20px;
+    /* Odstęp od przykładowej tabeli */
+    margin-bottom: 40px;
 }
 
-/* sekcja */
+/* ====================================================================
+   SEKCJA KONTROLEK (np. "Table", "Header", "Body")
+   ==================================================================== */
 
-.et-section{
-    border:1px solid #e5e7eb;
-    border-radius:10px;
-    padding:16px;
-    background:#fafafa;
+.et-section {
+    /* Ramka sekcji */
+    border: 1px solid #e5e7eb;
+    /* Zaokrąglone rogi */
+    border-radius: 10px;
+    /* Wewnętrzny odstęp */
+    padding: 16px;
+    /* Jasne tło */
+    background: #fafafa;
 }
 
-.et-section-title{
-    font-weight:700;
-    margin-bottom:12px;
-    font-size:14px;
-    text-transform:uppercase;
-    letter-spacing:.04em;
+/* Tytuł sekcji (np. "TABLE", "HEADER") */
+.et-section-title {
+    /* Pogrubiony tekst */
+    font-weight: 700;
+    /* Odstęp od kontrolek poniżej */
+    margin-bottom: 12px;
+    /* Mniejszy rozmiar czcionki */
+    font-size: 14px;
+    /* Wielkie litery */
+    text-transform: uppercase;
+    /* Rozstrzelenie liter */
+    letter-spacing: 0.04em;
 }
 
-/* control */
+/* ====================================================================
+   POJEDYNCZA KONTROLKA (label + input)
+   ==================================================================== */
 
-.et-control{
-    display:flex;
-    flex-direction:column;
-    margin-bottom:2px;
+.et-control {
+    /* Układ pionowy (label nad inputem) */
+    display: flex;
+    flex-direction: column;
+    /* Mały odstęp między kontrolkami */
+    margin-bottom: 2px;
 }
 
-.et-control label{
-    font-size:13px;
-    margin-bottom:1px;
+/* Label kontrolki */
+.et-control label {
+    /* Mniejszy rozmiar czcionki */
+    font-size: 13px;
+    /* Minimalny odstęp od inputa */
+    margin-bottom: 1px;
 }
 
-.et-control input{
-    padding:6px;
+/* Input kontrolki (text, color, range) */
+.et-control input {
+    /* Wewnętrzny padding inputa */
+    padding: 6px;
 }

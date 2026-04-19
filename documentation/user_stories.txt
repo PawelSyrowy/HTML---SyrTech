@@ -2,10 +2,18 @@ Historyjki służą do dopisywania kolejnych zadań dla agenta AI.
 Przy każdej historyjce powininen być dopisek czy została wykonana, czy czeka na wykonanie lub informacja że należy ją właśnie wykonać.
 Wykonane historyjki należy również dopisywać do dziennika iteracji.
 
-1. Porządek w kodzie - do wykonania
+1. Porządek w kodzie - TEST (oczekuje na manualne testy)
 Aktualnie projekt jest napisany w bardzo chaotyczny sposób.
 Pliki style.css i script.js zawierają dużo nadmiarowego kodu, który wyniknął z niezrozumienia wymagań projektu.
 Również plik index.html jest napisany niedbale.
 Zadaniem jest posprzątanie kodu, uporządkowanie w logicznej kolejności, napisanie odpowiednich komentarzy w kodzie i czekanie na wyniki manualnych testów, które powinny sprawić że aplikacja działa nie gorzej niż wcześniej.
 Celem tego zadania jest również wygenerowanie dodatkowego raportu, w którym agent AI opisze jak rozumie działanie Edytora Tabel, rozpisze jego mocne i słabe strony, co należy poprawić i zmienić, jaką widzi drogę do osiągnięcia MVP i co mogłoby być rozwijane po MVP.
 Ważne jest również aby przeczytać "Generate CSS - output class" przed wykonaniem prac nad kodem.
+
+WYKONANE W ITERACJI 01:
+- Przepisano i uporządkowano css/style.css z szczegółowymi komentarzami
+- Przepisano i uporządkowano js/script.js z komentarzami JSDoc
+- Uporządkowano index.html z komentarzami HTML
+- Dodano wsparcie dla <tfoot> w całym projekcie
+- Wypełniono domyślne wartości neutralne w kontrolkach
+- Stworzono raport Iteracja_01_Raport.md w folderze documentation/Reports/

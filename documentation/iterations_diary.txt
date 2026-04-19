@@ -1,3 +1,28 @@
 Dziennik iteracji służy do szybkich notatek dotyczących iteracji tworzonych przez agenta AI.
 Nie ma to być obszerny raport a szybka informacja co zostało zrobione w danej iteracji oraz ich numeracja.
 Jeśli w danej iteracji zostało wykonane User Story należy o tym wspomnieć.
+
+========================================
+ITERACJA 01 - Data: 15.04.2026
+========================================
+User Story: 1. Porządek w kodzie
+Status: TEST (oczekuje na manualne testy)
+
+Wykonane prace:
+- Przepisano i uporządkowano css/style.css z obszerną dokumentacją
+- Przepisano i uporządkowano js/script.js z komentarzami JSDoc
+- Uporządkowano index.html z komentarzami HTML
+- Dodano pełne wsparcie dla <tfoot> (stopki tabeli) w całym projekcie
+- Wypełniono domyślne wartości neutralne we wszystkich kontrolkach
+- Dodano trzeci wiersz do przykładowej tabeli w tbody
+- Stworzono szczegółowy raport w documentation/Reports/Iteracja_01_Raport.md
+
+Zmiany w kodzie:
+- style.css: dodano variables i style dla tfoot, dodano komentarze opisujące każdą sekcję
+- script.js: dodano sekcję Footer z kontrolkami, dodano obsługę tfoot w Generate CSS i Load CSS
+- index.html: dodano <tfoot> do przykładowej tabeli, poprawiono strukturę HTML
+
+Następne kroki:
+- Testy manualne aplikacji
+- Poprawki ewentualnych bugów
+- Implementacja wypełniania neutralnych wartości w wygenerowanym CSS (obecnie funkcja css() pomija puste wartości)
