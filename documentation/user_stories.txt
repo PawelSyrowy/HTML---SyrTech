@@ -18,7 +18,7 @@ WYKONANE W ITERACJI 01:
 - Wypełniono domyślne wartości neutralne w kontrolkach
 - Stworzono raport Iteracja_01_Raport.md w folderze documentation/Reports/
 
-2. Brak neutralnych wartości w wygenerowanym CSS - zakończono pozytywnie
+2. Brak neutralnych wartości w wygenerowanym CSS - zakończono pozytywnie (efekty zmian widoczne w pliku Generate CSS - output class)
 **Problem:** Funkcja `css()` w `getTableCSS()` pomija puste wartości. Jeśli użytkownik nie ustawi np. border, to w wygenerowanym CSS nie będzie `border: none;`. To oznacza, że po wklejeniu do projektu użytkownika, jego style mogą przeciążyć nasz CSS.
 
 **Rozwiązanie:** Zawsze generować pełny CSS z neutralnymi wartościami, nawet jeśli użytkownik ich nie zmienił.
