@@ -2,7 +2,7 @@ Historyjki służą do dopisywania kolejnych zadań dla agenta AI.
 Przy każdej historyjce powininen być dopisek czy została wykonana, czy czeka na wykonanie lub informacja że należy ją właśnie wykonać.
 Wykonane historyjki należy również dopisywać do dziennika iteracji.
 
-1. Porządek w kodzie - TEST (oczekuje na manualne testy)
+1. Porządek w kodzie - zakończono pozytywnie
 Aktualnie projekt jest napisany w bardzo chaotyczny sposób.
 Pliki style.css i script.js zawierają dużo nadmiarowego kodu, który wyniknął z niezrozumienia wymagań projektu.
 Również plik index.html jest napisany niedbale.
@@ -17,3 +17,37 @@ WYKONANE W ITERACJI 01:
 - Dodano wsparcie dla <tfoot> w całym projekcie
 - Wypełniono domyślne wartości neutralne w kontrolkach
 - Stworzono raport Iteracja_01_Raport.md w folderze documentation/Reports/
+
+2. Brak neutralnych wartości w wygenerowanym CSS - zakończono pozytywnie
+**Problem:** Funkcja `css()` w `getTableCSS()` pomija puste wartości. Jeśli użytkownik nie ustawi np. border, to w wygenerowanym CSS nie będzie `border: none;`. To oznacza, że po wklejeniu do projektu użytkownika, jego style mogą przeciążyć nasz CSS.
+
+**Rozwiązanie:** Zawsze generować pełny CSS z neutralnymi wartościami, nawet jeśli użytkownik ich nie zmienił.
+
+WYKONANE W ITERACJI 02:
+- Zmodyfikowano funkcję css() aby przyjmowała trzeci parametr defaultVal
+- Zaktualizowano getTableCSS() aby wszystkie właściwości miały domyślne wartości neutralne
+- Wartości neutralne: transparent, inherit, none, 0, 100%, collapse, sans-serif, 16px, 1.4, #000000, 0px, 6px 8px
+- Stworzono raport Iteracja_02_Raport.md w folderze documentation/Reports/
+
+3. Niewygodne inputy typu text dla złożonych wartości - czeka na wykonanie
+**Problem:** Użytkownik musi ręcznie wpisywać wartości jak `1px solid black` dla borderów. To wymaga znajomości CSS i jest podatne na błędy.
+
+**Rozwiązanie:** Zastąpić pola tekstowe bardziej przyjaznymi kontrolkami (assumptions.txt punkt 16):
+- Border: osobny input dla width (range), style (dropdown), color (color picker)
+- Margin/Padding: oddzielne kontrolki dla każdej strony lub skrót
+- Font-family: dropdown z popularnymi czcionkami
+
+4. Brak możliwości włączania/wyłączania header i footer - czeka na wykonanie
+**Problem:** Assumptions.txt punkt 5 wymaga możliwości włączenia/wyłączenia header i footer. Obecnie nie ma takiej kontrolki.
+
+**Rozwiązanie:** Dodać checkboxy "Show header" i "Show footer" które pokazują/ukrywają odpowiednie sekcje tabeli i kontrolki.
+
+5. Ograniczone wsparcie dla inherit i transparent w Load CSS - czeka na wykonanie
+**Problem:** Wartości `inherit` i `transparent` są traktowane jak puste stringi w parsowaniu.
+
+**Rozwiązanie:** Poprawić logikę parsowania, aby rozróżniała brak wartości od wartości neutralnych.
+
+6. Brak walidacji wprowadzanych wartości - czeka na wykonanie
+**Problem:** Użytkownik może wpisać nieprawidłowe wartości CSS (np. "abc" jako font-size), co spowoduje błędy w CSS.
+
+**Rozwiązanie:** Dodać walidację inputów i komunikaty o błędach.

@@ -26,3 +26,28 @@ Następne kroki:
 - Testy manualne aplikacji
 - Poprawki ewentualnych bugów
 - Implementacja wypełniania neutralnych wartości w wygenerowanym CSS (obecnie funkcja css() pomija puste wartości)
+
+========================================
+ITERACJA 02 - Data: 19.04.2026
+========================================
+User Story: 2. Brak neutralnych wartości w wygenerowanym CSS
+Status: TEST (oczekuje na manualne testy)
+
+Wykonane prace:
+- Dodano nowe User Stories (2-6) wynikające z pierwszej iteracji
+- Zmodyfikowano funkcję css() aby obsługiwała domyślne wartości neutralne
+- Zaktualizowano funkcję getTableCSS() aby wypełniała wszystkie właściwości CSS domyślnymi wartościami neutralnymi
+
+Zmiany w kodzie:
+- js/script.js: funkcja css() teraz przyjmuje trzeci parametr defaultVal
+- js/script.js: wszystkie wywołania css() w getTableCSS() zawierają domyślne wartości neutralne
+- Wartości neutralne są zgodne z assumptions.txt punkt 7, 8 i 27
+
+Rozwiązanie problemu:
+Wcześniej gdy użytkownik nie ustawił np. border, to w wygenerowanym CSS nie było border: none;
+Teraz funkcja getTableCSS() ZAWSZE generuje pełen CSS z neutralnymi wartościami, nawet jeśli użytkownik ich nie zmienił.
+To zapobiega przeciążeniu stylów w projekcie użytkownika.
+
+Następne kroki:
+- Testy manualne - sprawdzić czy Generate CSS generuje pełny CSS z neutralnymi wartościami
+- Implementacja User Story 3 - lepsze kontrolki dla borderów i marginesów

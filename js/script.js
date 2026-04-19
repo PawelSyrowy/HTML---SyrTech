@@ -22,14 +22,20 @@ editableTable.classList.add("et-preview");
    ==================================================================== */
 
 /**
- * Generuje linię CSS tylko jeśli wartość jest zdefiniowana
+ * Generuje linię CSS zawsze z wartością - użyje domyślnej neutralnej jeśli nie podano
  * @param {string} prop - Nazwa właściwości CSS (np. "width")
  * @param {string} val - Wartość właściwości CSS (np. "100%")
- * @returns {string} - Sformatowana linia CSS lub pusty string
+ * @param {string} defaultVal - Wartość domyślna neutralna (opcjonalna)
+ * @returns {string} - Sformatowana linia CSS
  */
-function css(prop, val) {
-  if (val === undefined || val === "") return "";
-  return `  ${prop}: ${val};\n`;
+function css(prop, val, defaultVal = null) {
+  // Jeśli wartość nie jest zdefiniowana, użyj domyślnej neutralnej
+  const finalVal = (val === undefined || val === "") && defaultVal !== null ? defaultVal : val;
+
+  // Jeśli nadal brak wartości i nie ma domyślnej, nie generuj linii
+  if (finalVal === undefined || finalVal === "") return "";
+
+  return `  ${prop}: ${val || defaultVal};\n`;
 }
 
 /**
@@ -40,63 +46,63 @@ function css(prop, val) {
 function getTableCSS(className) {
   return `
 .${className} {
-${css("width", tableConfig["--et-width"])}
-${css("margin", tableConfig["--et-margin"])}
-${css("border-collapse", tableConfig["--et-border-collapse"])}
+${css("width", tableConfig["--et-width"], "100%")}
+${css("margin", tableConfig["--et-margin"], "0")}
+${css("border-collapse", tableConfig["--et-border-collapse"], "collapse")}
 
-${css("font-family", tableConfig["--et-font-family"])}
-${css("font-size", tableConfig["--et-font-size"])}
-${css("line-height", tableConfig["--et-line-height"])}
+${css("font-family", tableConfig["--et-font-family"], "sans-serif")}
+${css("font-size", tableConfig["--et-font-size"], "16px")}
+${css("line-height", tableConfig["--et-line-height"], "1.4")}
 
-${css("background", tableConfig["--et-bg"])}
-${css("color", tableConfig["--et-color"])}
+${css("background", tableConfig["--et-bg"], "transparent")}
+${css("color", tableConfig["--et-color"], "#000000")}
 
-${css("border", tableConfig["--et-border"])}
-${css("border-radius", tableConfig["--et-radius"])}
-${css("box-shadow", tableConfig["--et-shadow"])}
+${css("border", tableConfig["--et-border"], "none")}
+${css("border-radius", tableConfig["--et-radius"], "0px")}
+${css("box-shadow", tableConfig["--et-shadow"], "none")}
 }
 
 .${className} thead {
-${css("background", tableConfig["--et-header-bg"])}
-${css("color", tableConfig["--et-header-color"])}
-${css("font-size", tableConfig["--et-header-font-size"])}
-${css("border", tableConfig["--et-header-border"])}
+${css("background", tableConfig["--et-header-bg"], "transparent")}
+${css("color", tableConfig["--et-header-color"], "inherit")}
+${css("font-size", tableConfig["--et-header-font-size"], "inherit")}
+${css("border", tableConfig["--et-header-border"], "none")}
 }
 
 .${className} tfoot {
-${css("background", tableConfig["--et-footer-bg"])}
-${css("color", tableConfig["--et-footer-color"])}
-${css("font-size", tableConfig["--et-footer-font-size"])}
-${css("border", tableConfig["--et-footer-border"])}
+${css("background", tableConfig["--et-footer-bg"], "transparent")}
+${css("color", tableConfig["--et-footer-color"], "inherit")}
+${css("font-size", tableConfig["--et-footer-font-size"], "inherit")}
+${css("border", tableConfig["--et-footer-border"], "none")}
 }
 
 .${className} tbody {
-${css("background", tableConfig["--et-body-bg"])}
-${css("color", tableConfig["--et-body-color"])}
-${css("font-size", tableConfig["--et-body-font-size"])}
+${css("background", tableConfig["--et-body-bg"], "transparent")}
+${css("color", tableConfig["--et-body-color"], "inherit")}
+${css("font-size", tableConfig["--et-body-font-size"], "inherit")}
 }
 
 .${className} th,
 .${className} td {
-${css("border", tableConfig["--et-cell-border"])}
-${
+${css("border", tableConfig["--et-cell-border"], "none")}
+${css("padding",
   tableConfig["--et-cell-padding-y"] && tableConfig["--et-cell-padding-x"]
-    ? `  padding: ${tableConfig["--et-cell-padding-y"]} ${tableConfig["--et-cell-padding-x"]};\n`
-    : ""
-}
+    ? `${tableConfig["--et-cell-padding-y"]} ${tableConfig["--et-cell-padding-x"]}`
+    : null,
+  "6px 8px")}
 }
 
 .${className} tr {
-${css("background", tableConfig["--et-row-bg"])}
-${css("border-bottom", tableConfig["--et-row-border"])}
+${css("background", tableConfig["--et-row-bg"], "transparent")}
+${css("border-bottom", tableConfig["--et-row-border"], "none")}
 }
 
 .${className} tbody tr:nth-child(even) {
-${css("background", tableConfig["--et-stripe-bg"])}
+${css("background", tableConfig["--et-stripe-bg"], "transparent")}
 }
 
 .${className} tbody tr:hover {
-${css("background", tableConfig["--et-hover-bg"])}
+${css("background", tableConfig["--et-hover-bg"], "transparent")}
 }
 `;
 }
