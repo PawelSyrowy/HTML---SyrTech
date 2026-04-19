@@ -66,4 +66,89 @@ Output:
 
 }
 
-Aktualizacja po iteracji 1:
+Aktualizacja po iteracji 2:
+
+
+.rgdgd {
+  width: 100%;
+
+  margin: 0;
+
+  border-collapse: collapse;
+
+
+  font-family: sans-serif;
+
+  font-size: 16px;
+
+  line-height: 1.4;
+
+
+  background: transparent;
+
+  color: #000000;
+
+
+  border: none;
+
+  border-radius: 0px;
+
+  box-shadow: none;
+
+}
+
+.rgdgd thead {
+  background: transparent;
+
+  color: inherit;
+
+  font-size: inherit;
+
+  border: none;
+
+}
+
+.rgdgd tfoot {
+  background: transparent;
+
+  color: inherit;
+
+  font-size: inherit;
+
+  border: none;
+
+}
+
+.rgdgd tbody {
+  background: transparent;
+
+  color: inherit;
+
+  font-size: inherit;
+
+}
+
+.rgdgd th,
+.rgdgd td {
+  border: none;
+
+  padding: 6px 8px;
+
+}
+
+.rgdgd tr {
+  background: transparent;
+
+  border-bottom: none;
+
+}
+
+.rgdgd tbody tr:nth-child(even) {
+  background: transparent;
+
+}
+
+.rgdgd tbody tr:hover {
+  background: transparent;
+
+}
