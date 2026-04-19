@@ -58,10 +58,10 @@
        ---------------------------------------------------------------- */
 
     /* Tło tabeli - transparent = dziedziczone z rodzica */
-    --et-bg: transparent; //todo to powinno być neutralne czyli white
+    --et-bg: transparent;
 
     /* Kolor tekstu - inherit = dziedziczony z rodzica */
-    --et-color: inherit; //todo to powinno być neutralne czyli black
+    --et-color: inherit;
 
     /* ----------------------------------------------------------------
        VARIABLES - OBRAMOWANIE I EFEKTY TABELI
