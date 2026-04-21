@@ -310,3 +310,80 @@
     /* Wewnętrzny padding inputa */
     padding: 6px;
 }
+
+/* Select kontrolki (dropdown) */
+.et-control select {
+    /* Wewnętrzny padding selecta */
+    padding: 6px;
+    /* Pełna szerokość */
+    width: 100%;
+    /* Zaokrąglone rogi */
+    border-radius: 4px;
+    /* Ramka */
+    border: 1px solid #d1d5db;
+}
+
+/* ====================================================================
+   KONTROLKA BORDER (width + style + color)
+   ==================================================================== */
+
+.et-control-border {
+    /* Układ poziomy (flex row) */
+    display: flex;
+    gap: 6px;
+    align-items: center;
+}
+
+.et-control-border input[type="range"] {
+    /* Range zajmuje 40% szerokości */
+    flex: 0 0 40%;
+}
+
+.et-control-border select {
+    /* Select zajmuje pozostałą przestrzeń */
+    flex: 1;
+    padding: 4px;
+    font-size: 12px;
+}
+
+.et-control-border input[type="color"] {
+    /* Color picker - stała szerokość */
+    width: 40px;
+    height: 28px;
+    padding: 2px;
+    border-radius: 4px;
+    border: 1px solid #d1d5db;
+    cursor: pointer;
+}
+
+/* ====================================================================
+   KONTROLKA MARGIN (top/right/bottom/left)
+   ==================================================================== */
+
+.et-control-margin {
+    /* Grid 2x2 dla 4 stron */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
+}
+
+.et-margin-side {
+    /* Każda strona: label + range */
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.et-margin-label {
+    /* Label pojedynczej litery (T/R/B/L) */
+    font-size: 11px;
+    font-weight: 600;
+    color: #6b7280;
+    width: 12px;
+    text-align: center;
+}
+
+.et-margin-side input[type="range"] {
+    /* Range zajmuje pozostałą przestrzeń */
+    flex: 1;
+}

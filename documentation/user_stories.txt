@@ -29,13 +29,24 @@ WYKONANE W ITERACJI 02:
 - Wartości neutralne: transparent, inherit, none, 0, 100%, collapse, sans-serif, 16px, 1.4, #000000, 0px, 6px 8px
 - Stworzono raport Iteracja_02_Raport.md w folderze documentation/Reports/
 
-3. Niewygodne inputy typu text dla złożonych wartości - czeka na wykonanie
+3. Niewygodne inputy typu text dla złożonych wartości - zakończono pozytywnie
 **Problem:** Użytkownik musi ręcznie wpisywać wartości jak `1px solid black` dla borderów. To wymaga znajomości CSS i jest podatne na błędy.
 
 **Rozwiązanie:** Zastąpić pola tekstowe bardziej przyjaznymi kontrolkami (assumptions.txt punkt 16):
 - Border: osobny input dla width (range), style (dropdown), color (color picker)
 - Margin/Padding: oddzielne kontrolki dla każdej strony lub skrót
 - Font-family: dropdown z popularnymi czcionkami
+
+WYKONANE W ITERACJI 03:
+- Zamieniono wszystkie kontrolki border na kompozytowe kontrolki (range dla width, select dla style, color picker dla koloru)
+- Zamieniono kontrolkę margin na 4 osobne range inputy (top, right, bottom, left)
+- Zamieniono kontrolkę font-family na dropdown z popularnymi czcionkami
+- Zamieniono kontrolkę border-collapse na dropdown (collapse/separate)
+- Zaktualizowano funkcję createControl() aby obsługiwała nowe typy kontrolek
+- Dodano funkcje parseBorderValue() i parseMarginValue() do parsowania wartości przy Load CSS
+- Zaktualizowano funkcję updateInputs() aby prawidłowo wypełniała nowe kontrolki
+- Dodano style CSS dla nowych kontrolek (et-control-border, et-control-margin)
+- Dotyczy: Table Border, Header Border, Footer Border, Cell Border, Row Border, Table Margin
 
 4. Brak możliwości włączania/wyłączania header i footer - czeka na wykonanie
 **Problem:** Assumptions.txt punkt 5 wymaga możliwości włączenia/wyłączenia header i footer. Obecnie nie ma takiej kontrolki.

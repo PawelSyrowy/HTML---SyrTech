@@ -51,3 +51,37 @@ To zapobiega przeciążeniu stylów w projekcie użytkownika.
 Następne kroki:
 - Testy manualne - sprawdzić czy Generate CSS generuje pełny CSS z neutralnymi wartościami
 - Implementacja User Story 3 - lepsze kontrolki dla borderów i marginesów
+
+========================================
+ITERACJA 03 - Data: 21.04.2026
+========================================
+User Story: 3. Niewygodne inputy typu text dla złożonych wartości
+Status: TEST (oczekuje na manualne testy)
+
+Wykonane prace:
+- Zamieniono wszystkie kontrolki border (Table, Header, Footer, Cells, Rows) na kompozytowe kontrolki:
+  * Range input (0-10px) dla szerokości ramki
+  * Dropdown select (none/solid/dashed/dotted/double) dla stylu ramki
+  * Color picker dla koloru ramki
+- Zamieniono kontrolkę margin na 4 osobne range inputy (Top/Right/Bottom/Left) w układzie grid 2x2
+- Zamieniono kontrolkę font-family na dropdown z 10 popularnymi czcionkami
+- Zamieniono kontrolkę border-collapse na dropdown (collapse/separate)
+
+Zmiany w kodzie:
+- js/script.js: Przepisano funkcję createControl() z obsługą 3 nowych typów kontrolek (border, margin, select)
+- js/script.js: Dodano funkcje parseBorderValue() i parseMarginValue() do parsowania przy Load CSS
+- js/script.js: Zaktualizowano mapCssToVar() i extractCells() aby parsowały złożone wartości
+- js/script.js: Całkowicie przepisano updateInputs() aby obsługiwała nowe kontrolki
+- css/style.css: Dodano style dla .et-control-border i .et-control-margin
+- Zaktualizowano definicje kontrolek w sekcjach (sections array)
+
+Korzyści dla użytkownika:
+- Nie musi już ręcznie wpisywać "1px solid black" - wystarczy przesunąć suwaki i wybrać opcje
+- Intuicyjny interfejs bez znajomości składni CSS
+- Mniej błędów przy wprowadzaniu wartości
+- Lepsza wizualizacja (color picker, dropdowny zamiast pól tekstowych)
+
+Następne kroki:
+- Testy manualne - sprawdzić czy nowe kontrolki działają poprawnie
+- Testy Load CSS - sprawdzić czy parsowanie borderów i marginesów działa
+- Implementacja User Story 4 - toggle dla header/footer

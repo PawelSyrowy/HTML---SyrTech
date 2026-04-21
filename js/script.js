@@ -132,18 +132,42 @@ const sections = [
     title: "Table",
     controls: [
       { label: "Width", var: "--et-width", type: "text", default: "100%" },
-      { label: "Margin", var: "--et-margin", type: "text", default: "0" },
+      {
+        label: "Margin",
+        var: "--et-margin",
+        type: "margin",
+        default: "0",
+        subvars: {
+          top: "--et-margin-top",
+          right: "--et-margin-right",
+          bottom: "--et-margin-bottom",
+          left: "--et-margin-left"
+        }
+      },
       {
         label: "Border collapse",
         var: "--et-border-collapse",
-        type: "text",
+        type: "select",
         default: "collapse",
+        options: ["collapse", "separate"]
       },
       {
         label: "Font family",
         var: "--et-font-family",
-        type: "text",
+        type: "select",
         default: "sans-serif",
+        options: [
+          "sans-serif",
+          "serif",
+          "monospace",
+          "Arial",
+          "Helvetica",
+          "Times New Roman",
+          "Georgia",
+          "Courier New",
+          "Verdana",
+          "Tahoma"
+        ]
       },
       {
         label: "Font size",
@@ -161,7 +185,17 @@ const sections = [
       },
       { label: "Table BG", var: "--et-bg", type: "color", default: "transparent" },
       { label: "Table color", var: "--et-color", type: "color", default: "#000000" },
-      { label: "Border", var: "--et-border", type: "text", default: "none" },
+      {
+        label: "Border",
+        var: "--et-border",
+        type: "border",
+        default: "none",
+        subvars: {
+          width: "--et-border-width",
+          style: "--et-border-style",
+          color: "--et-border-color"
+        }
+      },
       {
         label: "Radius",
         var: "--et-radius",
@@ -198,8 +232,13 @@ const sections = [
       {
         label: "Header border",
         var: "--et-header-border",
-        type: "text",
+        type: "border",
         default: "none",
+        subvars: {
+          width: "--et-header-border-width",
+          style: "--et-header-border-style",
+          color: "--et-header-border-color"
+        }
       },
     ],
   },
@@ -228,8 +267,13 @@ const sections = [
       {
         label: "Footer border",
         var: "--et-footer-border",
-        type: "text",
+        type: "border",
         default: "none",
+        subvars: {
+          width: "--et-footer-border-width",
+          style: "--et-footer-border-style",
+          color: "--et-footer-border-color"
+        }
       },
     ],
   },
@@ -267,8 +311,13 @@ const sections = [
       {
         label: "Cell border",
         var: "--et-cell-border",
-        type: "text",
+        type: "border",
         default: "none",
+        subvars: {
+          width: "--et-cell-border-width",
+          style: "--et-cell-border-style",
+          color: "--et-cell-border-color"
+        }
       },
       {
         label: "Padding X",
@@ -299,8 +348,13 @@ const sections = [
       {
         label: "Row border",
         var: "--et-row-border",
-        type: "text",
+        type: "border",
         default: "none",
+        subvars: {
+          width: "--et-row-border-width",
+          style: "--et-row-border-style",
+          color: "--et-row-border-color"
+        }
       },
       { label: "Stripe BG", var: "--et-stripe-bg", type: "color", default: "transparent" },
       { label: "Hover BG", var: "--et-hover-bg", type: "color", default: "transparent" },
@@ -313,7 +367,7 @@ const sections = [
    ==================================================================== */
 
 /**
- * Tworzy pojedynczą kontrolkę (label + input)
+ * Tworzy pojedynczą kontrolkę (label + input/select/złożone)
  * @param {object} ctrl - Obiekt konfiguracji kontrolki
  * @returns {HTMLElement} - Element DOM kontrolki
  */
@@ -325,11 +379,175 @@ function createControl(ctrl) {
   // Label opisujący kontrolkę
   const label = document.createElement("label");
   label.textContent = ctrl.label;
+  wrapper.appendChild(label);
 
-  // Input do wprowadzania wartości
+  // === KONTROLKA TYPU BORDER (width + style + color) ===
+  if (ctrl.type === "border") {
+    const borderWrapper = document.createElement("div");
+    borderWrapper.className = "et-control-border";
+
+    // Width (range 0-10px)
+    const widthInput = document.createElement("input");
+    widthInput.type = "range";
+    widthInput.min = 0;
+    widthInput.max = 10;
+    widthInput.value = 0;
+    widthInput.dataset.var = ctrl.subvars.width;
+    widthInput.title = "Width";
+
+    // Style (select: none/solid/dashed/dotted/double)
+    const styleSelect = document.createElement("select");
+    styleSelect.dataset.var = ctrl.subvars.style;
+    ["none", "solid", "dashed", "dotted", "double"].forEach(opt => {
+      const option = document.createElement("option");
+      option.value = opt;
+      option.textContent = opt;
+      styleSelect.appendChild(option);
+    });
+    styleSelect.value = "none";
+
+    // Color (color picker)
+    const colorInput = document.createElement("input");
+    colorInput.type = "color";
+    colorInput.value = "#000000";
+    colorInput.dataset.var = ctrl.subvars.color;
+    colorInput.title = "Color";
+
+    // Inicjalizacja wartości domyślnej
+    if (ctrl.default === "none") {
+      tableConfig[ctrl.var] = "none";
+      editableTable.style.setProperty(ctrl.var, "none");
+    }
+
+    // Funkcja aktualizacji border
+    const updateBorder = () => {
+      const width = widthInput.value + "px";
+      const style = styleSelect.value;
+      const color = colorInput.value;
+
+      let borderValue;
+      if (style === "none" || widthInput.value === "0") {
+        borderValue = "none";
+      } else {
+        borderValue = `${width} ${style} ${color}`;
+      }
+
+      editableTable.style.setProperty(ctrl.var, borderValue);
+      tableConfig[ctrl.var] = borderValue;
+
+      // Zapisujemy również sub-wartości
+      tableConfig[ctrl.subvars.width] = width;
+      tableConfig[ctrl.subvars.style] = style;
+      tableConfig[ctrl.subvars.color] = color;
+    };
+
+    widthInput.addEventListener("input", updateBorder);
+    styleSelect.addEventListener("change", updateBorder);
+    colorInput.addEventListener("input", updateBorder);
+
+    borderWrapper.appendChild(widthInput);
+    borderWrapper.appendChild(styleSelect);
+    borderWrapper.appendChild(colorInput);
+    wrapper.appendChild(borderWrapper);
+
+    return wrapper;
+  }
+
+  // === KONTROLKA TYPU MARGIN (top/right/bottom/left) ===
+  if (ctrl.type === "margin") {
+    const marginWrapper = document.createElement("div");
+    marginWrapper.className = "et-control-margin";
+
+    const sides = ["top", "right", "bottom", "left"];
+    const inputs = {};
+
+    sides.forEach(side => {
+      const sideInput = document.createElement("input");
+      sideInput.type = "range";
+      sideInput.min = 0;
+      sideInput.max = 50;
+      sideInput.value = 0;
+      sideInput.dataset.var = ctrl.subvars[side];
+      sideInput.title = side.charAt(0).toUpperCase() + side.slice(1);
+      inputs[side] = sideInput;
+
+      const sideLabel = document.createElement("span");
+      sideLabel.textContent = side.charAt(0).toUpperCase();
+      sideLabel.className = "et-margin-label";
+
+      const sideWrapper = document.createElement("div");
+      sideWrapper.className = "et-margin-side";
+      sideWrapper.appendChild(sideLabel);
+      sideWrapper.appendChild(sideInput);
+
+      marginWrapper.appendChild(sideWrapper);
+    });
+
+    // Funkcja aktualizacji margin
+    const updateMargin = () => {
+      const top = inputs.top.value + "px";
+      const right = inputs.right.value + "px";
+      const bottom = inputs.bottom.value + "px";
+      const left = inputs.left.value + "px";
+
+      const marginValue = `${top} ${right} ${bottom} ${left}`;
+      editableTable.style.setProperty(ctrl.var, marginValue);
+      tableConfig[ctrl.var] = marginValue;
+
+      // Zapisujemy również sub-wartości
+      tableConfig[ctrl.subvars.top] = top;
+      tableConfig[ctrl.subvars.right] = right;
+      tableConfig[ctrl.subvars.bottom] = bottom;
+      tableConfig[ctrl.subvars.left] = left;
+    };
+
+    // Inicjalizacja wartości domyślnej
+    tableConfig[ctrl.var] = ctrl.default || "0";
+    editableTable.style.setProperty(ctrl.var, ctrl.default || "0");
+
+    sides.forEach(side => {
+      inputs[side].addEventListener("input", updateMargin);
+    });
+
+    wrapper.appendChild(marginWrapper);
+    return wrapper;
+  }
+
+  // === KONTROLKA TYPU SELECT (dropdown) ===
+  if (ctrl.type === "select") {
+    const select = document.createElement("select");
+    select.dataset.var = ctrl.var;
+
+    ctrl.options.forEach(opt => {
+      const option = document.createElement("option");
+      option.value = opt;
+      option.textContent = opt;
+      select.appendChild(option);
+    });
+
+    select.value = ctrl.default;
+
+    // Ustawiamy domyślną wartość
+    if (ctrl.default) {
+      editableTable.style.setProperty(ctrl.var, ctrl.default);
+      tableConfig[ctrl.var] = ctrl.default;
+    }
+
+    // Obsługa zmiany wartości
+    select.addEventListener("change", (e) => {
+      const val = e.target.value;
+      editableTable.style.setProperty(ctrl.var, val);
+      tableConfig[ctrl.var] = val;
+    });
+
+    wrapper.appendChild(select);
+    return wrapper;
+  }
+
+  // === STANDARDOWE KONTROLKI (text, color, range) ===
   const input = document.createElement("input");
   input.type = ctrl.type;
-  input.dataset.var = ctrl.var; // Przechowujemy nazwę CSS variable w data-var
+  input.dataset.var = ctrl.var;
 
   // Konfiguracja dla inputów typu range
   if (ctrl.type === "range") {
@@ -367,7 +585,6 @@ function createControl(ctrl) {
     tableConfig[ctrl.var] = val;
   });
 
-  wrapper.appendChild(label);
   wrapper.appendChild(input);
 
   return wrapper;
@@ -515,7 +732,10 @@ function mapCssToVar(prop, val, section = "main") {
     if (prop === "background") setVar("--et-header-bg", val);
     if (prop === "color") setVar("--et-header-color", val);
     if (prop === "font-size") setVar("--et-header-font-size", val);
-    if (prop === "border") setVar("--et-header-border", val);
+    if (prop === "border") {
+      setVar("--et-header-border", val);
+      parseBorderValue("--et-header-border", val);
+    }
     return;
   }
 
@@ -524,7 +744,10 @@ function mapCssToVar(prop, val, section = "main") {
     if (prop === "background") setVar("--et-footer-bg", val);
     if (prop === "color") setVar("--et-footer-color", val);
     if (prop === "font-size") setVar("--et-footer-font-size", val);
-    if (prop === "border") setVar("--et-footer-border", val);
+    if (prop === "border") {
+      setVar("--et-footer-border", val);
+      parseBorderValue("--et-footer-border", val);
+    }
     return;
   }
 
@@ -539,7 +762,10 @@ function mapCssToVar(prop, val, section = "main") {
   // Mapowanie dla ROWS
   if (section === "row") {
     if (prop === "background") setVar("--et-row-bg", val);
-    if (prop === "border-bottom") setVar("--et-row-border", val);
+    if (prop === "border-bottom") {
+      setVar("--et-row-border", val);
+      parseBorderValue("--et-row-border", val);
+    }
     return;
   }
 
@@ -558,6 +784,66 @@ function mapCssToVar(prop, val, section = "main") {
   // Mapowanie dla głównego bloku tabeli
   if (mainMap[prop]) {
     setVar(mainMap[prop], val);
+
+    // Parsowanie złożonych wartości
+    if (prop === "border") {
+      parseBorderValue("--et-border", val);
+    }
+    if (prop === "margin") {
+      parseMarginValue("--et-margin", val);
+    }
+  }
+}
+
+/**
+ * Parsuje wartość border i zapisuje sub-wartości (width, style, color)
+ * @param {string} varName - Nazwa głównej CSS variable (np. "--et-border")
+ * @param {string} value - Wartość border (np. "1px solid #000000" lub "none")
+ */
+function parseBorderValue(varName, value) {
+  if (value === "none") {
+    tableConfig[`${varName}-width`] = "0px";
+    tableConfig[`${varName}-style`] = "none";
+    tableConfig[`${varName}-color`] = "#000000";
+    return;
+  }
+
+  // Parsowanie: "1px solid #000000"
+  const parts = value.trim().split(/\s+/);
+  if (parts.length >= 3) {
+    tableConfig[`${varName}-width`] = parts[0]; // np. "1px"
+    tableConfig[`${varName}-style`] = parts[1]; // np. "solid"
+    tableConfig[`${varName}-color`] = parts[2]; // np. "#000000"
+  }
+}
+
+/**
+ * Parsuje wartość margin i zapisuje sub-wartości (top, right, bottom, left)
+ * @param {string} varName - Nazwa głównej CSS variable (np. "--et-margin")
+ * @param {string} value - Wartość margin (np. "10px 20px 10px 20px" lub "0")
+ */
+function parseMarginValue(varName, value) {
+  const parts = value.trim().split(/\s+/);
+
+  if (parts.length === 1) {
+    // Pojedyncza wartość - wszystkie strony
+    const val = parts[0];
+    tableConfig[`${varName}-top`] = val;
+    tableConfig[`${varName}-right`] = val;
+    tableConfig[`${varName}-bottom`] = val;
+    tableConfig[`${varName}-left`] = val;
+  } else if (parts.length === 2) {
+    // Dwie wartości - top/bottom, left/right
+    tableConfig[`${varName}-top`] = parts[0];
+    tableConfig[`${varName}-right`] = parts[1];
+    tableConfig[`${varName}-bottom`] = parts[0];
+    tableConfig[`${varName}-left`] = parts[1];
+  } else if (parts.length === 4) {
+    // Cztery wartości - top, right, bottom, left
+    tableConfig[`${varName}-top`] = parts[0];
+    tableConfig[`${varName}-right`] = parts[1];
+    tableConfig[`${varName}-bottom`] = parts[2];
+    tableConfig[`${varName}-left`] = parts[3];
   }
 }
 
@@ -608,6 +894,7 @@ function extractCells(cssText) {
     // Mapowanie border komórek
     if (prop === "border") {
       setVar("--et-cell-border", val);
+      parseBorderValue("--et-cell-border", val);
     }
 
     // Mapowanie padding (rozdzielamy na X i Y)
@@ -625,6 +912,7 @@ function extractCells(cssText) {
  * Aktualizuje wartości w inputach interfejsu na podstawie tableConfig
  */
 function updateInputs() {
+  // Aktualizacja standardowych inputów (text, range, color)
   document.querySelectorAll(".et-control input").forEach((input) => {
     const v = input.dataset.var;
     if (!v) return;
@@ -643,6 +931,64 @@ function updateInputs() {
     } else {
       input.value = val;
     }
+  });
+
+  // Aktualizacja selectów (dropdown)
+  document.querySelectorAll(".et-control select").forEach((select) => {
+    const v = select.dataset.var;
+    if (!v) return;
+
+    const val = tableConfig[v];
+
+    if (val) {
+      select.value = val;
+    }
+  });
+
+  // Aktualizacja kontrolek border (width + style + color)
+  document.querySelectorAll(".et-control-border").forEach((borderControl) => {
+    const inputs = borderControl.querySelectorAll("input, select");
+
+    inputs.forEach((input) => {
+      const v = input.dataset.var;
+      if (!v) return;
+
+      const val = tableConfig[v];
+
+      if (input.type === "range") {
+        // Width - wyciągamy liczbę z "Xpx"
+        if (val) {
+          input.value = parseInt(val);
+        }
+      } else if (input.tagName === "SELECT") {
+        // Style - ustawiamy wartość selecta
+        if (val) {
+          input.value = val;
+        }
+      } else if (input.type === "color") {
+        // Color - ustawiamy wartość koloru
+        if (val) {
+          input.value = val;
+        }
+      }
+    });
+  });
+
+  // Aktualizacja kontrolek margin (top/right/bottom/left)
+  document.querySelectorAll(".et-control-margin").forEach((marginControl) => {
+    const inputs = marginControl.querySelectorAll("input[type='range']");
+
+    inputs.forEach((input) => {
+      const v = input.dataset.var;
+      if (!v) return;
+
+      const val = tableConfig[v];
+
+      if (val) {
+        // Wyciągamy liczbę z "Xpx"
+        input.value = parseInt(val);
+      }
+    });
   });
 }
 
