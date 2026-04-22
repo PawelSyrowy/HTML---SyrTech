@@ -252,17 +252,24 @@
 }
 
 /* ====================================================================
-   ZAKŁADKI SEKCJI (TABS)
+   ZAKŁADKI SEKCJI (TABS) I HEADER BAR
    ==================================================================== */
+
+.header-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    background: #fafafa;
+    padding: 10px;
+    border-radius: 8px 8px 0 0;
+    border-bottom: 2px solid #e5e7eb;
+    gap: 16px;
+}
 
 .tabs-container {
     display: flex;
     gap: 4px;
-    margin-bottom: 0;
-    border-bottom: 2px solid #e5e7eb;
-    background: #fafafa;
-    padding: 10px 10px 0 10px;
-    border-radius: 8px 8px 0 0;
+    flex: 1;
 }
 
 .tab-btn {
@@ -291,6 +298,23 @@
     background: white;
 }
 
+/* Kontener edytora z headerem */
+.editor-container {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+    margin-bottom: 30px;
+}
+
+.editor-header {
+    display: flex;
+    justify-content: flex-end;
+    padding: 12px 16px;
+    border-bottom: 1px solid #f3f4f6;
+    background: #fafafa;
+}
+
 /* Kontener edytora - poziomy układ kontrolek */
 .editor {
     /* Układ poziomy z zawijaniem */
@@ -298,11 +322,6 @@
     flex-wrap: wrap;
     gap: 16px;
     padding: 20px;
-    background: white;
-    border: 1px solid #e5e7eb;
-    border-top: none;
-    border-radius: 0 0 8px 8px;
-    margin-bottom: 30px;
     min-height: 100px;
 }
 
@@ -326,7 +345,7 @@
 }
 
 /* ====================================================================
-   POJEDYNCZA KONTROLKA (label + input)
+   POJEDYNCZA KONTROLKA (label + input + reset button)
    ==================================================================== */
 
 .et-control {
@@ -339,14 +358,22 @@
     flex: 0 1 auto;
 }
 
+/* Header kontrolki (label + reset button) */
+.et-control-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4px;
+    gap: 8px;
+}
+
 /* Label kontrolki */
 .et-control label {
     /* Mniejszy rozmiar czcionki */
     font-size: 12px;
-    /* Minimalny odstęp od inputa */
-    margin-bottom: 4px;
     font-weight: 600;
     color: #374151;
+    flex: 1;
 }
 
 /* Input kontrolki (text, color, range) */
@@ -605,4 +632,99 @@
 
 .primary-btn:active {
     transform: translateY(1px);
+}
+
+/* ====================================================================
+   PRZYCISKI RESET
+   ==================================================================== */
+
+/* Reset All - główny przycisk w header bar */
+.reset-all-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: #ef4444;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.reset-all-btn:hover {
+    background: #dc2626;
+    box-shadow: 0 4px 6px rgba(239, 68, 68, 0.3);
+}
+
+.reset-all-btn:active {
+    transform: translateY(1px);
+}
+
+.reset-all-btn svg {
+    flex-shrink: 0;
+}
+
+/* Reset Section - przycisk w editor-header */
+.reset-section-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    background: #f97316;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.reset-section-btn:hover {
+    background: #ea580c;
+    box-shadow: 0 2px 4px rgba(249, 115, 22, 0.3);
+}
+
+.reset-section-btn:active {
+    transform: translateY(1px);
+}
+
+.reset-section-btn svg {
+    flex-shrink: 0;
+}
+
+/* Reset Control - mały przycisk przy każdej kontrolce */
+.reset-control-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    padding: 4px;
+    background: transparent;
+    color: #9ca3af;
+    border: 1px solid #e5e7eb;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+}
+
+.reset-control-btn:hover {
+    background: #fef2f2;
+    color: #ef4444;
+    border-color: #fecaca;
+}
+
+.reset-control-btn:active {
+    transform: scale(0.95);
+}
+
+.reset-control-btn svg {
+    width: 12px;
+    height: 12px;
 }

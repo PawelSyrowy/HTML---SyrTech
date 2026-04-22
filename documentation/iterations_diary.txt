@@ -133,3 +133,45 @@ Następne kroki:
 - Testy manualne - sprawdzić czy zakładki i switch działają poprawnie
 - Sprawdzić czy wszystkie kontrolki są widoczne i funkcjonalne
 - Implementacja User Story 4 - toggle dla header/footer
+
+========================================
+ITERACJA 04b - Data: 22.04.2026
+========================================
+User Story: Nowe - System resetowania wartości (3 poziomy)
+Status: TEST (oczekuje na manualne testy)
+
+Wykonane prace:
+- Dodano system resetowania na 3 poziomach granulacji
+- Reset All - globalny przycisk resetujący całą tabelę do wartości domyślnych
+- Reset Section - przycisk resetujący aktywną zakładkę (Table/Header/Footer/Body/Cells/Rows)
+- Reset Control - mały przycisk przy każdej kontrolce resetujący tylko tę kontrolkę
+
+Zmiany w kodzie:
+- index.html: Dodano strukturę dla przycisków reset
+  * Dodano .header-bar z przyciskiem Reset All
+  * Dodano .editor-container z .editor-header i przyciskiem Reset Section
+  * Zmodyfikowano strukturę kontrolek aby pomieścić przyciski reset
+- js/script.js: Dodano funkcje resetowania (~80 linii)
+  * Funkcja resetControl(ctrl) - resetuje pojedynczą kontrolkę z obsługą border i margin
+  * Funkcja resetSection() - resetuje wszystkie kontrolki w aktywnej sekcji
+  * Funkcja resetAll() - resetuje wszystkie kontrolki we wszystkich sekcjach
+  * Event listenery dla wszystkich przycisków reset z potwierdzeniami
+  * Zmodyfikowano createControl() aby dodać przycisk reset do każdej kontrolki
+- css/style.css: Dodano style dla przycisków reset (~90 linii)
+  * Style dla .reset-all-btn (czerwony, duży)
+  * Style dla .reset-section-btn (pomarańczowy, średni)
+  * Style dla .reset-control-btn (szary → czerwony hover, mały)
+  * Dodano .header-bar, .editor-container, .editor-header
+  * Dodano .et-control-header dla layoutu label + reset button
+
+Korzyści dla użytkownika:
+- Łatwe cofanie zmian - nie trzeba ręcznie przywracać wartości domyślnych
+- 3 poziomy granulacji - resetuj wszystko, sekcję lub pojedynczą kontrolkę
+- Wizualne potwierdzenia - confirm() przed resetem All i Section
+- Kolorowe przyciski - czerwony (All), pomarańczowy (Section), szary (Control)
+- Ikonka resetu (strzałka w kółku) w SVG dla każdego przycisku
+
+Następne kroki:
+- Testy manualne - sprawdzić czy wszystkie 3 poziomy resetowania działają
+- Sprawdzić czy resetowanie border i margin działa poprawnie
+- Implementacja User Story 4 - toggle dla header/footer

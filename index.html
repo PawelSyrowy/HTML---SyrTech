@@ -27,15 +27,23 @@
     <div class="app-container">
 
       <!-- ================================================================
-           GÓRNY PASEK - ZAKŁADKI SEKCJI
+           GÓRNY PASEK - ZAKŁADKI SEKCJI I RESET
            ================================================================ -->
-      <div class="tabs-container">
-        <button class="tab-btn active" data-tab="table">Table</button>
-        <button class="tab-btn" data-tab="header">Header</button>
-        <button class="tab-btn" data-tab="footer">Footer</button>
-        <button class="tab-btn" data-tab="body">Body</button>
-        <button class="tab-btn" data-tab="cells">Cells</button>
-        <button class="tab-btn" data-tab="rows">Rows</button>
+      <div class="header-bar">
+        <div class="tabs-container">
+          <button class="tab-btn active" data-tab="table">Table</button>
+          <button class="tab-btn" data-tab="header">Header</button>
+          <button class="tab-btn" data-tab="footer">Footer</button>
+          <button class="tab-btn" data-tab="body">Body</button>
+          <button class="tab-btn" data-tab="cells">Cells</button>
+          <button class="tab-btn" data-tab="rows">Rows</button>
+        </div>
+        <button class="reset-all-btn" id="resetAll" title="Zresetuj wszystkie wartości do domyślnych">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M13.65 2.35C12.2 0.9 10.21 0 8 0C3.58 0 0.01 3.58 0.01 8C0.01 12.42 3.58 16 8 16C11.73 16 14.84 13.45 15.73 10H13.65C12.83 12.33 10.61 14 8 14C4.69 14 2 11.31 2 8C2 4.69 4.69 2 8 2C9.66 2 11.14 2.69 12.22 3.78L9 7H16V0L13.65 2.35Z" fill="currentColor"/>
+          </svg>
+          Reset All
+        </button>
       </div>
 
       <!-- ================================================================
@@ -43,7 +51,17 @@
            Kontener na dynamicznie generowane kontrolki dla wybranej zakładki
            (generowane przez script.js)
            ================================================================ -->
-      <div class="editor"></div>
+      <div class="editor-container">
+        <div class="editor-header">
+          <button class="reset-section-btn" id="resetSection" title="Zresetuj wszystkie wartości w tej sekcji">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M13.65 2.35C12.2 0.9 10.21 0 8 0C3.58 0 0.01 3.58 0.01 8C0.01 12.42 3.58 16 8 16C11.73 16 14.84 13.45 15.73 10H13.65C12.83 12.33 10.61 14 8 14C4.69 14 2 11.31 2 8C2 4.69 4.69 2 8 2C9.66 2 11.14 2.69 12.22 3.78L9 7H16V0L13.65 2.35Z" fill="currentColor"/>
+            </svg>
+            Reset Section
+          </button>
+        </div>
+        <div class="editor"></div>
+      </div>
 
       <!-- ================================================================
            PRZYKŁADOWA TABELA DO PODGLĄDU

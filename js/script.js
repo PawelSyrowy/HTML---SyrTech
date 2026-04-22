@@ -372,14 +372,39 @@ const sections = [
  * @returns {HTMLElement} - Element DOM kontrolki
  */
 function createControl(ctrl) {
-  // Wrapper dla kontrolki (label + input)
+  // Wrapper dla kontrolki (label + input + reset button)
   const wrapper = document.createElement("div");
   wrapper.className = "et-control";
+
+  // Header kontrolki (label + reset button)
+  const controlHeader = document.createElement("div");
+  controlHeader.className = "et-control-header";
 
   // Label opisujący kontrolkę
   const label = document.createElement("label");
   label.textContent = ctrl.label;
-  wrapper.appendChild(label);
+  controlHeader.appendChild(label);
+
+  // Przycisk reset dla kontrolki
+  const resetBtn = document.createElement("button");
+  resetBtn.className = "reset-control-btn";
+  resetBtn.title = "Resetuj do wartości domyślnej";
+  resetBtn.innerHTML = `<svg width="12" height="12" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M13.65 2.35C12.2 0.9 10.21 0 8 0C3.58 0 0.01 3.58 0.01 8C0.01 12.42 3.58 16 8 16C11.73 16 14.84 13.45 15.73 10H13.65C12.83 12.33 10.61 14 8 14C4.69 14 2 11.31 2 8C2 4.69 4.69 2 8 2C9.66 2 11.14 2.69 12.22 3.78L9 7H16V0L13.65 2.35Z" fill="currentColor"/>
+  </svg>`;
+
+  // Zapisujemy pełną konfigurację kontrolki dla resetu
+  resetBtn.dataset.controlConfig = JSON.stringify(ctrl);
+
+  // Event listener dla resetu kontrolki
+  resetBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    resetControl(ctrl);
+  });
+
+  controlHeader.appendChild(resetBtn);
+
+  wrapper.appendChild(controlHeader);
 
   // === KONTROLKA TYPU BORDER (width + style + color) ===
   if (ctrl.type === "border") {
@@ -704,6 +729,84 @@ document.querySelectorAll(".mode-btn").forEach(btn => {
 
 // Inicjalizacja - pokaż tryb Generate
 switchMode("generate");
+
+/* ====================================================================
+   FUNKCJE RESETOWANIA
+   ==================================================================== */
+
+/**
+ * Resetuje pojedynczą kontrolkę do wartości domyślnej
+ * @param {object} ctrl - Obiekt konfiguracji kontrolki
+ */
+function resetControl(ctrl) {
+  // Resetowanie w zależności od typu kontrolki
+  if (ctrl.type === "border") {
+    // Reset border - ustawiamy width=0, style=none, color=#000000
+    tableConfig[ctrl.var] = "none";
+    editableTable.style.setProperty(ctrl.var, "none");
+
+    if (ctrl.subvars) {
+      tableConfig[ctrl.subvars.width] = "0px";
+      tableConfig[ctrl.subvars.style] = "none";
+      tableConfig[ctrl.subvars.color] = "#000000";
+    }
+  } else if (ctrl.type === "margin") {
+    // Reset margin - wszystkie strony na 0
+    const defaultVal = ctrl.default || "0";
+    tableConfig[ctrl.var] = defaultVal;
+    editableTable.style.setProperty(ctrl.var, defaultVal);
+
+    if (ctrl.subvars) {
+      ["top", "right", "bottom", "left"].forEach(side => {
+        tableConfig[ctrl.subvars[side]] = "0px";
+      });
+    }
+  } else {
+    // Reset standardowej kontrolki
+    const defaultVal = ctrl.default || "";
+    tableConfig[ctrl.var] = defaultVal;
+    editableTable.style.setProperty(ctrl.var, defaultVal);
+  }
+
+  // Odśwież interfejs
+  updateInputs();
+}
+
+/**
+ * Resetuje wszystkie kontrolki z aktywnej sekcji
+ */
+function resetSection() {
+  // Znajdź aktywną zakładkę
+  const activeTab = document.querySelector(".tab-btn.active");
+  if (!activeTab) return;
+
+  const tabName = activeTab.dataset.tab;
+
+  // Znajdź sekcję z tym samym tytułem
+  const section = sections.find(s => s.title.toLowerCase() === tabName);
+  if (!section) return;
+
+  // Resetuj wszystkie kontrolki w tej sekcji
+  section.controls.forEach(ctrl => {
+    resetControl(ctrl);
+  });
+
+  console.log(`Sekcja "${section.title}" została zresetowana`);
+}
+
+/**
+ * Resetuje wszystkie kontrolki we wszystkich sekcjach
+ */
+function resetAll() {
+  // Resetuj każdą sekcję
+  sections.forEach(section => {
+    section.controls.forEach(ctrl => {
+      resetControl(ctrl);
+    });
+  });
+
+  console.log("Wszystkie wartości zostały zresetowane");
+}
 
 /* ====================================================================
    OBSŁUGA PRZYCISKU "GENERATE CSS"
@@ -1088,4 +1191,25 @@ document.getElementById("load").addEventListener("click", () => {
   }
   loadCSS(cssText);
   alert("CSS został wczytany pomyślnie!");
+});
+
+/* ====================================================================
+   OBSŁUGA PRZYCISKÓW RESET
+   ==================================================================== */
+
+// Reset All - resetuje wszystkie wartości
+document.getElementById("resetAll").addEventListener("click", () => {
+  if (confirm("Czy na pewno chcesz zresetować WSZYSTKIE wartości do domyślnych?")) {
+    resetAll();
+  }
+});
+
+// Reset Section - resetuje wartości w aktywnej sekcji
+document.getElementById("resetSection").addEventListener("click", () => {
+  const activeTab = document.querySelector(".tab-btn.active");
+  const sectionName = activeTab ? activeTab.textContent : "tej sekcji";
+
+  if (confirm(`Czy na pewno chcesz zresetować wszystkie wartości w sekcji "${sectionName}"?`)) {
+    resetSection();
+  }
 });
