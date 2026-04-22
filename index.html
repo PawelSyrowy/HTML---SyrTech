@@ -22,74 +22,109 @@
 
   <body>
     <!-- ================================================================
-         INTERFEJS EDYTORA
-         Kontener na dynamicznie generowane sekcje kontrolek
-         (generowane przez script.js)
+         GŁÓWNY KONTENER APLIKACJI
          ================================================================ -->
-    <div class="editor"></div>
+    <div class="app-container">
 
-    <hr />
+      <!-- ================================================================
+           GÓRNY PASEK - ZAKŁADKI SEKCJI
+           ================================================================ -->
+      <div class="tabs-container">
+        <button class="tab-btn active" data-tab="table">Table</button>
+        <button class="tab-btn" data-tab="header">Header</button>
+        <button class="tab-btn" data-tab="footer">Footer</button>
+        <button class="tab-btn" data-tab="body">Body</button>
+        <button class="tab-btn" data-tab="cells">Cells</button>
+        <button class="tab-btn" data-tab="rows">Rows</button>
+      </div>
 
-    <!-- ================================================================
-         PRZYKŁADOWA TABELA DO PODGLĄDU
-         Tabela z atrybutem data-et-preview jest stylowana przez edytor.
-         Użytkownik widzi na niej efekty zmian w czasie rzeczywistym.
-         ================================================================ -->
-    <table data-et-preview>
-      <!-- Nagłówek tabeli -->
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Age</th>
-          <th>City</th>
-        </tr>
-      </thead>
+      <!-- ================================================================
+           INTERFEJS EDYTORA - KONTROLKI
+           Kontener na dynamicznie generowane kontrolki dla wybranej zakładki
+           (generowane przez script.js)
+           ================================================================ -->
+      <div class="editor"></div>
 
-      <!-- Ciało tabeli -->
-      <tbody>
-        <tr>
-          <td>John</td>
-          <td>25</td>
-          <td>New York</td>
-        </tr>
-        <tr>
-          <td>Anna</td>
-          <td>30</td>
-          <td>London</td>
-        </tr>
-        <tr>
-          <td>Mike</td>
-          <td>28</td>
-          <td>Paris</td>
-        </tr>
-      </tbody>
+      <!-- ================================================================
+           PRZYKŁADOWA TABELA DO PODGLĄDU
+           Tabela z atrybutem data-et-preview jest stylowana przez edytor.
+           Użytkownik widzi na niej efekty zmian w czasie rzeczywistym.
+           ================================================================ -->
+      <div class="preview-container">
+        <h3>Podgląd tabeli</h3>
+        <table data-et-preview>
+          <!-- Nagłówek tabeli -->
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Age</th>
+              <th>City</th>
+            </tr>
+          </thead>
 
-      <!-- Stopka tabeli -->
-      <tfoot>
-        <tr>
-          <td colspan="3">Total: 3 records</td>
-        </tr>
-      </tfoot>
-    </table>
+          <!-- Ciało tabeli -->
+          <tbody>
+            <tr>
+              <td>John</td>
+              <td>25</td>
+              <td>New York</td>
+            </tr>
+            <tr>
+              <td>Anna</td>
+              <td>30</td>
+              <td>London</td>
+            </tr>
+            <tr>
+              <td>Mike</td>
+              <td>28</td>
+              <td>Paris</td>
+            </tr>
+          </tbody>
 
-    <hr />
+          <!-- Stopka tabeli -->
+          <tfoot>
+            <tr>
+              <td colspan="3">Total: 3 records</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
 
-    <!-- ================================================================
-         SEKCJA GENEROWANIA I WCZYTYWANIA CSS
-         ================================================================ -->
+      <!-- ================================================================
+           SEKCJA GENEROWANIA I WCZYTYWANIA CSS
+           ================================================================ -->
+      <div class="css-section">
 
-    <!-- Pole do wpisania nazwy klasy CSS -->
-    <label for="className">Nazwa klasy CSS:</label>
-    <input id="className" placeholder="my-table" />
+        <!-- Switch dla trybu Generate/Load -->
+        <div class="mode-switch-container">
+          <div class="mode-switch">
+            <button class="mode-btn active" data-mode="generate">Generate CSS</button>
+            <button class="mode-btn" data-mode="load">Load CSS</button>
+          </div>
+        </div>
 
-    <!-- Przycisk generujący kod CSS -->
-    <button id="generate">Generate CSS</button>
+        <!-- Tryb Generate CSS -->
+        <div class="mode-content" id="generate-mode">
+          <div class="css-input-row">
+            <label for="className">Nazwa klasy CSS:</label>
+            <input id="className" placeholder="my-table" />
+            <button id="generate" class="primary-btn">Generuj CSS</button>
+          </div>
+          <textarea id="output" placeholder="Tu pojawi się wygenerowany kod CSS..." readonly></textarea>
+        </div>
 
-    <!-- Pole tekstowe z wygenerowanym kodem CSS -->
-    <textarea id="output" rows="20" placeholder="Tu pojawi się wygenerowany kod CSS..."></textarea>
+        <!-- Tryb Load CSS -->
+        <div class="mode-content hidden" id="load-mode">
+          <div class="css-input-row">
+            <label for="css-input">Wklej kod CSS:</label>
+            <button id="load" class="primary-btn">Wczytaj CSS</button>
+          </div>
+          <textarea id="css-input" placeholder="Wklej tutaj kod CSS do wczytania..."></textarea>
+        </div>
 
-    <!-- Przycisk wczytujący kod CSS z powrotem do edytora -->
-    <button id="load">Load CSS</button>
+      </div>
+
+    </div>
 
     <!-- ================================================================
          SKRYPT JAVASCRIPT

@@ -85,3 +85,51 @@ Następne kroki:
 - Testy manualne - sprawdzić czy nowe kontrolki działają poprawnie
 - Testy Load CSS - sprawdzić czy parsowanie borderów i marginesów działa
 - Implementacja User Story 4 - toggle dla header/footer
+
+========================================
+ITERACJA 04 - Data: 22.04.2026
+========================================
+User Story: Nowe - Przeprojektowanie interfejsu użytkownika
+Status: TEST (oczekuje na manualne testy)
+
+Wykonane prace:
+- Przeprojektowano kompletnie layout aplikacji dla lepszej ergonomii
+- Dodano system zakładek (tabs) dla sekcji - Table, Header, Footer, Body, Cells, Rows
+- Kontrolki wyświetlają się poziomo w jednej linii (zawijane) tylko dla aktywnej zakładki
+- Dodano switch (przełącznik) między trybem Generate CSS a Load CSS
+- Powiększono pole textarea dla CSS do min. 400px wysokości z możliwością rozciągania
+- Oddzielono pole input dla Load CSS od pola output dla Generate CSS
+
+Zmiany w kodzie:
+- index.html: Kompletna przebudowa struktury HTML
+  * Dodano kontener .app-container
+  * Dodano .tabs-container z przyciskami zakładek
+  * Dodano .preview-container dla tabeli
+  * Dodano .css-section z switchem trybu i dwoma trybami (generate-mode, load-mode)
+- css/style.css: Dodano nowe style dla nowego layoutu (~150 linii)
+  * Style dla zakładek (.tabs-container, .tab-btn)
+  * Nowy układ .editor (flex poziomy zamiast grid)
+  * Style dla sekcji (.et-section z display: none/contents)
+  * Style dla podglądu (.preview-container)
+  * Style dla switcha trybu (.mode-switch, .mode-btn)
+  * Style dla pól CSS (.css-section textarea, .css-input-row)
+  * Style dla przycisków (.primary-btn)
+- js/script.js: Dodano obsługę zakładek i switcha (~80 linii)
+  * Funkcja switchTab() - przełączanie między zakładkami
+  * Funkcja switchMode() - przełączanie między Generate/Load
+  * Event listenery dla zakładek i switcha
+  * Zaktualizowano loadCSS() aby korzystało z nowego pola #css-input
+  * Dodano atrybut data-section do sekcji dla identyfikacji
+
+Korzyści dla użytkownika:
+- Znacznie mniej przytłaczający interfejs - widoczne tylko kontrolki z aktywnej zakładki
+- Większe pole CSS (400px zamiast 20 wierszy) z możliwością rozciągania w dół
+- Przejrzysty switch między Generate/Load - tylko jeden tryb aktywny na raz
+- Kontrolki zajmują całą szerokość ekranu poziomo - lepsze wykorzystanie przestrzeni
+- Czytelniejszy układ - tabela poniżej kontrolek, CSS na samym dole
+- Estetyczny, nowoczesny design z efektami hover i transition
+
+Następne kroki:
+- Testy manualne - sprawdzić czy zakładki i switch działają poprawnie
+- Sprawdzić czy wszystkie kontrolki są widoczne i funkcjonalne
+- Implementacja User Story 4 - toggle dla header/footer

@@ -599,8 +599,10 @@ function createSection(section) {
   // Kontener sekcji
   const box = document.createElement("div");
   box.className = "et-section";
+  // Dodajemy atrybut data-section dla identyfikacji
+  box.dataset.section = section.title.toLowerCase();
 
-  // Tytuł sekcji
+  // Tytuł sekcji - ukryty w nowym layoutcie
   const title = document.createElement("div");
   title.className = "et-section-title";
   title.textContent = section.title;
@@ -620,6 +622,88 @@ const editor = document.querySelector(".editor");
 sections.forEach((sec) => {
   editor.appendChild(createSection(sec));
 });
+
+/* ====================================================================
+   OBSŁUGA ZAKŁADEK (TABS)
+   ==================================================================== */
+
+/**
+ * Przełącza aktywną zakładkę i pokazuje odpowiednie kontrolki
+ * @param {string} tabName - Nazwa zakładki (table/header/footer/body/cells/rows)
+ */
+function switchTab(tabName) {
+  // Ukryj wszystkie sekcje
+  document.querySelectorAll(".et-section").forEach(section => {
+    section.classList.remove("active");
+  });
+
+  // Pokaż wybraną sekcję
+  const targetSection = document.querySelector(`.et-section[data-section="${tabName}"]`);
+  if (targetSection) {
+    targetSection.classList.add("active");
+  }
+
+  // Zaktualizuj aktywną zakładkę
+  document.querySelectorAll(".tab-btn").forEach(btn => {
+    btn.classList.remove("active");
+  });
+  const activeBtn = document.querySelector(`.tab-btn[data-tab="${tabName}"]`);
+  if (activeBtn) {
+    activeBtn.classList.add("active");
+  }
+}
+
+// Dodaj event listenery do zakładek
+document.querySelectorAll(".tab-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const tabName = btn.dataset.tab;
+    switchTab(tabName);
+  });
+});
+
+// Inicjalizacja - pokaż pierwszą zakładkę (Table)
+switchTab("table");
+
+/* ====================================================================
+   OBSŁUGA SWITCHA TRYBU (GENERATE / LOAD)
+   ==================================================================== */
+
+/**
+ * Przełącza tryb między Generate CSS a Load CSS
+ * @param {string} mode - Tryb ('generate' lub 'load')
+ */
+function switchMode(mode) {
+  // Ukryj wszystkie tryby
+  document.querySelectorAll(".mode-content").forEach(content => {
+    content.classList.add("hidden");
+  });
+
+  // Pokaż wybrany tryb
+  const targetMode = document.getElementById(`${mode}-mode`);
+  if (targetMode) {
+    targetMode.classList.remove("hidden");
+  }
+
+  // Zaktualizuj aktywny przycisk
+  document.querySelectorAll(".mode-btn").forEach(btn => {
+    btn.classList.remove("active");
+  });
+  const activeBtn = document.querySelector(`.mode-btn[data-mode="${mode}"]`);
+  if (activeBtn) {
+    activeBtn.classList.add("active");
+  }
+}
+
+// Dodaj event listenery do przycisków switcha
+document.querySelectorAll(".mode-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const mode = btn.dataset.mode;
+    switchMode(mode);
+  });
+});
+
+// Inicjalizacja - pokaż tryb Generate
+switchMode("generate");
 
 /* ====================================================================
    OBSŁUGA PRZYCISKU "GENERATE CSS"
@@ -997,6 +1081,11 @@ function updateInputs() {
    Wczytuje kod CSS z textarea i przywraca stan edytora
    ==================================================================== */
 document.getElementById("load").addEventListener("click", () => {
-  const cssText = document.getElementById("output").value;
+  const cssText = document.getElementById("css-input").value;
+  if (!cssText.trim()) {
+    alert("Wklej kod CSS do pola tekstowego");
+    return;
+  }
   loadCSS(cssText);
+  alert("CSS został wczytany pomyślnie!");
 });

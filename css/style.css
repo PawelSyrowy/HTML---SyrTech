@@ -244,45 +244,85 @@
    NIE są częścią generowanego CSS dla użytkownika
    ==================================================================== */
 
-/* Kontener główny edytora - grid responsywny */
-.editor {
-    /* Grid z automatycznym dopasowaniem kolumn */
-    display: grid;
-    /* Minimalna szerokość kolumny 260px, maksymalna 1fr (równe części) */
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    /* Odstęp między sekcjami */
-    gap: 20px;
-    /* Odstęp od przykładowej tabeli */
-    margin-bottom: 40px;
+/* Główny kontener aplikacji */
+.app-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
 }
 
 /* ====================================================================
-   SEKCJA KONTROLEK (np. "Table", "Header", "Body")
+   ZAKŁADKI SEKCJI (TABS)
+   ==================================================================== */
+
+.tabs-container {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 0;
+    border-bottom: 2px solid #e5e7eb;
+    background: #fafafa;
+    padding: 10px 10px 0 10px;
+    border-radius: 8px 8px 0 0;
+}
+
+.tab-btn {
+    padding: 12px 24px;
+    background: transparent;
+    border: none;
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: all 0.2s ease;
+    border-radius: 4px 4px 0 0;
+}
+
+.tab-btn:hover {
+    background: #f3f4f6;
+    color: #374151;
+}
+
+.tab-btn.active {
+    color: #1f2937;
+    border-bottom-color: #3b82f6;
+    background: white;
+}
+
+/* Kontener edytora - poziomy układ kontrolek */
+.editor {
+    /* Układ poziomy z zawijaniem */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: 20px;
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+    margin-bottom: 30px;
+    min-height: 100px;
+}
+
+/* ====================================================================
+   SEKCJA KONTROLEK - NOWY UKŁAD
    ==================================================================== */
 
 .et-section {
-    /* Ramka sekcji */
-    border: 1px solid #e5e7eb;
-    /* Zaokrąglone rogi */
-    border-radius: 10px;
-    /* Wewnętrzny odstęp */
-    padding: 16px;
-    /* Jasne tło */
-    background: #fafafa;
+    /* Sekcje są teraz ukryte - pokazywane przez JS */
+    display: none;
 }
 
-/* Tytuł sekcji (np. "TABLE", "HEADER") */
+.et-section.active {
+    /* Aktywna sekcja - pokazana */
+    display: contents;
+}
+
+/* Tytuł sekcji - usunięty, bo mamy zakładki */
 .et-section-title {
-    /* Pogrubiony tekst */
-    font-weight: 700;
-    /* Odstęp od kontrolek poniżej */
-    margin-bottom: 12px;
-    /* Mniejszy rozmiar czcionki */
-    font-size: 14px;
-    /* Wielkie litery */
-    text-transform: uppercase;
-    /* Rozstrzelenie liter */
-    letter-spacing: 0.04em;
+    display: none;
 }
 
 /* ====================================================================
@@ -293,34 +333,55 @@
     /* Układ pionowy (label nad inputem) */
     display: flex;
     flex-direction: column;
-    /* Mały odstęp między kontrolkami */
-    margin-bottom: 2px;
+    /* Minimalna szerokość kontrolki */
+    min-width: 180px;
+    /* Elastyczne dopasowanie */
+    flex: 0 1 auto;
 }
 
 /* Label kontrolki */
 .et-control label {
     /* Mniejszy rozmiar czcionki */
-    font-size: 13px;
+    font-size: 12px;
     /* Minimalny odstęp od inputa */
-    margin-bottom: 1px;
+    margin-bottom: 4px;
+    font-weight: 600;
+    color: #374151;
 }
 
 /* Input kontrolki (text, color, range) */
 .et-control input {
     /* Wewnętrzny padding inputa */
-    padding: 6px;
+    padding: 6px 8px;
+    border: 1px solid #d1d5db;
+    border-radius: 4px;
+    font-size: 13px;
+}
+
+.et-control input:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
 }
 
 /* Select kontrolki (dropdown) */
 .et-control select {
     /* Wewnętrzny padding selecta */
-    padding: 6px;
+    padding: 6px 8px;
     /* Pełna szerokość */
     width: 100%;
     /* Zaokrąglone rogi */
     border-radius: 4px;
     /* Ramka */
     border: 1px solid #d1d5db;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.et-control select:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
 }
 
 /* ====================================================================
@@ -386,4 +447,162 @@
 .et-margin-side input[type="range"] {
     /* Range zajmuje pozostałą przestrzeń */
     flex: 1;
+}
+
+/* ====================================================================
+   PODGLĄD TABELI
+   ==================================================================== */
+
+.preview-container {
+    margin: 30px 0;
+    padding: 20px;
+    background: #f9fafb;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+}
+
+.preview-container h3 {
+    margin: 0 0 16px 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #374151;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.preview-container table {
+    margin: 0 auto;
+}
+
+/* ====================================================================
+   SEKCJA CSS (GENERATE / LOAD)
+   ==================================================================== */
+
+.css-section {
+    margin-top: 30px;
+}
+
+/* Switch trybu */
+.mode-switch-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.mode-switch {
+    display: inline-flex;
+    background: #e5e7eb;
+    border-radius: 8px;
+    padding: 4px;
+    gap: 4px;
+}
+
+.mode-btn {
+    padding: 10px 24px;
+    border: none;
+    background: transparent;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
+    color: #6b7280;
+    transition: all 0.2s ease;
+}
+
+.mode-btn:hover {
+    color: #374151;
+}
+
+.mode-btn.active {
+    background: white;
+    color: #1f2937;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Zawartość trybu */
+.mode-content {
+    display: block;
+}
+
+.mode-content.hidden {
+    display: none;
+}
+
+/* Wiersz z inputem CSS */
+.css-input-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+}
+
+.css-input-row label {
+    font-weight: 600;
+    font-size: 14px;
+    color: #374151;
+    min-width: 140px;
+}
+
+.css-input-row input {
+    flex: 1;
+    min-width: 200px;
+    padding: 10px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.css-input-row input:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* Textarea dla CSS */
+.css-section textarea {
+    width: 100%;
+    min-height: 400px;
+    padding: 16px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 13px;
+    line-height: 1.6;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    resize: vertical;
+    background: #fafafa;
+}
+
+.css-section textarea:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    background: white;
+}
+
+.css-section textarea[readonly] {
+    background: #f3f4f6;
+    cursor: default;
+}
+
+/* Główny przycisk */
+.primary-btn {
+    padding: 10px 24px;
+    background: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.primary-btn:hover {
+    background: #2563eb;
+    box-shadow: 0 4px 6px rgba(59, 130, 246, 0.2);
+}
+
+.primary-btn:active {
+    transform: translateY(1px);
 }
