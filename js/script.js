@@ -44,6 +44,30 @@ function css(prop, val, defaultVal = null) {
  * @returns {string} - Kompletny kod CSS gotowy do skopiowania
  */
 function getTableCSS(className) {
+  // Sprawdź czy header i footer są włączone
+  const showHeader = tableConfig["--et-show-header"] !== false;
+  const showFooter = tableConfig["--et-show-footer"] !== false;
+
+  // Sekcja thead - tylko jeśli header jest włączony
+  const theadSection = showHeader ? `
+.${className} thead {
+${css("background", tableConfig["--et-header-bg"], "transparent")}
+${css("color", tableConfig["--et-header-color"], "inherit")}
+${css("font-size", tableConfig["--et-header-font-size"], "inherit")}
+${css("border", tableConfig["--et-header-border"], "none")}
+}
+` : '';
+
+  // Sekcja tfoot - tylko jeśli footer jest włączony
+  const tfootSection = showFooter ? `
+.${className} tfoot {
+${css("background", tableConfig["--et-footer-bg"], "transparent")}
+${css("color", tableConfig["--et-footer-color"], "inherit")}
+${css("font-size", tableConfig["--et-footer-font-size"], "inherit")}
+${css("border", tableConfig["--et-footer-border"], "none")}
+}
+` : '';
+
   return `
 .${className} {
 ${css("width", tableConfig["--et-width"], "100%")}
@@ -61,21 +85,7 @@ ${css("border", tableConfig["--et-border"], "none")}
 ${css("border-radius", tableConfig["--et-radius"], "0px")}
 ${css("box-shadow", tableConfig["--et-shadow"], "none")}
 }
-
-.${className} thead {
-${css("background", tableConfig["--et-header-bg"], "transparent")}
-${css("color", tableConfig["--et-header-color"], "inherit")}
-${css("font-size", tableConfig["--et-header-font-size"], "inherit")}
-${css("border", tableConfig["--et-header-border"], "none")}
-}
-
-.${className} tfoot {
-${css("background", tableConfig["--et-footer-bg"], "transparent")}
-${css("color", tableConfig["--et-footer-color"], "inherit")}
-${css("font-size", tableConfig["--et-footer-font-size"], "inherit")}
-${css("border", tableConfig["--et-footer-border"], "none")}
-}
-
+${theadSection}${tfootSection}
 .${className} tbody {
 ${css("background", tableConfig["--et-body-bg"], "transparent")}
 ${css("color", tableConfig["--et-body-color"], "inherit")}
@@ -131,6 +141,8 @@ const sections = [
   {
     title: "Table",
     controls: [
+      { label: "Show Header", var: "--et-show-header", type: "checkbox", default: true },
+      { label: "Show Footer", var: "--et-show-footer", type: "checkbox", default: true },
       { label: "Width", var: "--et-width", type: "text", default: "100%" },
       {
         label: "Margin",
@@ -569,6 +581,58 @@ function createControl(ctrl) {
     return wrapper;
   }
 
+  // === KONTROLKA TYPU CHECKBOX (toggle) ===
+  if (ctrl.type === "checkbox") {
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.dataset.var = ctrl.var;
+    checkbox.checked = ctrl.default === true;
+
+    // Ustawiamy domyślną wartość
+    tableConfig[ctrl.var] = ctrl.default;
+
+    // Obsługa zmiany wartości
+    checkbox.addEventListener("change", (e) => {
+      const isChecked = e.target.checked;
+      tableConfig[ctrl.var] = isChecked;
+
+      // Specjalna obsługa dla Show Header
+      if (ctrl.var === "--et-show-header") {
+        const thead = editableTable.querySelector("thead");
+        const headerTab = document.getElementById("headerTab");
+        if (thead) {
+          thead.style.display = isChecked ? "" : "none";
+        }
+        if (headerTab) {
+          headerTab.style.display = isChecked ? "" : "none";
+          // Jeśli Header tab jest aktywny i wyłączamy header, przełącz na Table
+          if (!isChecked && headerTab.classList.contains("active")) {
+            switchTab("table");
+          }
+        }
+      }
+
+      // Specjalna obsługa dla Show Footer
+      if (ctrl.var === "--et-show-footer") {
+        const tfoot = editableTable.querySelector("tfoot");
+        const footerTab = document.getElementById("footerTab");
+        if (tfoot) {
+          tfoot.style.display = isChecked ? "" : "none";
+        }
+        if (footerTab) {
+          footerTab.style.display = isChecked ? "" : "none";
+          // Jeśli Footer tab jest aktywny i wyłączamy footer, przełącz na Table
+          if (!isChecked && footerTab.classList.contains("active")) {
+            switchTab("table");
+          }
+        }
+      }
+    });
+
+    wrapper.appendChild(checkbox);
+    return wrapper;
+  }
+
   // === STANDARDOWE KONTROLKI (text, color, range) ===
   const input = document.createElement("input");
   input.type = ctrl.type;
@@ -760,6 +824,34 @@ function resetControl(ctrl) {
       ["top", "right", "bottom", "left"].forEach(side => {
         tableConfig[ctrl.subvars[side]] = "0px";
       });
+    }
+  } else if (ctrl.type === "checkbox") {
+    // Reset checkbox - przywróć wartość domyślną
+    const defaultVal = ctrl.default === true;
+    tableConfig[ctrl.var] = defaultVal;
+
+    // Specjalna obsługa dla Show Header
+    if (ctrl.var === "--et-show-header") {
+      const thead = editableTable.querySelector("thead");
+      const headerTab = document.getElementById("headerTab");
+      if (thead) {
+        thead.style.display = defaultVal ? "" : "none";
+      }
+      if (headerTab) {
+        headerTab.style.display = defaultVal ? "" : "none";
+      }
+    }
+
+    // Specjalna obsługa dla Show Footer
+    if (ctrl.var === "--et-show-footer") {
+      const tfoot = editableTable.querySelector("tfoot");
+      const footerTab = document.getElementById("footerTab");
+      if (tfoot) {
+        tfoot.style.display = defaultVal ? "" : "none";
+      }
+      if (footerTab) {
+        footerTab.style.display = defaultVal ? "" : "none";
+      }
     }
   } else {
     // Reset standardowej kontrolki
@@ -1099,12 +1191,18 @@ function extractCells(cssText) {
  * Aktualizuje wartości w inputach interfejsu na podstawie tableConfig
  */
 function updateInputs() {
-  // Aktualizacja standardowych inputów (text, range, color)
+  // Aktualizacja standardowych inputów (text, range, color, checkbox)
   document.querySelectorAll(".et-control input").forEach((input) => {
     const v = input.dataset.var;
     if (!v) return;
 
     const val = tableConfig[v];
+
+    // Obsługa checkbox
+    if (input.type === "checkbox") {
+      input.checked = val === true;
+      return;
+    }
 
     // Jeśli brak wartości, czyścimy input
     if (!val) {

@@ -48,10 +48,20 @@ WYKONANE W ITERACJI 03:
 - Dodano style CSS dla nowych kontrolek (et-control-border, et-control-margin)
 - Dotyczy: Table Border, Header Border, Footer Border, Cell Border, Row Border, Table Margin
 
-4. Brak możliwości włączania/wyłączania header i footer - czeka na wykonanie
+4. Brak możliwości włączania/wyłączania header i footer - zakończono pozytywnie
 **Problem:** Assumptions.txt punkt 5 wymaga możliwości włączenia/wyłączenia header i footer. Obecnie nie ma takiej kontrolki.
 
 **Rozwiązanie:** Dodać checkboxy "Show header" i "Show footer" które pokazują/ukrywają odpowiednie sekcje tabeli i kontrolki.
+
+WYKONANE W ITERACJI 05:
+- Dodano checkboxy "Show Header" i "Show Footer" w sekcji Table
+- Checkboxy domyślnie zaznaczone (header i footer widoczne)
+- Odznaczenie checkboxa ukrywa odpowiednią sekcję tabeli (<thead> lub <tfoot>)
+- Odznaczenie checkboxa ukrywa również zakładkę Header/Footer w górnym pasku
+- Przy wyłączeniu header/footer automatyczne przełączenie na zakładkę Table jeśli była aktywna Header/Footer
+- Generate CSS pomija sekcje thead/tfoot gdy odpowiednie checkboxy są odznaczone
+- Obsługa resetowania checkboxów w funkcjach resetControl, resetSection i resetAll
+- Aktualizacja funkcji updateInputs aby obsługiwała checkboxy przy Load CSS
 
 5. Ograniczone wsparcie dla inherit i transparent w Load CSS - czeka na wykonanie
 **Problem:** Wartości `inherit` i `transparent` są traktowane jak puste stringi w parsowaniu.

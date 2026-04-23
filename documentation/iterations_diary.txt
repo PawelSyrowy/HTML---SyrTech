@@ -175,3 +175,43 @@ Następne kroki:
 - Testy manualne - sprawdzić czy wszystkie 3 poziomy resetowania działają
 - Sprawdzić czy resetowanie border i margin działa poprawnie
 - Implementacja User Story 4 - toggle dla header/footer
+
+========================================
+ITERACJA 05 - Data: 23.04.2026
+========================================
+User Story: 4. Brak możliwości włączania/wyłączania header i footer
+Status: TEST (oczekuje na manualne testy)
+
+Wykonane prace:
+- Dodano checkboxy "Show Header" i "Show Footer" w sekcji Table (pierwsze dwie kontrolki)
+- Checkboxy domyślnie zaznaczone - header i footer są widoczne
+- Odznaczenie checkboxa ukrywa odpowiednią sekcję (<thead> lub <tfoot>) w tabeli podglądu
+- Odznaczenie checkboxa ukrywa również zakładkę Header/Footer w górnym pasku zakładek
+- Automatyczne przełączenie na zakładkę Table gdy użytkownik wyłącza header/footer będąc na tej zakładce
+- Generate CSS pomija sekcje .${className} thead i .${className} tfoot gdy checkboxy są odznaczone
+- Pełna obsługa resetowania checkboxów we wszystkich funkcjach reset
+
+Zmiany w kodzie:
+- js/script.js: Dodano obsługę checkboxów (~100 linii)
+  * Dodano dwie kontrolki typu checkbox w sekcji Table (Show Header, Show Footer)
+  * Nowy blok w createControl() obsługujący type="checkbox"
+  * Checkbox.addEventListener("change") z logiką show/hide dla thead, tfoot i zakładek
+  * Zmodyfikowano getTableCSS() aby warunkowo generować sekcje thead/tfoot
+  * Dodano obsługę checkbox w resetControl() z restore domyślnych wartości
+  * Dodano obsługę checkbox w updateInputs() dla input.type === "checkbox"
+- index.html: Dodano id="headerTab" i id="footerTab" dla zakładek Header i Footer
+  * Umożliwia dynamiczne ukrywanie/pokazywanie zakładek przez JavaScript
+
+Korzyści dla użytkownika:
+- Możliwość pracy z tabelami bez header/footer zgodnie z assumptions.txt punkt 5
+- Czytelniejszy interfejs - zakładki Header/Footer znikają gdy są wyłączone
+- Inteligentna nawigacja - automatyczne przełączenie na Table gdy wyłączamy aktywną zakładkę
+- Czystszy CSS output - nie generuje niepotrzebnych sekcji thead/tfoot gdy są wyłączone
+- Zgodność z resetem - checkboxy są resetowane razem z innymi kontrolkami
+
+Następne kroki:
+- Testy manualne - sprawdzić czy checkboxy działają poprawnie
+- Sprawdzić czy zakładki znikają i pojawiają się prawidłowo
+- Sprawdzić czy Generate CSS pomija thead/tfoot gdy są wyłączone
+- Sprawdzić czy Load CSS nie powoduje problemów z checkboxami
+- Implementacja User Story 5 lub 6
