@@ -77,7 +77,21 @@ WYKONANE W ITERACJI 06:
 - Dodano obsługę wartości "inherit" w range inputach - czyści wartość zamiast błędu parsowania
 - Dodano pomijanie "inherit" i "transparent" dla color pickerów (nie są obsługiwane przez input type="color")
 
-6. Brak walidacji wprowadzanych wartości - czeka na wykonanie
+6. Brak walidacji wprowadzanych wartości - zakończono pozytywnie
 **Problem:** Użytkownik może wpisać nieprawidłowe wartości CSS (np. "abc" jako font-size), co spowoduje błędy w CSS.
 
 **Rozwiązanie:** Dodać walidację inputów i komunikaty o błędach.
+
+WYKONANE W ITERACJI 07:
+- Dodano 4 funkcje walidacyjne: validateSize(), validateLineHeight(), validateShadow(), validateColor()
+- validateSize() - waliduje width (%, px, em, rem, auto, inherit) z regexem
+- validateLineHeight() - waliduje line-height (liczba, px, %, em, rem, normal, inherit)
+- validateShadow() - waliduje box-shadow (none, inherit lub składnia z px/em/rem)
+- validateColor() - waliduje kolory (hex, rgb, rgba, hsl, hsla, transparent, inherit, nazwy kolorów)
+- Dodano showValidationError() - pokazuje czerwony komunikat błędu pod kontrolką
+- Dodano clearValidationError() - usuwa komunikat błędu
+- Zintegrowano walidację z event listenerem "input" w createControl()
+- Walidacja uruchamia się dla text inputów: Width, Line height, Shadow
+- Nieprawidłowa wartość blokuje aktualizację CSS i pokazuje komunikat błędu
+- Dodano style CSS dla komunikatów błędów (.et-validation-error, .et-input-error)
+- Czerwone obramowanie inputu z błędem, czerwony komunikat z ikoną ostrzeżenia

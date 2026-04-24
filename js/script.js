@@ -18,6 +18,175 @@ const editableTable = document.querySelector("[data-et-preview]");
 editableTable.classList.add("et-preview");
 
 /* ====================================================================
+   FUNKCJE WALIDACYJNE
+   Sprawdzają czy wartości CSS są poprawne
+   ==================================================================== */
+
+/**
+ * Waliduje wartość CSS width/height (%, px, em, rem, auto, inherit)
+ * @param {string} val - Wartość do sprawdzenia
+ * @returns {object} - {valid: boolean, error: string}
+ */
+function validateSize(val) {
+  if (!val || val.trim() === "") return { valid: false, error: "Wartość nie może być pusta" };
+
+  const trimmed = val.trim();
+
+  // Wartości słowne
+  if (["auto", "inherit", "initial", "unset"].includes(trimmed)) {
+    return { valid: true };
+  }
+
+  // Wartości z jednostką (100%, 50px, 2em, 1.5rem, etc.)
+  const sizeRegex = /^-?\d+(\.\d+)?(px|%|em|rem|vh|vw|vmin|vmax|ch|ex)$/;
+  if (sizeRegex.test(trimmed)) {
+    return { valid: true };
+  }
+
+  return { valid: false, error: "Nieprawidłowy format (oczekiwano np. 100%, 50px, 2em)" };
+}
+
+/**
+ * Waliduje wartość line-height (liczba lub px/em/rem/%/inherit)
+ * @param {string} val - Wartość do sprawdzenia
+ * @returns {object} - {valid: boolean, error: string}
+ */
+function validateLineHeight(val) {
+  if (!val || val.trim() === "") return { valid: false, error: "Wartość nie może być pusta" };
+
+  const trimmed = val.trim();
+
+  // Wartości słowne
+  if (["normal", "inherit", "initial", "unset"].includes(trimmed)) {
+    return { valid: true };
+  }
+
+  // Sama liczba (np. 1.4, 2)
+  if (/^\d+(\.\d+)?$/.test(trimmed)) {
+    return { valid: true };
+  }
+
+  // Z jednostką
+  const lineHeightRegex = /^\d+(\.\d+)?(px|%|em|rem)$/;
+  if (lineHeightRegex.test(trimmed)) {
+    return { valid: true };
+  }
+
+  return { valid: false, error: "Nieprawidłowy format (oczekiwano np. 1.4, 20px, 150%)" };
+}
+
+/**
+ * Waliduje wartość box-shadow (none, inherit lub pełna składnia)
+ * @param {string} val - Wartość do sprawdzenia
+ * @returns {object} - {valid: boolean, error: string}
+ */
+function validateShadow(val) {
+  if (!val || val.trim() === "") return { valid: false, error: "Wartość nie może być pusta" };
+
+  const trimmed = val.trim();
+
+  // Wartości słowne
+  if (["none", "inherit", "initial", "unset"].includes(trimmed)) {
+    return { valid: true };
+  }
+
+  // Prosta walidacja - sprawdź czy zawiera wartości px
+  // Pełna walidacja box-shadow jest bardzo złożona (inset, offset-x, offset-y, blur, spread, color)
+  if (/(\d+px|\d+em|\d+rem)/.test(trimmed)) {
+    return { valid: true };
+  }
+
+  return { valid: false, error: "Nieprawidłowy format (oczekiwano np. 0 2px 4px rgba(0,0,0,0.1))" };
+}
+
+/**
+ * Waliduje wartość koloru (hex, rgb, rgba, hsl, hsla, transparent, inherit, nazwy)
+ * @param {string} val - Wartość do sprawdzenia
+ * @returns {object} - {valid: boolean, error: string}
+ */
+function validateColor(val) {
+  if (!val || val.trim() === "") return { valid: false, error: "Wartość nie może być pusta" };
+
+  const trimmed = val.trim();
+
+  // Wartości słowne
+  const keywords = ["transparent", "inherit", "initial", "unset", "currentColor"];
+  if (keywords.includes(trimmed)) {
+    return { valid: true };
+  }
+
+  // Hex (#RGB, #RGBA, #RRGGBB, #RRGGBBAA)
+  if (/^#([0-9A-Fa-f]{3}|[0-9A-Fa-f]{4}|[0-9A-Fa-f]{6}|[0-9A-Fa-f]{8})$/.test(trimmed)) {
+    return { valid: true };
+  }
+
+  // rgb/rgba
+  if (/^rgba?\(\s*\d+\s*,\s*\d+\s*,\s*\d+(\s*,\s*[\d.]+)?\s*\)$/.test(trimmed)) {
+    return { valid: true };
+  }
+
+  // hsl/hsla
+  if (/^hsla?\(\s*\d+\s*,\s*\d+%\s*,\s*\d+%(\s*,\s*[\d.]+)?\s*\)$/.test(trimmed)) {
+    return { valid: true };
+  }
+
+  // Popularne nazwy kolorów CSS
+  const namedColors = [
+    "black", "white", "red", "green", "blue", "yellow", "orange", "purple", "pink",
+    "gray", "grey", "brown", "cyan", "magenta", "lime", "navy", "teal", "olive",
+    "maroon", "silver", "aqua", "fuchsia"
+  ];
+  if (namedColors.includes(trimmed.toLowerCase())) {
+    return { valid: true };
+  }
+
+  return { valid: false, error: "Nieprawidłowy kolor (oczekiwano hex, rgb, rgba, hsl, nazwy lub transparent)" };
+}
+
+/**
+ * Pokazuje komunikat błędu walidacji obok kontrolki
+ * @param {HTMLElement} input - Element input
+ * @param {string} errorMsg - Treść komunikatu błędu
+ */
+function showValidationError(input, errorMsg) {
+  // Usuń poprzedni komunikat jeśli istnieje
+  const wrapper = input.closest(".et-control");
+  if (!wrapper) return;
+
+  const existingError = wrapper.querySelector(".et-validation-error");
+  if (existingError) {
+    existingError.remove();
+  }
+
+  // Dodaj klasę error do inputu
+  input.classList.add("et-input-error");
+
+  // Stwórz element komunikatu błędu
+  const errorDiv = document.createElement("div");
+  errorDiv.className = "et-validation-error";
+  errorDiv.textContent = errorMsg;
+
+  wrapper.appendChild(errorDiv);
+}
+
+/**
+ * Usuwa komunikat błędu walidacji
+ * @param {HTMLElement} input - Element input
+ */
+function clearValidationError(input) {
+  const wrapper = input.closest(".et-control");
+  if (!wrapper) return;
+
+  const existingError = wrapper.querySelector(".et-validation-error");
+  if (existingError) {
+    existingError.remove();
+  }
+
+  // Usuń klasę error z inputu
+  input.classList.remove("et-input-error");
+}
+
+/* ====================================================================
    FUNKCJE POMOCNICZE DO GENEROWANIA CSS
    ==================================================================== */
 
@@ -664,9 +833,36 @@ function createControl(ctrl) {
 
     // Jeśli wartość jest pusta, usuwamy CSS variable
     if (val === "") {
+      clearValidationError(input);
       editableTable.style.removeProperty(ctrl.var);
       delete tableConfig[ctrl.var];
       return;
+    }
+
+    // Walidacja wartości dla text inputów
+    if (ctrl.type === "text") {
+      let validationResult = { valid: true };
+
+      // Width - sprawdź czy to prawidłowy rozmiar
+      if (ctrl.var === "--et-width") {
+        validationResult = validateSize(val);
+      }
+      // Line height - specjalna walidacja
+      else if (ctrl.var === "--et-line-height") {
+        validationResult = validateLineHeight(val);
+      }
+      // Shadow - specjalna walidacja
+      else if (ctrl.var === "--et-shadow") {
+        validationResult = validateShadow(val);
+      }
+
+      // Jeśli walidacja się nie powiodła, pokaż błąd
+      if (!validationResult.valid) {
+        showValidationError(input, validationResult.error);
+        return; // Nie aktualizuj CSS
+      } else {
+        clearValidationError(input);
+      }
     }
 
     // Ustawiamy nową wartość CSS variable

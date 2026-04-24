@@ -257,3 +257,61 @@ Następne kroki:
 - Sprawdzić czy wartości są prawidłowo wyświetlane w interfejsie
 - Sprawdzić czy Generate CSS generuje prawidłowy kod z wartościami neutralnymi
 - Implementacja User Story 6 - walidacja wprowadzanych wartości
+
+========================================
+ITERACJA 07 - Data: 24.04.2026
+========================================
+User Story: 6. Brak walidacji wprowadzanych wartości
+Status: TEST (oczekuje na manualne testy)
+
+Wykonane prace:
+- Dodano system walidacji wartości CSS dla text inputów
+- Zaimplementowano 4 funkcje walidacyjne używające regexów
+- Dodano wizualne komunikaty błędów pod kontrolkami
+- Zintegrowano walidację z event listenerem "input" w createControl()
+- Nieprawidłowe wartości blokują aktualizację CSS i pokazują komunikat błędu
+- Walidacja działa w czasie rzeczywistym (podczas wpisywania)
+
+Zmiany w kodzie:
+- js/script.js: Dodano funkcje walidacyjne (~170 linii)
+  * validateSize() - waliduje width (%, px, em, rem, auto, inherit) regex: /^-?\d+(\.\d+)?(px|%|em|rem|vh|vw|vmin|vmax|ch|ex)$/
+  * validateLineHeight() - waliduje line-height (liczba, px, %, em, rem, normal, inherit)
+  * validateShadow() - waliduje box-shadow (none, inherit lub składnia z px/em/rem)
+  * validateColor() - waliduje kolory (hex #RGB/#RRGGBB, rgb/rgba, hsl/hsla, transparent, inherit, nazwy)
+  * showValidationError() - tworzy czerwony komunikat błędu pod kontrolką
+  * clearValidationError() - usuwa komunikat błędu i klasę error
+- js/script.js: Zmodyfikowano event listener "input" w createControl() (~25 linii)
+  * Walidacja uruchamia się dla --et-width, --et-line-height, --et-shadow
+  * Jeśli walidacja się nie powiedzie, CSS nie jest aktualizowany
+  * Komunikat błędu pojawia się natychmiast
+- css/style.css: Dodano style dla komunikatów walidacyjnych (~30 linii)
+  * .et-validation-error - czerwone tło, tekst, lewa ramka
+  * .et-input-error - czerwone obramowanie inputu z błędem
+  * .et-input-error:focus - czerwony outline i shadow przy fokusie
+
+Problem rozwiązany:
+Wcześniej użytkownik mógł wpisać dowolną wartość (np. "abc" dla width) i aplikacja akceptowała ją bez sprawdzenia.
+Teraz:
+- Wartości są walidowane w czasie rzeczywistym używając regexów
+- Nieprawidłowe wartości pokazują czerwony komunikat błędu
+- CSS nie jest aktualizowany dopóki wartość nie będzie poprawna
+- Użytkownik widzi jasną informację co jest nie tak (np. "Nieprawidłowy format (oczekiwano np. 100%, 50px, 2em)")
+
+Korzyści dla użytkownika:
+- Niemożliwe jest wygenerowanie CSS z błędami
+- Natychmiastowa informacja zwrotna o nieprawidłowych wartościach
+- Czytelne komunikaty błędów w języku polskim
+- Czerwone obramowanie inputu z błędem - wizualna wskazówka
+- Walidacja obsługuje wartości neutralne (inherit, transparent, none)
+
+Ograniczenia:
+- Walidacja obecnie działa tylko dla text inputów (Width, Line height, Shadow)
+- Range inputy, selecty, color pickery nie wymagają walidacji (wartości są kontrolowane przez HTML)
+- Walidacja box-shadow jest uproszczona (pełna składnia jest bardzo złożona)
+- Walidacja kolorów obsługuje tylko popularne nazwy (22 nazwy), nie wszystkie 147 nazw CSS
+
+Następne kroki:
+- Testy manualne - sprawdzić wszystkie przypadki walidacji
+- Sprawdzić czy komunikaty błędów są czytelne i pomocne
+- Sprawdzić czy walidacja nie blokuje prawidłowych wartości
+- Rozważyć dodanie walidacji dla Load CSS (obecnie tylko Generate CSS)
