@@ -215,3 +215,45 @@ Następne kroki:
 - Sprawdzić czy Generate CSS pomija thead/tfoot gdy są wyłączone
 - Sprawdzić czy Load CSS nie powoduje problemów z checkboxami
 - Implementacja User Story 5 lub 6
+
+========================================
+ITERACJA 06 - Data: 24.04.2026
+========================================
+User Story: 5. Ograniczone wsparcie dla inherit i transparent w Load CSS
+Status: TEST (oczekuje na manualne testy)
+
+Wykonane prace:
+- Zidentyfikowano problem z parsowaniem wartości "inherit" i "transparent" w funkcji updateInputs()
+- Zmieniono warunki sprawdzające wartości z `if (!val)` na `if (val === undefined || val === null)`
+- Wartości "inherit" i "transparent" są teraz poprawnie rozpoznawane jako prawidłowe wartości CSS
+- Dodano specjalną obsługę dla range inputów z wartością "inherit" - czyszczenie wartości zamiast błędu parsowania
+- Dodano pomijanie "inherit" i "transparent" dla color pickerów (nie są obsługiwane przez HTML input type="color")
+
+Zmiany w kodzie:
+- js/script.js: Poprawiono funkcję updateInputs() (~60 linii zmian)
+  * Standardowe inputy (text, range, color, checkbox) - linia 1209: zmiana z `if (!val)` na `if (val === undefined || val === null)`
+  * Range inputy - linia 1216-1221: dodano obsługę "inherit" - czyści wartość inputu
+  * Selecty (dropdown) - linia 1235: zmiana z `if (val)` na `if (val !== undefined && val !== null)`
+  * Kontrolki border - linie 1252, 1257, 1262: zmiana warunków sprawdzających wartość
+  * Color picker w border - linia 1262: dodano wykluczenie "inherit" i "transparent"
+  * Kontrolki margin - linia 1279: zmiana z `if (val)` na `if (val !== undefined && val !== null)`
+
+Problem rozwiązany:
+Wcześniej gdy użytkownik wczytał CSS z wartością "inherit" lub "transparent", funkcja updateInputs()
+traktowała te wartości jako falsy i czyściła inputy. Teraz:
+- "inherit" i "transparent" są prawidłowo zapisywane w tableConfig
+- Wartości te są prawidłowo wyświetlane w text inputach i selectach
+- Range inputy z "inherit" są czyszczone (inherit nie ma sensu dla suwaka)
+- Color pickery pomijają "inherit" i "transparent" (HTML nie obsługuje tych wartości w input type="color")
+
+Korzyści dla użytkownika:
+- Poprawne parsowanie wartości neutralnych CSS ("inherit", "transparent")
+- Brak utraty danych przy Load CSS - wartości neutralne są zachowywane
+- Zgodność z CSS - wartości neutralne działają jak w standardzie CSS
+- Mniej niespodzianek - Load CSS działa przewidywalnie dla wszystkich wartości
+
+Następne kroki:
+- Testy manualne - wczytać CSS z wartościami "inherit" i "transparent"
+- Sprawdzić czy wartości są prawidłowo wyświetlane w interfejsie
+- Sprawdzić czy Generate CSS generuje prawidłowy kod z wartościami neutralnymi
+- Implementacja User Story 6 - walidacja wprowadzanych wartości

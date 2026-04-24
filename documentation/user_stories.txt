@@ -63,10 +63,19 @@ WYKONANE W ITERACJI 05:
 - Obsługa resetowania checkboxów w funkcjach resetControl, resetSection i resetAll
 - Aktualizacja funkcji updateInputs aby obsługiwała checkboxy przy Load CSS
 
-5. Ograniczone wsparcie dla inherit i transparent w Load CSS - czeka na wykonanie
+5. Ograniczone wsparcie dla inherit i transparent w Load CSS - zakończono pozytywnie
 **Problem:** Wartości `inherit` i `transparent` są traktowane jak puste stringi w parsowaniu.
 
 **Rozwiązanie:** Poprawić logikę parsowania, aby rozróżniała brak wartości od wartości neutralnych.
+
+WYKONANE W ITERACJI 06:
+- Zmieniono warunki sprawdzające wartości z `if (!val)` na `if (val === undefined || val === null)`
+- Funkcja updateInputs() w bloku standardowych inputów poprawiona (linia 1209)
+- Funkcja updateInputs() w bloku selectów poprawiona (linia 1235)
+- Funkcja updateInputs() w bloku kontrolek border poprawiona (linie 1252, 1257, 1262)
+- Funkcja updateInputs() w bloku kontrolek margin poprawiona (linia 1279)
+- Dodano obsługę wartości "inherit" w range inputach - czyści wartość zamiast błędu parsowania
+- Dodano pomijanie "inherit" i "transparent" dla color pickerów (nie są obsługiwane przez input type="color")
 
 6. Brak walidacji wprowadzanych wartości - czeka na wykonanie
 **Problem:** Użytkownik może wpisać nieprawidłowe wartości CSS (np. "abc" jako font-size), co spowoduje błędy w CSS.

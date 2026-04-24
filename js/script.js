@@ -1204,15 +1204,21 @@ function updateInputs() {
       return;
     }
 
-    // Jeśli brak wartości, czyścimy input
-    if (!val) {
+    // Jeśli brak wartości (undefined lub null), czyścimy input
+    // UWAGA: "inherit" i "transparent" są poprawnymi wartościami i nie powinny być czyszczone
+    if (val === undefined || val === null) {
       input.value = "";
       return;
     }
 
     // Dla range wyciągamy samą liczbę (usuwamy "px")
+    // UWAGA: "inherit" w range input jest niepoprawne, więc zamieniamy na wartość domyślną
     if (input.type === "range") {
-      input.value = parseInt(val);
+      if (val === "inherit") {
+        input.value = ""; // Czyścimy range dla "inherit"
+      } else {
+        input.value = parseInt(val) || "";
+      }
     } else {
       input.value = val;
     }
@@ -1225,7 +1231,8 @@ function updateInputs() {
 
     const val = tableConfig[v];
 
-    if (val) {
+    // Ustawiamy wartość tylko jeśli jest zdefiniowana (włącznie z "inherit" i "transparent")
+    if (val !== undefined && val !== null) {
       select.value = val;
     }
   });
@@ -1242,17 +1249,17 @@ function updateInputs() {
 
       if (input.type === "range") {
         // Width - wyciągamy liczbę z "Xpx"
-        if (val) {
-          input.value = parseInt(val);
+        if (val !== undefined && val !== null) {
+          input.value = parseInt(val) || 0;
         }
       } else if (input.tagName === "SELECT") {
         // Style - ustawiamy wartość selecta
-        if (val) {
+        if (val !== undefined && val !== null) {
           input.value = val;
         }
       } else if (input.type === "color") {
-        // Color - ustawiamy wartość koloru
-        if (val) {
+        // Color - ustawiamy wartość koloru (pomijamy "inherit" i "transparent")
+        if (val !== undefined && val !== null && val !== "inherit" && val !== "transparent") {
           input.value = val;
         }
       }
@@ -1269,9 +1276,9 @@ function updateInputs() {
 
       const val = tableConfig[v];
 
-      if (val) {
+      if (val !== undefined && val !== null) {
         // Wyciągamy liczbę z "Xpx"
-        input.value = parseInt(val);
+        input.value = parseInt(val) || 0;
       }
     });
   });
