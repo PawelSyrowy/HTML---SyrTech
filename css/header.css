@@ -76,6 +76,38 @@
   pointer-events: none;
 }
 
+/* Language Switcher */
+.language-switcher {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: var(--font-sm);
+  font-weight: 500;
+}
+
+.language-switcher a {
+  padding: 0.4rem 0.75rem !important;
+  color: rgba(255, 255, 255, 0.6) !important;
+  border-radius: var(--radius-sm);
+  transition: var(--transition);
+}
+
+.language-switcher a:hover {
+  color: #fff !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+}
+
+.language-switcher .lang-active {
+  padding: 0.4rem 0.75rem;
+  color: var(--color-orange);
+  font-weight: 600;
+}
+
+.language-switcher .lang-separator {
+  color: rgba(255, 255, 255, 0.3);
+  font-weight: 400;
+}
+
 /* Hamburger */
 .menu-toggle {
   display: none;
