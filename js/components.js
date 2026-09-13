@@ -20,11 +20,9 @@ function loadComponent(id, file, callback) {
  */
 function loadPortfolio(id) {
   const projects = [
-    "components/projects/nomad.html",
     "components/projects/habitator.html",
     "components/projects/happydroplet.html",
     "components/projects/starwars.html",
-    "components/projects/czat.html",
     "components/projects/cleantisy.html",
   ];
 
